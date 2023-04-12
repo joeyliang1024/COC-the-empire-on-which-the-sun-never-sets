@@ -1,7 +1,7 @@
 # 永晝城物語
 ## 遊戲說明
 - 作者：曾煒傑、梁致銓、黃品瑜
-- 時長：10~12小時（跑團）、20~30分鐘（遊戲）
+- 時長：10\~12小時（跑團）、20\~30分鐘（遊戲）
 - 難度：4/5（重Role Play）
 - 推薦技能：御三家（偵查、聆聽、圖書館使用）
 - 玩家職業：考古學家、神祕學家或記者等合理前往考古地點之職業
@@ -12,9 +12,39 @@
 ## 角色介紹
 - 約翰(Johann)
   - 基礎數據:
-|   |   |   |   |   |
-|---|---|---|---|---|
-|   |   |   |   |   |
-|   |   |   |   |   |
-|   |   |   |   |   |
+  -  <table>
+    <tr>
+        <th align="center">score</th><th colspan="5" align="center">TF-IDF</th><th>bert2BERT</th><th>FiD-PGN</th>
+    </tr>
+    <tr>
+        <td align="center">Top k</td><td align="center">1</td><td align="center">2</td><td align="center">3</td><td align="center">4</td><td align="center">5</td><td align="center">5</td><td align="center">25</td>
+    </tr>
+    <tr>
+        <td align="center">LCS</td><td align="center">0.633</td><td align="center">0.654</td><td align="center">0.650</td><td align="center">0.671</td><td align="center">0.724</td><td align="center">0.372</td><td align="center">None</td>
+    </tr>
+    <tr>
+        <td align="center">F1</td><td align="center">0.591</td><td align="center">0.612</td><td align="center">0.606</td><td align="center">0.635</td><td align="center">0.663</td><td align="center">0.348</td><td align="center">None</td>
+    </tr>
+    <tr>
+        <td align="center">EM</td><td align="center">0.524</td><td align="center">0.538</td><td align="center">0.536</td><td align="center">0.547</td><td align="center">0.578</td><td align="center">0.312</td><td align="center">0.684</td>
+    </tr>
+</table>
+<table>
+    <tr>
+        <th align="center">score</th><th colspan="5" align="center">BM25</th><th>bert2BERT</th><th>FiD-PGN</th>
+    </tr>
+    <tr>
+        <td align="center">Top k</td><td align="center">1</td><td align="center">2</td><td align="center">3</td><td align="center">4</td><td align="center">5</td><td align="center">5</td><td align="center">25</td>
+    </tr>
+    <tr>
+        <td align="center">LCS</td><td align="center">0.631</td><td align="center">0.776</td><td align="center">0.764</td><td align="center">0.782</td><td align="center">0.804</td><td align="center">0.372</td><td align="center">None</td>
+    </tr>
+    <tr>
+        <td align="center">F1</td><td align="center">0.588</td><td align="center">0.751</td><td align="center">0.748</td><td align="center">0.758</td><td align="center">0.779</td><td align="center">0.348</td><td align="center">None</td>
+    </tr>
+    <tr>
+        <td align="center">EM</td><td align="center">0.514</td><td align="center">0.676</td><td align="center">0.632</td><td align="center">0.681</td><td align="center">0.697</td><td align="center">0.312</td><td align="center">0.684</td>
+    </tr>
+</table>
+
 
