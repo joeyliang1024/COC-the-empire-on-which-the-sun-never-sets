@@ -17,7 +17,8 @@
         <th align="center">約翰(Johann)</th><th colspan="13" align="center">基礎數據</th>
     </tr>
     <tr>
-        <td align="center">STR</td><td align="center">DEX</td><td align="center">INT</td><td align="center">CON</td><td align="center">APP</td><td                 align="center">POW</td><td align="center">SIZ</td><td align="center">SAN</td><td align="center">EDU</td><td align="center">Luck</td>
+        <td align="center">能力</td><td align="center">STR</td><td align="center">DEX</td><td align="center">INT</td><td align="center">CON</td><td                 align="center">APP</td><td align="center">POW</td><td align="center">SIZ</td><td align="center">SAN</td><td align="center">EDU</td><td     
+        align="center">Luck</td>
         <td align="center">HP</td><td align="center">MP</td><td align="center">DB</td>
     </tr>
     <tr>
