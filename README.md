@@ -18,11 +18,11 @@
     </tr>
     <tr>
         <td align="center">能力</td><td align="center">STR</td><td align="center">DEX</td><td align="center">INT</td><td align="center">CON</td><td                 align="center">APP</td><td align="center">POW</td><td align="center">SIZ</td><td align="center">SAN</td><td align="center">EDU</td><td     
-        align="center">Luck</td>
-        <td align="center">HP</td><td align="center">MP</td><td align="center">DB</td>
+        align="center">Luck</td><td align="center">HP</td><td align="center">MP</td><td align="center">DB</td>
     </tr>
     <tr>
-        <td align="center">LCS</td><td align="center">0.633</td><td align="center">0.654</td><td align="center">0.650</td><td align="center">0.671</td><td align="center">0.724</td><td align="center">0.372</td><td align="center">None</td>
+        <td align="center">數值</td><td align="center">65</td><td align="center">70</td><td align="center">50</td><td align="center">50</td><td                 align="center">40</td><td align="center">40</td><td align="center">40</td><td align="center">40</td><td align="center">40</td><td     
+        align="center">50</td><td align="center">9</td><td align="center">8</td><td align="center">1D4</td>
     </tr>
 </table>
 
