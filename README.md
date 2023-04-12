@@ -65,8 +65,8 @@
          align="center">Luck</td><td align="center">HP</td><td align="center">MP</td><td align="center">DB</td>
      </tr>
      <tr>
-        <td align="center">數值</td><td align="center">65</td><td align="center">70</td><td align="center">50</td><td align="center">50</td><td                     align="center">40</td><td align="center">40</td><td align="center">40</td><td align="center">40</td><td align="center">40</td><td     
-        align="center">50</td><td align="center">9</td><td align="center">8</td><td align="center">1D4</td>
+        <td align="center">數值</td><td align="center">25</td><td align="center">55</td><td align="center">60</td><td align="center">35</td><td                     align="center">90</td><td align="center">45</td><td align="center">45</td><td align="center">65</td><td align="center">80</td><td     
+        align="center">80</td><td align="center">6</td><td align="center">9</td><td align="center">-1</td>
      </tr>
      </table>
 
