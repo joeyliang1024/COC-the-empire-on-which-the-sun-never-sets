@@ -14,7 +14,7 @@
   - 基礎數據:
   -  <table>
     <tr>
-        <th align="center"></th>約翰(Johann)<th colspan="13" align="center"></th>
+        <th align="center"></th>約翰(Johann)<th colspan="13" align="center">基礎數據</th>
     </tr>
     <tr>
         <td align="center">Top k</td><td align="center">1</td><td align="center">2</td><td align="center">3</td><td align="center">4</td><td align="center">5</td><td align="center">5</td><td align="center">25</td>
