@@ -69,4 +69,3 @@
         align="center">80</td><td align="center">6</td><td align="center">9</td><td align="center">-1</td>
      </tr>
      </table>
-
