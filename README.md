@@ -14,7 +14,7 @@
   - 基礎數據:
   -  <table>
     <tr>
-        <th align="center">score</th><th colspan="5" align="center">TF-IDF</th><th>bert2BERT</th><th>FiD-PGN</th>
+        <th align="center"></th>約翰(Johann)<th colspan="13" align="center"></th>
     </tr>
     <tr>
         <td align="center">Top k</td><td align="center">1</td><td align="center">2</td><td align="center">3</td><td align="center">4</td><td align="center">5</td><td align="center">5</td><td align="center">25</td>
@@ -27,23 +27,6 @@
     </tr>
     <tr>
         <td align="center">EM</td><td align="center">0.524</td><td align="center">0.538</td><td align="center">0.536</td><td align="center">0.547</td><td align="center">0.578</td><td align="center">0.312</td><td align="center">0.684</td>
-    </tr>
-</table>
-<table>
-    <tr>
-        <th align="center">score</th><th colspan="5" align="center">BM25</th><th>bert2BERT</th><th>FiD-PGN</th>
-    </tr>
-    <tr>
-        <td align="center">Top k</td><td align="center">1</td><td align="center">2</td><td align="center">3</td><td align="center">4</td><td align="center">5</td><td align="center">5</td><td align="center">25</td>
-    </tr>
-    <tr>
-        <td align="center">LCS</td><td align="center">0.631</td><td align="center">0.776</td><td align="center">0.764</td><td align="center">0.782</td><td align="center">0.804</td><td align="center">0.372</td><td align="center">None</td>
-    </tr>
-    <tr>
-        <td align="center">F1</td><td align="center">0.588</td><td align="center">0.751</td><td align="center">0.748</td><td align="center">0.758</td><td align="center">0.779</td><td align="center">0.348</td><td align="center">None</td>
-    </tr>
-    <tr>
-        <td align="center">EM</td><td align="center">0.514</td><td align="center">0.676</td><td align="center">0.632</td><td align="center">0.681</td><td align="center">0.697</td><td align="center">0.312</td><td align="center">0.684</td>
     </tr>
 </table>
 
