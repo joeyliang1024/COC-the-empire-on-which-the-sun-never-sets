@@ -44,8 +44,8 @@
          align="center">Luck</td><td align="center">HP</td><td align="center">MP</td><td align="center">DB</td>
      </tr>
      <tr>
-        <td align="center">數值</td><td align="center">65</td><td align="center">70</td><td align="center">50</td><td align="center">50</td><td                     align="center">40</td><td align="center">40</td><td align="center">40</td><td align="center">40</td><td align="center">40</td><td     
-        align="center">50</td><td align="center">9</td><td align="center">8</td><td align="center">1D4</td>
+        <td align="center">數值</td><td align="center">80</td><td align="center">70</td><td align="center">85</td><td align="center">80</td><td                     align="center">85</td><td align="center">65</td><td align="center">75</td><td align="center">65</td><td align="center">50</td><td     
+        align="center">80</td><td align="center">15</td><td align="center">13</td><td align="center">1D6</td>
      </tr>
      </table>
 - 桂妮薇兒(Guinevere)
