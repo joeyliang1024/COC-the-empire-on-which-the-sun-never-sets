@@ -14,19 +14,14 @@
   - 基礎數據:
   -  <table>
     <tr>
-        <th align="center"></th>約翰(Johann)<th colspan="13" align="center">基礎數據</th>
+        <th align="center">約翰(Johann)</th><th colspan="13" align="center">基礎數據</th>
     </tr>
     <tr>
-        <td align="center">Top k</td><td align="center">1</td><td align="center">2</td><td align="center">3</td><td align="center">4</td><td align="center">5</td><td align="center">5</td><td align="center">25</td>
+        <td align="center">STR</td><td align="center">DEX</td><td align="center">INT</td><td align="center">CON</td><td align="center">APP</td><td                 align="center">POW</td><td align="center">SIZ</td><td align="center">SAN</td><td align="center">EDU</td><td align="center">Luck</td>
+        <td align="center">HP</td><td align="center">MP</td><td align="center">DB</td>
     </tr>
     <tr>
         <td align="center">LCS</td><td align="center">0.633</td><td align="center">0.654</td><td align="center">0.650</td><td align="center">0.671</td><td align="center">0.724</td><td align="center">0.372</td><td align="center">None</td>
-    </tr>
-    <tr>
-        <td align="center">F1</td><td align="center">0.591</td><td align="center">0.612</td><td align="center">0.606</td><td align="center">0.635</td><td align="center">0.663</td><td align="center">0.348</td><td align="center">None</td>
-    </tr>
-    <tr>
-        <td align="center">EM</td><td align="center">0.524</td><td align="center">0.538</td><td align="center">0.536</td><td align="center">0.547</td><td align="center">0.578</td><td align="center">0.312</td><td align="center">0.684</td>
     </tr>
 </table>
 
