@@ -58,7 +58,7 @@
  
   -  <table>
      <tr>
-        <th align="center">高文(Gawain)</th><th colspan="13" align="center">基礎數據</th>
+        <th align="center">桂妮薇兒(Guinevere)</th><th colspan="13" align="center">基礎數據</th>
      </tr>
      <tr>
          <td align="center">能力</td><td align="center">STR</td><td align="center">DEX</td><td align="center">INT</td><td align="center">CON</td><td                align="center">APP</td><td align="center">POW</td><td align="center">SIZ</td><td align="center">SAN</td><td align="center">EDU</td><td     
