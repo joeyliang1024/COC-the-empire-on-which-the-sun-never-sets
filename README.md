@@ -27,5 +27,20 @@
      </tr>
      </table>
 - 高文gawain(導遊瓦格恩 Wagain)
+  - 太陽騎士: 太陽光的照射下，所有判定活得一顆優勢骰
+  - 一位長得十分帥氣的男性，有著相對一般的白種人相對黑的淺麥色皮膚，淺天藍色的眼眸，伴隨著一抹淺淺的微笑映入你眼簾，他全身散發著讓人舒服的親合力。
+  -  <table>
+     <tr>
+        <th align="center">高文(Gawain)</th><th colspan="13" align="center">基礎數據</th>
+     </tr>
+     <tr>
+         <td align="center">能力</td><td align="center">STR</td><td align="center">DEX</td><td align="center">INT</td><td align="center">CON</td><td                align="center">APP</td><td align="center">POW</td><td align="center">SIZ</td><td align="center">SAN</td><td align="center">EDU</td><td     
+         align="center">Luck</td><td align="center">HP</td><td align="center">MP</td><td align="center">DB</td>
+     </tr>
+     <tr>
+        <td align="center">數值</td><td align="center">65</td><td align="center">70</td><td align="center">50</td><td align="center">50</td><td                     align="center">40</td><td align="center">40</td><td align="center">40</td><td align="center">40</td><td align="center">40</td><td     
+        align="center">50</td><td align="center">9</td><td align="center">8</td><td align="center">1D4</td>
+     </tr>
+     </table>
 
 
