@@ -48,5 +48,25 @@
         align="center">50</td><td align="center">9</td><td align="center">8</td><td align="center">1D4</td>
      </tr>
      </table>
-
+- 桂妮薇兒(Guinevere)
+  - 一位長的十分漂亮的女性，你這輩子幾乎沒有看過比她更美麗的人，她有著一頭銀白色的長直髮，和湛藍色的眼眸，他穿著、行為高雅，一眼看去就不是普通人家。
+  - Path: 曙: 房間 >輝: 房間 >宏: 客廳 >烈: 房間 >流: 房間 >暮: 房間
+  - 行事準則:
+    - 迷失狀態:會機械式的進行被安排的行動，理會調查員僅限於不會影響到形成的程度
+    - 清醒狀態:雖然十分想念蘭斯洛特，且對自己的現狀有些痛苦，但她仍深陷背叛亞瑟王的罪惡感中，若不解開她的心結，她應該會在這座亞瑟王為她建立的城堡度過永遠。
+清醒狀態:雖然十分想念蘭斯洛特，且對自己的現狀有些痛苦，但她仍深陷背叛亞瑟王的罪惡感中，若不解開她的心結，她應該會在這座亞瑟王為她建立的城堡度過永遠。
+ 
+  -  <table>
+     <tr>
+        <th align="center">高文(Gawain)</th><th colspan="13" align="center">基礎數據</th>
+     </tr>
+     <tr>
+         <td align="center">能力</td><td align="center">STR</td><td align="center">DEX</td><td align="center">INT</td><td align="center">CON</td><td                align="center">APP</td><td align="center">POW</td><td align="center">SIZ</td><td align="center">SAN</td><td align="center">EDU</td><td     
+         align="center">Luck</td><td align="center">HP</td><td align="center">MP</td><td align="center">DB</td>
+     </tr>
+     <tr>
+        <td align="center">數值</td><td align="center">65</td><td align="center">70</td><td align="center">50</td><td align="center">50</td><td                     align="center">40</td><td align="center">40</td><td align="center">40</td><td align="center">40</td><td align="center">40</td><td     
+        align="center">50</td><td align="center">9</td><td align="center">8</td><td align="center">1D4</td>
+     </tr>
+     </table>
 
