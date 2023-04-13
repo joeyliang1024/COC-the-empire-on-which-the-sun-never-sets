@@ -1,8 +1,9 @@
-﻿  pch.cpp
-  AssemblyInfo.cpp
-  CppCLR_WinFormsProject.cpp
-  Form1.cpp
-  正在產生程式碼...
-  .NETFramework,Version=v4.7.2.AssemblyAttributes.cpp
-  AssemblyInfo.obj : 發現 MSIL 模組。MSIL 的累加連結已停用。正在執行完整連結
-  Eternal_Day_State.vcxproj -> C:\Desktop\coc\ひとりじゃない\永晝城物語\Eternal_Day_State\x64\Debug\Eternal_Day_State.exe
+﻿  Character.cpp
+C:\Desktop\coc\ひとりじゃない\永晝城物語\Eternal_Day_State\Eternal_Day_State\Character.cpp(1,1): warning C4819: 檔案含有無法在目前字碼頁 (950) 中表示的字元。請以 Unicode 格式儲存檔案以防止資料遺失
+C:\Desktop\coc\ひとりじゃない\永晝城物語\Eternal_Day_State\Eternal_Day_State\Character.cpp(2): warning C4603: '_TEST_': 巨集未定義，或是定義在使用先行編譯標頭後變成不同
+C:\Desktop\coc\ひとりじゃない\永晝城物語\Eternal_Day_State\Eternal_Day_State\Character.cpp(2): message : 新增巨集到先行編譯標頭，而不要在此處定義
+C:\Desktop\coc\ひとりじゃない\永晝城物語\Eternal_Day_State\Eternal_Day_State\Character.cpp(3,1): message : 使用先行編譯標頭
+C:\Desktop\coc\ひとりじゃない\永晝城物語\Eternal_Day_State\Eternal_Day_State\Character.cpp(5,27): error C4430: 遺漏類型規範 - 假設為 int。注意: C++ 不支援 default-int
+C:\Desktop\coc\ひとりじゃない\永晝城物語\Eternal_Day_State\Eternal_Day_State\Character.cpp(5,11): error C2146: 語法錯誤: 遺漏 ';' (在識別項 'Create_Character' 之前)
+C:\Desktop\coc\ひとりじゃない\永晝城物語\Eternal_Day_State\Eternal_Day_State\Character.cpp(6,1): error C2143: 語法錯誤: 遺漏 ';' (在 '{' 之前)
+C:\Desktop\coc\ひとりじゃない\永晝城物語\Eternal_Day_State\Eternal_Day_State\Character.cpp(6,1): error C2447: '{': 遺漏函式標頭 (舊樣式型式清單?)
