@@ -4,6 +4,45 @@
 //Create a character from input statue
 Character Create_Character(Statue Statue_Create) 
 {
+	//detect character name
+	if (Statue_Create.name == "johann"){
+		Statue_Create.Str = 65;
+		Statue_Create.Con = 50;
+		Statue_Create.Dex = 70;
+		Statue_Create.Pow = 40;
+		Statue_Create.App = 40;
+		Statue_Create.Int = 50;
+		Statue_Create.Siz = 40;
+		Statue_Create.Edu = 40;
+		Statue_Create.Luk = 50;
+	}
+	else if (Statue_Create.name == "gawain"){
+		Statue_Create.Str = 80;
+		Statue_Create.Con = 80;
+		Statue_Create.Dex = 70;
+		Statue_Create.Pow = 65;
+		Statue_Create.App = 85;
+		Statue_Create.Int = 85;
+		Statue_Create.Siz = 75;
+		Statue_Create.Edu = 80;
+		Statue_Create.Luk = 80;
+	}
+	else if (Statue_Create.name == "guinevere"){
+		Statue_Create.Str = 25;
+		Statue_Create.Con = 35;
+		Statue_Create.Dex = 55;
+		Statue_Create.Pow = 45;
+		Statue_Create.App = 90;
+		Statue_Create.Int = 60;
+		Statue_Create.Siz = 45;
+		Statue_Create.Edu = 80;
+		Statue_Create.Luk = 80;
+	}
+	else
+	{
+		//return no character error
+	}
+	//align variable to character
 	Character Character_Create;
 	Character_Create.Str = Statue_Create.Str;
 	Character_Create.Con = Statue_Create.Con;
@@ -34,4 +73,5 @@ Character Create_Character(Statue Statue_Create)
 	else{
 		Character_Create.DB = 6;
 	}
+	return Character_Create;
 }
