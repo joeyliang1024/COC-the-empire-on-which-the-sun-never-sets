@@ -42,7 +42,7 @@ Character Create_Character(Statue Statue_Create)
 	{
 		//return no character error
 	}
-	//align variable to character
+	//align variables to character
 	Character Character_Create;
 	Character_Create.Str = Statue_Create.Str;
 	Character_Create.Con = Statue_Create.Con;
