@@ -130,11 +130,24 @@
     <ResourceCompile Include="app.rc" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="begin_page.h" />
+    <ClInclude Include="characters.h" />
+    <ClInclude Include="data_format.h" />
     <ClInclude Include="Form1.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="hotel.h" />
+    <ClInclude Include="lake_mary.h" />
+    <ClInclude Include="library.h" />
+    <ClInclude Include="manual.h" />
+    <ClInclude Include="market.h" />
+    <ClInclude Include="palace.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="plaza.h" />
+    <ClInclude Include="prison.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="restaurant.h" />
+    <ClInclude Include="sewer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
@@ -156,6 +169,11 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.h</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,4 +1,19 @@
 #pragma once
+#include <stdio.h>
+#include <stdlib.h>
+#include "begin_page.h"
+#include "characters.h"
+#include "data_format.h"
+#include "hotel.h"
+#include "lake_mary.h"
+#include "library.h"
+#include "manual.h"
+#include "market.h"
+#include "palace.h"
+#include "plaza.h"
+#include "prison.h"
+#include "restaurant.h"
+#include "sewer.h"
 
 namespace CppCLRWinFormsProject {
 
@@ -35,6 +50,8 @@ namespace CppCLRWinFormsProject {
 			}
 		}
 
+	protected:
+
 	private:
 		/// <summary>
 		/// Required designer variable.
@@ -48,12 +65,20 @@ namespace CppCLRWinFormsProject {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->components = gcnew System::ComponentModel::Container();
-			this->Size = System::Drawing::Size(300,300);
-			this->Text = L"Form1";
-			this->Padding = System::Windows::Forms::Padding(0);
+			this->SuspendLayout();
+			// 
+			// Form1
+			// 
+			this->AutoScaleDimensions = System::Drawing::SizeF(13, 24);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->ClientSize = System::Drawing::Size(1000, 1000);
+			this->Name = L"Form1";
+			this->Text = L"Form1";
+			this->ResumeLayout(false);
+
 		}
 #pragma endregion
+	private: System::Void backgroundWorker1_DoWork(System::Object^ sender, System::ComponentModel::DoWorkEventArgs^ e) {
+	}
 	};
 }
