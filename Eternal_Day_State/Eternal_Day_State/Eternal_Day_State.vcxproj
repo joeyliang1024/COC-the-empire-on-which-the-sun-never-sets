@@ -130,6 +130,7 @@
     <ResourceCompile Include="app.rc" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="battle.h" />
     <ClInclude Include="begin_page.h" />
     <ClInclude Include="characters.h" />
     <ClInclude Include="data_format.h" />
@@ -147,6 +148,7 @@
     <ClInclude Include="prison.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="restaurant.h" />
+    <ClInclude Include="roll.h" />
     <ClInclude Include="sewer.h" />
   </ItemGroup>
   <ItemGroup>

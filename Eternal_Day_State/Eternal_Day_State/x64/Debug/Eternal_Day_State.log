@@ -1,1 +1,8 @@
-﻿  Eternal_Day_State.vcxproj -> C:\Users\user\Downloads\Eternal_Day_State\x64\Debug\Eternal_Day_State.exe
+﻿  pch.cpp
+  AssemblyInfo.cpp
+  CppCLR_WinFormsProject.cpp
+  Form1.cpp
+  正在產生程式碼...
+  .NETFramework,Version=v4.7.2.AssemblyAttributes.cpp
+  AssemblyInfo.obj : 發現 MSIL 模組。MSIL 的累加連結已停用。正在執行完整連結
+  Eternal_Day_State.vcxproj -> D:\coc\ひとりじゃない\永晝城物語\Eternal_Day_State\x64\Debug\Eternal_Day_State.exe
