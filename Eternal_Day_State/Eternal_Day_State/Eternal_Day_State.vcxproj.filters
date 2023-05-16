@@ -23,49 +23,16 @@
     <ClInclude Include="Resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="pch.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Form1.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="data_format.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="begin_page.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="manual.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="plaza.h">
+    <ClInclude Include="scene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="characters.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="lake_mary.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="prison.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="sewer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="library.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="market.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="restaurant.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="hotel.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="palace.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="battle.h">
@@ -86,6 +53,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Form1.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="scene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

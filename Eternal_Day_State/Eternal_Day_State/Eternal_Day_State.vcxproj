@@ -131,25 +131,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="battle.h" />
-    <ClInclude Include="begin_page.h" />
+    <ClInclude Include="scene.h" />
     <ClInclude Include="characters.h" />
     <ClInclude Include="data_format.h" />
     <ClInclude Include="Form1.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="hotel.h" />
-    <ClInclude Include="lake_mary.h" />
-    <ClInclude Include="library.h" />
-    <ClInclude Include="manual.h" />
-    <ClInclude Include="market.h" />
-    <ClInclude Include="palace.h" />
-    <ClInclude Include="pch.h" />
-    <ClInclude Include="plaza.h" />
-    <ClInclude Include="prison.h" />
     <ClInclude Include="Resource.h" />
-    <ClInclude Include="restaurant.h" />
     <ClInclude Include="roll.h" />
-    <ClInclude Include="sewer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
@@ -161,6 +150,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="scene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="app.ico" />
