@@ -14,3 +14,7 @@ D:\coc\ひとりじゃない\永晝城物語\COC-the-empire-on-which-the-sun-nev
 D:\coc\ひとりじゃない\永晝城物語\COC-the-empire-on-which-the-sun-never-sets\Eternal_Day_State\Eternal_Day_State\x64\Debug\Eternal_Day_State.vcxproj.SuggestedBindingRedirects.cache
 D:\coc\ひとりじゃない\永晝城物語\COC-the-empire-on-which-the-sun-never-sets\Eternal_Day_State\Eternal_Day_State\x64\Debug\Eternal_Day_State.Form1.resources
 D:\coc\ひとりじゃない\永晝城物語\COC-the-empire-on-which-the-sun-never-sets\Eternal_Day_State\Eternal_Day_State\x64\Debug\Eternal_Day_State.vcxproj.GenerateResource.cache
+C:\Users\user\Desktop\COC-the-empire-on-which-the-sun-never-sets\Eternal_Day_State\Eternal_Day_State\x64\Debug\Eternal_Day_State.vcxproj.AssemblyReference.cache
+C:\Users\user\Desktop\COC-the-empire-on-which-the-sun-never-sets\Eternal_Day_State\Eternal_Day_State\x64\Debug\Eternal_Day_State.vcxproj.SuggestedBindingRedirects.cache
+C:\Users\user\Desktop\COC-the-empire-on-which-the-sun-never-sets\Eternal_Day_State\Eternal_Day_State\x64\Debug\Eternal_Day_State.Form1.resources
+C:\Users\user\Desktop\COC-the-empire-on-which-the-sun-never-sets\Eternal_Day_State\Eternal_Day_State\x64\Debug\Eternal_Day_State.vcxproj.GenerateResource.cache

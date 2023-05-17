@@ -131,6 +131,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="battle.h" />
+    <ClInclude Include="character.h" />
     <ClInclude Include="scene.h" />
     <ClInclude Include="characters.h" />
     <ClInclude Include="data_format.h" />
