@@ -2,7 +2,11 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
+<<<<<<< HEAD
       <FullPath>C:\Users\user\Desktop\COC-the-empire-on-which-the-sun-never-sets\Eternal_Day_State\x64\Debug\Eternal_Day_State.exe</FullPath>
+=======
+      <FullPath>D:\coc\ひとりじゃない\永晝城物語\COC-the-empire-on-which-the-sun-never-sets\Eternal_Day_State\x64\Debug\Eternal_Day_State.exe</FullPath>
+>>>>>>> 7c8aabf109ace68551476858507a458b56a842b1
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />
