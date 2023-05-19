@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include <stdio.h>
 #include <stdlib.h>
 #include "data_format.h"
@@ -70,6 +70,14 @@ namespace CppCLRWinFormsProject {
 	private: System::Windows::Forms::Button^ Go_Out_Inn;
 	private: System::Windows::Forms::Button^ Go_In_Room;
 	private: System::Windows::Forms::Button^ Go_Out_Room;
+	private: System::Windows::Forms::Button^ Inn_To_Plazza;
+	private: System::Windows::Forms::Button^ Inn_To_Market;
+	private: System::Windows::Forms::Button^ Market_To_Restaurant;
+	private: System::Windows::Forms::Button^ Market_To_Inn;
+	private: System::Windows::Forms::Button^ Restaurant_To_Market;
+	private: System::Windows::Forms::Button^ Restaurant_To_Prison;
+	private: System::Windows::Forms::Button^ Prison_To_Restaurant;
+	private: System::Windows::Forms::Button^ Prison_To_Plazza;
 
 	protected:
 
@@ -113,6 +121,14 @@ namespace CppCLRWinFormsProject {
 			this->Go_Out_Inn = (gcnew System::Windows::Forms::Button());
 			this->Go_In_Room = (gcnew System::Windows::Forms::Button());
 			this->Go_Out_Room = (gcnew System::Windows::Forms::Button());
+			this->Inn_To_Plazza = (gcnew System::Windows::Forms::Button());
+			this->Inn_To_Market = (gcnew System::Windows::Forms::Button());
+			this->Market_To_Restaurant = (gcnew System::Windows::Forms::Button());
+			this->Market_To_Inn = (gcnew System::Windows::Forms::Button());
+			this->Restaurant_To_Market = (gcnew System::Windows::Forms::Button());
+			this->Restaurant_To_Prison = (gcnew System::Windows::Forms::Button());
+			this->Prison_To_Restaurant = (gcnew System::Windows::Forms::Button());
+			this->Prison_To_Plazza = (gcnew System::Windows::Forms::Button());
 			this->backpack_panel->SuspendLayout();
 			this->status_panel->SuspendLayout();
 			this->SuspendLayout();
@@ -152,7 +168,7 @@ namespace CppCLRWinFormsProject {
 			this->manual_text->ReadOnly = true;
 			this->manual_text->Size = System::Drawing::Size(741, 333);
 			this->manual_text->TabIndex = 2;
-			this->manual_text->Text = L"§Ú¬O»¡©ú®Ñªº¤å¦r¡C´«¦æ½Ð¥´\\r\\n";
+			this->manual_text->Text = L"æˆ‘æ˜¯èªªæ˜Žæ›¸çš„æ–‡å­—ã€‚æ›è¡Œè«‹æ‰“\\r\\n";
 			this->manual_text->Visible = false;
 			// 
 			// back_to_home
@@ -172,53 +188,53 @@ namespace CppCLRWinFormsProject {
 			// Game_title
 			// 
 			this->Game_title->AutoSize = true;
-			this->Game_title->Font = (gcnew System::Drawing::Font(L"¼Ð·¢Åé", 36, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->Game_title->Font = (gcnew System::Drawing::Font(L"æ¨™æ¥·é«”", 36, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(136)));
 			this->Game_title->Location = System::Drawing::Point(209, 146);
 			this->Game_title->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->Game_title->Name = L"Game_title";
 			this->Game_title->Size = System::Drawing::Size(330, 60);
 			this->Game_title->TabIndex = 4;
-			this->Game_title->Text = L"¥Ã±Þ«°ª«»y";
+			this->Game_title->Text = L"æ°¸æ™åŸŽç‰©èªž";
 			// 
 			// archaeologist_button
 			// 
-			this->archaeologist_button->Font = (gcnew System::Drawing::Font(L"¼Ð·¢Åé", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->archaeologist_button->Font = (gcnew System::Drawing::Font(L"æ¨™æ¥·é«”", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(136)));
 			this->archaeologist_button->Location = System::Drawing::Point(164, 236);
 			this->archaeologist_button->Margin = System::Windows::Forms::Padding(2);
 			this->archaeologist_button->Name = L"archaeologist_button";
 			this->archaeologist_button->Size = System::Drawing::Size(87, 34);
 			this->archaeologist_button->TabIndex = 5;
-			this->archaeologist_button->Text = L"¦Ò¥j¾Ç®a";
+			this->archaeologist_button->Text = L"è€ƒå¤å­¸å®¶";
 			this->archaeologist_button->UseVisualStyleBackColor = true;
 			this->archaeologist_button->Visible = false;
 			this->archaeologist_button->Click += gcnew System::EventHandler(this, &Form1::archaeologist_button_Click);
 			// 
 			// reporter_button
 			// 
-			this->reporter_button->Font = (gcnew System::Drawing::Font(L"¼Ð·¢Åé", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->reporter_button->Font = (gcnew System::Drawing::Font(L"æ¨™æ¥·é«”", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(136)));
 			this->reporter_button->Location = System::Drawing::Point(485, 236);
 			this->reporter_button->Margin = System::Windows::Forms::Padding(2);
 			this->reporter_button->Name = L"reporter_button";
 			this->reporter_button->Size = System::Drawing::Size(88, 34);
 			this->reporter_button->TabIndex = 6;
-			this->reporter_button->Text = L"°OªÌ";
+			this->reporter_button->Text = L"è¨˜è€…";
 			this->reporter_button->UseVisualStyleBackColor = true;
 			this->reporter_button->Visible = false;
 			this->reporter_button->Click += gcnew System::EventHandler(this, &Form1::reporter_button_Click);
 			// 
 			// occultist_button
 			// 
-			this->occultist_button->Font = (gcnew System::Drawing::Font(L"¼Ð·¢Åé", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->occultist_button->Font = (gcnew System::Drawing::Font(L"æ¨™æ¥·é«”", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(136)));
 			this->occultist_button->Location = System::Drawing::Point(324, 236);
 			this->occultist_button->Margin = System::Windows::Forms::Padding(2);
 			this->occultist_button->Name = L"occultist_button";
 			this->occultist_button->Size = System::Drawing::Size(88, 34);
 			this->occultist_button->TabIndex = 7;
-			this->occultist_button->Text = L"¯«¯¦¾Ç®a";
+			this->occultist_button->Text = L"ç¥žç¥•å­¸å®¶";
 			this->occultist_button->UseVisualStyleBackColor = true;
 			this->occultist_button->Visible = false;
 			this->occultist_button->Click += gcnew System::EventHandler(this, &Form1::occultist_button_Click);
@@ -226,27 +242,27 @@ namespace CppCLRWinFormsProject {
 			// chose_character_text
 			// 
 			this->chose_character_text->AutoSize = true;
-			this->chose_character_text->Font = (gcnew System::Drawing::Font(L"¼Ð·¢Åé", 36, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->chose_character_text->Font = (gcnew System::Drawing::Font(L"æ¨™æ¥·é«”", 36, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(136)));
 			this->chose_character_text->Location = System::Drawing::Point(130, 146);
 			this->chose_character_text->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->chose_character_text->Name = L"chose_character_text";
 			this->chose_character_text->Size = System::Drawing::Size(452, 60);
 			this->chose_character_text->TabIndex = 8;
-			this->chose_character_text->Text = L"½Ð¿ï¾Ü¶}§½¨¤¦â";
+			this->chose_character_text->Text = L"è«‹é¸æ“‡é–‹å±€è§’è‰²";
 			this->chose_character_text->Visible = false;
 			// 
 			// backpack
 			// 
 			this->backpack->BackColor = System::Drawing::SystemColors::ActiveCaption;
-			this->backpack->Font = (gcnew System::Drawing::Font(L"¼Ð·¢Åé", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->backpack->Font = (gcnew System::Drawing::Font(L"æ¨™æ¥·é«”", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(136)));
 			this->backpack->Location = System::Drawing::Point(628, 39);
 			this->backpack->Margin = System::Windows::Forms::Padding(2);
 			this->backpack->Name = L"backpack";
 			this->backpack->Size = System::Drawing::Size(111, 45);
 			this->backpack->TabIndex = 9;
-			this->backpack->Text = L"­I¥]";
+			this->backpack->Text = L"èƒŒåŒ…";
 			this->backpack->UseVisualStyleBackColor = false;
 			this->backpack->Visible = false;
 			this->backpack->Click += gcnew System::EventHandler(this, &Form1::backpack_Click);
@@ -306,14 +322,14 @@ namespace CppCLRWinFormsProject {
 			// character_name
 			// 
 			this->character_name->AutoSize = true;
-			this->character_name->Font = (gcnew System::Drawing::Font(L"¼Ð·¢Åé", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->character_name->Font = (gcnew System::Drawing::Font(L"æ¨™æ¥·é«”", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(136)));
 			this->character_name->Location = System::Drawing::Point(4, 25);
 			this->character_name->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->character_name->Name = L"character_name";
 			this->character_name->Size = System::Drawing::Size(126, 15);
 			this->character_name->TabIndex = 1;
-			this->character_name->Text = L"¿ï¾Üªº¨¤¦âÂ¾·~";
+			this->character_name->Text = L"é¸æ“‡çš„è§’è‰²è·æ¥­";
 			this->character_name->Visible = false;
 			// 
 			// status_panel
@@ -331,14 +347,14 @@ namespace CppCLRWinFormsProject {
 			// player_power_text
 			// 
 			this->player_power_text->AutoSize = true;
-			this->player_power_text->Font = (gcnew System::Drawing::Font(L"¼Ð·¢Åé", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->player_power_text->Font = (gcnew System::Drawing::Font(L"æ¨™æ¥·é«”", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(136)));
 			this->player_power_text->Location = System::Drawing::Point(4, 4);
 			this->player_power_text->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->player_power_text->Name = L"player_power_text";
 			this->player_power_text->Size = System::Drawing::Size(101, 15);
 			this->player_power_text->TabIndex = 2;
-			this->player_power_text->Text = L"¨¤¦â¯à¤O­È:";
+			this->player_power_text->Text = L"è§’è‰²èƒ½åŠ›å€¼:";
 			this->player_power_text->Visible = false;
 			// 
 			// STR
@@ -373,7 +389,7 @@ namespace CppCLRWinFormsProject {
 			this->signpost->Name = L"signpost";
 			this->signpost->Size = System::Drawing::Size(78, 37);
 			this->signpost->TabIndex = 13;
-			this->signpost->Text = L"¸ô¼Ð";
+			this->signpost->Text = L"è·¯æ¨™";
 			this->signpost->UseVisualStyleBackColor = true;
 			this->signpost->Visible = false;
 			this->signpost->Click += gcnew System::EventHandler(this, &Form1::signpost_Click);
@@ -385,7 +401,7 @@ namespace CppCLRWinFormsProject {
 			this->sundial->Name = L"sundial";
 			this->sundial->Size = System::Drawing::Size(78, 37);
 			this->sundial->TabIndex = 14;
-			this->sundial->Text = L"¤é´¾";
+			this->sundial->Text = L"æ—¥æ™·";
 			this->sundial->UseVisualStyleBackColor = true;
 			this->sundial->Visible = false;
 			this->sundial->Click += gcnew System::EventHandler(this, &Form1::sundial_Click);
@@ -396,7 +412,7 @@ namespace CppCLRWinFormsProject {
 			this->Plazza_To_Inn->Name = L"Plazza_To_Inn";
 			this->Plazza_To_Inn->Size = System::Drawing::Size(78, 37);
 			this->Plazza_To_Inn->TabIndex = 15;
-			this->Plazza_To_Inn->Text = L"©¹¥k";
+			this->Plazza_To_Inn->Text = L"å¾€å³";
 			this->Plazza_To_Inn->UseVisualStyleBackColor = true;
 			this->Plazza_To_Inn->Visible = false;
 			this->Plazza_To_Inn->Click += gcnew System::EventHandler(this, &Form1::Plazza_To_Inn_Click);
@@ -407,7 +423,7 @@ namespace CppCLRWinFormsProject {
 			this->Plazza_To_Prison->Name = L"Plazza_To_Prison";
 			this->Plazza_To_Prison->Size = System::Drawing::Size(78, 37);
 			this->Plazza_To_Prison->TabIndex = 16;
-			this->Plazza_To_Prison->Text = L"©¹¥ª";
+			this->Plazza_To_Prison->Text = L"å¾€å·¦";
 			this->Plazza_To_Prison->UseVisualStyleBackColor = true;
 			this->Plazza_To_Prison->Visible = false;
 			this->Plazza_To_Prison->Click += gcnew System::EventHandler(this, &Form1::Plazza_To_Prison_Click);
@@ -418,7 +434,7 @@ namespace CppCLRWinFormsProject {
 			this->Go_In_Inn->Name = L"Go_In_Inn";
 			this->Go_In_Inn->Size = System::Drawing::Size(78, 37);
 			this->Go_In_Inn->TabIndex = 17;
-			this->Go_In_Inn->Text = L"¶i®ÈÀ]";
+			this->Go_In_Inn->Text = L"é€²æ—…é¤¨";
 			this->Go_In_Inn->UseVisualStyleBackColor = true;
 			this->Go_In_Inn->Visible = false;
 			this->Go_In_Inn->Click += gcnew System::EventHandler(this, &Form1::Go_In_Inn_Click);
@@ -429,7 +445,7 @@ namespace CppCLRWinFormsProject {
 			this->Go_Out_Inn->Name = L"Go_Out_Inn";
 			this->Go_Out_Inn->Size = System::Drawing::Size(78, 37);
 			this->Go_Out_Inn->TabIndex = 18;
-			this->Go_Out_Inn->Text = L"¥X®ÈÀ]";
+			this->Go_Out_Inn->Text = L"å‡ºæ—…é¤¨";
 			this->Go_Out_Inn->UseVisualStyleBackColor = true;
 			this->Go_Out_Inn->Visible = false;
 			this->Go_Out_Inn->Click += gcnew System::EventHandler(this, &Form1::Go_Out_Inn_Click);
@@ -440,7 +456,7 @@ namespace CppCLRWinFormsProject {
 			this->Go_In_Room->Name = L"Go_In_Room";
 			this->Go_In_Room->Size = System::Drawing::Size(78, 37);
 			this->Go_In_Room->TabIndex = 19;
-			this->Go_In_Room->Text = L"¶i©Ð¶¡";
+			this->Go_In_Room->Text = L"é€²æˆ¿é–“";
 			this->Go_In_Room->UseVisualStyleBackColor = true;
 			this->Go_In_Room->Visible = false;
 			this->Go_In_Room->Click += gcnew System::EventHandler(this, &Form1::Go_In_Room_Click);
@@ -451,16 +467,112 @@ namespace CppCLRWinFormsProject {
 			this->Go_Out_Room->Name = L"Go_Out_Room";
 			this->Go_Out_Room->Size = System::Drawing::Size(78, 37);
 			this->Go_Out_Room->TabIndex = 20;
-			this->Go_Out_Room->Text = L"¥X©Ð¶¡";
+			this->Go_Out_Room->Text = L"å‡ºæˆ¿é–“";
 			this->Go_Out_Room->UseVisualStyleBackColor = true;
 			this->Go_Out_Room->Visible = false;
 			this->Go_Out_Room->Click += gcnew System::EventHandler(this, &Form1::Go_Out_Room_Click);
+			// 
+			// Inn_To_Plazza
+			// 
+			this->Inn_To_Plazza->Location = System::Drawing::Point(240, 275);
+			this->Inn_To_Plazza->Name = L"Inn_To_Plazza";
+			this->Inn_To_Plazza->Size = System::Drawing::Size(78, 37);
+			this->Inn_To_Plazza->TabIndex = 21;
+			this->Inn_To_Plazza->Text = L"å¾€å¾Œèµ°";
+			this->Inn_To_Plazza->UseVisualStyleBackColor = true;
+			this->Inn_To_Plazza->Visible = false;
+			this->Inn_To_Plazza->Click += gcnew System::EventHandler(this, &Form1::Inn_To_Plazza_Click);
+			// 
+			// Inn_To_Market
+			// 
+			this->Inn_To_Market->Location = System::Drawing::Point(648, 84);
+			this->Inn_To_Market->Name = L"Inn_To_Market";
+			this->Inn_To_Market->Size = System::Drawing::Size(78, 37);
+			this->Inn_To_Market->TabIndex = 22;
+			this->Inn_To_Market->Text = L"å¾€å³";
+			this->Inn_To_Market->UseVisualStyleBackColor = true;
+			this->Inn_To_Market->Visible = false;
+			this->Inn_To_Market->Click += gcnew System::EventHandler(this, &Form1::Inn_To_Market_Click);
+			// 
+			// Market_To_Restaurant
+			// 
+			this->Market_To_Restaurant->Location = System::Drawing::Point(648, 127);
+			this->Market_To_Restaurant->Name = L"Market_To_Restaurant";
+			this->Market_To_Restaurant->Size = System::Drawing::Size(78, 37);
+			this->Market_To_Restaurant->TabIndex = 23;
+			this->Market_To_Restaurant->Text = L"å¾€å³";
+			this->Market_To_Restaurant->UseVisualStyleBackColor = true;
+			this->Market_To_Restaurant->Visible = false;
+			this->Market_To_Restaurant->Click += gcnew System::EventHandler(this, &Form1::Market_To_Restaurant_Click);
+			// 
+			// Market_To_Inn
+			// 
+			this->Market_To_Inn->Location = System::Drawing::Point(12, 126);
+			this->Market_To_Inn->Name = L"Market_To_Inn";
+			this->Market_To_Inn->Size = System::Drawing::Size(78, 37);
+			this->Market_To_Inn->TabIndex = 24;
+			this->Market_To_Inn->Text = L"å¾€å·¦";
+			this->Market_To_Inn->UseVisualStyleBackColor = true;
+			this->Market_To_Inn->Visible = false;
+			this->Market_To_Inn->Click += gcnew System::EventHandler(this, &Form1::Market_To_Inn_Click);
+			// 
+			// Restaurant_To_Market
+			// 
+			this->Restaurant_To_Market->Location = System::Drawing::Point(12, 211);
+			this->Restaurant_To_Market->Name = L"Restaurant_To_Market";
+			this->Restaurant_To_Market->Size = System::Drawing::Size(78, 37);
+			this->Restaurant_To_Market->TabIndex = 25;
+			this->Restaurant_To_Market->Text = L"å¾€å·¦";
+			this->Restaurant_To_Market->UseVisualStyleBackColor = true;
+			this->Restaurant_To_Market->Visible = false;
+			this->Restaurant_To_Market->Click += gcnew System::EventHandler(this, &Form1::Restaurant_To_Market_Click);
+			// 
+			// Restaurant_To_Prison
+			// 
+			this->Restaurant_To_Prison->Location = System::Drawing::Point(324, 275);
+			this->Restaurant_To_Prison->Name = L"Restaurant_To_Prison";
+			this->Restaurant_To_Prison->Size = System::Drawing::Size(78, 37);
+			this->Restaurant_To_Prison->TabIndex = 26;
+			this->Restaurant_To_Prison->Text = L"å¾€å¾Œèµ°";
+			this->Restaurant_To_Prison->UseVisualStyleBackColor = true;
+			this->Restaurant_To_Prison->Visible = false;
+			this->Restaurant_To_Prison->Click += gcnew System::EventHandler(this, &Form1::Restaurant_To_Prison_Click);
+			// 
+			// Prison_To_Restaurant
+			// 
+			this->Prison_To_Restaurant->Location = System::Drawing::Point(12, 83);
+			this->Prison_To_Restaurant->Name = L"Prison_To_Restaurant";
+			this->Prison_To_Restaurant->Size = System::Drawing::Size(78, 37);
+			this->Prison_To_Restaurant->TabIndex = 27;
+			this->Prison_To_Restaurant->Text = L"å¾€å·¦";
+			this->Prison_To_Restaurant->UseVisualStyleBackColor = true;
+			this->Prison_To_Restaurant->Visible = false;
+			this->Prison_To_Restaurant->Click += gcnew System::EventHandler(this, &Form1::Prison_To_Restaurant_Click);
+			// 
+			// Prison_To_Plazza
+			// 
+			this->Prison_To_Plazza->Location = System::Drawing::Point(417, 275);
+			this->Prison_To_Plazza->Name = L"Prison_To_Plazza";
+			this->Prison_To_Plazza->Size = System::Drawing::Size(78, 37);
+			this->Prison_To_Plazza->TabIndex = 28;
+			this->Prison_To_Plazza->Text = L"å¾€å¾Œèµ°";
+			this->Prison_To_Plazza->UseVisualStyleBackColor = true;
+			this->Prison_To_Plazza->Visible = false;
+			this->Prison_To_Plazza->Click += gcnew System::EventHandler(this, &Form1::Prison_To_Plazza_Click);
 			// 
 			// Form1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 15);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(738, 422);
+			this->Controls->Add(this->Prison_To_Plazza);
+			this->Controls->Add(this->Prison_To_Restaurant);
+			this->Controls->Add(this->Restaurant_To_Prison);
+			this->Controls->Add(this->Restaurant_To_Market);
+			this->Controls->Add(this->Market_To_Inn);
+			this->Controls->Add(this->Market_To_Restaurant);
+			this->Controls->Add(this->Inn_To_Market);
+			this->Controls->Add(this->Inn_To_Plazza);
 			this->Controls->Add(this->Go_Out_Room);
 			this->Controls->Add(this->Go_In_Room);
 			this->Controls->Add(this->Go_Out_Inn);
@@ -540,11 +652,11 @@ namespace CppCLRWinFormsProject {
 		backpack_panel->Visible = true;
 		backpack->Visible = true;
 		character_name->Visible = true;
-		character_name->Text = L"¦Ò¥j¾Ç®a";
+		character_name->Text = L"è€ƒå¤å­¸å®¶";
 		dialog_text->Visible = true;
 		introduction_textBox->Visible = true;
-		dialog_text->Text = "¸g¾ú¤F³o¯ëªº¥¼ª¾ÅÜ¤ÆÅý§Aªº¤ß¤¤²£¥Í¤F¨Ç³\®£Äß¡A½Ð°µ¤@­Ósan check";
-		introduction_textBox->Text = "§A­Ì­¼¤W¤F«e©¹«Âº¸¤hªº¨®¡C\r\n¦ñÀHµÛ­·´º°{¹L¡A§A­Ì¸g¹L³sºøªº¤s¥C¡A³Ì²×¨®¤l°±¦b¤F¤@³B¥H³Q¶}«õªº¥C³®¦a¡C\r\n¡u¨ì¤F¡C¡v¥q¾÷»¡¡A¡u§A­Ì¥i¥H¥h¿ò¸ñ±´¯Á¤F¡A¨ºÃä´N¬O³o¦¸¿ò¸ñ¥X¤gªº¦a¤è¤F¡C¡v\r\n§A­Ì¶i¤J«á¬Ý¨ì¤F¤J¤f¥k°¼¦³µÛ¤@¨ã¾uÅ\¡A§A­ÌÁôÁô¬Ý¨ì¾uÅ\ªÅ¬}ªº²´²µ°{¥X¤F¤@Á\¥Õ¥ú¡A§A·P¨ì¸£¤l¤@°}·w¯t¡AÀY·Uµoªº¨I­«¡A³¬¤W¤F²´·ú¡C§A·PÄ±¸£³U¤@¤ù²V¨P¡A§Ï©»ºÎ¤F¤Ó¤[¤j¹Úªì¿ô¤@¯ë¡A§A¦A¦¸¸C¶}²´·ú«á¡A§Aµo²{»P§A¤@°_¨Óªº¹Î­û­Ì¤]½ö¦b§A¨­ÃäÅS¥X¤F°g¯íªº¯«±¡¡C\r\n§A­Ì¨­¤W¬ïªº¦çªA¤£¦A¬O«e¨Ó®Éªº¦çªA¡A¦Ó¬O­·®æ¥j¦Ñªº²Ê¥¬¦ç¡A§AºN¤FºN°Â¡A§Aµo²{§A¨­¤Wªºª««~³£¤£¨£¤F¡A³Ñ¤Uªº¬O¤@¨Ç§A¥u¦b³Õª«À]¨£¹Lªº¥j¸³«~¡C";
+		dialog_text->Text = "ç¶“æ­·äº†é€™èˆ¬çš„æœªçŸ¥è®ŠåŒ–è®“ä½ çš„å¿ƒä¸­ç”¢ç”Ÿäº†äº›è¨±ææ‡¼ï¼Œè«‹åšä¸€å€‹san check";
+		introduction_textBox->Text = "ä½ å€‘ä¹˜ä¸Šäº†å‰å¾€å¨çˆ¾å£«çš„è»Šã€‚\r\nä¼´éš¨è‘—é¢¨æ™¯é–ƒéŽï¼Œä½ å€‘ç¶“éŽé€£ç¶¿çš„å±±ä¸˜ï¼Œæœ€çµ‚è»Šå­åœåœ¨äº†ä¸€è™•ä»¥è¢«é–‹æŒ–çš„ä¸˜é™µåœ°ã€‚\r\nã€Œåˆ°äº†ã€‚ã€å¸æ©Ÿèªªï¼Œã€Œä½ å€‘å¯ä»¥åŽ»éºè·¡æŽ¢ç´¢äº†ï¼Œé‚£é‚Šå°±æ˜¯é€™æ¬¡éºè·¡å‡ºåœŸçš„åœ°æ–¹äº†ã€‚ã€\r\nä½ å€‘é€²å…¥å¾Œçœ‹åˆ°äº†å…¥å£å³å´æœ‰è‘—ä¸€å…·éª·é«ï¼Œä½ å€‘éš±éš±çœ‹åˆ°éª·é«ç©ºæ´žçš„çœ¼çœ¶é–ƒå‡ºäº†ä¸€ç¸·ç™½å…‰ï¼Œä½ æ„Ÿåˆ°è…¦å­ä¸€é™£æšˆçœ©ï¼Œé ­æ„ˆç™¼çš„æ²‰é‡ï¼Œé–‰ä¸Šäº†çœ¼ç›ã€‚ä½ æ„Ÿè¦ºè…¦è¢‹ä¸€ç‰‡æ··æ²Œï¼Œå½·å½¿ç¡äº†å¤ªä¹…å¤§å¤¢åˆé†’ä¸€èˆ¬ï¼Œä½ å†æ¬¡çœé–‹çœ¼ç›å¾Œï¼Œä½ ç™¼ç¾èˆ‡ä½ ä¸€èµ·ä¾†çš„åœ˜å“¡å€‘ä¹Ÿèººåœ¨ä½ èº«é‚Šéœ²å‡ºäº†è¿·èŒ«çš„ç¥žæƒ…ã€‚\r\nä½ å€‘èº«ä¸Šç©¿çš„è¡£æœä¸å†æ˜¯å‰ä¾†æ™‚çš„è¡£æœï¼Œè€Œæ˜¯é¢¨æ ¼å¤è€çš„ç²—å¸ƒè¡£ï¼Œä½ æ‘¸äº†æ‘¸å…œï¼Œä½ ç™¼ç¾ä½ èº«ä¸Šçš„ç‰©å“éƒ½ä¸è¦‹äº†ï¼Œå‰©ä¸‹çš„æ˜¯ä¸€äº›ä½ åªåœ¨åšç‰©é¤¨è¦‹éŽçš„å¤è‘£å“ã€‚";
 		san_check_button->Visible = true;
 	}
 	private: System::Void occultist_button_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -559,11 +671,11 @@ namespace CppCLRWinFormsProject {
 		backpack_panel->Visible = true;
 		backpack->Visible = true;
 		character_name->Visible = true;
-		character_name->Text = L"¯«¯¦¾Ç®a";
+		character_name->Text = L"ç¥žç¥•å­¸å®¶";
 		dialog_text->Visible = true;
 		introduction_textBox->Visible = true;
-		dialog_text->Text = "¸g¾ú¤F³o¯ëªº¥¼ª¾ÅÜ¤ÆÅý§Aªº¤ß¤¤²£¥Í¤F¨Ç³\®£Äß¡A½Ð°µ¤@­Ósan check";
-		introduction_textBox->Text = "§A­Ì­¼¤W¤F«e©¹«Âº¸¤hªº¨®¡C\r\n¦ñÀHµÛ­·´º°{¹L¡A§A­Ì¸g¹L³sºøªº¤s¥C¡A³Ì²×¨®¤l°±¦b¤F¤@³B¥H³Q¶}«õªº¥C³®¦a¡C\r\n¡u¨ì¤F¡C¡v¥q¾÷»¡¡A¡u§A­Ì¥i¥H¥h¿ò¸ñ±´¯Á¤F¡A¨ºÃä´N¬O³o¦¸¿ò¸ñ¥X¤gªº¦a¤è¤F¡C¡v\r\n§A­Ì¶i¤J«á¬Ý¨ì¤F¤J¤f¥k°¼¦³µÛ¤@¨ã¾uÅ\¡A§A­ÌÁôÁô¬Ý¨ì¾uÅ\ªÅ¬}ªº²´²µ°{¥X¤F¤@Á\¥Õ¥ú¡A§A·P¨ì¸£¤l¤@°}·w¯t¡AÀY·Uµoªº¨I­«¡A³¬¤W¤F²´·ú¡C§A·PÄ±¸£³U¤@¤ù²V¨P¡A§Ï©»ºÎ¤F¤Ó¤[¤j¹Úªì¿ô¤@¯ë¡A§A¦A¦¸¸C¶}²´·ú«á¡A§Aµo²{»P§A¤@°_¨Óªº¹Î­û­Ì¤]½ö¦b§A¨­ÃäÅS¥X¤F°g¯íªº¯«±¡¡C\r\n§A­Ì¨­¤W¬ïªº¦çªA¤£¦A¬O«e¨Ó®Éªº¦çªA¡A¦Ó¬O­·®æ¥j¦Ñªº²Ê¥¬¦ç¡A§AºN¤FºN°Â¡A§Aµo²{§A¨­¤Wªºª««~³£¤£¨£¤F¡A³Ñ¤Uªº¬O¤@¨Ç§A¥u¦b³Õª«À]¨£¹Lªº¥j¸³«~¡C";
+		dialog_text->Text = "ç¶“æ­·äº†é€™èˆ¬çš„æœªçŸ¥è®ŠåŒ–è®“ä½ çš„å¿ƒä¸­ç”¢ç”Ÿäº†äº›è¨±ææ‡¼ï¼Œè«‹åšä¸€å€‹san check";
+		introduction_textBox->Text = "ä½ å€‘ä¹˜ä¸Šäº†å‰å¾€å¨çˆ¾å£«çš„è»Šã€‚\r\nä¼´éš¨è‘—é¢¨æ™¯é–ƒéŽï¼Œä½ å€‘ç¶“éŽé€£ç¶¿çš„å±±ä¸˜ï¼Œæœ€çµ‚è»Šå­åœåœ¨äº†ä¸€è™•ä»¥è¢«é–‹æŒ–çš„ä¸˜é™µåœ°ã€‚\r\nã€Œåˆ°äº†ã€‚ã€å¸æ©Ÿèªªï¼Œã€Œä½ å€‘å¯ä»¥åŽ»éºè·¡æŽ¢ç´¢äº†ï¼Œé‚£é‚Šå°±æ˜¯é€™æ¬¡éºè·¡å‡ºåœŸçš„åœ°æ–¹äº†ã€‚ã€\r\nä½ å€‘é€²å…¥å¾Œçœ‹åˆ°äº†å…¥å£å³å´æœ‰è‘—ä¸€å…·éª·é«ï¼Œä½ å€‘éš±éš±çœ‹åˆ°éª·é«ç©ºæ´žçš„çœ¼çœ¶é–ƒå‡ºäº†ä¸€ç¸·ç™½å…‰ï¼Œä½ æ„Ÿåˆ°è…¦å­ä¸€é™£æšˆçœ©ï¼Œé ­æ„ˆç™¼çš„æ²‰é‡ï¼Œé–‰ä¸Šäº†çœ¼ç›ã€‚ä½ æ„Ÿè¦ºè…¦è¢‹ä¸€ç‰‡æ··æ²Œï¼Œå½·å½¿ç¡äº†å¤ªä¹…å¤§å¤¢åˆé†’ä¸€èˆ¬ï¼Œä½ å†æ¬¡çœé–‹çœ¼ç›å¾Œï¼Œä½ ç™¼ç¾èˆ‡ä½ ä¸€èµ·ä¾†çš„åœ˜å“¡å€‘ä¹Ÿèººåœ¨ä½ èº«é‚Šéœ²å‡ºäº†è¿·èŒ«çš„ç¥žæƒ…ã€‚\r\nä½ å€‘èº«ä¸Šç©¿çš„è¡£æœä¸å†æ˜¯å‰ä¾†æ™‚çš„è¡£æœï¼Œè€Œæ˜¯é¢¨æ ¼å¤è€çš„ç²—å¸ƒè¡£ï¼Œä½ æ‘¸äº†æ‘¸å…œï¼Œä½ ç™¼ç¾ä½ èº«ä¸Šçš„ç‰©å“éƒ½ä¸è¦‹äº†ï¼Œå‰©ä¸‹çš„æ˜¯ä¸€äº›ä½ åªåœ¨åšç‰©é¤¨è¦‹éŽçš„å¤è‘£å“ã€‚";
 		san_check_button->Visible = true;
 	}
 	private: System::Void reporter_button_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -578,11 +690,11 @@ namespace CppCLRWinFormsProject {
 		backpack_panel->Visible = true;
 		backpack->Visible = true;
 		character_name->Visible = true;
-		character_name->Text = L"°OªÌ";
+		character_name->Text = L"è¨˜è€…";
 		dialog_text->Visible = true;
 		introduction_textBox->Visible = true;
-		dialog_text->Text = "¸g¾ú¤F³o¯ëªº¥¼ª¾ÅÜ¤ÆÅý§Aªº¤ß¤¤²£¥Í¤F¨Ç³\®£Äß¡A½Ð°µ¤@­Ósan check";
-		introduction_textBox->Text = "§A­Ì­¼¤W¤F«e©¹«Âº¸¤hªº¨®¡C\r\n¦ñÀHµÛ­·´º°{¹L¡A§A­Ì¸g¹L³sºøªº¤s¥C¡A³Ì²×¨®¤l°±¦b¤F¤@³B¥H³Q¶}«õªº¥C³®¦a¡C\r\n¡u¨ì¤F¡C¡v¥q¾÷»¡¡A¡u§A­Ì¥i¥H¥h¿ò¸ñ±´¯Á¤F¡A¨ºÃä´N¬O³o¦¸¿ò¸ñ¥X¤gªº¦a¤è¤F¡C¡v\r\n§A­Ì¶i¤J«á¬Ý¨ì¤F¤J¤f¥k°¼¦³µÛ¤@¨ã¾uÅ\¡A§A­ÌÁôÁô¬Ý¨ì¾uÅ\ªÅ¬}ªº²´²µ°{¥X¤F¤@Á\¥Õ¥ú¡A§A·P¨ì¸£¤l¤@°}·w¯t¡AÀY·Uµoªº¨I­«¡A³¬¤W¤F²´·ú¡C§A·PÄ±¸£³U¤@¤ù²V¨P¡A§Ï©»ºÎ¤F¤Ó¤[¤j¹Úªì¿ô¤@¯ë¡A§A¦A¦¸¸C¶}²´·ú«á¡A§Aµo²{»P§A¤@°_¨Óªº¹Î­û­Ì¤]½ö¦b§A¨­ÃäÅS¥X¤F°g¯íªº¯«±¡¡C\r\n§A­Ì¨­¤W¬ïªº¦çªA¤£¦A¬O«e¨Ó®Éªº¦çªA¡A¦Ó¬O­·®æ¥j¦Ñªº²Ê¥¬¦ç¡A§AºN¤FºN°Â¡A§Aµo²{§A¨­¤Wªºª««~³£¤£¨£¤F¡A³Ñ¤Uªº¬O¤@¨Ç§A¥u¦b³Õª«À]¨£¹Lªº¥j¸³«~¡C";
+		dialog_text->Text = "ç¶“æ­·äº†é€™èˆ¬çš„æœªçŸ¥è®ŠåŒ–è®“ä½ çš„å¿ƒä¸­ç”¢ç”Ÿäº†äº›è¨±ææ‡¼ï¼Œè«‹åšä¸€å€‹san check";
+		introduction_textBox->Text = "ä½ å€‘ä¹˜ä¸Šäº†å‰å¾€å¨çˆ¾å£«çš„è»Šã€‚\r\nä¼´éš¨è‘—é¢¨æ™¯é–ƒéŽï¼Œä½ å€‘ç¶“éŽé€£ç¶¿çš„å±±ä¸˜ï¼Œæœ€çµ‚è»Šå­åœåœ¨äº†ä¸€è™•ä»¥è¢«é–‹æŒ–çš„ä¸˜é™µåœ°ã€‚\r\nã€Œåˆ°äº†ã€‚ã€å¸æ©Ÿèªªï¼Œã€Œä½ å€‘å¯ä»¥åŽ»éºè·¡æŽ¢ç´¢äº†ï¼Œé‚£é‚Šå°±æ˜¯é€™æ¬¡éºè·¡å‡ºåœŸçš„åœ°æ–¹äº†ã€‚ã€\r\nä½ å€‘é€²å…¥å¾Œçœ‹åˆ°äº†å…¥å£å³å´æœ‰è‘—ä¸€å…·éª·é«ï¼Œä½ å€‘éš±éš±çœ‹åˆ°éª·é«ç©ºæ´žçš„çœ¼çœ¶é–ƒå‡ºäº†ä¸€ç¸·ç™½å…‰ï¼Œä½ æ„Ÿåˆ°è…¦å­ä¸€é™£æšˆçœ©ï¼Œé ­æ„ˆç™¼çš„æ²‰é‡ï¼Œé–‰ä¸Šäº†çœ¼ç›ã€‚ä½ æ„Ÿè¦ºè…¦è¢‹ä¸€ç‰‡æ··æ²Œï¼Œå½·å½¿ç¡äº†å¤ªä¹…å¤§å¤¢åˆé†’ä¸€èˆ¬ï¼Œä½ å†æ¬¡çœé–‹çœ¼ç›å¾Œï¼Œä½ ç™¼ç¾èˆ‡ä½ ä¸€èµ·ä¾†çš„åœ˜å“¡å€‘ä¹Ÿèººåœ¨ä½ èº«é‚Šéœ²å‡ºäº†è¿·èŒ«çš„ç¥žæƒ…ã€‚\r\nä½ å€‘èº«ä¸Šç©¿çš„è¡£æœä¸å†æ˜¯å‰ä¾†æ™‚çš„è¡£æœï¼Œè€Œæ˜¯é¢¨æ ¼å¤è€çš„ç²—å¸ƒè¡£ï¼Œä½ æ‘¸äº†æ‘¸å…œï¼Œä½ ç™¼ç¾ä½ èº«ä¸Šçš„ç‰©å“éƒ½ä¸è¦‹äº†ï¼Œå‰©ä¸‹çš„æ˜¯ä¸€äº›ä½ åªåœ¨åšç‰©é¤¨è¦‹éŽçš„å¤è‘£å“ã€‚";
 		san_check_button->Visible = true;
 		
 	}
@@ -596,23 +708,23 @@ namespace CppCLRWinFormsProject {
 		introduction_textBox->Visible = false;
 		san_check_button->Visible = false;
 		continue_button->Visible = true;
-		dialog_text->Text = "³o­Ó¤è«¬¼s³õ´²¥R¥¸µÛ©ú«Gªº¶§¥ú¡AÅý¤H·P¨ì·Å·xµÎ¾A¡C\r\n¦b¼s³õªº¤¤¥¡¡AÅ÷¥ßµÛ¤@­Ó°ª¤jªº¤é´¾©M¼Q¬u¡A¥L­Ì©P³òºØ´ÓµÛ¦UºØªá¥c©Mºñ´Ó¡A¬°¼s³õ¼W²K¤F¥Í®ð©M¦â±m¡C\r\n¼s³õ¤WÂ\©ñµÛ¤@±Æ±Æªø´È¡A¥i¥HÅý¤H¤p®§¤ù¨è¡C\r\n¼s³õªºÃä½t´¡µÛ¤@®Ú¤ì»sªº¸ô¼Ð¡A¨â­Ó½bÀY¤À§O«üµÛ¼s³õ°ß¤Gªº¨â±ø³q¸ô¡C";
+		dialog_text->Text = "é€™å€‹æ–¹åž‹å»£å ´æ•£å……æ–¥è‘—æ˜Žäº®çš„é™½å…‰ï¼Œè®“äººæ„Ÿåˆ°æº«æš–èˆ’é©ã€‚\r\nåœ¨å»£å ´çš„ä¸­å¤®ï¼ŒçŸ—ç«‹è‘—ä¸€å€‹é«˜å¤§çš„æ—¥æ™·å’Œå™´æ³‰ï¼Œä»–å€‘å‘¨åœç¨®æ¤è‘—å„ç¨®èŠ±å‰å’Œç¶ æ¤ï¼Œç‚ºå»£å ´å¢žæ·»äº†ç”Ÿæ°£å’Œè‰²å½©ã€‚\r\nå»£å ´ä¸Šæ“ºæ”¾è‘—ä¸€æŽ’æŽ’é•·æ¤…ï¼Œå¯ä»¥è®“äººå°æ¯ç‰‡åˆ»ã€‚\r\nå»£å ´çš„é‚Šç·£æ’è‘—ä¸€æ ¹æœ¨è£½çš„è·¯æ¨™ï¼Œå…©å€‹ç®­é ­åˆ†åˆ¥æŒ‡è‘—å»£å ´å”¯äºŒçš„å…©æ¢é€šè·¯ã€‚";
 		//adjust backpack size
 	}
 	private: System::Void continue_button_Click(System::Object^ sender, System::EventArgs^ e) {
 		//continue button 
 		if (continue_button_count == 0) {
-			dialog_text->Text = "´N¦b§AÁÙ¦bºÃ´b®É¡A¬ðµM¶¡Å¥¨ì¤F¤@Án¡u§A­Ì´N¬O³o¦¸ªº®È«È§a¡A¸ò§Ú¨Ó¡v¡C\r\n§AÅ¥¥X³o¦ü¥G¬O¥j­^»y¡A¦ý§A«o¯à°÷§¹¥þ²z¸Ñ¥Lªº·N«ä¡A§A·P¨ì¤Q¤ÀÅå³Y¡A³sÄò¤£Â_ªº©_²§µo¥Í¤Ï¦ÓÅý§A¦³ºØ¨£©Ç¤£©Çªº·PÄ±¡C\r\n§A¥J²ÓªºÆ[¹î¥|©P«Ø¿v©MÀô¹Ò(³Q°Ê¾ú¥v¾Ç§P©w)";
-			//³Q°Ê¾ú¥v¾Ç§P©w(Áp¦X)
+			dialog_text->Text = "å°±åœ¨ä½ é‚„åœ¨ç–‘æƒ‘æ™‚ï¼Œçªç„¶é–“è½åˆ°äº†ä¸€è²ã€Œä½ å€‘å°±æ˜¯é€™æ¬¡çš„æ—…å®¢å§ï¼Œè·Ÿæˆ‘ä¾†ã€ã€‚\r\nä½ è½å‡ºé€™ä¼¼ä¹Žæ˜¯å¤è‹±èªžï¼Œä½†ä½ å»èƒ½å¤ å®Œå…¨ç†è§£ä»–çš„æ„æ€ï¼Œä½ æ„Ÿåˆ°ååˆ†é©šè¨ï¼Œé€£çºŒä¸æ–·çš„å¥‡ç•°ç™¼ç”Ÿåè€Œè®“ä½ æœ‰ç¨®è¦‹æ€ªä¸æ€ªçš„æ„Ÿè¦ºã€‚\r\nä½ ä»”ç´°çš„è§€å¯Ÿå››å‘¨å»ºç¯‰å’Œç’°å¢ƒ(è¢«å‹•æ­·å²å­¸åˆ¤å®š)";
+			//è¢«å‹•æ­·å²å­¸åˆ¤å®š(è¯åˆ)
 			continue_button_count = continue_button_count + 1;
 		}
 		else if (continue_button_count == 1) {
-			//¥Ø«e¥u¦³¦¨¥\
-			dialog_text->Text = "§Aµo²{³o¨Ç«Ø¿v¬O­^°ê¤­¥@¬ö¡A¤]´N¬O¨È·æ¤ý®É´Áªº«Ø¿v­·®æ¡C";
+			//ç›®å‰åªæœ‰æˆåŠŸ
+			dialog_text->Text = "ä½ ç™¼ç¾é€™äº›å»ºç¯‰æ˜¯è‹±åœ‹äº”ä¸–ç´€ï¼Œä¹Ÿå°±æ˜¯äºžç‘ŸçŽ‹æ™‚æœŸçš„å»ºç¯‰é¢¨æ ¼ã€‚";
 			continue_button_count = continue_button_count + 1;
 		}
 		else if (continue_button_count == 2) {
-			dialog_text->Text = "¥Ë®æ®¦:\r\nÅwªï¨Ó¨ì¥Ã±Þ«°¡A§Ú¥s¥Ë®æ®¦¡A¬O§A­Ìªº¾É¹C¡C\r\n³o¸Ì¬O¥Õ±Þ¼s³õ¡A¬O«°¥«¤¤ªº¥ð¶¢°Ï°ì¡A¤¤¤ßªº¤é´¾¬O¥Ñ«°Âíªº¤u¦K­Ì¥Î³Ìºë§®ªº¤uÃÀªá¶O¼Æ­Ó¤ë©Ò§¹¦¨ªº¤uÃÀ«~¡A¤]¬O«°°}¤¤°ß¤@ªº¤é´¾¡C\r\n¦pªGÄ±±o¨­¤ß¯h­Âªº¸Ü¡A§Ú«Ü±ÀÂË§A¨Ó³o¸Ì§¤¦bªø´È¤WªY½à¤é¥X¤é¸¨¡C";
+			dialog_text->Text = "ç“¦æ ¼æ©:\r\næ­¡è¿Žä¾†åˆ°æ°¸æ™åŸŽï¼Œæˆ‘å«ç“¦æ ¼æ©ï¼Œæ˜¯ä½ å€‘çš„å°ŽéŠã€‚\r\né€™è£¡æ˜¯ç™½æ™å»£å ´ï¼Œæ˜¯åŸŽå¸‚ä¸­çš„ä¼‘é–’å€åŸŸï¼Œä¸­å¿ƒçš„æ—¥æ™·æ˜¯ç”±åŸŽéŽ®çš„å·¥åŒ å€‘ç”¨æœ€ç²¾å¦™çš„å·¥è—èŠ±è²»æ•¸å€‹æœˆæ‰€å®Œæˆçš„å·¥è—å“ï¼Œä¹Ÿæ˜¯åŸŽé™£ä¸­å”¯ä¸€çš„æ—¥æ™·ã€‚\r\nå¦‚æžœè¦ºå¾—èº«å¿ƒç–²å€¦çš„è©±ï¼Œæˆ‘å¾ˆæŽ¨è–¦ä½ ä¾†é€™è£¡ååœ¨é•·æ¤…ä¸Šæ¬£è³žæ—¥å‡ºæ—¥è½ã€‚";
 			continue_button_count = continue_button_count + 1;
 		}
 		else {
@@ -625,42 +737,56 @@ namespace CppCLRWinFormsProject {
 		}
 	}
 	private: System::Void signpost_Click(System::Object^ sender, System::EventArgs^ e) {
-		dialog_text->Text = "¸ô¼Ð¤W©¹¥ªªº½bÀY¤W¼gµÛ¼w¯÷º¿²ú´ò¡BÀ\ÆU¡A¦Ó©¹¥kªº½bÀY¤W¼gµÛ®È©±¡C";
+		dialog_text->Text = "è·¯æ¨™ä¸Šå¾€å·¦çš„ç®­é ­ä¸Šå¯«è‘—å¾·èŒ²ç‘ªèŽ‰æ¹–ã€é¤å»³ï¼Œè€Œå¾€å³çš„ç®­é ­ä¸Šå¯«è‘—æ—…åº—ã€‚";
 	}
 	private: System::Void sundial_Click(System::Object^ sender, System::EventArgs^ e) {
-		dialog_text->Text = "³o¬O­Ó¥b®|¬ù¦³¤T¨ì¥|¤½¤Øªº¤é´¾¡A¬O¥Î¥Û®Æ°t¦XµÛµØÄRªº¤uÃÀÀJ¨è¦Ó¦¨¡A¬Ý°_¨Ó«D±`ªº§§Æ[¡A¦³ºØ¤Ú¬¥§J¦¡ªº¬ü¡A²{¦b¤é´¾«ü°wªº³±¼v«ü¦b¡¨®É¶¡¡¨¦r¤W¡C";
+		dialog_text->Text = "é€™æ˜¯å€‹åŠå¾‘ç´„æœ‰ä¸‰åˆ°å››å…¬å°ºçš„æ—¥æ™·ï¼Œæ˜¯ç”¨çŸ³æ–™é…åˆè‘—è¯éº—çš„å·¥è—é›•åˆ»è€Œæˆï¼Œçœ‹èµ·ä¾†éžå¸¸çš„å£¯è§€ï¼Œæœ‰ç¨®å·´æ´›å…‹å¼çš„ç¾Žï¼Œç¾åœ¨æ—¥æ™·æŒ‡é‡çš„é™°å½±æŒ‡åœ¨â€æ™‚é–“â€å­—ä¸Šã€‚";
 	}
 	private: System::Void Plazza_To_Inn_Click(System::Object^ sender, System::EventArgs^ e) {
+		dialog_text->Text = "é€™æ£Ÿå»ºç¯‰ç”±æœ¨æå»ºæˆï¼Œå±‹é ‚ä½¿ç”¨ç¨»è‰ç·¨ç¹”è€Œæˆã€‚å»ºç¯‰ç‰©çš„å¤–ç‰†ç²—ç³™çš„ç”±æœ¨æ¿å’Œæ³¥åœŸå¤¯å¯¦è€Œæˆï¼Œçœ‹èµ·ä¾†ååˆ†å …å›ºï¼Œå‰æ–¹è¨­æœ‰ä¸€å€‹å¤§é–€ï¼Œç”¨æ–¼é€²å‡ºæ—…åº—ï¼Œå¤§é–€çš„å¤–è§€ç°¡å–®è€Œæ¨¸å¯¦ï¼Œå®Œç¾Žçš„ç¬¦åˆäº†å¯¦ç”¨ä¸»ç¾©çš„ç†å¿µã€‚";
 		// hide object in scene
 		signpost->Visible = false;
 		sundial->Visible = false;
 		Plazza_To_Inn->Visible = false;
 		Plazza_To_Prison->Visible = false;
 		// display object in scene
+		Inn_To_Plazza->Visible = true;
 		Go_In_Inn->Visible = true;
+		Inn_To_Market->Visible = true;
 	}
 	private: System::Void Plazza_To_Prison_Click(System::Object^ sender, System::EventArgs^ e) {
+		dialog_text->Text = "åœ¨ä½ é¢å‰çš„æ˜¯ä¸€å€‹ç”±çŸ³é ­ç Œæˆçš„å»ºç¯‰ï¼Œå»ºç¯‰æœ‰è‘—ä¸€æ‰‡éµè—é–€ï¼Œçœ‹èµ·ä¾†ååˆ†å …å›ºï¼Œåœ¨é›¢åœ°ç´„4å…¬å°ºè™•æœ‰è‘—å…©æ‰‡çŽ»ç’ƒçª—æˆ¶æ­£å°è‘—å»£å ´ï¼Œé–€å£ç«™è‘—å…©ä½å…¨å‰¯æ­¦è£çš„ä¾è¡›ï¼Œåœ¨é–€ä¸Šæ–¹é‚„æŽ›è‘—ä¸€å¡Šç¦æ­¢é€²å…¥çš„ç‰ŒåŒ¾ã€‚";
 		// hide object in scene
 		signpost->Visible = false;
 		sundial->Visible = false;
 		Plazza_To_Inn->Visible = false;
 		Plazza_To_Prison->Visible = false;
+		// display object in scene
+		Prison_To_Restaurant->Visible = true;
+		Prison_To_Plazza->Visible = true;
 	}
 	private: System::Void Go_In_Inn_Click(System::Object^ sender, System::EventArgs^ e) {
+		dialog_text->Text = "åœ¨ä½ é€²å…¥æ—…åº—å¾Œï¼Œå¾žå‰æ–¹å‚³ä¾†äº†æœ‰æ°£ç„¡åŠ›çš„è²éŸ³â€ä½å®¿ä¸€å¤©20éŠ€å¹£ï¼Œä¸æä¾›é£Ÿç‰©ï¼Œä¸€å¤©ä»¥å®å…‰ã€çƒˆå…‰æ™‚å€åˆ†ï¼Œä½ä¸ƒå¤©å„ªæƒ åªè¦ä¸€é‡‘å¹£ã€‚â€ä½ å¾€å‰çœ‹åŽ»ï¼Œé‚£æ˜¯ä¸€å€‹é ­é«®æ–‘ç™½çš„è€é ­ï¼Œé›™æ‰‹æ’è‘—è‡‰ï¼Œä¸€å‰¯è¦æ­»ä¸æ´»çš„æ¨£å­ã€‚";
 		// hide object in scene
 		Go_In_Inn->Visible = false;
+		Inn_To_Plazza->Visible = false;
+		Inn_To_Market->Visible = false;
 		// display object in scene
 		Go_Out_Inn->Visible = true;
 		Go_In_Room->Visible = true;
 	}
 	private: System::Void Go_Out_Inn_Click(System::Object^ sender, System::EventArgs^ e) {
+		dialog_text->Text = "é€™æ£Ÿå»ºç¯‰ç”±æœ¨æå»ºæˆï¼Œå±‹é ‚ä½¿ç”¨ç¨»è‰ç·¨ç¹”è€Œæˆã€‚å»ºç¯‰ç‰©çš„å¤–ç‰†ç²—ç³™çš„ç”±æœ¨æ¿å’Œæ³¥åœŸå¤¯å¯¦è€Œæˆï¼Œçœ‹èµ·ä¾†ååˆ†å …å›ºï¼Œå‰æ–¹è¨­æœ‰ä¸€å€‹å¤§é–€ï¼Œç”¨æ–¼é€²å‡ºæ—…åº—ï¼Œå¤§é–€çš„å¤–è§€ç°¡å–®è€Œæ¨¸å¯¦ï¼Œå®Œç¾Žçš„ç¬¦åˆäº†å¯¦ç”¨ä¸»ç¾©çš„ç†å¿µã€‚";
 		// hide object in scene
 		Go_Out_Inn->Visible = false;
 		Go_In_Room->Visible = false;
 		// display object in scene
 		Go_In_Inn->Visible = true;
+		Inn_To_Plazza->Visible = true;
+		Inn_To_Market->Visible = true;
 	}
 	private: System::Void Go_In_Room_Click(System::Object^ sender, System::EventArgs^ e) {
+		dialog_text->Text = "ä½ é€²å…¥äº†æˆ¿é–“ï¼Œæˆ¿é–“å…§åªæœ‰ç¨»è‰é‹ªçš„åºŠï¼Œå’Œä¸€äº›ç”¨å¸ƒåŒ…ä½ç¨»è‰ç¨ˆåšçš„æž•é ­";
 		// hide object in scene
 		Go_Out_Inn->Visible = false;
 		Go_In_Room->Visible = false;
@@ -668,11 +794,92 @@ namespace CppCLRWinFormsProject {
 		Go_Out_Room->Visible = true;
 	}
 	private: System::Void Go_Out_Room_Click(System::Object^ sender, System::EventArgs^ e) {
+		dialog_text->Text = "åœ¨ä½ é€²å…¥æ—…åº—å¾Œï¼Œå¾žå‰æ–¹å‚³ä¾†äº†æœ‰æ°£ç„¡åŠ›çš„è²éŸ³â€ä½å®¿ä¸€å¤©20éŠ€å¹£ï¼Œä¸æä¾›é£Ÿç‰©ï¼Œä¸€å¤©ä»¥å®å…‰ã€çƒˆå…‰æ™‚å€åˆ†ï¼Œä½ä¸ƒå¤©å„ªæƒ åªè¦ä¸€é‡‘å¹£ã€‚â€ä½ å¾€å‰çœ‹åŽ»ï¼Œé‚£æ˜¯ä¸€å€‹é ­é«®æ–‘ç™½çš„è€é ­ï¼Œé›™æ‰‹æ’è‘—è‡‰ï¼Œä¸€å‰¯è¦æ­»ä¸æ´»çš„æ¨£å­ã€‚";
 		// hide object in scene
 		Go_Out_Room->Visible = false;
 		// display object in scene
 		Go_Out_Inn->Visible = true;
 		Go_In_Room->Visible = true;
+		
 	}
-	};
+	private: System::Void Inn_To_Plazza_Click(System::Object^ sender, System::EventArgs^ e) {
+		// hide object in scene
+		Go_In_Inn->Visible = false;
+		Inn_To_Plazza->Visible = false;
+		Inn_To_Market->Visible = false;
+		// display object in scene
+		signpost->Visible = true;
+		sundial->Visible = true;
+		Plazza_To_Inn->Visible = true;
+		Plazza_To_Prison->Visible = true;
+	}
+	private: System::Void Inn_To_Market_Click(System::Object^ sender, System::EventArgs^ e) {
+		dialog_text->Text = "å¸‚å ´çš„è¡—é“ç‹¹çª„è€Œæ“æ“ ï¼Œæ»¿æ˜¯é›œç‰©ï¼Œå¾ˆå®¹æ˜“è®“äººæ‘”å€’ã€‚å¸‚å ´é‡Œæ“ æ»¿äº†å•†è²©å’Œæ”¤è²©ï¼Œä»–å€‘ç”¨å„ç¨®è²éŸ³ã€æ‰‹å‹¢å’Œå±•ç¤ºæ–¹å¼å‘ä½ æŽ¨éŠ·è‡ªå·±çš„ç”¢å“ã€‚ä½ å¯ä»¥è½åˆ°ä»–å€‘é«˜è²åœ°å«è³£ï¼Œä»‹ç´¹è‡ªå·±çš„è²¨å“ï¼Œæœ‰äº›å•†è²©ç”¨æ¨‚å™¨æ¼”å¥è‘—æ‚ æšçš„éŸ³æ¨‚ï¼Œå¸å¼•è‘—é¡§å®¢ã€‚";
+		// hide object in scene
+		Go_In_Inn->Visible = false;
+		Inn_To_Plazza->Visible = false;
+		Inn_To_Market->Visible = false;
+		//display object in scene
+		Market_To_Restaurant->Visible = true;
+		Market_To_Inn->Visible = true;
+	}
+	private: System::Void Market_To_Restaurant_Click(System::Object^ sender, System::EventArgs^ e) {
+		dialog_text->Text = "ä½ ä¾†åˆ°äº†é¤é¤¨ï¼Œé¤é¤¨å¤–è§€çœ‹èµ·ä¾†æ˜¯å€‹é‚„ç®—æ•´æ½”çš„æœ¨è£½å»ºç¯‰ï¼Œé€²å…¥é¤å»³ï¼Œä½ ç™¼ç¾é€™è£¡éžå¸¸æ˜Žäº®ã€å¯¬æ•žã€‚æ•´å€‹ç©ºé–“æŽ¡ç”¨ç°¡ç´„çš„é¢¨æ ¼ï¼Œæ·ºè‰²æœ¨è³ªç‰†å£æ­é…æ·±è‰²æœ¨è³ªåœ°æ¿ï¼Œä¸€æŽ’æŽ’çš„é¤æ¡Œæ“ºæ”¾æ•´é½Šï¼Œè®“äººæ„Ÿåˆ°èˆ’é©å’Œæ”¾é¬†ï¼Œæ­¤æ™‚é¤å»³å…§(äººæ•¸)(ç‹€æ…‹)ï¼Œæ­¤æ™‚ä½ å€‘è½åˆ°ä¸€å€‹æº«å’Œçš„è²éŸ³å•åˆ°â€å®¢å®˜å€‘è«‹å•ä½ å€‘æƒ³ä¾†é»žç”šéº¼â€ï¼Œ ä½ çœ‹å‘äº†å‡ºè²çš„äººï¼Œé‚£æ˜¯ä¸€ä½é•·ç›¸æ¸…ç§€çš„ç¨è‡‚é’å¹´ï¼Œä»–æœ‰è‘—é‡‘è‰²çš„ä¸­é•·é«®å’Œç¥–æ¯ç¶ è‰²çš„çœ¼çœ¸ï¼Œä»–èƒŒå¾Œçš„ç‰†å£ä¸ŠæŽ›è‘—èœå–®ã€‚";
+		// hide object in scene
+		Market_To_Restaurant->Visible = false;
+		Market_To_Inn->Visible = false;
+		//display object in scene
+		Restaurant_To_Market->Visible = true;
+		Restaurant_To_Prison->Visible = true;
+	}
+	private: System::Void Market_To_Inn_Click(System::Object^ sender, System::EventArgs^ e) {
+		dialog_text->Text = "é€™æ£Ÿå»ºç¯‰ç”±æœ¨æå»ºæˆï¼Œå±‹é ‚ä½¿ç”¨ç¨»è‰ç·¨ç¹”è€Œæˆã€‚å»ºç¯‰ç‰©çš„å¤–ç‰†ç²—ç³™çš„ç”±æœ¨æ¿å’Œæ³¥åœŸå¤¯å¯¦è€Œæˆï¼Œçœ‹èµ·ä¾†ååˆ†å …å›ºï¼Œå‰æ–¹è¨­æœ‰ä¸€å€‹å¤§é–€ï¼Œç”¨æ–¼é€²å‡ºæ—…åº—ï¼Œå¤§é–€çš„å¤–è§€ç°¡å–®è€Œæ¨¸å¯¦ï¼Œå®Œç¾Žçš„ç¬¦åˆäº†å¯¦ç”¨ä¸»ç¾©çš„ç†å¿µã€‚";
+		// hide object in scene
+		Market_To_Restaurant->Visible = false;
+		Market_To_Inn->Visible = false;
+		//display object in scene
+		Go_In_Inn->Visible = true;
+		Inn_To_Plazza->Visible = true;
+		Inn_To_Market->Visible = true;
+	}
+	private: System::Void Restaurant_To_Market_Click(System::Object^ sender, System::EventArgs^ e) {
+		dialog_text->Text = "å¸‚å ´çš„è¡—é“ç‹¹çª„è€Œæ“æ“ ï¼Œæ»¿æ˜¯é›œç‰©ï¼Œå¾ˆå®¹æ˜“è®“äººæ‘”å€’ã€‚å¸‚å ´é‡Œæ“ æ»¿äº†å•†è²©å’Œæ”¤è²©ï¼Œä»–å€‘ç”¨å„ç¨®è²éŸ³ã€æ‰‹å‹¢å’Œå±•ç¤ºæ–¹å¼å‘ä½ æŽ¨éŠ·è‡ªå·±çš„ç”¢å“ã€‚ä½ å¯ä»¥è½åˆ°ä»–å€‘é«˜è²åœ°å«è³£ï¼Œä»‹ç´¹è‡ªå·±çš„è²¨å“ï¼Œæœ‰äº›å•†è²©ç”¨æ¨‚å™¨æ¼”å¥è‘—æ‚ æšçš„éŸ³æ¨‚ï¼Œå¸å¼•è‘—é¡§å®¢ã€‚";
+		// hide object in scene
+		Restaurant_To_Market->Visible = false;
+		Restaurant_To_Prison->Visible = false;
+		// display object in scene
+		Market_To_Restaurant->Visible = true;
+		Market_To_Inn->Visible = true;
+	}
+	private: System::Void Restaurant_To_Prison_Click(System::Object^ sender, System::EventArgs^ e) {
+		dialog_text->Text = "åœ¨ä½ é¢å‰çš„æ˜¯ä¸€å€‹ç”±çŸ³é ­ç Œæˆçš„å»ºç¯‰ï¼Œå»ºç¯‰æœ‰è‘—ä¸€æ‰‡éµè—é–€ï¼Œçœ‹èµ·ä¾†ååˆ†å …å›ºï¼Œåœ¨é›¢åœ°ç´„4å…¬å°ºè™•æœ‰è‘—å…©æ‰‡çŽ»ç’ƒçª—æˆ¶æ­£å°è‘—å»£å ´ï¼Œé–€å£ç«™è‘—å…©ä½å…¨å‰¯æ­¦è£çš„ä¾è¡›ï¼Œåœ¨é–€ä¸Šæ–¹é‚„æŽ›è‘—ä¸€å¡Šç¦æ­¢é€²å…¥çš„ç‰ŒåŒ¾ã€‚";
+		// hide object in scene
+		Restaurant_To_Market->Visible = false;
+		Restaurant_To_Prison->Visible = false;
+		// display object in scene
+		Prison_To_Restaurant->Visible = true;
+		Prison_To_Plazza->Visible = true;
+	}
+	private: System::Void Prison_To_Restaurant_Click(System::Object^ sender, System::EventArgs^ e) {
+		dialog_text->Text = "ä½ ä¾†åˆ°äº†é¤é¤¨ï¼Œé¤é¤¨å¤–è§€çœ‹èµ·ä¾†æ˜¯å€‹é‚„ç®—æ•´æ½”çš„æœ¨è£½å»ºç¯‰ï¼Œé€²å…¥é¤å»³ï¼Œä½ ç™¼ç¾é€™è£¡éžå¸¸æ˜Žäº®ã€å¯¬æ•žã€‚æ•´å€‹ç©ºé–“æŽ¡ç”¨ç°¡ç´„çš„é¢¨æ ¼ï¼Œæ·ºè‰²æœ¨è³ªç‰†å£æ­é…æ·±è‰²æœ¨è³ªåœ°æ¿ï¼Œä¸€æŽ’æŽ’çš„é¤æ¡Œæ“ºæ”¾æ•´é½Šï¼Œè®“äººæ„Ÿåˆ°èˆ’é©å’Œæ”¾é¬†ï¼Œæ­¤æ™‚é¤å»³å…§(äººæ•¸)(ç‹€æ…‹)ï¼Œæ­¤æ™‚ä½ å€‘è½åˆ°ä¸€å€‹æº«å’Œçš„è²éŸ³å•åˆ°â€å®¢å®˜å€‘è«‹å•ä½ å€‘æƒ³ä¾†é»žç”šéº¼â€ï¼Œ ä½ çœ‹å‘äº†å‡ºè²çš„äººï¼Œé‚£æ˜¯ä¸€ä½é•·ç›¸æ¸…ç§€çš„ç¨è‡‚é’å¹´ï¼Œä»–æœ‰è‘—é‡‘è‰²çš„ä¸­é•·é«®å’Œç¥–æ¯ç¶ è‰²çš„çœ¼çœ¸ï¼Œä»–èƒŒå¾Œçš„ç‰†å£ä¸ŠæŽ›è‘—èœå–®ã€‚";
+		// hide object in scene
+		Prison_To_Restaurant->Visible = false;
+		Prison_To_Plazza->Visible = false;
+		// display object in scene
+		Restaurant_To_Market->Visible = true;
+		Restaurant_To_Prison->Visible = true;
+		
+	}
+	private: System::Void Prison_To_Plazza_Click(System::Object^ sender, System::EventArgs^ e) {
+		
+		// hide object in scene
+		Prison_To_Restaurant->Visible = false;
+		Prison_To_Plazza->Visible = false;
+		// diaplay object in scene
+		signpost->Visible = true;
+		sundial->Visible = true;
+		Plazza_To_Inn->Visible = true;
+		Plazza_To_Prison->Visible = true;
+	}
+};
 }
