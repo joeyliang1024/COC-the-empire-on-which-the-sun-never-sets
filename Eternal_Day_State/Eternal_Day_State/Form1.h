@@ -78,6 +78,21 @@ namespace CppCLRWinFormsProject {
 	private: System::Windows::Forms::Button^ Restaurant_To_Prison;
 	private: System::Windows::Forms::Button^ Prison_To_Restaurant;
 	private: System::Windows::Forms::Button^ Prison_To_Plazza;
+	private: System::Windows::Forms::Button^ Inn_To_IntersectionRight;
+	private: System::Windows::Forms::Button^ IntersectionRight_To_Library;
+	private: System::Windows::Forms::Button^ IntersectionRight_To_Inn;
+	private: System::Windows::Forms::Button^ IntersectionRight_To_Palace;
+	private: System::Windows::Forms::Button^ Palace_To_IntersectionRight;
+	private: System::Windows::Forms::Button^ Library_To_IntersectionRight;
+	private: System::Windows::Forms::Button^ Prison_To_IntersectionLeft;
+	private: System::Windows::Forms::Button^ IntersectionLeft_To_Prison;
+	private: System::Windows::Forms::Button^ IntersectionLeft_To_Library;
+	private: System::Windows::Forms::Button^ Library_To_IntersectionLeft;
+	private: System::Windows::Forms::Button^ IntersectionLeft_To_Lake;
+	private: System::Windows::Forms::Button^ Lake_To_IntersectionLeft;
+	private: System::Windows::Forms::Button^ Go_In_Palace;
+	private: System::Windows::Forms::Button^ Go_In_Library;
+	private: System::Windows::Forms::Button^ Go_Out_Library;
 
 	protected:
 
@@ -85,7 +100,7 @@ namespace CppCLRWinFormsProject {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -129,6 +144,21 @@ namespace CppCLRWinFormsProject {
 			this->Restaurant_To_Prison = (gcnew System::Windows::Forms::Button());
 			this->Prison_To_Restaurant = (gcnew System::Windows::Forms::Button());
 			this->Prison_To_Plazza = (gcnew System::Windows::Forms::Button());
+			this->Inn_To_IntersectionRight = (gcnew System::Windows::Forms::Button());
+			this->IntersectionRight_To_Library = (gcnew System::Windows::Forms::Button());
+			this->IntersectionRight_To_Inn = (gcnew System::Windows::Forms::Button());
+			this->IntersectionRight_To_Palace = (gcnew System::Windows::Forms::Button());
+			this->Palace_To_IntersectionRight = (gcnew System::Windows::Forms::Button());
+			this->Library_To_IntersectionRight = (gcnew System::Windows::Forms::Button());
+			this->Prison_To_IntersectionLeft = (gcnew System::Windows::Forms::Button());
+			this->IntersectionLeft_To_Prison = (gcnew System::Windows::Forms::Button());
+			this->IntersectionLeft_To_Library = (gcnew System::Windows::Forms::Button());
+			this->Library_To_IntersectionLeft = (gcnew System::Windows::Forms::Button());
+			this->IntersectionLeft_To_Lake = (gcnew System::Windows::Forms::Button());
+			this->Lake_To_IntersectionLeft = (gcnew System::Windows::Forms::Button());
+			this->Go_In_Palace = (gcnew System::Windows::Forms::Button());
+			this->Go_In_Library = (gcnew System::Windows::Forms::Button());
+			this->Go_Out_Library = (gcnew System::Windows::Forms::Button());
 			this->backpack_panel->SuspendLayout();
 			this->status_panel->SuspendLayout();
 			this->SuspendLayout();
@@ -384,7 +414,7 @@ namespace CppCLRWinFormsProject {
 			// 
 			// signpost
 			// 
-			this->signpost->Location = System::Drawing::Point(257, 169);
+			this->signpost->Location = System::Drawing::Point(256, 178);
 			this->signpost->Margin = System::Windows::Forms::Padding(2);
 			this->signpost->Name = L"signpost";
 			this->signpost->Size = System::Drawing::Size(78, 37);
@@ -396,7 +426,7 @@ namespace CppCLRWinFormsProject {
 			// 
 			// sundial
 			// 
-			this->sundial->Location = System::Drawing::Point(375, 169);
+			this->sundial->Location = System::Drawing::Point(375, 178);
 			this->sundial->Margin = System::Windows::Forms::Padding(2);
 			this->sundial->Name = L"sundial";
 			this->sundial->Size = System::Drawing::Size(78, 37);
@@ -430,7 +460,7 @@ namespace CppCLRWinFormsProject {
 			// 
 			// Go_In_Inn
 			// 
-			this->Go_In_Inn->Location = System::Drawing::Point(257, 211);
+			this->Go_In_Inn->Location = System::Drawing::Point(256, 220);
 			this->Go_In_Inn->Name = L"Go_In_Inn";
 			this->Go_In_Inn->Size = System::Drawing::Size(78, 37);
 			this->Go_In_Inn->TabIndex = 17;
@@ -441,7 +471,7 @@ namespace CppCLRWinFormsProject {
 			// 
 			// Go_Out_Inn
 			// 
-			this->Go_Out_Inn->Location = System::Drawing::Point(257, 127);
+			this->Go_Out_Inn->Location = System::Drawing::Point(256, 135);
 			this->Go_Out_Inn->Name = L"Go_Out_Inn";
 			this->Go_Out_Inn->Size = System::Drawing::Size(78, 37);
 			this->Go_Out_Inn->TabIndex = 18;
@@ -452,7 +482,7 @@ namespace CppCLRWinFormsProject {
 			// 
 			// Go_In_Room
 			// 
-			this->Go_In_Room->Location = System::Drawing::Point(375, 127);
+			this->Go_In_Room->Location = System::Drawing::Point(375, 135);
 			this->Go_In_Room->Name = L"Go_In_Room";
 			this->Go_In_Room->Size = System::Drawing::Size(78, 37);
 			this->Go_In_Room->TabIndex = 19;
@@ -463,7 +493,7 @@ namespace CppCLRWinFormsProject {
 			// 
 			// Go_Out_Room
 			// 
-			this->Go_Out_Room->Location = System::Drawing::Point(375, 211);
+			this->Go_Out_Room->Location = System::Drawing::Point(375, 220);
 			this->Go_Out_Room->Name = L"Go_Out_Room";
 			this->Go_Out_Room->Size = System::Drawing::Size(78, 37);
 			this->Go_Out_Room->TabIndex = 20;
@@ -474,7 +504,7 @@ namespace CppCLRWinFormsProject {
 			// 
 			// Inn_To_Plazza
 			// 
-			this->Inn_To_Plazza->Location = System::Drawing::Point(240, 275);
+			this->Inn_To_Plazza->Location = System::Drawing::Point(233, 275);
 			this->Inn_To_Plazza->Name = L"Inn_To_Plazza";
 			this->Inn_To_Plazza->Size = System::Drawing::Size(78, 37);
 			this->Inn_To_Plazza->TabIndex = 21;
@@ -529,7 +559,7 @@ namespace CppCLRWinFormsProject {
 			// 
 			// Restaurant_To_Prison
 			// 
-			this->Restaurant_To_Prison->Location = System::Drawing::Point(324, 275);
+			this->Restaurant_To_Prison->Location = System::Drawing::Point(317, 275);
 			this->Restaurant_To_Prison->Name = L"Restaurant_To_Prison";
 			this->Restaurant_To_Prison->Size = System::Drawing::Size(78, 37);
 			this->Restaurant_To_Prison->TabIndex = 26;
@@ -540,7 +570,7 @@ namespace CppCLRWinFormsProject {
 			// 
 			// Prison_To_Restaurant
 			// 
-			this->Prison_To_Restaurant->Location = System::Drawing::Point(12, 83);
+			this->Prison_To_Restaurant->Location = System::Drawing::Point(12, 254);
 			this->Prison_To_Restaurant->Name = L"Prison_To_Restaurant";
 			this->Prison_To_Restaurant->Size = System::Drawing::Size(78, 37);
 			this->Prison_To_Restaurant->TabIndex = 27;
@@ -551,7 +581,7 @@ namespace CppCLRWinFormsProject {
 			// 
 			// Prison_To_Plazza
 			// 
-			this->Prison_To_Plazza->Location = System::Drawing::Point(417, 275);
+			this->Prison_To_Plazza->Location = System::Drawing::Point(401, 275);
 			this->Prison_To_Plazza->Name = L"Prison_To_Plazza";
 			this->Prison_To_Plazza->Size = System::Drawing::Size(78, 37);
 			this->Prison_To_Plazza->TabIndex = 28;
@@ -560,11 +590,191 @@ namespace CppCLRWinFormsProject {
 			this->Prison_To_Plazza->Visible = false;
 			this->Prison_To_Plazza->Click += gcnew System::EventHandler(this, &Form1::Prison_To_Plazza_Click);
 			// 
+			// Inn_To_IntersectionRight
+			// 
+			this->Inn_To_IntersectionRight->Location = System::Drawing::Point(12, 83);
+			this->Inn_To_IntersectionRight->Name = L"Inn_To_IntersectionRight";
+			this->Inn_To_IntersectionRight->Size = System::Drawing::Size(78, 37);
+			this->Inn_To_IntersectionRight->TabIndex = 29;
+			this->Inn_To_IntersectionRight->Text = L"往左";
+			this->Inn_To_IntersectionRight->UseVisualStyleBackColor = true;
+			this->Inn_To_IntersectionRight->Visible = false;
+			this->Inn_To_IntersectionRight->Click += gcnew System::EventHandler(this, &Form1::Inn_To_IntersectionRight_Click);
+			// 
+			// IntersectionRight_To_Library
+			// 
+			this->IntersectionRight_To_Library->Location = System::Drawing::Point(317, 49);
+			this->IntersectionRight_To_Library->Name = L"IntersectionRight_To_Library";
+			this->IntersectionRight_To_Library->Size = System::Drawing::Size(78, 37);
+			this->IntersectionRight_To_Library->TabIndex = 30;
+			this->IntersectionRight_To_Library->Text = L"往前走";
+			this->IntersectionRight_To_Library->UseVisualStyleBackColor = true;
+			this->IntersectionRight_To_Library->Visible = false;
+			this->IntersectionRight_To_Library->Click += gcnew System::EventHandler(this, &Form1::IntersectionRight_To_Library_Click);
+			// 
+			// IntersectionRight_To_Inn
+			// 
+			this->IntersectionRight_To_Inn->Location = System::Drawing::Point(485, 275);
+			this->IntersectionRight_To_Inn->Name = L"IntersectionRight_To_Inn";
+			this->IntersectionRight_To_Inn->Size = System::Drawing::Size(78, 37);
+			this->IntersectionRight_To_Inn->TabIndex = 31;
+			this->IntersectionRight_To_Inn->Text = L"往後走";
+			this->IntersectionRight_To_Inn->UseVisualStyleBackColor = true;
+			this->IntersectionRight_To_Inn->Visible = false;
+			this->IntersectionRight_To_Inn->Click += gcnew System::EventHandler(this, &Form1::IntersectionRight_To_Inn_Click);
+			// 
+			// IntersectionRight_To_Palace
+			// 
+			this->IntersectionRight_To_Palace->Location = System::Drawing::Point(648, 211);
+			this->IntersectionRight_To_Palace->Name = L"IntersectionRight_To_Palace";
+			this->IntersectionRight_To_Palace->Size = System::Drawing::Size(78, 37);
+			this->IntersectionRight_To_Palace->TabIndex = 32;
+			this->IntersectionRight_To_Palace->Text = L"往右";
+			this->IntersectionRight_To_Palace->UseVisualStyleBackColor = true;
+			this->IntersectionRight_To_Palace->Visible = false;
+			this->IntersectionRight_To_Palace->Click += gcnew System::EventHandler(this, &Form1::IntersectionRight_To_Palace_Click);
+			// 
+			// Palace_To_IntersectionRight
+			// 
+			this->Palace_To_IntersectionRight->Location = System::Drawing::Point(401, 49);
+			this->Palace_To_IntersectionRight->Name = L"Palace_To_IntersectionRight";
+			this->Palace_To_IntersectionRight->Size = System::Drawing::Size(78, 37);
+			this->Palace_To_IntersectionRight->TabIndex = 33;
+			this->Palace_To_IntersectionRight->Text = L"往回走";
+			this->Palace_To_IntersectionRight->UseVisualStyleBackColor = true;
+			this->Palace_To_IntersectionRight->Visible = false;
+			this->Palace_To_IntersectionRight->Click += gcnew System::EventHandler(this, &Form1::Palace_To_IntersectionRight_Click);
+			// 
+			// Library_To_IntersectionRight
+			// 
+			this->Library_To_IntersectionRight->Location = System::Drawing::Point(648, 297);
+			this->Library_To_IntersectionRight->Name = L"Library_To_IntersectionRight";
+			this->Library_To_IntersectionRight->Size = System::Drawing::Size(78, 37);
+			this->Library_To_IntersectionRight->TabIndex = 34;
+			this->Library_To_IntersectionRight->Text = L"往右";
+			this->Library_To_IntersectionRight->UseVisualStyleBackColor = true;
+			this->Library_To_IntersectionRight->Visible = false;
+			this->Library_To_IntersectionRight->Click += gcnew System::EventHandler(this, &Form1::Library_To_IntersectionRight_Click);
+			// 
+			// Prison_To_IntersectionLeft
+			// 
+			this->Prison_To_IntersectionLeft->Location = System::Drawing::Point(648, 254);
+			this->Prison_To_IntersectionLeft->Name = L"Prison_To_IntersectionLeft";
+			this->Prison_To_IntersectionLeft->Size = System::Drawing::Size(78, 37);
+			this->Prison_To_IntersectionLeft->TabIndex = 35;
+			this->Prison_To_IntersectionLeft->Text = L"往右";
+			this->Prison_To_IntersectionLeft->UseVisualStyleBackColor = true;
+			this->Prison_To_IntersectionLeft->Visible = false;
+			this->Prison_To_IntersectionLeft->Click += gcnew System::EventHandler(this, &Form1::Prison_To_IntersectionLeft_Click);
+			// 
+			// IntersectionLeft_To_Prison
+			// 
+			this->IntersectionLeft_To_Prison->Location = System::Drawing::Point(149, 275);
+			this->IntersectionLeft_To_Prison->Name = L"IntersectionLeft_To_Prison";
+			this->IntersectionLeft_To_Prison->Size = System::Drawing::Size(78, 37);
+			this->IntersectionLeft_To_Prison->TabIndex = 36;
+			this->IntersectionLeft_To_Prison->Text = L"往後走";
+			this->IntersectionLeft_To_Prison->UseVisualStyleBackColor = true;
+			this->IntersectionLeft_To_Prison->Visible = false;
+			this->IntersectionLeft_To_Prison->Click += gcnew System::EventHandler(this, &Form1::IntersectionLeft_To_Prison_Click);
+			// 
+			// IntersectionLeft_To_Library
+			// 
+			this->IntersectionLeft_To_Library->Location = System::Drawing::Point(648, 41);
+			this->IntersectionLeft_To_Library->Name = L"IntersectionLeft_To_Library";
+			this->IntersectionLeft_To_Library->Size = System::Drawing::Size(78, 37);
+			this->IntersectionLeft_To_Library->TabIndex = 37;
+			this->IntersectionLeft_To_Library->Text = L"往右";
+			this->IntersectionLeft_To_Library->UseVisualStyleBackColor = true;
+			this->IntersectionLeft_To_Library->Visible = false;
+			this->IntersectionLeft_To_Library->Click += gcnew System::EventHandler(this, &Form1::IntersectionLeft_To_Library_Click);
+			// 
+			// Library_To_IntersectionLeft
+			// 
+			this->Library_To_IntersectionLeft->Location = System::Drawing::Point(12, 298);
+			this->Library_To_IntersectionLeft->Name = L"Library_To_IntersectionLeft";
+			this->Library_To_IntersectionLeft->Size = System::Drawing::Size(78, 37);
+			this->Library_To_IntersectionLeft->TabIndex = 38;
+			this->Library_To_IntersectionLeft->Text = L"往左";
+			this->Library_To_IntersectionLeft->UseVisualStyleBackColor = true;
+			this->Library_To_IntersectionLeft->Visible = false;
+			this->Library_To_IntersectionLeft->Click += gcnew System::EventHandler(this, &Form1::Library_To_IntersectionLeft_Click);
+			// 
+			// IntersectionLeft_To_Lake
+			// 
+			this->IntersectionLeft_To_Lake->Location = System::Drawing::Point(12, 40);
+			this->IntersectionLeft_To_Lake->Name = L"IntersectionLeft_To_Lake";
+			this->IntersectionLeft_To_Lake->Size = System::Drawing::Size(78, 37);
+			this->IntersectionLeft_To_Lake->TabIndex = 39;
+			this->IntersectionLeft_To_Lake->Text = L"往左";
+			this->IntersectionLeft_To_Lake->UseVisualStyleBackColor = true;
+			this->IntersectionLeft_To_Lake->Visible = false;
+			this->IntersectionLeft_To_Lake->Click += gcnew System::EventHandler(this, &Form1::IntersectionLeft_To_Lake_Click);
+			// 
+			// Lake_To_IntersectionLeft
+			// 
+			this->Lake_To_IntersectionLeft->Location = System::Drawing::Point(233, 49);
+			this->Lake_To_IntersectionLeft->Name = L"Lake_To_IntersectionLeft";
+			this->Lake_To_IntersectionLeft->Size = System::Drawing::Size(78, 37);
+			this->Lake_To_IntersectionLeft->TabIndex = 40;
+			this->Lake_To_IntersectionLeft->Text = L"往回走";
+			this->Lake_To_IntersectionLeft->UseVisualStyleBackColor = true;
+			this->Lake_To_IntersectionLeft->Visible = false;
+			this->Lake_To_IntersectionLeft->Click += gcnew System::EventHandler(this, &Form1::Lake_To_IntersectionLeft_Click);
+			// 
+			// Go_In_Palace
+			// 
+			this->Go_In_Palace->Location = System::Drawing::Point(317, 92);
+			this->Go_In_Palace->Name = L"Go_In_Palace";
+			this->Go_In_Palace->Size = System::Drawing::Size(78, 37);
+			this->Go_In_Palace->TabIndex = 41;
+			this->Go_In_Palace->Text = L"進宮殿";
+			this->Go_In_Palace->UseVisualStyleBackColor = true;
+			this->Go_In_Palace->Visible = false;
+			this->Go_In_Palace->Click += gcnew System::EventHandler(this, &Form1::Go_In_Palace_Click);
+			// 
+			// Go_In_Library
+			// 
+			this->Go_In_Library->Location = System::Drawing::Point(219, 92);
+			this->Go_In_Library->Name = L"Go_In_Library";
+			this->Go_In_Library->Size = System::Drawing::Size(92, 37);
+			this->Go_In_Library->TabIndex = 42;
+			this->Go_In_Library->Text = L"進圖書館";
+			this->Go_In_Library->UseVisualStyleBackColor = true;
+			this->Go_In_Library->Visible = false;
+			this->Go_In_Library->Click += gcnew System::EventHandler(this, &Form1::Go_In_Library_Click);
+			// 
+			// Go_Out_Library
+			// 
+			this->Go_Out_Library->Location = System::Drawing::Point(401, 92);
+			this->Go_Out_Library->Name = L"Go_Out_Library";
+			this->Go_Out_Library->Size = System::Drawing::Size(85, 37);
+			this->Go_Out_Library->TabIndex = 43;
+			this->Go_Out_Library->Text = L"出圖書館";
+			this->Go_Out_Library->UseVisualStyleBackColor = true;
+			this->Go_Out_Library->Visible = false;
+			this->Go_Out_Library->Click += gcnew System::EventHandler(this, &Form1::Go_Out_Library_Click);
+			// 
 			// Form1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 15);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(738, 422);
+			this->Controls->Add(this->Go_Out_Library);
+			this->Controls->Add(this->Go_In_Library);
+			this->Controls->Add(this->Go_In_Palace);
+			this->Controls->Add(this->Lake_To_IntersectionLeft);
+			this->Controls->Add(this->IntersectionLeft_To_Lake);
+			this->Controls->Add(this->Library_To_IntersectionLeft);
+			this->Controls->Add(this->IntersectionLeft_To_Library);
+			this->Controls->Add(this->IntersectionLeft_To_Prison);
+			this->Controls->Add(this->Prison_To_IntersectionLeft);
+			this->Controls->Add(this->Library_To_IntersectionRight);
+			this->Controls->Add(this->Palace_To_IntersectionRight);
+			this->Controls->Add(this->IntersectionRight_To_Palace);
+			this->Controls->Add(this->IntersectionRight_To_Inn);
+			this->Controls->Add(this->IntersectionRight_To_Library);
+			this->Controls->Add(this->Inn_To_IntersectionRight);
 			this->Controls->Add(this->Prison_To_Plazza);
 			this->Controls->Add(this->Prison_To_Restaurant);
 			this->Controls->Add(this->Restaurant_To_Prison);
@@ -696,7 +906,7 @@ namespace CppCLRWinFormsProject {
 		dialog_text->Text = "經歷了這般的未知變化讓你的心中產生了些許恐懼，請做一個san check";
 		introduction_textBox->Text = "你們乘上了前往威爾士的車。\r\n伴隨著風景閃過，你們經過連綿的山丘，最終車子停在了一處以被開挖的丘陵地。\r\n「到了。」司機說，「你們可以去遺跡探索了，那邊就是這次遺跡出土的地方了。」\r\n你們進入後看到了入口右側有著一具骷髏，你們隱隱看到骷髏空洞的眼眶閃出了一縷白光，你感到腦子一陣暈眩，頭愈發的沉重，閉上了眼睛。你感覺腦袋一片混沌，彷彿睡了太久大夢初醒一般，你再次睜開眼睛後，你發現與你一起來的團員們也躺在你身邊露出了迷茫的神情。\r\n你們身上穿的衣服不再是前來時的衣服，而是風格古老的粗布衣，你摸了摸兜，你發現你身上的物品都不見了，剩下的是一些你只在博物館見過的古董品。";
 		san_check_button->Visible = true;
-		
+
 	}
 	private: System::Void backpack_Click(System::Object^ sender, System::EventArgs^ e) {
 		//backpack object display
@@ -753,6 +963,7 @@ namespace CppCLRWinFormsProject {
 		Inn_To_Plazza->Visible = true;
 		Go_In_Inn->Visible = true;
 		Inn_To_Market->Visible = true;
+		Inn_To_IntersectionRight->Visible = true;
 	}
 	private: System::Void Plazza_To_Prison_Click(System::Object^ sender, System::EventArgs^ e) {
 		dialog_text->Text = "在你面前的是一個由石頭砌成的建築，建築有著一扇鐵藝門，看起來十分堅固，在離地約4公尺處有著兩扇玻璃窗戶正對著廣場，門口站著兩位全副武裝的侍衛，在門上方還掛著一塊禁止進入的牌匾。";
@@ -764,6 +975,7 @@ namespace CppCLRWinFormsProject {
 		// display object in scene
 		Prison_To_Restaurant->Visible = true;
 		Prison_To_Plazza->Visible = true;
+		Prison_To_IntersectionLeft->Visible = true;
 	}
 	private: System::Void Go_In_Inn_Click(System::Object^ sender, System::EventArgs^ e) {
 		dialog_text->Text = "在你進入旅店後，從前方傳來了有氣無力的聲音”住宿一天20銀幣，不提供食物，一天以宏光、烈光時區分，住七天優惠只要一金幣。”你往前看去，那是一個頭髮斑白的老頭，雙手撐著臉，一副要死不活的樣子。";
@@ -771,6 +983,7 @@ namespace CppCLRWinFormsProject {
 		Go_In_Inn->Visible = false;
 		Inn_To_Plazza->Visible = false;
 		Inn_To_Market->Visible = false;
+		Inn_To_IntersectionRight->Visible = false;
 		// display object in scene
 		Go_Out_Inn->Visible = true;
 		Go_In_Room->Visible = true;
@@ -784,6 +997,7 @@ namespace CppCLRWinFormsProject {
 		Go_In_Inn->Visible = true;
 		Inn_To_Plazza->Visible = true;
 		Inn_To_Market->Visible = true;
+		Inn_To_IntersectionRight->Visible = true;
 	}
 	private: System::Void Go_In_Room_Click(System::Object^ sender, System::EventArgs^ e) {
 		dialog_text->Text = "你進入了房間，房間內只有稻草鋪的床，和一些用布包住稻草稈做的枕頭";
@@ -800,13 +1014,14 @@ namespace CppCLRWinFormsProject {
 		// display object in scene
 		Go_Out_Inn->Visible = true;
 		Go_In_Room->Visible = true;
-		
+
 	}
 	private: System::Void Inn_To_Plazza_Click(System::Object^ sender, System::EventArgs^ e) {
 		// hide object in scene
 		Go_In_Inn->Visible = false;
 		Inn_To_Plazza->Visible = false;
 		Inn_To_Market->Visible = false;
+		Inn_To_IntersectionRight->Visible = false;
 		// display object in scene
 		signpost->Visible = true;
 		sundial->Visible = true;
@@ -819,6 +1034,7 @@ namespace CppCLRWinFormsProject {
 		Go_In_Inn->Visible = false;
 		Inn_To_Plazza->Visible = false;
 		Inn_To_Market->Visible = false;
+		Inn_To_IntersectionRight->Visible = false;
 		//display object in scene
 		Market_To_Restaurant->Visible = true;
 		Market_To_Inn->Visible = true;
@@ -841,6 +1057,7 @@ namespace CppCLRWinFormsProject {
 		Go_In_Inn->Visible = true;
 		Inn_To_Plazza->Visible = true;
 		Inn_To_Market->Visible = true;
+		Inn_To_IntersectionRight->Visible = true;
 	}
 	private: System::Void Restaurant_To_Market_Click(System::Object^ sender, System::EventArgs^ e) {
 		dialog_text->Text = "市場的街道狹窄而擁擠，滿是雜物，很容易讓人摔倒。市場里擠滿了商販和攤販，他們用各種聲音、手勢和展示方式向你推銷自己的產品。你可以聽到他們高聲地叫賣，介紹自己的貨品，有些商販用樂器演奏著悠揚的音樂，吸引著顧客。";
@@ -859,27 +1076,182 @@ namespace CppCLRWinFormsProject {
 		// display object in scene
 		Prison_To_Restaurant->Visible = true;
 		Prison_To_Plazza->Visible = true;
+		Prison_To_IntersectionLeft->Visible = true;
 	}
 	private: System::Void Prison_To_Restaurant_Click(System::Object^ sender, System::EventArgs^ e) {
 		dialog_text->Text = "你來到了餐館，餐館外觀看起來是個還算整潔的木製建築，進入餐廳，你發現這裡非常明亮、寬敞。整個空間採用簡約的風格，淺色木質牆壁搭配深色木質地板，一排排的餐桌擺放整齊，讓人感到舒適和放鬆，此時餐廳內(人數)(狀態)，此時你們聽到一個溫和的聲音問到”客官們請問你們想來點甚麼”， 你看向了出聲的人，那是一位長相清秀的獨臂青年，他有著金色的中長髮和祖母綠色的眼眸，他背後的牆壁上掛著菜單。";
 		// hide object in scene
 		Prison_To_Restaurant->Visible = false;
 		Prison_To_Plazza->Visible = false;
+		Prison_To_IntersectionLeft->Visible = false;
 		// display object in scene
 		Restaurant_To_Market->Visible = true;
 		Restaurant_To_Prison->Visible = true;
-		
+
 	}
 	private: System::Void Prison_To_Plazza_Click(System::Object^ sender, System::EventArgs^ e) {
-		
+		dialog_text->Text = "廣場待補";
 		// hide object in scene
 		Prison_To_Restaurant->Visible = false;
 		Prison_To_Plazza->Visible = false;
+		Prison_To_IntersectionLeft->Visible = false;
 		// diaplay object in scene
 		signpost->Visible = true;
 		sundial->Visible = true;
 		Plazza_To_Inn->Visible = true;
 		Plazza_To_Prison->Visible = true;
+	}
+	private: System::Void Inn_To_IntersectionRight_Click(System::Object^ sender, System::EventArgs^ e) {
+		dialog_text->Text = "路口右待補";
+		// hide object in scene
+		Go_In_Inn->Visible = false;
+		Inn_To_Plazza->Visible = false;
+		Inn_To_Market->Visible = false;
+		Inn_To_IntersectionRight->Visible = false;
+		// diaplay object in scene
+		IntersectionRight_To_Library->Visible = true;
+		IntersectionRight_To_Inn->Visible = true;
+		IntersectionRight_To_Palace->Visible = true;
+	}
+	private: System::Void IntersectionRight_To_Library_Click(System::Object^ sender, System::EventArgs^ e) {
+		dialog_text->Text = "這是一棟非常豪華和宏偉的建築，你被它那令人嘆為觀止的氣勢所震撼，以高大的石柱和華麗的拱門，來支撐整個建築，建築的主體由優雅的柱子和華麗的拱門支撐，高大的尖頂耸立著，猶如一個巨大的王冠，牆面上有著浮雕、雕塑和彩繪，繪製著神話、故事和歷史事件，讓建築更顯神聖和莊嚴。在陽光的照耀下，這些彩繪和浮雕散發出燦爛的光芒，讓整個建築閃耀著耀眼的光彩。";
+		// hide object in scene
+		IntersectionRight_To_Library->Visible = false;
+		IntersectionRight_To_Inn->Visible = false;
+		IntersectionRight_To_Palace->Visible = false;
+		// diaplay object in scene
+		Library_To_IntersectionRight->Visible = true;
+		Library_To_IntersectionLeft->Visible = true;
+		Go_In_Library->Visible = true;
+	}
+	private: System::Void IntersectionRight_To_Inn_Click(System::Object^ sender, System::EventArgs^ e) {
+		dialog_text->Text = "這棟建築由木材建成，屋頂使用稻草編織而成。建築物的外牆粗糙的由木板和泥土夯實而成，看起來十分堅固，前方設有一個大門，用於進出旅店，大門的外觀簡單而樸實，完美的符合了實用主義的理念。";
+		// hide object in scene
+		IntersectionRight_To_Library->Visible = false;
+		IntersectionRight_To_Inn->Visible = false;
+		IntersectionRight_To_Palace->Visible = false;
+		// diaplay object in scene
+		Go_In_Inn->Visible = true;
+		Inn_To_Plazza->Visible = true;
+		Inn_To_Market->Visible = true;
+		Inn_To_IntersectionRight->Visible = true;
+	}
+	private: System::Void IntersectionRight_To_Palace_Click(System::Object^ sender, System::EventArgs^ e) {
+		dialog_text->Text = "在你面前的是一個巨大、華麗、寬敞的建築，這棟建築的體量看起來完全不是城鎮中的其他建築可比擬，建築的屋頂上還有著一座巨大的黃金鐘，看起來唯一的入口是一扇巨大的木門。";
+		// hide object in scene
+		IntersectionRight_To_Library->Visible = false;
+		IntersectionRight_To_Inn->Visible = false;
+		IntersectionRight_To_Palace->Visible = false;
+		// diaplay object in scene
+		Palace_To_IntersectionRight->Visible = true;
+		Go_In_Palace->Visible = true;
+	}
+	private: System::Void Palace_To_IntersectionRight_Click(System::Object^ sender, System::EventArgs^ e) {
+		dialog_text->Text = "路口右待補";
+		// hide object in scene
+		Palace_To_IntersectionRight->Visible = false;
+		Go_In_Palace->Visible = false;
+		// diaplay object in scene
+		IntersectionRight_To_Library->Visible = true;
+		IntersectionRight_To_Inn->Visible = true;
+		IntersectionRight_To_Palace->Visible = true;
+	}
+	private: System::Void Library_To_IntersectionRight_Click(System::Object^ sender, System::EventArgs^ e) {
+		dialog_text->Text = "路口右待補";
+		// hide object in scene
+		Library_To_IntersectionRight->Visible = false;
+		Library_To_IntersectionLeft->Visible = false;
+		Go_In_Library->Visible = false;
+		// diaplay object in scene
+		IntersectionRight_To_Library->Visible = true;
+		IntersectionRight_To_Inn->Visible = true;
+		IntersectionRight_To_Palace->Visible = true;
+	}
+	private: System::Void Prison_To_IntersectionLeft_Click(System::Object^ sender, System::EventArgs^ e) {
+		dialog_text->Text = "路口左待補";
+		// hide object in scene
+		Prison_To_Restaurant->Visible = false;
+		Prison_To_Plazza->Visible = false;
+		Prison_To_IntersectionLeft->Visible = false;
+		// diaplay object in scene
+		IntersectionLeft_To_Prison->Visible = true;
+		IntersectionLeft_To_Library->Visible = true;
+		IntersectionLeft_To_Lake->Visible = true;
+	}
+	private: System::Void IntersectionLeft_To_Prison_Click(System::Object^ sender, System::EventArgs^ e) {
+		dialog_text->Text = "在你面前的是一個由石頭砌成的建築，建築有著一扇鐵藝門，看起來十分堅固，在離地約4公尺處有著兩扇玻璃窗戶正對著廣場，門口站著兩位全副武裝的侍衛，在門上方還掛著一塊禁止進入的牌匾。";
+		// hide object in scene
+		IntersectionLeft_To_Prison->Visible = false;
+		IntersectionLeft_To_Library->Visible = false;
+		IntersectionLeft_To_Lake->Visible = false;
+		// display object in scene
+		Prison_To_Restaurant->Visible = true;
+		Prison_To_Plazza->Visible = true;
+		Prison_To_IntersectionLeft->Visible = true;
+	}
+	private: System::Void IntersectionLeft_To_Library_Click(System::Object^ sender, System::EventArgs^ e) {
+		dialog_text->Text = "這是一棟非常豪華和宏偉的建築，你被它那令人嘆為觀止的氣勢所震撼，以高大的石柱和華麗的拱門，來支撐整個建築，建築的主體由優雅的柱子和華麗的拱門支撐，高大的尖頂耸立著，猶如一個巨大的王冠，牆面上有著浮雕、雕塑和彩繪，繪製著神話、故事和歷史事件，讓建築更顯神聖和莊嚴。在陽光的照耀下，這些彩繪和浮雕散發出燦爛的光芒，讓整個建築閃耀著耀眼的光彩。";
+		// hide object in scene
+		IntersectionLeft_To_Library->Visible = false;
+		IntersectionLeft_To_Prison->Visible = false;
+		IntersectionLeft_To_Lake->Visible = false;
+		// diaplay object in scene
+		Library_To_IntersectionRight->Visible = true;
+		Library_To_IntersectionLeft->Visible = true;
+		Go_In_Library->Visible = true;
+	}
+	private: System::Void Library_To_IntersectionLeft_Click(System::Object^ sender, System::EventArgs^ e) {
+		dialog_text->Text = "路口左待補";
+		// hide object in scene
+		Library_To_IntersectionRight->Visible = false;
+		Library_To_IntersectionLeft->Visible = false;
+		Go_In_Library->Visible = false;
+		// diaplay object in scene
+		IntersectionLeft_To_Prison->Visible = true;
+		IntersectionLeft_To_Library->Visible = true;
+		IntersectionLeft_To_Lake->Visible = true;
+	}
+	private: System::Void IntersectionLeft_To_Lake_Click(System::Object^ sender, System::EventArgs^ e) {
+		dialog_text->Text = "你們來到了德茲瑪麗湖，那湖水猶如碧玉般清澈，波光粼粼，倒映著湖畔旁的青山綠樹，天空的美景也在湖水中倒影出來。湖畔旁的花草樹木繁茂，漫步其間，仿若置身於一個美麗的童話世界，讓人感受到大自然的生命力。";
+		// hide object in scene
+		IntersectionLeft_To_Library->Visible = false;
+		IntersectionLeft_To_Prison->Visible = false;
+		IntersectionLeft_To_Lake->Visible = false;
+		// diaplay object in scene
+		Lake_To_IntersectionLeft->Visible = true;
+	}
+	private: System::Void Lake_To_IntersectionLeft_Click(System::Object^ sender, System::EventArgs^ e) {
+		dialog_text->Text = "路口左待補";
+		// hide object in scene
+		Lake_To_IntersectionLeft->Visible = false;
+		// diaplay object in scene
+		IntersectionLeft_To_Library->Visible = true;
+		IntersectionLeft_To_Prison->Visible = true;
+		IntersectionLeft_To_Lake->Visible = true;
+	}
+	private: System::Void Go_In_Palace_Click(System::Object^ sender, System::EventArgs^ e) {
+		dialog_text->Text = "待補";
+		// hide object in scene
+		Palace_To_IntersectionRight->Visible = false;
+		Go_In_Palace->Visible = false;
+	}
+	private: System::Void Go_In_Library_Click(System::Object^ sender, System::EventArgs^ e) {
+		dialog_text->Text = "你進到了圖書館內，這間屋子裏有著許多的架子，架子上擺滿了手寫的文獻和書籍，大多都是用羊皮紙和墨水寫成，這些文獻是按照主題整齊排列排列。";
+		// hide object in scene
+		Library_To_IntersectionRight->Visible = false;
+		Library_To_IntersectionLeft->Visible = false;
+		Go_In_Library->Visible = false;
+		// diaplay object in scene
+		Go_Out_Library->Visible = true;
+	}
+	private: System::Void Go_Out_Library_Click(System::Object^ sender, System::EventArgs^ e) {
+		dialog_text->Text = "這是一棟非常豪華和宏偉的建築，你被它那令人嘆為觀止的氣勢所震撼，以高大的石柱和華麗的拱門，來支撐整個建築，建築的主體由優雅的柱子和華麗的拱門支撐，高大的尖頂耸立著，猶如一個巨大的王冠，牆面上有著浮雕、雕塑和彩繪，繪製著神話、故事和歷史事件，讓建築更顯神聖和莊嚴。在陽光的照耀下，這些彩繪和浮雕散發出燦爛的光芒，讓整個建築閃耀著耀眼的光彩。";
+		// hide object in scene
+		Go_Out_Library->Visible = false;
+		// diaplay object in scene
+		Library_To_IntersectionRight->Visible = true;
+		Library_To_IntersectionLeft->Visible = true;
+		Go_In_Library->Visible = true;
 	}
 };
 }
