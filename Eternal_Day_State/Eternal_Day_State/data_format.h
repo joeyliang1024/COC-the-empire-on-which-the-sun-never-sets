@@ -5,7 +5,7 @@ struct position {
 };
 struct size {
 	int width;
-	int higth;
+	int heigth;
 };
 struct character {
 	char name[30];
