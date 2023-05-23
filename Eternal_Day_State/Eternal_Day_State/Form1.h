@@ -14,11 +14,11 @@ scene back_ground({ "www//pic//background//cover.png" });
 scene lead_in({ "www//pic//background//lead_in.png" });
 scene Inn_Lobby({ "www//pic//background//Inn_Lobby.png" });
 scene Inn_Outside({ "www//pic//background//Inn_Outside.png" });
-scene Inn_Room({ "www//pic//background//Inn_Lobby.png" });
+scene Inn_Room({ "www//pic//background//Inn_Room.png" });
 scene Lake_Mary({ "www//pic//background//Lake_Mary.png" });
 scene Library_Inside({ "www//pic//background//Library_Inside.png" }); 
 scene Library_Outside({ "www//pic//background//Library_Outside.png" });
-scene Market({ "www//pic//background//Inn_Lobby.png" });
+scene Market({ "www//pic//background//Market.png" });
 scene Palace_Inside({ "www//pic//background//Palace_Inside.png" });
 scene Palace_Outside({ "www//pic//background//Palace_Outside.png" });
 scene Plazza({ "www//pic//background//Plazza.png" });
@@ -69,6 +69,9 @@ namespace CppCLRWinFormsProject {
 	private: System::Windows::Forms::Button^ search;
 	private: System::Windows::Forms::Button^ Psychology_Lake1;
 	private: System::Windows::Forms::Button^ Psychology_Lake2;
+	private: System::Windows::Forms::PictureBox^ background;
+	private: System::Windows::Forms::Button^ Go_To_Restaurant;
+	private: System::Windows::Forms::Button^ Go_Out_Restaurant;
 
 	public:
 	private:
@@ -220,9 +223,13 @@ namespace CppCLRWinFormsProject {
 			this->Observe_Inn = (gcnew System::Windows::Forms::Button());
 			this->search = (gcnew System::Windows::Forms::Button());
 			this->Psychology_Lake2 = (gcnew System::Windows::Forms::Button());
+			this->background = (gcnew System::Windows::Forms::PictureBox());
+			this->Go_To_Restaurant = (gcnew System::Windows::Forms::Button());
+			this->Go_Out_Restaurant = (gcnew System::Windows::Forms::Button());
 			this->backpack_panel->SuspendLayout();
 			this->status_panel->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->menu))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->background))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// backpack_items_listView
@@ -268,7 +275,7 @@ namespace CppCLRWinFormsProject {
 			// 
 			// manual_text
 			// 
-			this->manual_text->Location = System::Drawing::Point(0, 180);
+			this->manual_text->Location = System::Drawing::Point(0, 0);
 			this->manual_text->Margin = System::Windows::Forms::Padding(1, 2, 1, 2);
 			this->manual_text->Multiline = true;
 			this->manual_text->Name = L"manual_text";
@@ -446,6 +453,7 @@ namespace CppCLRWinFormsProject {
 			this->status_panel->Controls->Add(this->player_power_text);
 			this->status_panel->Controls->Add(this->STR);
 			this->status_panel->Controls->Add(this->character_name);
+			this->status_panel->Controls->Add(this->manual_text);
 			this->status_panel->Location = System::Drawing::Point(-1, 0);
 			this->status_panel->Margin = System::Windows::Forms::Padding(1, 2, 1, 2);
 			this->status_panel->Name = L"status_panel";
@@ -482,7 +490,7 @@ namespace CppCLRWinFormsProject {
 			// 
 			// Inn_To_Market
 			// 
-			this->Inn_To_Market->Location = System::Drawing::Point(943, 496);
+			this->Inn_To_Market->Location = System::Drawing::Point(944, 496);
 			this->Inn_To_Market->Margin = System::Windows::Forms::Padding(2);
 			this->Inn_To_Market->Name = L"Inn_To_Market";
 			this->Inn_To_Market->Size = System::Drawing::Size(64, 32);
@@ -494,7 +502,7 @@ namespace CppCLRWinFormsProject {
 			// 
 			// Plazza_To_Inn
 			// 
-			this->Plazza_To_Inn->Location = System::Drawing::Point(943, 497);
+			this->Plazza_To_Inn->Location = System::Drawing::Point(944, 497);
 			this->Plazza_To_Inn->Margin = System::Windows::Forms::Padding(2);
 			this->Plazza_To_Inn->Name = L"Plazza_To_Inn";
 			this->Plazza_To_Inn->Size = System::Drawing::Size(64, 32);
@@ -506,7 +514,7 @@ namespace CppCLRWinFormsProject {
 			// 
 			// IntersectionLeft_To_Library
 			// 
-			this->IntersectionLeft_To_Library->Location = System::Drawing::Point(943, 496);
+			this->IntersectionLeft_To_Library->Location = System::Drawing::Point(944, 497);
 			this->IntersectionLeft_To_Library->Margin = System::Windows::Forms::Padding(2);
 			this->IntersectionLeft_To_Library->Name = L"IntersectionLeft_To_Library";
 			this->IntersectionLeft_To_Library->Size = System::Drawing::Size(64, 32);
@@ -518,7 +526,7 @@ namespace CppCLRWinFormsProject {
 			// 
 			// Market_To_Restaurant
 			// 
-			this->Market_To_Restaurant->Location = System::Drawing::Point(943, 496);
+			this->Market_To_Restaurant->Location = System::Drawing::Point(944, 496);
 			this->Market_To_Restaurant->Margin = System::Windows::Forms::Padding(2);
 			this->Market_To_Restaurant->Name = L"Market_To_Restaurant";
 			this->Market_To_Restaurant->Size = System::Drawing::Size(64, 32);
@@ -539,6 +547,7 @@ namespace CppCLRWinFormsProject {
 			this->introduction_textBox->Size = System::Drawing::Size(1024, 540);
 			this->introduction_textBox->TabIndex = 12;
 			this->introduction_textBox->Visible = false;
+			this->introduction_textBox->TextChanged += gcnew System::EventHandler(this, &Form1::introduction_textBox_TextChanged);
 			// 
 			// signpost
 			// 
@@ -758,7 +767,7 @@ namespace CppCLRWinFormsProject {
 			// 
 			// Library_To_IntersectionRight
 			// 
-			this->Library_To_IntersectionRight->Location = System::Drawing::Point(943, 496);
+			this->Library_To_IntersectionRight->Location = System::Drawing::Point(944, 496);
 			this->Library_To_IntersectionRight->Margin = System::Windows::Forms::Padding(2);
 			this->Library_To_IntersectionRight->Name = L"Library_To_IntersectionRight";
 			this->Library_To_IntersectionRight->Size = System::Drawing::Size(64, 32);
@@ -770,7 +779,7 @@ namespace CppCLRWinFormsProject {
 			// 
 			// Prison_To_IntersectionLeft
 			// 
-			this->Prison_To_IntersectionLeft->Location = System::Drawing::Point(943, 497);
+			this->Prison_To_IntersectionLeft->Location = System::Drawing::Point(944, 496);
 			this->Prison_To_IntersectionLeft->Margin = System::Windows::Forms::Padding(2);
 			this->Prison_To_IntersectionLeft->Name = L"Prison_To_IntersectionLeft";
 			this->Prison_To_IntersectionLeft->Size = System::Drawing::Size(64, 32);
@@ -979,11 +988,52 @@ namespace CppCLRWinFormsProject {
 			this->Psychology_Lake2->Visible = false;
 			this->Psychology_Lake2->Click += gcnew System::EventHandler(this, &Form1::Psychology_Lake2_Click);
 			// 
+			// background
+			// 
+			this->background->Location = System::Drawing::Point(0, 180);
+			this->background->Name = L"background";
+			this->background->Size = System::Drawing::Size(1024, 540);
+			this->background->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->background->TabIndex = 55;
+			this->background->TabStop = false;
+			this->background->Visible = false;
+			this->background->Click += gcnew System::EventHandler(this, &Form1::pictureBox1_Click_1);
+			// 
+			// Go_To_Restaurant
+			// 
+			this->Go_To_Restaurant->Location = System::Drawing::Point(316, 404);
+			this->Go_To_Restaurant->Name = L"Go_To_Restaurant";
+			this->Go_To_Restaurant->Size = System::Drawing::Size(64, 32);
+			this->Go_To_Restaurant->TabIndex = 56;
+			this->Go_To_Restaurant->Text = L"進餐廳";
+			this->Go_To_Restaurant->Visible = false;
+			this->Go_To_Restaurant->Click += gcnew System::EventHandler(this, &Form1::Go_To_Restaurant_Click);
+			// 
+			// Go_Out_Restaurant
+			// 
+			this->Go_Out_Restaurant->Location = System::Drawing::Point(642, 405);
+			this->Go_Out_Restaurant->Name = L"Go_Out_Restaurant";
+			this->Go_Out_Restaurant->Size = System::Drawing::Size(64, 32);
+			this->Go_Out_Restaurant->TabIndex = 57;
+			this->Go_Out_Restaurant->Text = L"出餐廳";
+			this->Go_Out_Restaurant->UseVisualStyleBackColor = true;
+			this->Go_Out_Restaurant->Visible = false;
+			this->Go_Out_Restaurant->Click += gcnew System::EventHandler(this, &Form1::Go_Out_Restaurant_Click);
+			// 
 			// Form1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 12);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1024, 960);
+			this->Controls->Add(this->Go_Out_Restaurant);
+			this->Controls->Add(this->Go_To_Restaurant);
+			this->Controls->Add(this->IntersectionRight_To_Palace);
+			this->Controls->Add(this->Plazza_To_Inn);
+			this->Controls->Add(this->IntersectionLeft_To_Library);
+			this->Controls->Add(this->Library_To_IntersectionRight);
+			this->Controls->Add(this->Inn_To_Market);
+			this->Controls->Add(this->Market_To_Restaurant);
+			this->Controls->Add(this->Prison_To_IntersectionLeft);
 			this->Controls->Add(this->Psychology_Lake2);
 			this->Controls->Add(this->search);
 			this->Controls->Add(this->Observe_Inn);
@@ -996,8 +1046,6 @@ namespace CppCLRWinFormsProject {
 			this->Controls->Add(this->backpack_items_listView);
 			this->Controls->Add(this->Go_Out_Library);
 			this->Controls->Add(this->Go_In_Library);
-			this->Controls->Add(this->Plazza_To_Inn);
-			this->Controls->Add(this->Inn_To_Market);
 			this->Controls->Add(this->Go_In_Palace);
 			this->Controls->Add(this->Lake_To_IntersectionLeft);
 			this->Controls->Add(this->IntersectionLeft_To_Lake);
@@ -1029,13 +1077,8 @@ namespace CppCLRWinFormsProject {
 			this->Controls->Add(this->start);
 			this->Controls->Add(this->backpack_panel);
 			this->Controls->Add(this->status_panel);
-			this->Controls->Add(this->IntersectionLeft_To_Library);
-			this->Controls->Add(this->Market_To_Restaurant);
-			this->Controls->Add(this->Prison_To_IntersectionLeft);
-			this->Controls->Add(this->Library_To_IntersectionRight);
-			this->Controls->Add(this->IntersectionRight_To_Palace);
 			this->Controls->Add(this->introduction_textBox);
-			this->Controls->Add(this->manual_text);
+			this->Controls->Add(this->background);
 			this->Controls->Add(this->menu);
 			this->Margin = System::Windows::Forms::Padding(1, 2, 1, 2);
 			this->Name = L"Form1";
@@ -1048,6 +1091,7 @@ namespace CppCLRWinFormsProject {
 			this->status_panel->ResumeLayout(false);
 			this->status_panel->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->menu))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->background))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -1102,6 +1146,8 @@ namespace CppCLRWinFormsProject {
 		dialog_text->Text = "經歷了這般的未知變化讓你的心中產生了些許恐懼，請做一個san check";
 		introduction_textBox->Text = "你們乘上了前往威爾士的車。\r\n伴隨著風景閃過，你們經過連綿的山丘，最終車子停在了一處以被開挖的丘陵地。\r\n「到了。」司機說，「你們可以去遺跡探索了，那邊就是這次遺跡出土的地方了。」\r\n你們進入後看到了入口右側有著一具骷髏，你們隱隱看到骷髏空洞的眼眶閃出了一縷白光，你感到腦子一陣暈眩，頭愈發的沉重，閉上了眼睛。你感覺腦袋一片混沌，彷彿睡了太久大夢初醒一般，你再次睜開眼睛後，你發現與你一起來的團員們也躺在你身邊露出了迷茫的神情。\r\n你們身上穿的衣服不再是前來時的衣服，而是風格古老的粗布衣，你摸了摸兜，你發現你身上的物品都不見了，剩下的是一些你只在博物館見過的古董品。";
 		san_check_button->Visible = true;
+		background->Visible = true;
+		background->Image = gcnew Bitmap(gcnew System::String(Plazza.get_path()));
 	}
 	private: System::Void occultist_button_Click(System::Object^ sender, System::EventArgs^ e) {
 		archaeologist_button->Visible = false;
@@ -1121,6 +1167,8 @@ namespace CppCLRWinFormsProject {
 		dialog_text->Text = "經歷了這般的未知變化讓你的心中產生了些許恐懼，請做一個san check";
 		introduction_textBox->Text = "你們乘上了前往威爾士的車。\r\n伴隨著風景閃過，你們經過連綿的山丘，最終車子停在了一處以被開挖的丘陵地。\r\n「到了。」司機說，「你們可以去遺跡探索了，那邊就是這次遺跡出土的地方了。」\r\n你們進入後看到了入口右側有著一具骷髏，你們隱隱看到骷髏空洞的眼眶閃出了一縷白光，你感到腦子一陣暈眩，頭愈發的沉重，閉上了眼睛。你感覺腦袋一片混沌，彷彿睡了太久大夢初醒一般，你再次睜開眼睛後，你發現與你一起來的團員們也躺在你身邊露出了迷茫的神情。\r\n你們身上穿的衣服不再是前來時的衣服，而是風格古老的粗布衣，你摸了摸兜，你發現你身上的物品都不見了，剩下的是一些你只在博物館見過的古董品。";
 		san_check_button->Visible = true;
+		background->Visible = true;
+		background->Image = gcnew Bitmap(gcnew System::String(Plazza.get_path()));
 	}
 	private: System::Void reporter_button_Click(System::Object^ sender, System::EventArgs^ e) {
 		archaeologist_button->Visible = false;
@@ -1140,7 +1188,8 @@ namespace CppCLRWinFormsProject {
 		dialog_text->Text = "經歷了這般的未知變化讓你的心中產生了些許恐懼，請做一個san check";
 		introduction_textBox->Text = "你們乘上了前往威爾士的車。\r\n伴隨著風景閃過，你們經過連綿的山丘，最終車子停在了一處以被開挖的丘陵地。\r\n「到了。」司機說，「你們可以去遺跡探索了，那邊就是這次遺跡出土的地方了。」\r\n你們進入後看到了入口右側有著一具骷髏，你們隱隱看到骷髏空洞的眼眶閃出了一縷白光，你感到腦子一陣暈眩，頭愈發的沉重，閉上了眼睛。你感覺腦袋一片混沌，彷彿睡了太久大夢初醒一般，你再次睜開眼睛後，你發現與你一起來的團員們也躺在你身邊露出了迷茫的神情。\r\n你們身上穿的衣服不再是前來時的衣服，而是風格古老的粗布衣，你摸了摸兜，你發現你身上的物品都不見了，剩下的是一些你只在博物館見過的古董品。";
 		san_check_button->Visible = true;
-
+		background->Visible = true;
+		background->Image = gcnew Bitmap(gcnew System::String(Plazza.get_path()));
 	}
 	private: System::Void backpack_Click(System::Object^ sender, System::EventArgs^ e) {
 		backpack_items_listView->Items->Clear();
@@ -1227,6 +1276,7 @@ namespace CppCLRWinFormsProject {
 		Inn_To_Market->Visible = true;
 		Inn_To_IntersectionRight->Visible = true;
 		Observe_Inn->Visible = true;
+		background->Image = gcnew Bitmap(gcnew System::String(Inn_Outside.get_path()));
 	}
 	private: System::Void Plazza_To_Prison_Click(System::Object^ sender, System::EventArgs^ e) {
 		dialog_text->Text = "在你面前的是一個由石頭砌成的建築，建築有著一扇鐵藝門，看起來十分堅固，在離地約4公尺處有著兩扇玻璃窗戶正對著廣場，門口站著兩位全副武裝的侍衛，在門上方還掛著一塊禁止進入的牌匾。";
@@ -1240,6 +1290,7 @@ namespace CppCLRWinFormsProject {
 		Prison_To_Restaurant->Visible = true;
 		Prison_To_Plazza->Visible = true;
 		Prison_To_IntersectionLeft->Visible = true;
+		background->Image = gcnew Bitmap(gcnew System::String(Prison_Outside.get_path()));
 	}
 	private: System::Void Go_In_Inn_Click(System::Object^ sender, System::EventArgs^ e) {
 		dialog_text->Text = "在你進入旅店後，他的內部就如同他的外部那般樸實無華，只有一個櫃台，和左右兩間大床房從前方傳來了有氣無力的聲音”住宿一天20銀幣，不提供食物，一天以宏光、烈光時區分，住七天優惠只要一金幣。”你往前看去，那是一個頭髮斑白的老頭，雙手撐著臉，一副要死不活的樣子。";
@@ -1252,6 +1303,7 @@ namespace CppCLRWinFormsProject {
 		// display object in scene
 		Go_Out_Inn->Visible = true;
 		Go_In_Room->Visible = true;
+		background->Image = gcnew Bitmap(gcnew System::String(Inn_Lobby.get_path()));
 	}
 	private: System::Void Go_Out_Inn_Click(System::Object^ sender, System::EventArgs^ e) {
 		dialog_text->Text = "這棟建築由木材建成，屋頂使用稻草編織而成。建築物的外牆粗糙的由木板和泥土夯實而成，看起來十分堅固，前方設有一個大門，用於進出旅店，大門的外觀簡單而樸實，完美的符合了實用主義的理念。";
@@ -1264,6 +1316,7 @@ namespace CppCLRWinFormsProject {
 		Inn_To_Market->Visible = true;
 		Inn_To_IntersectionRight->Visible = true;
 		Observe_Inn->Visible = true;
+		background->Image = gcnew Bitmap(gcnew System::String(Inn_Outside.get_path()));
 	}
 	private: System::Void Go_In_Room_Click(System::Object^ sender, System::EventArgs^ e) {
 		dialog_text->Text = "你進入了房間，房間內只有稻草鋪的床，和一些用布包住稻草稈做的枕頭";
@@ -1272,6 +1325,7 @@ namespace CppCLRWinFormsProject {
 		Go_In_Room->Visible = false;
 		// display object in scene
 		Go_Out_Room->Visible = true;
+		background->Image = gcnew Bitmap(gcnew System::String(Inn_Room.get_path()));
 	}
 	private: System::Void Go_Out_Room_Click(System::Object^ sender, System::EventArgs^ e) {
 		dialog_text->Text = "在你進入旅店後，他的內部就如同他的外部那般樸實無華，只有一個櫃台，和左右兩間大床房從前方傳來了有氣無力的聲音”住宿一天20銀幣，不提供食物，一天以宏光、烈光時區分，住七天優惠只要一金幣。”你往前看去，那是一個頭髮斑白的老頭，雙手撐著臉，一副要死不活的樣子。";
@@ -1280,7 +1334,7 @@ namespace CppCLRWinFormsProject {
 		// display object in scene
 		Go_Out_Inn->Visible = true;
 		Go_In_Room->Visible = true;
-
+		background->Image = gcnew Bitmap(gcnew System::String(Inn_Lobby.get_path()));
 	}
 	private: System::Void Inn_To_Plazza_Click(System::Object^ sender, System::EventArgs^ e) {
 		// hide object in scene
@@ -1295,7 +1349,7 @@ namespace CppCLRWinFormsProject {
 		Plazza_To_Inn->Visible = true;
 		Plazza_To_Prison->Visible = true;
 		Ask_Wagain->Visible = true;
-		menu->Image = gcnew Bitmap(gcnew System::String(back_ground.get_path()));
+		background->Image = gcnew Bitmap(gcnew System::String(Plazza.get_path()));
 	}
 	private: System::Void Inn_To_Market_Click(System::Object^ sender, System::EventArgs^ e) {
 		dialog_text->Text = "市場的街道狹窄而擁擠，滿是雜物，很容易讓人摔倒。市場里擠滿了商販和攤販，他們用各種聲音、手勢和展示方式向你推銷自己的產品。你可以聽到他們高聲地叫賣，介紹自己的貨品，有些商販用樂器演奏著悠揚的音樂，吸引著顧客。";
@@ -1310,6 +1364,7 @@ namespace CppCLRWinFormsProject {
 		Market_To_Inn->Visible = true;
 		diner->Visible = true;
 		studio->Visible = true;
+		background->Image = gcnew Bitmap(gcnew System::String(Market.get_path()));
 	}
 	private: System::Void Market_To_Restaurant_Click(System::Object^ sender, System::EventArgs^ e) {
 		dialog_text->Text = "你來到了餐館，餐館外觀看起來是個還算整潔的木製建築，進入餐廳，你發現這裡非常明亮、寬敞。整個空間採用簡約的風格，淺色木質牆壁搭配深色木質地板，一排排的餐桌擺放整齊，讓人感到舒適和放鬆，此時餐廳內(人數)(狀態)，此時你們聽到一個溫和的聲音問到”客官們請問你們想來點甚麼”， 你看向了出聲的人，那是一位長相清秀的獨臂青年，他有著金色的中長髮和祖母綠色的眼眸，他背後的牆壁上掛著菜單。";
@@ -1320,7 +1375,9 @@ namespace CppCLRWinFormsProject {
 		studio->Visible = false;
 		//display object in scene
 		Restaurant_To_Market->Visible = true;
-		Restaurant_To_Prison->Visible = true;
+		Restaurant_To_Prison->Visible = true; 
+		Go_To_Restaurant->Visible = true;
+		background->Image = gcnew Bitmap(gcnew System::String(Restaurant_Outside.get_path()));
 	}
 	private: System::Void Market_To_Inn_Click(System::Object^ sender, System::EventArgs^ e) {
 		dialog_text->Text = "這棟建築由木材建成，屋頂使用稻草編織而成。建築物的外牆粗糙的由木板和泥土夯實而成，看起來十分堅固，前方設有一個大門，用於進出旅店，大門的外觀簡單而樸實，完美的符合了實用主義的理念。";
@@ -1335,27 +1392,32 @@ namespace CppCLRWinFormsProject {
 		Inn_To_Market->Visible = true;
 		Inn_To_IntersectionRight->Visible = true;
 		Observe_Inn->Visible = true;
+		background->Image = gcnew Bitmap(gcnew System::String(Inn_Outside.get_path()));
 	}
 	private: System::Void Restaurant_To_Market_Click(System::Object^ sender, System::EventArgs^ e) {
 		dialog_text->Text = "市場的街道狹窄而擁擠，滿是雜物，很容易讓人摔倒。市場里擠滿了商販和攤販，他們用各種聲音、手勢和展示方式向你推銷自己的產品。你可以聽到他們高聲地叫賣，介紹自己的貨品，有些商販用樂器演奏著悠揚的音樂，吸引著顧客。";
 		// hide object in scene
 		Restaurant_To_Market->Visible = false;
 		Restaurant_To_Prison->Visible = false;
+		Go_To_Restaurant->Visible = false;
 		// display object in scene
 		Market_To_Restaurant->Visible = true;
 		Market_To_Inn->Visible = true;
 		diner->Visible = true;
 		studio->Visible = true;
+		background->Image = gcnew Bitmap(gcnew System::String(Market.get_path()));
 	}
 	private: System::Void Restaurant_To_Prison_Click(System::Object^ sender, System::EventArgs^ e) {
 		dialog_text->Text = "在你面前的是一個由石頭砌成的建築，建築有著一扇鐵藝門，看起來十分堅固，在離地約4公尺處有著兩扇玻璃窗戶正對著廣場，門口站著兩位全副武裝的侍衛，在門上方還掛著一塊禁止進入的牌匾。";
 		// hide object in scene
 		Restaurant_To_Market->Visible = false;
 		Restaurant_To_Prison->Visible = false;
+		Go_To_Restaurant->Visible = false;
 		// display object in scene
 		Prison_To_Restaurant->Visible = true;
 		Prison_To_Plazza->Visible = true;
 		Prison_To_IntersectionLeft->Visible = true;
+		background->Image = gcnew Bitmap(gcnew System::String(Prison_Outside.get_path()));
 	}
 	private: System::Void Prison_To_Restaurant_Click(System::Object^ sender, System::EventArgs^ e) {
 		dialog_text->Text = "你來到了餐館，餐館外觀看起來是個還算整潔的木製建築，進入餐廳，你發現這裡非常明亮、寬敞。整個空間採用簡約的風格，淺色木質牆壁搭配深色木質地板，一排排的餐桌擺放整齊，讓人感到舒適和放鬆，此時餐廳內(人數)(狀態)，此時你們聽到一個溫和的聲音問到”客官們請問你們想來點甚麼”， 你看向了出聲的人，那是一位長相清秀的獨臂青年，他有著金色的中長髮和祖母綠色的眼眸，他背後的牆壁上掛著菜單。";
@@ -1366,6 +1428,8 @@ namespace CppCLRWinFormsProject {
 		// display object in scene
 		Restaurant_To_Market->Visible = true;
 		Restaurant_To_Prison->Visible = true;
+		Go_To_Restaurant->Visible = true;
+		background->Image = gcnew Bitmap(gcnew System::String(Restaurant_Outside.get_path()));
 	}
 	private: System::Void Prison_To_Plazza_Click(System::Object^ sender, System::EventArgs^ e) {
 		dialog_text->Text = "廣場待補";
@@ -1379,6 +1443,7 @@ namespace CppCLRWinFormsProject {
 		Plazza_To_Inn->Visible = true;
 		Plazza_To_Prison->Visible = true;
 		Ask_Wagain->Visible = true;
+		background->Image = gcnew Bitmap(gcnew System::String(Plazza.get_path()));
 	}
 	private: System::Void Inn_To_IntersectionRight_Click(System::Object^ sender, System::EventArgs^ e) {
 		dialog_text->Text = "路口右待補";
@@ -1392,6 +1457,7 @@ namespace CppCLRWinFormsProject {
 		IntersectionRight_To_Library->Visible = true;
 		IntersectionRight_To_Inn->Visible = true;
 		IntersectionRight_To_Palace->Visible = true;
+		background->Image = gcnew Bitmap(gcnew System::String(Inn_Outside.get_path()));
 	}
 	private: System::Void IntersectionRight_To_Library_Click(System::Object^ sender, System::EventArgs^ e) {
 		dialog_text->Text = "這是一棟非常豪華和宏偉的建築，你被它那令人嘆為觀止的氣勢所震撼，以高大的石柱和華麗的拱門，來支撐整個建築，建築的主體由優雅的柱子和華麗的拱門支撐，高大的尖頂耸立著，猶如一個巨大的王冠，牆面上有著浮雕、雕塑和彩繪，繪製著神話、故事和歷史事件，讓建築更顯神聖和莊嚴。在陽光的照耀下，這些彩繪和浮雕散發出燦爛的光芒，讓整個建築閃耀著耀眼的光彩。";
@@ -1403,6 +1469,7 @@ namespace CppCLRWinFormsProject {
 		Library_To_IntersectionRight->Visible = true;
 		Library_To_IntersectionLeft->Visible = true;
 		Go_In_Library->Visible = true;
+		background->Image = gcnew Bitmap(gcnew System::String(Library_Outside.get_path()));
 	}
 	private: System::Void IntersectionRight_To_Inn_Click(System::Object^ sender, System::EventArgs^ e) {
 		dialog_text->Text = "這棟建築由木材建成，屋頂使用稻草編織而成。建築物的外牆粗糙的由木板和泥土夯實而成，看起來十分堅固，前方設有一個大門，用於進出旅店，大門的外觀簡單而樸實，完美的符合了實用主義的理念。";
@@ -1416,6 +1483,7 @@ namespace CppCLRWinFormsProject {
 		Inn_To_Market->Visible = true;
 		Inn_To_IntersectionRight->Visible = true;
 		Observe_Inn->Visible = true;
+		background->Image = gcnew Bitmap(gcnew System::String(Inn_Outside.get_path()));
 	}
 	private: System::Void IntersectionRight_To_Palace_Click(System::Object^ sender, System::EventArgs^ e) {
 		dialog_text->Text = "在你面前的是一個巨大、華麗、寬敞的建築，這棟建築的體量看起來完全不是城鎮中的其他建築可比擬，建築的屋頂上還有著一座巨大的黃金鐘，看起來唯一的入口是一扇巨大的木門。";
@@ -1426,6 +1494,7 @@ namespace CppCLRWinFormsProject {
 		// diaplay object in scene
 		Palace_To_IntersectionRight->Visible = true;
 		Go_In_Palace->Visible = true;
+		background->Image = gcnew Bitmap(gcnew System::String(Palace_Outside.get_path()));
 	}
 	private: System::Void Palace_To_IntersectionRight_Click(System::Object^ sender, System::EventArgs^ e) {
 		dialog_text->Text = "路口右待補";
@@ -1436,6 +1505,7 @@ namespace CppCLRWinFormsProject {
 		IntersectionRight_To_Library->Visible = true;
 		IntersectionRight_To_Inn->Visible = true;
 		IntersectionRight_To_Palace->Visible = true;
+		background->Image = gcnew Bitmap(gcnew System::String(Palace_Outside.get_path()));
 	}
 	private: System::Void Library_To_IntersectionRight_Click(System::Object^ sender, System::EventArgs^ e) {
 		dialog_text->Text = "路口右待補";
@@ -1447,6 +1517,7 @@ namespace CppCLRWinFormsProject {
 		IntersectionRight_To_Library->Visible = true;
 		IntersectionRight_To_Inn->Visible = true;
 		IntersectionRight_To_Palace->Visible = true;
+		background->Image = gcnew Bitmap(gcnew System::String(Library_Outside.get_path()));
 	}
 	private: System::Void Prison_To_IntersectionLeft_Click(System::Object^ sender, System::EventArgs^ e) {
 		dialog_text->Text = "路口左待補";
@@ -1458,6 +1529,7 @@ namespace CppCLRWinFormsProject {
 		IntersectionLeft_To_Prison->Visible = true;
 		IntersectionLeft_To_Library->Visible = true;
 		IntersectionLeft_To_Lake->Visible = true;
+		background->Image = gcnew Bitmap(gcnew System::String(Prison_Outside.get_path()));
 	}
 	private: System::Void IntersectionLeft_To_Prison_Click(System::Object^ sender, System::EventArgs^ e) {
 		dialog_text->Text = "在你面前的是一個由石頭砌成的建築，建築有著一扇鐵藝門，看起來十分堅固，在離地約4公尺處有著兩扇玻璃窗戶正對著廣場，門口站著兩位全副武裝的侍衛，在門上方還掛著一塊禁止進入的牌匾。";
@@ -1469,6 +1541,7 @@ namespace CppCLRWinFormsProject {
 		Prison_To_Restaurant->Visible = true;
 		Prison_To_Plazza->Visible = true;
 		Prison_To_IntersectionLeft->Visible = true;
+		background->Image = gcnew Bitmap(gcnew System::String(Prison_Outside.get_path()));
 	}
 	private: System::Void IntersectionLeft_To_Library_Click(System::Object^ sender, System::EventArgs^ e) {
 		dialog_text->Text = "這是一棟非常豪華和宏偉的建築，你被它那令人嘆為觀止的氣勢所震撼，以高大的石柱和華麗的拱門，來支撐整個建築，建築的主體由優雅的柱子和華麗的拱門支撐，高大的尖頂耸立著，猶如一個巨大的王冠，牆面上有著浮雕、雕塑和彩繪，繪製著神話、故事和歷史事件，讓建築更顯神聖和莊嚴。在陽光的照耀下，這些彩繪和浮雕散發出燦爛的光芒，讓整個建築閃耀著耀眼的光彩。";
@@ -1480,6 +1553,7 @@ namespace CppCLRWinFormsProject {
 		Library_To_IntersectionRight->Visible = true;
 		Library_To_IntersectionLeft->Visible = true;
 		Go_In_Library->Visible = true;
+		background->Image = gcnew Bitmap(gcnew System::String(Library_Outside.get_path()));
 	}
 	private: System::Void Library_To_IntersectionLeft_Click(System::Object^ sender, System::EventArgs^ e) {
 		dialog_text->Text = "路口左待補";
@@ -1491,6 +1565,7 @@ namespace CppCLRWinFormsProject {
 		IntersectionLeft_To_Prison->Visible = true;
 		IntersectionLeft_To_Library->Visible = true;
 		IntersectionLeft_To_Lake->Visible = true;
+		background->Image = gcnew Bitmap(gcnew System::String(Library_Outside.get_path()));
 	}
 	private: System::Void IntersectionLeft_To_Lake_Click(System::Object^ sender, System::EventArgs^ e) {
 		dialog_text->Text = "你們來到了德茲瑪麗湖，那湖水猶如碧玉般清澈，波光粼粼，倒映著湖畔旁的青山綠樹，天空的美景也在湖水中倒影出來。湖畔旁的花草樹木繁茂，漫步其間，仿若置身於一個美麗的童話世界，讓人感受到大自然的生命力。";
@@ -1501,6 +1576,7 @@ namespace CppCLRWinFormsProject {
 		IntersectionLeft_To_Lake->Visible = false;
 		// diaplay object in scene
 		continue_button->Visible = true;
+		background->Image = gcnew Bitmap(gcnew System::String(Lake_Mary.get_path()));
 	}
 	private: System::Void Lake_To_IntersectionLeft_Click(System::Object^ sender, System::EventArgs^ e) {
 		dialog_text->Text = "路口左待補";
@@ -1508,18 +1584,21 @@ namespace CppCLRWinFormsProject {
 		// hide object in scene
 		Lake_To_IntersectionLeft->Visible = false;
 		continue_button->Visible = false;
+		Observe_Wagain->Visible = false;
 		Psychology_Lake2->Visible = false;
 		Psychology_Lake1->Visible = false;
 		// diaplay object in scene
 		IntersectionLeft_To_Library->Visible = true;
 		IntersectionLeft_To_Prison->Visible = true;
 		IntersectionLeft_To_Lake->Visible = true;
+		background->Image = gcnew Bitmap(gcnew System::String(Lake_Mary.get_path()));
 	}
 	private: System::Void Go_In_Palace_Click(System::Object^ sender, System::EventArgs^ e) {
 		dialog_text->Text = "待補";
 		// hide object in scene
 		Palace_To_IntersectionRight->Visible = false;
 		Go_In_Palace->Visible = false;
+		background->Image = gcnew Bitmap(gcnew System::String(Palace_Inside.get_path()));
 	}
 	private: System::Void Go_In_Library_Click(System::Object^ sender, System::EventArgs^ e) {
 		dialog_text->Text = "你進到了圖書館內，這間屋子裏有著許多的架子，架子上擺滿了手寫的文獻和書籍，大多都是用羊皮紙和墨水寫成，這些文獻是按照主題整齊排列排列。";
@@ -1531,6 +1610,7 @@ namespace CppCLRWinFormsProject {
 		Go_Out_Library->Visible = true;
 		Observe_Library->Visible = true;
 		search->Visible = true;
+		background->Image = gcnew Bitmap(gcnew System::String(Library_Inside.get_path()));
 	}
 	private: System::Void Go_Out_Library_Click(System::Object^ sender, System::EventArgs^ e) {
 		dialog_text->Text = "這是一棟非常豪華和宏偉的建築，你被它那令人嘆為觀止的氣勢所震撼，以高大的石柱和華麗的拱門，來支撐整個建築，建築的主體由優雅的柱子和華麗的拱門支撐，高大的尖頂耸立著，猶如一個巨大的王冠，牆面上有著浮雕、雕塑和彩繪，繪製著神話、故事和歷史事件，讓建築更顯神聖和莊嚴。在陽光的照耀下，這些彩繪和浮雕散發出燦爛的光芒，讓整個建築閃耀著耀眼的光彩。";
@@ -1542,6 +1622,7 @@ namespace CppCLRWinFormsProject {
 		Library_To_IntersectionRight->Visible = true;
 		Library_To_IntersectionLeft->Visible = true;
 		Go_In_Library->Visible = true;
+		background->Image = gcnew Bitmap(gcnew System::String(Library_Outside.get_path()));
 	}
 	void initialize(void) {
 		menu->Image = gcnew Bitmap(gcnew System::String(back_ground.get_path()));
@@ -1596,5 +1677,27 @@ namespace CppCLRWinFormsProject {
 	private: System::Void Psychology_Lake1_Click(System::Object^ sender, System::EventArgs^ e) {
 		dialog_text->Text = "你認真的分析他在說這些話的時候的各項表徵";
 	}
-};
+	private: System::Void pictureBox1_Click_1(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void introduction_textBox_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void Go_To_Restaurant_Click(System::Object^ sender, System::EventArgs^ e) {
+		// hide object in scene
+		Restaurant_To_Market->Visible = false;
+		Restaurant_To_Prison->Visible = false;
+		Go_To_Restaurant->Visible = false;
+		//display object in scene
+		Go_Out_Restaurant->Visible = true;
+		background->Image = gcnew Bitmap(gcnew System::String(Restaurant_Inside.get_path()));
+	}
+	private: System::Void Go_Out_Restaurant_Click(System::Object^ sender, System::EventArgs^ e) {
+		// hide object in scene
+		Go_Out_Restaurant->Visible = false;
+		//display object in scene
+		Restaurant_To_Market->Visible = true;
+		Restaurant_To_Prison->Visible = true;
+		Go_To_Restaurant->Visible = true;
+		background->Image = gcnew Bitmap(gcnew System::String(Restaurant_Outside.get_path()));
+	}
+	};
 }
