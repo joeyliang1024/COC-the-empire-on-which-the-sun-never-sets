@@ -93,7 +93,34 @@ void main() {
 	Guinvere.DB = -1;
 
 	NPC Bedivere;
+	Bedivere.STR = 95;
+	Bedivere.DEX = 95;
+	Bedivere.INT = 60;
+	Bedivere.CON = 95;
+	Bedivere.APP = 95;
+	Bedivere.POW = 40;
+	Bedivere.SIZ = 80;
+	Bedivere.SAN = 40;
+	Bedivere.EDU = 50;
+	Bedivere.LUK = 50;
+	Bedivere.HP = 17;
+	Bedivere.MP = 8;
+	Bedivere.DB = 6;
+
 	NPC Arthur;
+	Arthur.STR = 75;
+	Arthur.DEX = 85;
+	Arthur.INT = 55;
+	Arthur.CON = 60;
+	Arthur.APP = 75;
+	Arthur.POW = 55;
+	Arthur.SIZ = 75;
+	Arthur.SAN = 40;
+	Arthur.EDU = 40;
+	Arthur.LUK = 50;
+	Arthur.HP = 13;
+	Arthur.MP = 11;
+	Arthur.DB = 4;
 
 	character occultist;
 	occultist.STR = 65;
