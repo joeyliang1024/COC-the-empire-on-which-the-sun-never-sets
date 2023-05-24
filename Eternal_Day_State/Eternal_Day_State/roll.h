@@ -2,11 +2,12 @@
 #include <stdio.h>
 #include <stdlib.h> /* 亂數相關函數 */
 #include <time.h>   /* 時間相關函數 */
+#include <string.h>
 
 class roll {
 public:
 	int success; // 判定結果(0: 失敗, 1: 成功, 2:困難成功, 3:極難成功)
-
+	int rolling; // 擲骰結果
 	// Check Category: 判定名稱(EX:觀察判定), Successful Rate: 判定成功率
 	void check(int Successful_Rate) {
 		// 產生亂數 
@@ -27,6 +28,4 @@ public:
 			success = 1;
 		}
 	}
-private:
-	int rolling; // 擲骰結果
 };

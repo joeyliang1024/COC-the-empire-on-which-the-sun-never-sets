@@ -28,3 +28,31 @@ struct items {
 	position pos;
 	bool enable;
 };
+struct ability {
+	int STR;
+	int CON;
+	int DEX;
+	int POW;
+	int APP;
+	int EDU;
+	int INT;
+	int SIZ;
+	int LUK;
+	int SAN;
+	int HP;
+	int MP;
+	int DB;
+};
+struct skill {
+	int Spot;
+	int Listen;
+	int Library;
+	int Brawl;
+	int Evade;
+	int History;
+	int Occult;
+	int Psycology;
+	int Biology;
+	int Archaeology;
+	int Medicine;
+};

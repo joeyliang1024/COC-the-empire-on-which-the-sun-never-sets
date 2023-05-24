@@ -133,7 +133,6 @@
     <ClInclude Include="battle.h" />
     <ClInclude Include="character.h" />
     <ClInclude Include="scene.h" />
-    <ClInclude Include="characters.h" />
     <ClInclude Include="data_format.h" />
     <ClInclude Include="Form1.h">
       <FileType>CppForm</FileType>
@@ -152,6 +151,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="scene.cpp" />
+    <ClCompile Include="character.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="app.ico" />
