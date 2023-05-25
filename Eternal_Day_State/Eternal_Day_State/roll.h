@@ -4,6 +4,11 @@
 #include <time.h>   /* 時間相關函數 */
 #include <string.h>
 
+//宣告是否判定與結果
+int Observe_Signpost_Count = 9;
+int Observe_Sundial_Count = 9;
+int Observe_Stranger_Plazza_Count = 9;
+
 class roll {
 public:
 	int success; // 判定結果(0: 失敗, 1: 成功, 2:困難成功, 3:極難成功)
