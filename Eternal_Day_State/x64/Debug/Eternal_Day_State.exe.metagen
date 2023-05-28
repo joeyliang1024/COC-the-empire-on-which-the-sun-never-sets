@@ -18,4 +18,9 @@ Class CppCLRWinFormsProject.Form1: AutoLayout, AnsiClass, Class, Public, BeforeF
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Fields:
+    Boolean moveLeft : Public
+    Boolean moveRight : Public
+    Boolean moveUp : Public
+    Boolean moveDown : Public
+    Int32 speed : Public
     Boolean backpack_open_or_close : Public
