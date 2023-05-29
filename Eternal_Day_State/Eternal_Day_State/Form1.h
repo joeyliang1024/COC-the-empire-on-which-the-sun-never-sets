@@ -67,40 +67,42 @@ namespace CppCLRWinFormsProject {
 	public ref class Form1 : public System::Windows::Forms::Form
 	{
 	public:
-
+		bool backpack_open_or_close = 0;
 		bool moveLeft, moveRight, moveUp ,moveDown;
+		int speed = 5;
+		Form1(void)
+		{
+			InitializeComponent();
+			//
+			//TODO: Add the constructor code here
+			//
+		}
+	protected:
+		/// <summary>
+		/// Clean up any resources being used.
+		/// </summary>
+		~Form1()
+		{
+			if (components)
+			{
+				delete components;
+			}
+		}
 	private: System::Windows::Forms::Label^ MEDICINE;
-	public:
-
 	private: System::Windows::Forms::Label^ BIOLOGY;
-	public:
-
 	private: System::Windows::Forms::Label^ PSYCOLOGY;
 	private: System::Windows::Forms::Label^ ARCHAEOLOGY;
-
-
 	private: System::Windows::Forms::Label^ OCCULT;
-
 	private: System::Windows::Forms::Label^ HISTORY;
-
 	private: System::Windows::Forms::Label^ DB;
-
 	private: System::Windows::Forms::Label^ EVADE;
-
 	private: System::Windows::Forms::Label^ BRAWL;
-
 	private: System::Windows::Forms::Label^ LIBRARY;
-
 	private: System::Windows::Forms::Label^ LISTEN;
-
 	private: System::Windows::Forms::Label^ SPOT;
-
 	private: System::Windows::Forms::Label^ MP;
-
 	private: System::Windows::Forms::Label^ HP;
-
 	private: System::Windows::Forms::Label^ LUK;
-
 	private: System::Windows::Forms::Label^ EDU;
 	private: System::Windows::Forms::Label^ SAN;
 	private: System::Windows::Forms::Label^ SIZ;
@@ -109,15 +111,6 @@ namespace CppCLRWinFormsProject {
 	private: System::Windows::Forms::Label^ CON;
 	private: System::Windows::Forms::Label^ INT;
 	private: System::Windows::Forms::Label^ DEX;
-		   int speed = 5;
-		Form1(void)
-		{
-			InitializeComponent();
-			//
-			//TODO: Add the constructor code here
-			//
-		}
-		
 	private: System::Windows::Forms::ListView^ backpack_items_listView;
 	private: System::Windows::Forms::PictureBox^ menu;
 	private: System::Windows::Forms::Timer^ timer1;
@@ -126,7 +119,6 @@ namespace CppCLRWinFormsProject {
 	private: System::Windows::Forms::Button^ Order;
 	private: System::Windows::Forms::Button^ diner;
 	private: System::Windows::Forms::Button^ studio;
-
 	private: System::Windows::Forms::Button^ Observe_Inn;
 	private: System::Windows::Forms::Button^ search;
 	private: System::Windows::Forms::Button^ Psychology_Lake1;
@@ -145,37 +137,10 @@ namespace CppCLRWinFormsProject {
 	private: System::Windows::Forms::Button^ Observe_Sundial;
 	private: System::Windows::Forms::Button^ listen_stranger_plazza;
 	private: System::Windows::Forms::PictureBox^ player_motion;
-
-
-
-
-
-
-
-
-	public:
-	private:
-	public:
-
-	public:
-		bool backpack_open_or_close = 0;
-	protected:
-		/// <summary>
-		/// Clean up any resources being used.
-		/// </summary>
-		~Form1()
-		{
-			if (components)
-			{
-				delete components;
-			}
-		}
 	private: System::Windows::Forms::Button^ start;
-	protected:
 	private: System::Windows::Forms::Button^ manual;
 	private: System::Windows::Forms::TextBox^ manual_text;
 	private: System::Windows::Forms::Button^ back_to_home;
-
 	private: System::Windows::Forms::Button^ archaeologist_button;
 	private: System::Windows::Forms::Button^ reporter_button;
 	private: System::Windows::Forms::Button^ occultist_button;
@@ -190,7 +155,6 @@ namespace CppCLRWinFormsProject {
 	private: System::Windows::Forms::TextBox^ introduction_textBox;
 	private: System::Windows::Forms::Button^ san_check_button;
 	private: System::Windows::Forms::Button^ continue_button;
-
 	private: System::Windows::Forms::Button^ signpost;
 	private: System::Windows::Forms::Button^ sundial;
 	private: System::Windows::Forms::Button^ Plazza_To_Inn;
@@ -223,10 +187,6 @@ namespace CppCLRWinFormsProject {
 	private: System::Windows::Forms::Button^ Go_In_Library;
 	private: System::Windows::Forms::Button^ Go_Out_Library;
 	private: System::ComponentModel::IContainer^ components;
-
-
-	protected:
-
 	private:
 		/// <summary>
 		/// Required designer variable.
@@ -585,7 +545,7 @@ namespace CppCLRWinFormsProject {
 			// san_check_button
 			// 
 			this->san_check_button->BackColor = System::Drawing::SystemColors::MenuHighlight;
-			this->san_check_button->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->san_check_button->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->san_check_button->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
 			this->san_check_button->Location = System::Drawing::Point(826, 24);
@@ -770,7 +730,6 @@ namespace CppCLRWinFormsProject {
 			this->DB->TabIndex = 22;
 			this->DB->Text = L"DB";
 			this->DB->Visible = false;
-			this->DB->Click += gcnew System::EventHandler(this, &Form1::label22_Click);
 			// 
 			// EVADE
 			// 
@@ -836,7 +795,6 @@ namespace CppCLRWinFormsProject {
 			this->SPOT->TabIndex = 17;
 			this->SPOT->Text = L"SPOT";
 			this->SPOT->Visible = false;
-			this->SPOT->Click += gcnew System::EventHandler(this, &Form1::SPOT_Click);
 			// 
 			// MP
 			// 
@@ -876,7 +834,6 @@ namespace CppCLRWinFormsProject {
 			this->LUK->TabIndex = 14;
 			this->LUK->Text = L"LUK";
 			this->LUK->Visible = false;
-			this->LUK->Click += gcnew System::EventHandler(this, &Form1::label14_Click);
 			// 
 			// EDU
 			// 
@@ -1042,7 +999,6 @@ namespace CppCLRWinFormsProject {
 			this->STR->TabIndex = 0;
 			this->STR->Text = L"STR";
 			this->STR->Visible = false;
-			this->STR->Click += gcnew System::EventHandler(this, &Form1::STR_Click);
 			// 
 			// Inn_To_Market
 			// 
@@ -1673,6 +1629,7 @@ namespace CppCLRWinFormsProject {
 			// 
 			// player_motion
 			// 
+			this->player_motion->BackColor = Color::FromArgb(0, Color::Blue);
 			this->player_motion->Location = System::Drawing::Point(285, 335);
 			this->player_motion->Name = L"player_motion";
 			this->player_motion->Size = System::Drawing::Size(54, 50);
@@ -1680,7 +1637,6 @@ namespace CppCLRWinFormsProject {
 			this->player_motion->TabIndex = 60;
 			this->player_motion->TabStop = false;
 			this->player_motion->Visible = false;
-			this->player_motion->Click += gcnew System::EventHandler(this, &Form1::player_motion_Click);
 			// 
 			// Form1
 			// 
@@ -1775,18 +1731,21 @@ namespace CppCLRWinFormsProject {
 		}
 		system_counter++;
 	}
-	private: System::Void player_motion_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
+
 	private: System::Void player_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 		switch (e->KeyCode) {
 		case Keys::Up:
-			player_motion->Top = player_motion->Top - 10;
+			player_motion->Location = System::Drawing::Point(player_motion->Location.X, player_motion->Location.Y - 10);
+			break;
 		case Keys::Down:
-			player_motion->Top = player_motion->Top + 10;
+			player_motion->Location = System::Drawing::Point(player_motion->Location.X, player_motion->Location.Y + 10);
+			break;
 		case Keys::Left:
-			player_motion->Left = player_motion->Left - 10;
+			player_motion->Location = System::Drawing::Point(player_motion->Location.X - 10, player_motion->Location.Y);
+			break;
 		case Keys::Right:
-			player_motion->Left = player_motion->Left + 10;
+			player_motion->Location = System::Drawing::Point(player_motion->Location.X + 10, player_motion->Location.Y);
+			break;
 	}
 }
 	private: System::Void player_KeyUp(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
@@ -2596,6 +2555,8 @@ private: System::Void Observe_Sundial_Click(System::Object^ sender, System::Even
 private: System::Void listen_stranger_plazza_Click(System::Object^ sender, System::EventArgs^ e) {
 	Observe_Sundial->Visible = false;
 	Observe_Signpost->Visible = false;
+	chatbox_1->Visible = false;
+	chatbox_2->Visible = false;
 	dice.check(player.get_skill().Listen);
 	if (Observe_Stranger_Plazza_Count == 9) {
 		if (dice.success == 0) {
