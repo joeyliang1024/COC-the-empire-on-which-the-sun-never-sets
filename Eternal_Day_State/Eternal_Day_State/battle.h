@@ -53,6 +53,7 @@ public:
 			dmg = rand() % Enemy_Dmg + 1;
 		}
 	}
+
 	// 閃避:輸入閃避等級、敵人鬥毆等級、敵人傷害骰；敵人傷害加成
 	int evade(int Evade, int Enemy_Brawl, int Enemy_Dmg, int Enemy_DB) {
 		// 隨機角色的閃避與敵人的鬥毆成功度

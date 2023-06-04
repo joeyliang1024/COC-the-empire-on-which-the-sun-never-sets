@@ -43,6 +43,16 @@ public:
 		this->skill.Archaeology = archaeology;
 		this->skill.Medicine = medicine;
 	}
+	bool collsion(int ButtonX, int ButtonY) {
+		float dis = (pos.x - ButtonX) * (pos.x - ButtonX) + (pos.y - ButtonY) * (pos.y - ButtonY);
+		if (dis < 100) {
+			//collosion
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
 	struct skill get_skill();
 private:
 	skill skill;
