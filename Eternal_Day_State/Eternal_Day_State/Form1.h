@@ -136,7 +136,6 @@ namespace CppCLRWinFormsProject {
 	private: System::Windows::Forms::Label^ LUK;
 	private: System::Windows::Forms::Label^ EDU;
 	private: System::Windows::Forms::Label^ SAN;
-	private: System::Windows::Forms::Label^ SIZ;
 	private: System::Windows::Forms::Label^ POW;
 	private: System::Windows::Forms::Label^ APP;
 	private: System::Windows::Forms::Label^ CON;
