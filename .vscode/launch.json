@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/Users/liangzhiquan/Desktop/COC-the-empire-on-which-the-sun-never-sets",
+      "program": "/Users/liangzhiquan/Desktop/COC-the-empire-on-which-the-sun-never-sets/build/Debug/outDebug"
+    }
+  ]
+}

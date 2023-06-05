@@ -1,0 +1,4 @@
+C:\Users\user\Desktop\COC-the-empire-on-which-the-sun-never-sets\Eternal_Day_State\Eternal_Day_State\Debug\Eternal_Day_State.vcxproj.AssemblyReference.cache
+C:\Users\user\Desktop\COC-the-empire-on-which-the-sun-never-sets\Eternal_Day_State\Eternal_Day_State\Debug\Eternal_Day_State.vcxproj.SuggestedBindingRedirects.cache
+C:\Users\user\Desktop\COC-the-empire-on-which-the-sun-never-sets\Eternal_Day_State\Eternal_Day_State\Debug\Eternal_Day_State.Form1.resources
+C:\Users\user\Desktop\COC-the-empire-on-which-the-sun-never-sets\Eternal_Day_State\Eternal_Day_State\Debug\Eternal_Day_State.vcxproj.GenerateResource.cache
