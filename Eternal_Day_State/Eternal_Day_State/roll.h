@@ -29,7 +29,7 @@ public:
 		else if (rolling <= Successful_Rate / 2) {
 			success = 2;
 		}
-		else{
+		else {
 			success = 1;
 		}
 	}
