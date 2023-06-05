@@ -91,7 +91,7 @@ public:
 	}
 
 	// 反擊:輸入鬥毆等級、角色傷害骰、敵人鬥毆等級、敵人傷害骰；敵人傷害加成
-	int evade(Player attacker, Player defender) {
+	int Evade(Player attacker, Player defender) {
 		// 隨機角色的閃避與敵人的鬥毆成功度
 		srand(time(NULL));
 		character.check(defender.get_skill().Brawl);
