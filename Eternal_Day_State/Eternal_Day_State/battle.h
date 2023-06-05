@@ -1,5 +1,6 @@
 #pragma once
 #include "roll.h"
+#include "character.h"
 
 class battle {
 public:
@@ -9,19 +10,19 @@ public:
 	roll enemy;
 
 	// 攻擊:輸入傷害加值、傷害骰、鬥毆等級、是否穿刺；輸出傷害
-	void attack(int DB, int Dmg, int Brawl, bool pierce, int Enemy_Brawl, int Enemy_Dmg) {
+	void attack(Player attacker, Player defender, bool pierce) {
 
 		// 隨機角色的鬥毆與敵人的反擊成功度
 		srand(time(NULL));
-		character.check(Brawl);
-		enemy.check(Enemy_Brawl);
+		character.check(attacker.get_skill().Brawl);
+		enemy.check(defender.get_skill().Brawl);
 
 		// 計算角色傷害加值
-		if (DB <= 0) {
-			db = DB;
+		if (attacker.get_ability().DB <= 0) {
+			db = attacker.get_ability().DB;
 		}
 		else {
-			db = rand() % DB + 1;
+			db = rand() % attacker.get_ability().DB + 1;
 		}
 
 		// 做反擊與鬥毆的對抗檢定
@@ -34,31 +35,32 @@ public:
 				dmg = 0;
 			}
 			else if (character.success == 1 || character.success == 2) {
-				dmg = rand() % Dmg + 1 + db;
+				dmg = rand() % attacker.get_ability().DMG + 1 + db;
 			}
 			else {
 
 				// 判斷穿刺傷害
 				if (pierce) {
-					dmg = rand() % Dmg + 1 + Dmg + DB;
+					dmg = rand() % attacker.get_ability().DMG + 1 + attacker.get_ability().DMG + attacker.get_ability().DB;
 				}
 				else {
-					dmg = Dmg + DB;
+					dmg = attacker.get_ability().DMG + attacker.get_ability().DB;
 				}
 			}
 		}
 		// 反擊成功
 		else {
 			atk_success = false;
-			dmg = rand() % Enemy_Dmg + 1;
+			dmg = rand() % defender.get_ability().DB + 1;
 		}
 	}
+
 	// 閃避:輸入閃避等級、敵人鬥毆等級、敵人傷害骰；敵人傷害加成
-	int evade(int Evade, int Enemy_Brawl, int Enemy_Dmg, int Enemy_DB) {
+	int evade(Player attacker, Player defender) {
 		// 隨機角色的閃避與敵人的鬥毆成功度
 		srand(time(NULL));
-		character.check(Evade);
-		enemy.check(Enemy_Brawl);
+		character.check(defender.get_skill().Evade);
+		enemy.check(attacker.get_skill().Brawl);
 
 		// 做閃避與鬥毆的對抗檢定
 		if (character.success >= enemy.success) {
@@ -68,11 +70,11 @@ public:
 			atk_success = true;
 
 			// 計算角色傷害加值
-			if (Enemy_DB <= 0) {
-				db = Enemy_DB;
+			if (attacker.get_ability().DB <= 0) {
+				db = attacker.get_ability().DB;
 			}
 			else {
-				db = rand() % Enemy_DB + 1;
+				db = rand() % attacker.get_ability().DB + 1;
 			}
 
 			// 判斷成功程度
@@ -80,35 +82,35 @@ public:
 				dmg = 0;
 			}
 			else if (enemy.success == 1 || enemy.success == 2) {
-				dmg = rand() % Enemy_Dmg + 1 + db;
+				dmg = rand() % attacker.get_ability().DMG + 1 + db;
 			}
 			else {
-				dmg = Enemy_Dmg + Enemy_DB;
+				dmg = attacker.get_ability().DMG + attacker.get_ability().DB;
 			}
 		}
 	}
 
 	// 反擊:輸入鬥毆等級、角色傷害骰、敵人鬥毆等級、敵人傷害骰；敵人傷害加成
-	int evade(int Brawl, int Dmg, int Enemy_Brawl, int Enemy_Dmg, int Enemy_DB) {
+	int Evade(Player attacker, Player defender) {
 		// 隨機角色的閃避與敵人的鬥毆成功度
 		srand(time(NULL));
-		character.check(Brawl);
-		enemy.check(Enemy_Brawl);
+		character.check(defender.get_skill().Brawl);
+		enemy.check(attacker.get_skill().Brawl);
 
 		// 做反擊與鬥毆的對抗檢定
 		if (character.success > enemy.success) {
 			atk_success = false;
-			dmg = rand() % Dmg + 1;
+			dmg = rand() % defender.get_ability().DMG + 1;
 		}
 		else {
 			atk_success = true;
 
 			// 計算敵人傷害加值
-			if (Enemy_DB <= 0) {
-				db = Enemy_DB;
+			if (attacker.get_ability().DB <= 0) {
+				db = attacker.get_ability().DB;
 			}
 			else {
-				db = rand() % Enemy_DB + 1;
+				db = rand() % attacker.get_ability().DB + 1;
 			}
 
 			// 判斷成功程度
@@ -116,10 +118,10 @@ public:
 				dmg = 0;
 			}
 			else if (enemy.success == 1 || enemy.success == 2) {
-				dmg = rand() % Enemy_Dmg + 1 + db;
+				dmg = rand() % attacker.get_ability().DMG + 1 + db;
 			}
 			else {
-				dmg = Enemy_Dmg + Enemy_DB;
+				dmg = attacker.get_ability().DMG + attacker.get_ability().DB;
 			}
 		}
 	}
