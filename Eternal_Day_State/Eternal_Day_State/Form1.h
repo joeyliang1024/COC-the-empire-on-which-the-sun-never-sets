@@ -17,15 +17,15 @@ int sun_count = 29;
 
 roll dice;
 //character object
-NPC Johann({ "www//pic//Johann.png" }, 65, 70, 50, 50, 40, 40, 40, 40, 40, 50, 9, 8, 4);
-NPC Gawain({ "www//pic//char_pixel//Gawain.png" }, 80, 70, 85, 80, 85, 65, 75, 65, 50, 80, 15, 13, 6);
-NPC Guinevere({ "www//pic//Guinevere.png" }, 25, 55, 60, 35, 90, 45, 45, 45, 80, 80, 6, 9, -1);
-NPC Bedivere({ "www//pic//Bedivere.png" }, 95, 95, 60, 95, 95, 40, 80, 40, 50, 50, 17, 8, 6);
-NPC Arthur({ "www//pic//Arthur.png" }, 75, 85, 55, 60, 75, 55, 75, 40, 40, 50, 13, 11, 4);
-Player player({ "www//pic//Arthur.png" }, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
-Player occultist({ "www//pic//Arthur.png" }, 65, 80, 60, 55, 45, 45, 50, 45, 60, 40, 10, 9, 0, 60, 60, 60, 60, 50, 50, 80, 40, 30, 40, 40);
-Player archaeologist({ "www//pic//Arthur.png" }, 60, 55, 82, 45, 45, 65, 65, 65, 80, 60, 11, 13, 4, 60, 30, 80, 30, 30, 80, 50, 20, 60, 80, 20);
-Player reporter({ "www//pic//Arthur.png" }, 55, 80, 45, 65, 60, 45, 70, 45, 40, 80, 12, 9, 4, 70, 70, 50, 70, 70, 50, 40, 70, 20, 20, 50);
+NPC Johann({ "www//pic//Johann.png" }, 65, 70, 50, 50, 40, 40, 40, 40, 40, 50, 9, 8, 4, 3);
+NPC Gawain({ "www//pic//char_pixel//Gawain.png" }, 80, 70, 85, 80, 85, 65, 75, 65, 50, 80, 15, 13, 6, 3);
+NPC Guinevere({ "www//pic//Guinevere.png" }, 25, 55, 60, 35, 90, 45, 45, 45, 80, 80, 6, 9, -1, 3);
+NPC Bedivere({ "www//pic//Bedivere.png" }, 95, 95, 60, 95, 95, 40, 80, 40, 50, 50, 17, 8, 6, 3);
+NPC Arthur({ "www//pic//Arthur.png" }, 75, 85, 55, 60, 75, 55, 75, 40, 40, 50, 13, 11, 4, 8);
+Player player({ "www//pic//Arthur.png" }, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+Player occultist({ "www//pic//Arthur.png" }, 65, 80, 60, 55, 45, 45, 50, 45, 60, 40, 10, 9, 0, 60, 60, 60, 60, 50, 50, 80, 40, 30, 40, 40, 3);
+Player archaeologist({ "www//pic//Arthur.png" }, 60, 55, 82, 45, 45, 65, 65, 65, 80, 60, 11, 13, 4, 60, 30, 80, 30, 30, 80, 50, 20, 60, 80, 20, 3);
+Player reporter({ "www//pic//Arthur.png" }, 55, 80, 45, 65, 60, 45, 70, 45, 40, 80, 12, 9, 4, 70, 70, 50, 70, 70, 50, 40, 70, 20, 20, 50, 3);
 
  
 //background object
@@ -2072,7 +2072,7 @@ namespace CppCLRWinFormsProject {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 12);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(888, 530);
+			this->ClientSize = System::Drawing::Size(1008, 921);
 			this->Controls->Add(this->Sewer_Inn_Library);
 			this->Controls->Add(this->Sewer_Library_Inn);
 			this->Controls->Add(this->Sewer_Library_Prison);
@@ -3000,7 +3000,7 @@ namespace CppCLRWinFormsProject {
 		item_button->Visible = false;
 		item_pic->Visible = true;
 		// in plazza
-		if (strcmp(place, "plazza")) {
+		if (strcmp(place, "plazza") == 0) {
 			item_pic->Image = gcnew Bitmap(gcnew System::String(Map.get_path()));
 			Ask_Wagain->Visible = false;
 			signpost->Visible = false;
@@ -3016,7 +3016,7 @@ namespace CppCLRWinFormsProject {
 	private: System::Void item_pic_Click(System::Object^ sender, System::EventArgs^ e) {
 		item_pic->Visible = false;
 		// in plazza
-		if (strcmp(place, "plazza")) { 
+		if (strcmp(place, "plazza") == 0) { 
 			Ask_Wagain->Visible = true;
 			signpost->Visible = true;
 			sundial->Visible = true;
@@ -3026,13 +3026,13 @@ namespace CppCLRWinFormsProject {
 	}
 	private: System::Void chatbox_1_Click(System::Object^ sender, System::EventArgs^ e) {
 		// in plazza
-		if (strcmp(place, "plazza")) {
+		if (strcmp(place, "plazza") == 0) {
 			dialog_text->Text = "我們下一站要去的是傭有成鎮中最美麗自然風景的地方”德茲瑪麗湖”。";
 		}
 	}
 	private: System::Void chatbox_2_Click(System::Object^ sender, System::EventArgs^ e) {
 		// in plazza
-		if (strcmp(place, "plazza")) {
+		if (strcmp(place, "plazza") == 0) {
 			dialog_text->Text = "你們向著左側走去，路途經過了一棟建築，這是一個由石頭砌成的建築，建築有著一扇鐵藝門，門口站著兩位全副武裝的侍衛，在門上方還掛著一塊禁止進入的牌匾，你們順著土路和兩旁的綠植走到了一座湖邊。。";
 			background->Image = gcnew Bitmap(gcnew System::String(Prison_Outside.get_path()));
 			strcpy(place, "lake");
@@ -3405,6 +3405,7 @@ namespace CppCLRWinFormsProject {
 		Sewer_To_Inn->Visible = false;
 		Sewer_Inn_Outlet->Visible = false;
 		Sewer_Inn_Plazza->Visible = false;
+		Sewer_Inn_Library->Visible = false;
 		// diaplay object in scene
 		Sewer_To_Plazza->Visible = true;
 		Sewer_Plazza_Inn->Visible = true;
