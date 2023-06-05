@@ -8,7 +8,6 @@ public:
 	struct size get_size();
 	void edit_size(int Width, int Height);
 	bool IsEnable();
-	struct ability get_ability();
 protected:
 	char* data_path;
 	ability ability;
@@ -17,7 +16,7 @@ protected:
 }; 
 class Player:public Character {
 public:
-	Player(char* picture_path, int str, int dex, int Int, int con, int app, int pow, int siz, int san, int edu, int luck, int hp, int mp, int db, int spot, int listen, int library, int brawl, int evade, int history, int occult, int psycology, int biology, int archaeology, int medicine, int dmg) {
+	Player(char* picture_path, int str, int dex, int Int, int con, int app, int pow, int siz, int san, int edu, int luck, int hp, int mp, int db, int spot, int listen, int library, int brawl, int evade, int history, int occult, int psycology, int biology, int archaeology, int medicine) {
 		this->data_path = picture_path;
 		this->ability.STR = str;
 		this->ability.DEX = dex;
@@ -43,17 +42,6 @@ public:
 		this->skill.Biology = biology;
 		this->skill.Archaeology = archaeology;
 		this->skill.Medicine = medicine;
-		this->ability.DMG = dmg;
-	}
-	bool collsion(int ButtonX, int ButtonY) {
-		float dis = (pos.x - ButtonX) * (pos.x - ButtonX) + (pos.y - ButtonY) * (pos.y - ButtonY);
-		if (dis < 100) {
-			//collosion
-			return true;
-		}
-		else{
-			return false;
-		}
 	}
 	struct skill get_skill();
 private:
@@ -61,7 +49,7 @@ private:
 };
 class NPC :public Character {
 public:
-	NPC(char* picture_path, int str, int dex, int Int, int con, int app, int pow, int siz, int san, int edu, int luck, int hp, int mp, int db, int dmg) {
+	NPC(char* picture_path, int str, int dex, int Int, int con, int app, int pow, int siz, int san, int edu, int luck, int hp, int mp, int db) {
 		this->ability.STR = str;
 		this->ability.DEX = dex;
 		this->ability.INT = Int;
@@ -75,6 +63,5 @@ public:
 		this->ability.HP = hp;
 		this->ability.MP = mp;
 		this->ability.DB = db;
-		this->ability.DMG = dmg;
 	}
 };
