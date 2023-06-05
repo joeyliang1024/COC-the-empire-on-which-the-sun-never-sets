@@ -42,7 +42,7 @@ struct ability {
 	int HP;
 	int MP;
 	int DB;
-	int DMG
+	int DMG;
 };
 struct skill {
 	int Spot;
