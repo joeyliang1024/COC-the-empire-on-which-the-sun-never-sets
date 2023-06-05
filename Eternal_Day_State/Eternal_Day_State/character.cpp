@@ -32,3 +32,6 @@ bool Character::IsEnable() {
 	*/
 	return 0;
 }
+void Character::edit_HP(int change) {
+	this->ability.HP = ability.HP + change;
+};

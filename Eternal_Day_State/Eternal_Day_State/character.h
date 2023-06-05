@@ -9,6 +9,7 @@ public:
 	void edit_size(int Width, int Height);
 	bool IsEnable();
 	struct ability get_ability();
+	void edit_HP(int change);
 protected:
 	char* data_path;
 	ability ability;

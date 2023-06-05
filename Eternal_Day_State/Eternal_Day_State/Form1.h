@@ -15,6 +15,7 @@
 int system_counter = 0;
 int continue_button_count = 0;
 char place[20]; //地點判定
+char whatchat[20];
 int lake_count = 0;
 int sun_count = 29;
 
@@ -77,6 +78,12 @@ namespace CppCLRWinFormsProject {
 	private: System::Windows::Forms::Button^ Sewer_Intersection_Prison;
 	private: System::Windows::Forms::Button^ Sewer_Intersection_Lake;
 	private: System::Windows::Forms::Button^ Sewer_Lake_Intersection;
+	private: System::Windows::Forms::Button^ chat_stranger_plazza;
+	private: System::Windows::Forms::Button^ chatbox_4;
+
+	private: System::Windows::Forms::Button^ chatbox_3;
+
+
 	public:
 
 	public:
@@ -315,6 +322,8 @@ namespace CppCLRWinFormsProject {
 			this->chose_character_text = (gcnew System::Windows::Forms::Label());
 			this->backpack = (gcnew System::Windows::Forms::Button());
 			this->backpack_panel = (gcnew System::Windows::Forms::Panel());
+			this->chatbox_4 = (gcnew System::Windows::Forms::Button());
+			this->chatbox_3 = (gcnew System::Windows::Forms::Button());
 			this->chatbox_2 = (gcnew System::Windows::Forms::Button());
 			this->Observe_Sundial = (gcnew System::Windows::Forms::Button());
 			this->chatbox_1 = (gcnew System::Windows::Forms::Button());
@@ -434,6 +443,7 @@ namespace CppCLRWinFormsProject {
 			this->Sewer_Intersection_Prison = (gcnew System::Windows::Forms::Button());
 			this->Sewer_Intersection_Lake = (gcnew System::Windows::Forms::Button());
 			this->Sewer_Lake_Intersection = (gcnew System::Windows::Forms::Button());
+			this->chat_stranger_plazza = (gcnew System::Windows::Forms::Button());
 			this->backpack_panel->SuspendLayout();
 			this->status_panel->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->menu))->BeginInit();
@@ -582,6 +592,8 @@ namespace CppCLRWinFormsProject {
 			// 
 			// backpack_panel
 			// 
+			this->backpack_panel->Controls->Add(this->chatbox_4);
+			this->backpack_panel->Controls->Add(this->chatbox_3);
 			this->backpack_panel->Controls->Add(this->chatbox_2);
 			this->backpack_panel->Controls->Add(this->Observe_Sundial);
 			this->backpack_panel->Controls->Add(this->chatbox_1);
@@ -599,15 +611,41 @@ namespace CppCLRWinFormsProject {
 			this->backpack_panel->TabIndex = 10;
 			this->backpack_panel->Visible = false;
 			// 
+			// chatbox_4
+			// 
+			this->chatbox_4->Font = (gcnew System::Drawing::Font(L"標楷體", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(136)));
+			this->chatbox_4->Location = System::Drawing::Point(335, 198);
+			this->chatbox_4->Name = L"chatbox_4";
+			this->chatbox_4->Size = System::Drawing::Size(300, 30);
+			this->chatbox_4->TabIndex = 62;
+			this->chatbox_4->Text = L"chatbox4";
+			this->chatbox_4->UseVisualStyleBackColor = true;
+			this->chatbox_4->Visible = false;
+			this->chatbox_4->Click += gcnew System::EventHandler(this, &Form1::chatbox_4_Click);
+			// 
+			// chatbox_3
+			// 
+			this->chatbox_3->Font = (gcnew System::Drawing::Font(L"標楷體", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(136)));
+			this->chatbox_3->Location = System::Drawing::Point(335, 162);
+			this->chatbox_3->Name = L"chatbox_3";
+			this->chatbox_3->Size = System::Drawing::Size(300, 30);
+			this->chatbox_3->TabIndex = 61;
+			this->chatbox_3->Text = L"chatbox3";
+			this->chatbox_3->UseVisualStyleBackColor = true;
+			this->chatbox_3->Visible = false;
+			this->chatbox_3->Click += gcnew System::EventHandler(this, &Form1::chatbox_3_Click);
+			// 
 			// chatbox_2
 			// 
 			this->chatbox_2->Font = (gcnew System::Drawing::Font(L"標楷體", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(136)));
-			this->chatbox_2->Location = System::Drawing::Point(4, 76);
+			this->chatbox_2->Location = System::Drawing::Point(20, 198);
 			this->chatbox_2->Name = L"chatbox_2";
 			this->chatbox_2->Size = System::Drawing::Size(300, 30);
 			this->chatbox_2->TabIndex = 60;
-			this->chatbox_2->Text = L"跟著他走";
+			this->chatbox_2->Text = L"chatbox2";
 			this->chatbox_2->UseVisualStyleBackColor = true;
 			this->chatbox_2->Visible = false;
 			this->chatbox_2->Click += gcnew System::EventHandler(this, &Form1::chatbox_2_Click);
@@ -629,11 +667,11 @@ namespace CppCLRWinFormsProject {
 			// 
 			this->chatbox_1->Font = (gcnew System::Drawing::Font(L"標楷體", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(136)));
-			this->chatbox_1->Location = System::Drawing::Point(4, 40);
+			this->chatbox_1->Location = System::Drawing::Point(20, 162);
 			this->chatbox_1->Name = L"chatbox_1";
 			this->chatbox_1->Size = System::Drawing::Size(300, 30);
 			this->chatbox_1->TabIndex = 59;
-			this->chatbox_1->Text = L"下一站是哪裡";
+			this->chatbox_1->Text = L"chatbox1";
 			this->chatbox_1->UseVisualStyleBackColor = true;
 			this->chatbox_1->Visible = false;
 			this->chatbox_1->Click += gcnew System::EventHandler(this, &Form1::chatbox_1_Click);
@@ -2126,11 +2164,26 @@ namespace CppCLRWinFormsProject {
 			this->Sewer_Lake_Intersection->Visible = false;
 			this->Sewer_Lake_Intersection->Click += gcnew System::EventHandler(this, &Form1::Sewer_Lake_Intersection_Click);
 			// 
+			// chat_stranger_plazza
+			// 
+			this->chat_stranger_plazza->Font = (gcnew System::Drawing::Font(L"標楷體", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->chat_stranger_plazza->Location = System::Drawing::Point(593, 575);
+			this->chat_stranger_plazza->Margin = System::Windows::Forms::Padding(1, 2, 1, 2);
+			this->chat_stranger_plazza->Name = L"chat_stranger_plazza";
+			this->chat_stranger_plazza->Size = System::Drawing::Size(96, 64);
+			this->chat_stranger_plazza->TabIndex = 93;
+			this->chat_stranger_plazza->Text = L"與老人談話";
+			this->chat_stranger_plazza->UseVisualStyleBackColor = true;
+			this->chat_stranger_plazza->Visible = false;
+			this->chat_stranger_plazza->Click += gcnew System::EventHandler(this, &Form1::chat_stranger_plazza_Click);
+			// 
 			// Form1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 12);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(888, 530);
+			this->ClientSize = System::Drawing::Size(1024, 960);
+			this->Controls->Add(this->chat_stranger_plazza);
 			this->Controls->Add(this->Sewer_Lake_Intersection);
 			this->Controls->Add(this->Sewer_Intersection_Lake);
 			this->Controls->Add(this->Sewer_Intersection_Prison);
@@ -2578,10 +2631,15 @@ namespace CppCLRWinFormsProject {
 			sundial->Visible = true;
 			Plazza_To_Inn->Visible = true;
 			Plazza_To_Prison->Visible = true;
-			Ask_Wagain->Visible = true;
-			listen_stranger_plazza->Visible = true;
 			player_motion->Visible = true;
 			Plazza_To_Sewer->Visible = true;
+			if (sun_count % 6 != 0) {
+				listen_stranger_plazza->Visible = true;
+				chat_stranger_plazza->Visible = true;
+			}
+			if (sun_count % 6 == 5) {
+				Ask_Wagain->Visible = true;
+			}
 		}
 
 		if (lake_count == 1) {
@@ -2599,17 +2657,23 @@ namespace CppCLRWinFormsProject {
 		Observe_Signpost->Visible = true;
 		chatbox_1->Visible = false;
 		chatbox_2->Visible = false;
+		chatbox_3->Visible = false;
+		chatbox_4->Visible = false;
 		Observe_Sundial->Visible = false;
 		listen_stranger_plazza->Visible = false;
+		chat_stranger_plazza->Visible = false;
 	}
 	private: System::Void sundial_Click(System::Object^ sender, System::EventArgs^ e) {
 		dialog_text->Text = "這是個半徑約有三到四公尺的日晷，是用石料配合著華麗的工藝雕刻而成，看起來非常的壯觀，有種巴洛克式的美，現在日晷指針的陰影指在”時間”字上。";
 		Observe_Signpost->Visible = false;
 		chatbox_1->Visible = false;
 		chatbox_2->Visible = false;
+		chatbox_3->Visible = false;
+		chatbox_4->Visible = false;
 		item_button->Visible = false;
 		Observe_Sundial->Visible = true;
 		listen_stranger_plazza->Visible = false;
+		chat_stranger_plazza->Visible = false;
 
 	}
 	private: System::Void Plazza_To_Inn_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -2624,9 +2688,12 @@ namespace CppCLRWinFormsProject {
 		Observe_Signpost->Visible = false;
 		chatbox_1->Visible = false;
 		chatbox_2->Visible = false;
+		chatbox_3->Visible = false;
+		chatbox_4->Visible = false;
 		item_button->Visible = false;
 		Observe_Sundial->Visible = false;
 		listen_stranger_plazza->Visible = false;
+		chat_stranger_plazza->Visible = false;
 		Plazza_To_Sewer->Visible = false;
 		// display object in scene
 		Inn_To_Plazza->Visible = true;
@@ -2651,9 +2718,12 @@ namespace CppCLRWinFormsProject {
 		Observe_Signpost->Visible = false;
 		chatbox_1->Visible = false;
 		chatbox_2->Visible = false;
+		chatbox_3->Visible = false;
+		chatbox_4->Visible = false;
 		item_button->Visible = false;
 		Observe_Sundial->Visible = false;
 		listen_stranger_plazza->Visible = false;
+		chat_stranger_plazza->Visible = false;
 		Plazza_To_Sewer->Visible = false;
 		// display object in scene
 		Prison_To_Restaurant->Visible = true;
@@ -2729,11 +2799,17 @@ namespace CppCLRWinFormsProject {
 		sundial->Visible = true;
 		Plazza_To_Inn->Visible = true;
 		Plazza_To_Prison->Visible = true;
-		Ask_Wagain->Visible = true;
 		Plazza_To_Sewer->Visible = true;
 		background->Image = gcnew Bitmap(gcnew System::String(Plazza.get_path()));
 		sun_count -= 1;
 		Sun->Value = sun_count % 6;
+		if (sun_count % 6 != 0) {
+			listen_stranger_plazza->Visible = true;
+			chat_stranger_plazza->Visible = true;
+		}
+		if (sun_count % 6 == 5) {
+			Ask_Wagain->Visible = true;
+		}
 	}
 	private: System::Void Inn_To_Market_Click(System::Object^ sender, System::EventArgs^ e) {
 		dialog_text->Text = "市場的街道狹窄而擁擠，滿是雜物，很容易讓人摔倒。市場里擠滿了商販和攤販，他們用各種聲音、手勢和展示方式向你推銷自己的產品。你可以聽到他們高聲地叫賣，介紹自己的貨品，有些商販用樂器演奏著悠揚的音樂，吸引著顧客。";
@@ -2858,11 +2934,17 @@ namespace CppCLRWinFormsProject {
 		sundial->Visible = true;
 		Plazza_To_Inn->Visible = true;
 		Plazza_To_Prison->Visible = true;
-		Ask_Wagain->Visible = true;
 		Plazza_To_Sewer->Visible = true;
 		background->Image = gcnew Bitmap(gcnew System::String(Plazza.get_path()));
 		sun_count -= 1;
 		Sun->Value = sun_count % 6;
+		if (sun_count % 6 != 0) {
+			listen_stranger_plazza->Visible = true;
+			chat_stranger_plazza->Visible = true;
+		}
+		if (sun_count % 6 == 5) {
+			Ask_Wagain->Visible = true;
+		}
 	}
 	private: System::Void Inn_To_IntersectionRight_Click(System::Object^ sender, System::EventArgs^ e) {
 		dialog_text->Text = "路口右待補";
@@ -3091,9 +3173,16 @@ namespace CppCLRWinFormsProject {
 		dialog_text->Text = "你想問甚麼問題?";
 		Observe_Signpost->Visible = false;
 		Observe_Sundial->Visible = false;
+		chatbox_1->Text = "下一站是哪裡";
 		chatbox_1->Visible = true;
+		chatbox_2->Text = "跟著他走";
 		chatbox_2->Visible = true;
+		chatbox_3->Text = "城鎮有甚麼特色";
+		chatbox_3->Visible = true;
+		chatbox_4->Text = "攻擊他";
+		chatbox_4->Visible = true;
 		item_button->Visible = false;
+		strcpy(whatchat, "wagain_plazza");
 	}
 	private: System::Void Observe_Library_Click(System::Object^ sender, System::EventArgs^ e) {
 		dialog_text->Text = "你仔細地觀察了藏書庫的內部";
@@ -3191,6 +3280,8 @@ namespace CppCLRWinFormsProject {
 			player_motion->Visible = false;
 			chatbox_1->Visible = false;
 			chatbox_2->Visible = false;
+			chatbox_3->Visible = false;
+			chatbox_4->Visible = false;
 		}
 		dialog_text->Text = "點擊圖片以關閉圖片";
 
@@ -3199,45 +3290,22 @@ namespace CppCLRWinFormsProject {
 		item_pic->Visible = false;
 		// in plazza
 		if (strcmp(place, "plazza") == 0) { 
-			Ask_Wagain->Visible = true;
 			signpost->Visible = true;
 			sundial->Visible = true;
 			Plazza_To_Inn->Visible = true;
 			Plazza_To_Prison->Visible = true;
 			Plazza_To_Sewer->Visible = true;
 			player_motion->Visible = true;
+			if (sun_count % 6 != 0) {
+				listen_stranger_plazza->Visible = true;
+				chat_stranger_plazza->Visible = true;
+			}
+			if (sun_count % 6 == 5) {
+				Ask_Wagain->Visible = true;
+			}
 		}
 	}
-	private: System::Void chatbox_1_Click(System::Object^ sender, System::EventArgs^ e) {
-		// in plazza
-		if (strcmp(place, "plazza") == 0) {
-			dialog_text->Text = "我們下一站要去的是傭有成鎮中最美麗自然風景的地方”德茲瑪麗湖”。";
-		}
-	}
-	private: System::Void chatbox_2_Click(System::Object^ sender, System::EventArgs^ e) {
-		// in plazza
-		if (strcmp(place, "plazza") == 0) {
-			dialog_text->Text = "你們向著左側走去，路途經過了一棟建築，這是一個由石頭砌成的建築，建築有著一扇鐵藝門，門口站著兩位全副武裝的侍衛，在門上方還掛著一塊禁止進入的牌匾，你們順著土路和兩旁的綠植走到了一座湖邊。。";
-			background->Image = gcnew Bitmap(gcnew System::String(Prison_Outside.get_path()));
-			strcpy(place, "lake");
-			// hide object in scene
-			signpost->Visible = false;
-			sundial->Visible = false;
-			Plazza_To_Inn->Visible = false;
-			Plazza_To_Prison->Visible = false;
-			Ask_Wagain->Visible = false;
-			Observe_Signpost->Visible = false;
-			chatbox_1->Visible = false;
-			chatbox_2->Visible = false;
-			item_button->Visible = false;
-			Observe_Sundial->Visible = false;
-			listen_stranger_plazza->Visible = false;
-			listen_stranger_plazza->Visible = false;
-			// show object in scene
-			continue_button->Visible = true;
-			lake_count = 1;
-		}
-	}
+	
 	private: System::Void Observe_Sundial_Click(System::Object^ sender, System::EventArgs^ e) {
 		dice.check(player.get_skill().Spot);
 		if (Observe_Sundial_Count == 9) {
@@ -3263,22 +3331,24 @@ namespace CppCLRWinFormsProject {
 		Observe_Signpost->Visible = false;
 		chatbox_1->Visible = false;
 		chatbox_2->Visible = false;
+		chatbox_3->Visible = false;
+		chatbox_4->Visible = false;
 		dice.check(player.get_skill().Listen);
 		if (Observe_Stranger_Plazza_Count == 9) {
 			if (dice.success == 0) {
-				dialog_text->Text = "觀察判定:失敗\r\n你在一旁偷聽老人家的閒話家常，老人們說話帶著很重的口音，讓你難以理解。";
+				dialog_text->Text = "聆聽判定:失敗\r\n你在一旁偷聽老人家的閒話家常，老人們說話帶著很重的口音，讓你難以理解。";
 			}
 			else {
-				dialog_text->Text = "觀察判定:成功\r\n你在一旁偷聽老人家的閒話家常，你聽到一個老人在說，他家下方好像有老鼠之類的東西，最近他睡覺的時候，有時候會聽到一些嘈雜的聲音從地板下傳來，怕不是下水道裡養了隻大老鼠。";
+				dialog_text->Text = "聆聽判定:成功\r\n你在一旁偷聽老人家的閒話家常，你聽到一個老人在說，他家下方好像有老鼠之類的東西，最近他睡覺的時候，有時候會聽到一些嘈雜的聲音從地板下傳來，怕不是下水道裡養了隻大老鼠。";
 			}
 			Observe_Stranger_Plazza_Count = dice.success;
 		}
 		else {
 			if (Observe_Stranger_Plazza_Count == 0) {
-				dialog_text->Text = "觀察判定:失敗\r\n你在一旁偷聽老人家的閒話家常，老人們說話帶著很重的口音，讓你難以理解。";
+				dialog_text->Text = "聆聽判定:失敗\r\n你在一旁偷聽老人家的閒話家常，老人們說話帶著很重的口音，讓你難以理解。";
 			}
 			else {
-				dialog_text->Text = "觀察判定:成功\r\n你在一旁偷聽老人家的閒話家常，你聽到一個老人在說，他家下方好像有老鼠之類的東西，最近他睡覺的時候，有時候會聽到一些嘈雜的聲音從地板下傳來，怕不是下水道裡養了隻大老鼠。";
+				dialog_text->Text = "聆聽判定:成功\r\n你在一旁偷聽老人家的閒話家常，你聽到一個老人在說，他家下方好像有老鼠之類的東西，最近他睡覺的時候，有時候會聽到一些嘈雜的聲音從地板下傳來，怕不是下水道裡養了隻大老鼠。";
 			}
 		}
 	}
@@ -3297,6 +3367,7 @@ namespace CppCLRWinFormsProject {
 		item_button->Visible = false;
 		Observe_Sundial->Visible = false;
 		listen_stranger_plazza->Visible = false;
+		chat_stranger_plazza->Visible = false;
 		Plazza_To_Sewer->Visible = false;
 		// display object in scene
 		Sewer_To_Plazza->Visible = true;
@@ -3403,9 +3474,15 @@ namespace CppCLRWinFormsProject {
 		sundial->Visible = true;
 		Plazza_To_Inn->Visible = true;
 		Plazza_To_Prison->Visible = true;
-		Ask_Wagain->Visible = true;
 		Plazza_To_Sewer->Visible = true;
 		background->Image = gcnew Bitmap(gcnew System::String(Plazza.get_path()));
+		if (sun_count % 6 != 0) {
+			listen_stranger_plazza->Visible = true;
+			chat_stranger_plazza->Visible = true;
+		}
+		if (sun_count % 6 == 5) {
+			Ask_Wagain->Visible = true;
+		}
 	}
 	private: System::Void Sewer_To_Inn_Click(System::Object^ sender, System::EventArgs^ e) {
 		strcpy(place, "inn");
@@ -3716,6 +3793,73 @@ namespace CppCLRWinFormsProject {
 		Sewer_Intersection_Prison->Visible = true;
 		Sewer_Intersection_Lake->Visible = true;
 		background->Image = gcnew Bitmap(gcnew System::String(Sewer.get_path()));
+	}
+	private: System::Void chat_stranger_plazza_Click(System::Object^ sender, System::EventArgs^ e) {
+		strcpy(whatchat, "stranger_plazza");
+		if (sun_count >= 18) {
+			dialog_text->Text = "無論你如何呼喊，他們就像是沒看到你一般。";
+		}
+		else {
+			chatbox_1->Text = "你感覺這城鎮如何";
+			chatbox_1->Visible = true;
+			chatbox_2->Text = "這裡為何沒有黑夜";
+			chatbox_2->Visible = true;
+			chatbox_3->Text = "鎮子上有什麼傳說嗎";
+			chatbox_3->Visible = true;
+		}
+	}
+	private: System::Void chatbox_1_Click(System::Object^ sender, System::EventArgs^ e) {
+		// in plazza
+		if (strcmp(whatchat, "wagain_plazza") == 0) {
+			   dialog_text->Text = "我們下一站要去的是傭有成鎮中最美麗自然風景的地方”德茲瑪麗湖”。";
+		}
+		else if (strcmp(whatchat, "stranger_plazza") == 0) {
+			dialog_text->Text = "我從小就住在這座城鎮，這座城鎮的風景優美、鎮民和樂安康，能住在治理的這麼好的城鎮裡可真是我三輩子修來的福份啊!";
+		}
+    }
+	private: System::Void chatbox_2_Click(System::Object^ sender, System::EventArgs^ e) {
+		// in plazza
+		if (strcmp(whatchat, "wagain_plazza") == 0) {
+			dialog_text->Text = "你們向著左側走去，路途經過了一棟建築，這是一個由石頭砌成的建築，建築有著一扇鐵藝門，門口站著兩位全副武裝的侍衛，在門上方還掛著一塊禁止進入的牌匾，你們順著土路和兩旁的綠植走到了一座湖邊。";
+			background->Image = gcnew Bitmap(gcnew System::String(Prison_Outside.get_path()));
+			strcpy(place, "lake");
+			// hide object in scene
+			signpost->Visible = false;
+			sundial->Visible = false;
+			Plazza_To_Inn->Visible = false;
+			Plazza_To_Prison->Visible = false;
+			Ask_Wagain->Visible = false;
+			Observe_Signpost->Visible = false;
+			chatbox_1->Visible = false;
+			chatbox_2->Visible = false;
+			chatbox_3->Visible = false;
+			chatbox_4->Visible = false;
+			item_button->Visible = false;
+			Observe_Sundial->Visible = false;
+			listen_stranger_plazza->Visible = false;
+			chat_stranger_plazza->Visible = false;
+			// show object in scene
+			continue_button->Visible = true;
+			lake_count = 1;
+		}
+		else if (strcmp(whatchat, "stranger_plazza") == 0) {
+			dialog_text->Text = "你在說甚麼阿，黑夜是甚麼最近的流行語嗎。";
+		}
+	}
+	private: System::Void chatbox_3_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (strcmp(whatchat, "wagain_plazza") == 0) {
+			dialog_text->Text = "這個城鎮的太陽永不落下，在這裡的人都有一顆積極熱誠的心，這座城鎮不光風景極佳，比起其他地方先進可不只一籌。";
+		}
+		else if (strcmp(whatchat, "stranger_plazza") == 0) {
+			dialog_text->Text = "傳說甚麼的我倒是沒聽說過，這座陣子非常的安穩和諧，如果你真的十分好奇的話，可以試著去圖書館找找看。";
+		}
+	}
+	private: System::Void chatbox_4_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (strcmp(whatchat, "wagain_plazza") == 0) {
+			dialog_text->Text = "你向他發出了攻擊，下一秒你感覺你的手腕被握住，你感到一震天旋地轉，背後火辣辣的疼痛與從高處俯瞰的那張充滿笑容的臉讓你意識到你失敗了，”禁止暴力喔”瓦格恩輕柔地說道，你受到了2點傷害。";
+			player.edit_HP(-2);
+			chatbox_4->Visible = false;
+		}
 	}
 };
 }
