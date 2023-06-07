@@ -20,6 +20,7 @@ int lake_count = 0;
 int sun_count = 29;
 
 roll dice;
+battle Battle;
 //character object
 NPC Johann({ "www//pic//Johann.png" }, 65, 70, 50, 50, 40, 40, 40, 40, 40, 50, 9, 8, 4, 3);
 NPC Gawain({ "www//pic//char_pixel//Gawain.png" }, 80, 70, 85, 80, 85, 65, 75, 65, 50, 80, 15, 13, 6, 3);
@@ -30,8 +31,9 @@ Player player({ "www//pic//Arthur.png" }, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 Player occultist({ "www//pic//Arthur.png" }, 65, 80, 60, 55, 45, 45, 50, 45, 60, 40, 10, 9, 0, 60, 60, 60, 60, 50, 50, 80, 40, 30, 40, 40, 3);
 Player archaeologist({ "www//pic//Arthur.png" }, 60, 55, 82, 45, 45, 65, 65, 65, 80, 60, 11, 13, 4, 60, 30, 80, 30, 30, 80, 50, 20, 60, 80, 20, 3);
 Player reporter({ "www//pic//Arthur.png" }, 55, 80, 45, 65, 60, 45, 70, 45, 40, 80, 12, 9, 4, 70, 70, 50, 70, 70, 50, 40, 70, 20, 20, 50, 3);
+Player monster({ "www//pic//picture//servent.png" }, 200, 200, 245, 265, 260, 245, 270, 245, 240, 280, 20, 29, 4, 40, 10, 50, 70, 70, 50, 40, 70, 20, 20, 50, 3);
 
- 
+
 //background object
 scene back_ground({ "www//pic//background//cover.png" });
 scene lead_in({ "www//pic//background//lead_in.png" });
@@ -39,7 +41,7 @@ scene Inn_Lobby({ "www//pic//background//Inn_Lobby.png" });
 scene Inn_Outside({ "www//pic//background//Inn_Outside.png" });
 scene Inn_Room({ "www//pic//background//Inn_Room.png" });
 scene Lake_Mary({ "www//pic//background//Lake_Mary.png" });
-scene Library_Inside({ "www//pic//background//Library_Inside.png" }); 
+scene Library_Inside({ "www//pic//background//Library_Inside.png" });
 scene Library_Outside({ "www//pic//background//Library_Outside.png" });
 scene Market({ "www//pic//background//Market.png" });
 scene Palace_Inside({ "www//pic//background//Palace_Inside.png" });
@@ -56,6 +58,7 @@ scene Sewer_Moon_State({ "www//pic//background//Sewer_Moon_State.png" });
 scene Sewer_Outlet({ "www//pic//background//Sewer_Outlet.png" });
 scene Sewer_Secret_Door({ "www//pic//background//Sewer_Secret_Door.png" });
 scene Map({ "www//pic//picture//Map.png" });
+scene Servent({ "www//pic//picture//servent.png" });
 
 namespace CppCLRWinFormsProject {
 
@@ -65,36 +68,29 @@ namespace CppCLRWinFormsProject {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
-
-	/// <summary>
-	/// Summary for Form1
-	/// </summary>
 	public ref class Form1 : public System::Windows::Forms::Form
 	{
 	public:
-		bool backpack_open_or_close = 0;
-		bool moveLeft, moveRight, moveUp ,moveDown;
-	private: System::Windows::Forms::Button^ Sewer_Intersection_Library;
-	private: System::Windows::Forms::Button^ Sewer_Intersection_Prison;
-	private: System::Windows::Forms::Button^ Sewer_Intersection_Lake;
-	private: System::Windows::Forms::Button^ Sewer_Lake_Intersection;
-	private: System::Windows::Forms::Button^ chat_stranger_plazza;
-	private: System::Windows::Forms::Button^ chatbox_4;
-
-	private: System::Windows::Forms::Button^ chatbox_3;
-
-
-	public:
-
-	public:
-
-	public:
-
-	public:
-
-	public:
 		int speed = 5;
-		
+		bool backpack_open_or_close = 0;
+		bool moveLeft, moveRight, moveUp, moveDown;
+		int HP_value_progressBar, MP_value_progressBar, SAN_value_progressBar;
+
+	private: System::Windows::Forms::Button^ counterattack_button;
+	private: System::Windows::Forms::Button^ evade_button;
+	private: System::Windows::Forms::Button^ attack_button;
+	private: System::Windows::Forms::PictureBox^ monster_pic;
+	public:
+	private: System::Windows::Forms::Button^ Spot_Prison_Out;
+	public:
+
+	public:
+
+	public:
+
+	public:
+
+	public:
 		Form1(void)
 		{
 			InitializeComponent();
@@ -143,40 +139,25 @@ namespace CppCLRWinFormsProject {
 			return Form::ProcessCmdKey(msg, keyData);
 
 		}
-		/*void button_collsion(void) {
-			if (strcmp(place, "plazza") == 0) {
-				Plazza_To_Inn->Visible = player.collsion(Plazza_To_Inn->Location.X, Plazza_To_Inn->Location.Y);
-			}
-			else if (strcmp(place, "inn") == 0) {
+	private: System::Windows::Forms::Button^ Sewer_Intersection_Library;
+	private: System::Windows::Forms::Button^ Sewer_Intersection_Prison;
+	private: System::Windows::Forms::Button^ Sewer_Intersection_Lake;
+	private: System::Windows::Forms::Button^ Sewer_Lake_Intersection;
+	private: System::Windows::Forms::Button^ chat_stranger_plazza;
+	private: System::Windows::Forms::Button^ chatbox_4;
+	private: System::Windows::Forms::Button^ chatbox_3;
+	private: System::Windows::Forms::ProgressBar^ SAN_progressBar;
 
-			}
-			else if (strcmp(place, "market") == 0) {
-
-			}
-			else if (strcmp(place, "restaurant") == 0) {
-
-			}
-			else if (strcmp(place, "prison") == 0) {
-
-			}
-			else if (strcmp(place, "palace") == 0) {
-
-			}
-			else if (strcmp(place, "library") == 0) {
-
-			}
-			else if (strcmp(place, "lake") == 0) {
-
-			}
-	}*/
-	
+	private: System::Windows::Forms::ProgressBar^ MP_progressBar;
+	private: System::Windows::Forms::ProgressBar^ HP_progressBar;
 	private: System::Windows::Forms::Label^ MEDICINE;
 	private: System::Windows::Forms::Label^ BIOLOGY;
 	private: System::Windows::Forms::Label^ PSYCOLOGY;
 	private: System::Windows::Forms::Label^ ARCHAEOLOGY;
 	private: System::Windows::Forms::Label^ OCCULT;
 	private: System::Windows::Forms::Label^ HISTORY;
-	private: System::Windows::Forms::Label^ DB;
+	private: System::Windows::Forms::Label^ SAN;
+
 	private: System::Windows::Forms::Label^ EVADE;
 	private: System::Windows::Forms::Label^ BRAWL;
 	private: System::Windows::Forms::Label^ LIBRARY;
@@ -186,7 +167,9 @@ namespace CppCLRWinFormsProject {
 	private: System::Windows::Forms::Label^ HP;
 	private: System::Windows::Forms::Label^ LUK;
 	private: System::Windows::Forms::Label^ EDU;
-	private: System::Windows::Forms::Label^ SAN;
+	private: System::Windows::Forms::Label^ DB;
+
+
 	private: System::Windows::Forms::Label^ POW;
 	private: System::Windows::Forms::Label^ SIZ;
 	private: System::Windows::Forms::Label^ APP;
@@ -229,7 +212,8 @@ namespace CppCLRWinFormsProject {
 	private: System::Windows::Forms::Label^ chose_character_text;
 	private: System::Windows::Forms::Button^ backpack;
 	private: System::Windows::Forms::Panel^ backpack_panel;
-	private: System::Windows::Forms::Panel^ status_panel;
+private: System::Windows::Forms::Panel^ status_panel;
+
 	private: System::Windows::Forms::Label^ STR;
 	private: System::Windows::Forms::Label^ character_name;
 	private: System::Windows::Forms::Label^ player_power_text;
@@ -309,7 +293,7 @@ namespace CppCLRWinFormsProject {
 		/// the contents of this method with the code editor.
 		/// </summary>
 		void InitializeComponent(void)
-		{	
+		{
 			this->components = (gcnew System::ComponentModel::Container());
 			this->backpack_items_listView = (gcnew System::Windows::Forms::ListView());
 			this->start = (gcnew System::Windows::Forms::Button());
@@ -335,13 +319,16 @@ namespace CppCLRWinFormsProject {
 			this->dialog_text = (gcnew System::Windows::Forms::TextBox());
 			this->character_name = (gcnew System::Windows::Forms::Label());
 			this->status_panel = (gcnew System::Windows::Forms::Panel());
+			this->SAN_progressBar = (gcnew System::Windows::Forms::ProgressBar());
+			this->MP_progressBar = (gcnew System::Windows::Forms::ProgressBar());
+			this->HP_progressBar = (gcnew System::Windows::Forms::ProgressBar());
 			this->MEDICINE = (gcnew System::Windows::Forms::Label());
 			this->BIOLOGY = (gcnew System::Windows::Forms::Label());
 			this->PSYCOLOGY = (gcnew System::Windows::Forms::Label());
 			this->ARCHAEOLOGY = (gcnew System::Windows::Forms::Label());
 			this->OCCULT = (gcnew System::Windows::Forms::Label());
 			this->HISTORY = (gcnew System::Windows::Forms::Label());
-			this->DB = (gcnew System::Windows::Forms::Label());
+			this->SAN = (gcnew System::Windows::Forms::Label());
 			this->EVADE = (gcnew System::Windows::Forms::Label());
 			this->BRAWL = (gcnew System::Windows::Forms::Label());
 			this->LIBRARY = (gcnew System::Windows::Forms::Label());
@@ -351,7 +338,7 @@ namespace CppCLRWinFormsProject {
 			this->HP = (gcnew System::Windows::Forms::Label());
 			this->LUK = (gcnew System::Windows::Forms::Label());
 			this->EDU = (gcnew System::Windows::Forms::Label());
-			this->SAN = (gcnew System::Windows::Forms::Label());
+			this->DB = (gcnew System::Windows::Forms::Label());
 			this->SIZ = (gcnew System::Windows::Forms::Label());
 			this->POW = (gcnew System::Windows::Forms::Label());
 			this->APP = (gcnew System::Windows::Forms::Label());
@@ -444,12 +431,18 @@ namespace CppCLRWinFormsProject {
 			this->Sewer_Intersection_Lake = (gcnew System::Windows::Forms::Button());
 			this->Sewer_Lake_Intersection = (gcnew System::Windows::Forms::Button());
 			this->chat_stranger_plazza = (gcnew System::Windows::Forms::Button());
+			this->Spot_Prison_Out = (gcnew System::Windows::Forms::Button());
+			this->counterattack_button = (gcnew System::Windows::Forms::Button());
+			this->evade_button = (gcnew System::Windows::Forms::Button());
+			this->attack_button = (gcnew System::Windows::Forms::Button());
+			this->monster_pic = (gcnew System::Windows::Forms::PictureBox());
 			this->backpack_panel->SuspendLayout();
 			this->status_panel->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->menu))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->background))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->item_pic))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->player_motion))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->monster_pic))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// backpack_items_listView
@@ -764,25 +757,28 @@ namespace CppCLRWinFormsProject {
 			// character_name
 			// 
 			this->character_name->AutoSize = true;
-			this->character_name->Font = (gcnew System::Drawing::Font(L"標楷體", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(136)));
+			this->character_name->Font = (gcnew System::Drawing::Font(L"標楷體", 12, System::Drawing::FontStyle::Bold));
 			this->character_name->Location = System::Drawing::Point(4, 4);
 			this->character_name->Margin = System::Windows::Forms::Padding(1, 0, 1, 0);
 			this->character_name->Name = L"character_name";
-			this->character_name->Size = System::Drawing::Size(96, 12);
+			this->character_name->Size = System::Drawing::Size(126, 16);
 			this->character_name->TabIndex = 1;
 			this->character_name->Text = L"選擇的角色職業";
 			this->character_name->Visible = false;
 			// 
 			// status_panel
 			// 
+			this->status_panel->AutoSize = true;
+			this->status_panel->Controls->Add(this->SAN_progressBar);
+			this->status_panel->Controls->Add(this->MP_progressBar);
+			this->status_panel->Controls->Add(this->HP_progressBar);
 			this->status_panel->Controls->Add(this->MEDICINE);
 			this->status_panel->Controls->Add(this->BIOLOGY);
 			this->status_panel->Controls->Add(this->PSYCOLOGY);
 			this->status_panel->Controls->Add(this->ARCHAEOLOGY);
 			this->status_panel->Controls->Add(this->OCCULT);
 			this->status_panel->Controls->Add(this->HISTORY);
-			this->status_panel->Controls->Add(this->DB);
+			this->status_panel->Controls->Add(this->SAN);
 			this->status_panel->Controls->Add(this->EVADE);
 			this->status_panel->Controls->Add(this->BRAWL);
 			this->status_panel->Controls->Add(this->LIBRARY);
@@ -792,7 +788,7 @@ namespace CppCLRWinFormsProject {
 			this->status_panel->Controls->Add(this->HP);
 			this->status_panel->Controls->Add(this->LUK);
 			this->status_panel->Controls->Add(this->EDU);
-			this->status_panel->Controls->Add(this->SAN);
+			this->status_panel->Controls->Add(this->DB);
 			this->status_panel->Controls->Add(this->SIZ);
 			this->status_panel->Controls->Add(this->POW);
 			this->status_panel->Controls->Add(this->APP);
@@ -805,7 +801,7 @@ namespace CppCLRWinFormsProject {
 			this->status_panel->Controls->Add(this->player_power_text);
 			this->status_panel->Controls->Add(this->STR);
 			this->status_panel->Controls->Add(this->character_name);
-			this->status_panel->Location = System::Drawing::Point(-1, 0);
+			this->status_panel->Location = System::Drawing::Point(0, 0);
 			this->status_panel->Margin = System::Windows::Forms::Padding(1, 2, 1, 2);
 			this->status_panel->Name = L"status_panel";
 			this->status_panel->Size = System::Drawing::Size(1024, 180);
@@ -813,15 +809,45 @@ namespace CppCLRWinFormsProject {
 			this->status_panel->Visible = false;
 			this->status_panel->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &Form1::status_panel_Paint);
 			// 
+			// SAN_progressBar
+			// 
+			this->SAN_progressBar->ForeColor = System::Drawing::Color::MediumOrchid;
+			this->SAN_progressBar->Location = System::Drawing::Point(722, 134);
+			this->SAN_progressBar->Name = L"SAN_progressBar";
+			this->SAN_progressBar->Size = System::Drawing::Size(281, 29);
+			this->SAN_progressBar->Style = System::Windows::Forms::ProgressBarStyle::Continuous;
+			this->SAN_progressBar->TabIndex = 31;
+			this->SAN_progressBar->Visible = false;
+			// 
+			// MP_progressBar
+			// 
+			this->MP_progressBar->BackColor = System::Drawing::SystemColors::Control;
+			this->MP_progressBar->ForeColor = System::Drawing::SystemColors::MenuHighlight;
+			this->MP_progressBar->Location = System::Drawing::Point(722, 97);
+			this->MP_progressBar->Name = L"MP_progressBar";
+			this->MP_progressBar->Size = System::Drawing::Size(281, 29);
+			this->MP_progressBar->Style = System::Windows::Forms::ProgressBarStyle::Continuous;
+			this->MP_progressBar->TabIndex = 30;
+			this->MP_progressBar->Visible = false;
+			// 
+			// HP_progressBar
+			// 
+			this->HP_progressBar->ForeColor = System::Drawing::Color::Red;
+			this->HP_progressBar->Location = System::Drawing::Point(722, 60);
+			this->HP_progressBar->Name = L"HP_progressBar";
+			this->HP_progressBar->Size = System::Drawing::Size(281, 29);
+			this->HP_progressBar->Style = System::Windows::Forms::ProgressBarStyle::Continuous;
+			this->HP_progressBar->TabIndex = 29;
+			this->HP_progressBar->Visible = false;
+			// 
 			// MEDICINE
 			// 
 			this->MEDICINE->AutoSize = true;
-			this->MEDICINE->Font = (gcnew System::Drawing::Font(L"Times New Roman", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->MEDICINE->Location = System::Drawing::Point(594, 117);
+			this->MEDICINE->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold));
+			this->MEDICINE->Location = System::Drawing::Point(471, 30);
 			this->MEDICINE->Margin = System::Windows::Forms::Padding(1, 0, 1, 0);
 			this->MEDICINE->Name = L"MEDICINE";
-			this->MEDICINE->Size = System::Drawing::Size(67, 15);
+			this->MEDICINE->Size = System::Drawing::Size(92, 19);
 			this->MEDICINE->TabIndex = 28;
 			this->MEDICINE->Text = L"MEDICINE";
 			this->MEDICINE->Visible = false;
@@ -829,12 +855,11 @@ namespace CppCLRWinFormsProject {
 			// BIOLOGY
 			// 
 			this->BIOLOGY->AutoSize = true;
-			this->BIOLOGY->Font = (gcnew System::Drawing::Font(L"Times New Roman", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->BIOLOGY->Location = System::Drawing::Point(384, 114);
+			this->BIOLOGY->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold));
+			this->BIOLOGY->Location = System::Drawing::Point(313, 90);
 			this->BIOLOGY->Margin = System::Windows::Forms::Padding(1, 0, 1, 0);
 			this->BIOLOGY->Name = L"BIOLOGY";
-			this->BIOLOGY->Size = System::Drawing::Size(63, 15);
+			this->BIOLOGY->Size = System::Drawing::Size(82, 19);
 			this->BIOLOGY->TabIndex = 27;
 			this->BIOLOGY->Text = L"BIOLOGY";
 			this->BIOLOGY->Visible = false;
@@ -842,12 +867,11 @@ namespace CppCLRWinFormsProject {
 			// PSYCOLOGY
 			// 
 			this->PSYCOLOGY->AutoSize = true;
-			this->PSYCOLOGY->Font = (gcnew System::Drawing::Font(L"Times New Roman", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->PSYCOLOGY->Location = System::Drawing::Point(285, 114);
+			this->PSYCOLOGY->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold));
+			this->PSYCOLOGY->Location = System::Drawing::Point(313, 30);
 			this->PSYCOLOGY->Margin = System::Windows::Forms::Padding(1, 0, 1, 0);
 			this->PSYCOLOGY->Name = L"PSYCOLOGY";
-			this->PSYCOLOGY->Size = System::Drawing::Size(83, 15);
+			this->PSYCOLOGY->Size = System::Drawing::Size(104, 19);
 			this->PSYCOLOGY->TabIndex = 26;
 			this->PSYCOLOGY->Text = L"PSYCOLOGY";
 			this->PSYCOLOGY->Visible = false;
@@ -855,12 +879,11 @@ namespace CppCLRWinFormsProject {
 			// ARCHAEOLOGY
 			// 
 			this->ARCHAEOLOGY->AutoSize = true;
-			this->ARCHAEOLOGY->Font = (gcnew System::Drawing::Font(L"Times New Roman", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->ARCHAEOLOGY->Location = System::Drawing::Point(483, 117);
+			this->ARCHAEOLOGY->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold));
+			this->ARCHAEOLOGY->Location = System::Drawing::Point(313, 120);
 			this->ARCHAEOLOGY->Margin = System::Windows::Forms::Padding(1, 0, 1, 0);
 			this->ARCHAEOLOGY->Name = L"ARCHAEOLOGY";
-			this->ARCHAEOLOGY->Size = System::Drawing::Size(100, 15);
+			this->ARCHAEOLOGY->Size = System::Drawing::Size(132, 19);
 			this->ARCHAEOLOGY->TabIndex = 25;
 			this->ARCHAEOLOGY->Text = L"ARCHAEOLOGY";
 			this->ARCHAEOLOGY->Visible = false;
@@ -868,12 +891,11 @@ namespace CppCLRWinFormsProject {
 			// OCCULT
 			// 
 			this->OCCULT->AutoSize = true;
-			this->OCCULT->Font = (gcnew System::Drawing::Font(L"Times New Roman", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->OCCULT->Location = System::Drawing::Point(183, 114);
+			this->OCCULT->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold));
+			this->OCCULT->Location = System::Drawing::Point(313, 150);
 			this->OCCULT->Margin = System::Windows::Forms::Padding(1, 0, 1, 0);
 			this->OCCULT->Name = L"OCCULT";
-			this->OCCULT->Size = System::Drawing::Size(57, 15);
+			this->OCCULT->Size = System::Drawing::Size(73, 19);
 			this->OCCULT->TabIndex = 24;
 			this->OCCULT->Text = L"OCCULT";
 			this->OCCULT->Visible = false;
@@ -881,38 +903,36 @@ namespace CppCLRWinFormsProject {
 			// HISTORY
 			// 
 			this->HISTORY->AutoSize = true;
-			this->HISTORY->Font = (gcnew System::Drawing::Font(L"Times New Roman", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->HISTORY->Location = System::Drawing::Point(84, 114);
+			this->HISTORY->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold));
+			this->HISTORY->Location = System::Drawing::Point(313, 60);
 			this->HISTORY->Margin = System::Windows::Forms::Padding(1, 0, 1, 0);
 			this->HISTORY->Name = L"HISTORY";
-			this->HISTORY->Size = System::Drawing::Size(62, 15);
+			this->HISTORY->Size = System::Drawing::Size(79, 19);
 			this->HISTORY->TabIndex = 23;
 			this->HISTORY->Text = L"HISTORY";
 			this->HISTORY->Visible = false;
 			// 
-			// DB
+			// SAN
 			// 
-			this->DB->AutoSize = true;
-			this->DB->Font = (gcnew System::Drawing::Font(L"Times New Roman", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->SAN->AutoSize = true;
+			this->SAN->Font = (gcnew System::Drawing::Font(L"Times New Roman", 15, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->DB->Location = System::Drawing::Point(183, 54);
-			this->DB->Margin = System::Windows::Forms::Padding(1, 0, 1, 0);
-			this->DB->Name = L"DB";
-			this->DB->Size = System::Drawing::Size(24, 15);
-			this->DB->TabIndex = 22;
-			this->DB->Text = L"DB";
-			this->DB->Visible = false;
+			this->SAN->Location = System::Drawing::Point(645, 138);
+			this->SAN->Margin = System::Windows::Forms::Padding(1, 0, 1, 0);
+			this->SAN->Name = L"SAN";
+			this->SAN->Size = System::Drawing::Size(49, 23);
+			this->SAN->TabIndex = 22;
+			this->SAN->Text = L"SAN";
+			this->SAN->Visible = false;
 			// 
 			// EVADE
 			// 
 			this->EVADE->AutoSize = true;
-			this->EVADE->Font = (gcnew System::Drawing::Font(L"Times New Roman", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->EVADE->Location = System::Drawing::Point(483, 84);
+			this->EVADE->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold));
+			this->EVADE->Location = System::Drawing::Point(189, 150);
 			this->EVADE->Margin = System::Windows::Forms::Padding(1, 0, 1, 0);
 			this->EVADE->Name = L"EVADE";
-			this->EVADE->Size = System::Drawing::Size(44, 15);
+			this->EVADE->Size = System::Drawing::Size(61, 19);
 			this->EVADE->TabIndex = 21;
 			this->EVADE->Text = L"EVADE";
 			this->EVADE->Visible = false;
@@ -920,12 +940,11 @@ namespace CppCLRWinFormsProject {
 			// BRAWL
 			// 
 			this->BRAWL->AutoSize = true;
-			this->BRAWL->Font = (gcnew System::Drawing::Font(L"Times New Roman", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->BRAWL->Location = System::Drawing::Point(384, 84);
+			this->BRAWL->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold));
+			this->BRAWL->Location = System::Drawing::Point(189, 120);
 			this->BRAWL->Margin = System::Windows::Forms::Padding(1, 0, 1, 0);
 			this->BRAWL->Name = L"BRAWL";
-			this->BRAWL->Size = System::Drawing::Size(48, 15);
+			this->BRAWL->Size = System::Drawing::Size(66, 19);
 			this->BRAWL->TabIndex = 20;
 			this->BRAWL->Text = L"BRAWL";
 			this->BRAWL->Visible = false;
@@ -933,12 +952,11 @@ namespace CppCLRWinFormsProject {
 			// LIBRARY
 			// 
 			this->LIBRARY->AutoSize = true;
-			this->LIBRARY->Font = (gcnew System::Drawing::Font(L"Times New Roman", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->LIBRARY->Location = System::Drawing::Point(285, 84);
+			this->LIBRARY->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold));
+			this->LIBRARY->Location = System::Drawing::Point(189, 90);
 			this->LIBRARY->Margin = System::Windows::Forms::Padding(1, 0, 1, 0);
 			this->LIBRARY->Name = L"LIBRARY";
-			this->LIBRARY->Size = System::Drawing::Size(58, 15);
+			this->LIBRARY->Size = System::Drawing::Size(80, 19);
 			this->LIBRARY->TabIndex = 19;
 			this->LIBRARY->Text = L"LIBRARY";
 			this->LIBRARY->Visible = false;
@@ -946,12 +964,11 @@ namespace CppCLRWinFormsProject {
 			// LISTEN
 			// 
 			this->LISTEN->AutoSize = true;
-			this->LISTEN->Font = (gcnew System::Drawing::Font(L"Times New Roman", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->LISTEN->Location = System::Drawing::Point(183, 84);
+			this->LISTEN->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold));
+			this->LISTEN->Location = System::Drawing::Point(189, 60);
 			this->LISTEN->Margin = System::Windows::Forms::Padding(1, 0, 1, 0);
 			this->LISTEN->Name = L"LISTEN";
-			this->LISTEN->Size = System::Drawing::Size(50, 15);
+			this->LISTEN->Size = System::Drawing::Size(66, 19);
 			this->LISTEN->TabIndex = 18;
 			this->LISTEN->Text = L"LISTEN";
 			this->LISTEN->Visible = false;
@@ -959,12 +976,11 @@ namespace CppCLRWinFormsProject {
 			// SPOT
 			// 
 			this->SPOT->AutoSize = true;
-			this->SPOT->Font = (gcnew System::Drawing::Font(L"Times New Roman", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->SPOT->Location = System::Drawing::Point(84, 84);
+			this->SPOT->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold));
+			this->SPOT->Location = System::Drawing::Point(189, 30);
 			this->SPOT->Margin = System::Windows::Forms::Padding(1, 0, 1, 0);
 			this->SPOT->Name = L"SPOT";
-			this->SPOT->Size = System::Drawing::Size(40, 15);
+			this->SPOT->Size = System::Drawing::Size(49, 19);
 			this->SPOT->TabIndex = 17;
 			this->SPOT->Text = L"SPOT";
 			this->SPOT->Visible = false;
@@ -972,12 +988,12 @@ namespace CppCLRWinFormsProject {
 			// MP
 			// 
 			this->MP->AutoSize = true;
-			this->MP->Font = (gcnew System::Drawing::Font(L"Times New Roman", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->MP->Font = (gcnew System::Drawing::Font(L"Times New Roman", 15, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->MP->Location = System::Drawing::Point(133, 54);
+			this->MP->Location = System::Drawing::Point(654, 101);
 			this->MP->Margin = System::Windows::Forms::Padding(1, 0, 1, 0);
 			this->MP->Name = L"MP";
-			this->MP->Size = System::Drawing::Size(25, 15);
+			this->MP->Size = System::Drawing::Size(40, 23);
 			this->MP->TabIndex = 16;
 			this->MP->Text = L"MP";
 			this->MP->Visible = false;
@@ -985,12 +1001,12 @@ namespace CppCLRWinFormsProject {
 			// HP
 			// 
 			this->HP->AutoSize = true;
-			this->HP->Font = (gcnew System::Drawing::Font(L"Times New Roman", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->HP->Font = (gcnew System::Drawing::Font(L"Times New Roman", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->HP->Location = System::Drawing::Point(84, 54);
+			this->HP->Location = System::Drawing::Point(654, 64);
 			this->HP->Margin = System::Windows::Forms::Padding(1, 0, 1, 0);
 			this->HP->Name = L"HP";
-			this->HP->Size = System::Drawing::Size(23, 15);
+			this->HP->Size = System::Drawing::Size(40, 24);
 			this->HP->TabIndex = 15;
 			this->HP->Text = L"HP";
 			this->HP->Visible = false;
@@ -998,12 +1014,11 @@ namespace CppCLRWinFormsProject {
 			// LUK
 			// 
 			this->LUK->AutoSize = true;
-			this->LUK->Font = (gcnew System::Drawing::Font(L"Times New Roman", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->LUK->Location = System::Drawing::Point(534, 24);
+			this->LUK->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold));
+			this->LUK->Location = System::Drawing::Point(85, 150);
 			this->LUK->Margin = System::Windows::Forms::Padding(1, 0, 1, 0);
 			this->LUK->Name = L"LUK";
-			this->LUK->Size = System::Drawing::Size(31, 15);
+			this->LUK->Size = System::Drawing::Size(42, 19);
 			this->LUK->TabIndex = 14;
 			this->LUK->Text = L"LUK";
 			this->LUK->Visible = false;
@@ -1011,38 +1026,35 @@ namespace CppCLRWinFormsProject {
 			// EDU
 			// 
 			this->EDU->AutoSize = true;
-			this->EDU->Font = (gcnew System::Drawing::Font(L"Times New Roman", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->EDU->Location = System::Drawing::Point(483, 24);
+			this->EDU->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold));
+			this->EDU->Location = System::Drawing::Point(85, 120);
 			this->EDU->Margin = System::Windows::Forms::Padding(1, 0, 1, 0);
 			this->EDU->Name = L"EDU";
-			this->EDU->Size = System::Drawing::Size(31, 15);
+			this->EDU->Size = System::Drawing::Size(42, 19);
 			this->EDU->TabIndex = 13;
 			this->EDU->Text = L"EDU";
 			this->EDU->Visible = false;
 			// 
-			// SAN
+			// DB
 			// 
-			this->SAN->AutoSize = true;
-			this->SAN->Font = (gcnew System::Drawing::Font(L"Times New Roman", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->SAN->Location = System::Drawing::Point(433, 24);
-			this->SAN->Margin = System::Windows::Forms::Padding(1, 0, 1, 0);
-			this->SAN->Name = L"SAN";
-			this->SAN->Size = System::Drawing::Size(32, 15);
-			this->SAN->TabIndex = 12;
-			this->SAN->Text = L"SAN";
-			this->SAN->Visible = false;
+			this->DB->AutoSize = true;
+			this->DB->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold));
+			this->DB->Location = System::Drawing::Point(85, 60);
+			this->DB->Margin = System::Windows::Forms::Padding(1, 0, 1, 0);
+			this->DB->Name = L"DB";
+			this->DB->Size = System::Drawing::Size(32, 19);
+			this->DB->TabIndex = 12;
+			this->DB->Text = L"DB";
+			this->DB->Visible = false;
 			// 
 			// SIZ
 			// 
 			this->SIZ->AutoSize = true;
-			this->SIZ->Font = (gcnew System::Drawing::Font(L"Times New Roman", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->SIZ->Location = System::Drawing::Point(384, 24);
+			this->SIZ->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold));
+			this->SIZ->Location = System::Drawing::Point(85, 90);
 			this->SIZ->Margin = System::Windows::Forms::Padding(1, 0, 1, 0);
 			this->SIZ->Name = L"SIZ";
-			this->SIZ->Size = System::Drawing::Size(26, 15);
+			this->SIZ->Size = System::Drawing::Size(33, 19);
 			this->SIZ->TabIndex = 11;
 			this->SIZ->Text = L"SIZ";
 			this->SIZ->Visible = false;
@@ -1050,12 +1062,11 @@ namespace CppCLRWinFormsProject {
 			// POW
 			// 
 			this->POW->AutoSize = true;
-			this->POW->Font = (gcnew System::Drawing::Font(L"Times New Roman", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->POW->Location = System::Drawing::Point(333, 24);
+			this->POW->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold));
+			this->POW->Location = System::Drawing::Point(85, 30);
 			this->POW->Margin = System::Windows::Forms::Padding(1, 0, 1, 0);
 			this->POW->Name = L"POW";
-			this->POW->Size = System::Drawing::Size(35, 15);
+			this->POW->Size = System::Drawing::Size(45, 19);
 			this->POW->TabIndex = 10;
 			this->POW->Text = L"POW";
 			this->POW->Visible = false;
@@ -1063,12 +1074,12 @@ namespace CppCLRWinFormsProject {
 			// APP
 			// 
 			this->APP->AutoSize = true;
-			this->APP->Font = (gcnew System::Drawing::Font(L"Times New Roman", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->APP->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->APP->Location = System::Drawing::Point(283, 24);
+			this->APP->Location = System::Drawing::Point(5, 150);
 			this->APP->Margin = System::Windows::Forms::Padding(1, 0, 1, 0);
 			this->APP->Name = L"APP";
-			this->APP->Size = System::Drawing::Size(29, 15);
+			this->APP->Size = System::Drawing::Size(38, 19);
 			this->APP->TabIndex = 9;
 			this->APP->Text = L"APP";
 			this->APP->Visible = false;
@@ -1076,12 +1087,12 @@ namespace CppCLRWinFormsProject {
 			// CON
 			// 
 			this->CON->AutoSize = true;
-			this->CON->Font = (gcnew System::Drawing::Font(L"Times New Roman", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->CON->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->CON->Location = System::Drawing::Point(234, 24);
+			this->CON->Location = System::Drawing::Point(5, 120);
 			this->CON->Margin = System::Windows::Forms::Padding(1, 0, 1, 0);
 			this->CON->Name = L"CON";
-			this->CON->Size = System::Drawing::Size(35, 15);
+			this->CON->Size = System::Drawing::Size(44, 19);
 			this->CON->TabIndex = 8;
 			this->CON->Text = L"CON";
 			this->CON->Visible = false;
@@ -1089,12 +1100,12 @@ namespace CppCLRWinFormsProject {
 			// INT
 			// 
 			this->INT->AutoSize = true;
-			this->INT->Font = (gcnew System::Drawing::Font(L"Times New Roman", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->INT->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->INT->Location = System::Drawing::Point(183, 24);
+			this->INT->Location = System::Drawing::Point(5, 90);
 			this->INT->Margin = System::Windows::Forms::Padding(1, 0, 1, 0);
 			this->INT->Name = L"INT";
-			this->INT->Size = System::Drawing::Size(28, 15);
+			this->INT->Size = System::Drawing::Size(37, 19);
 			this->INT->TabIndex = 7;
 			this->INT->Text = L"INT";
 			this->INT->Visible = false;
@@ -1102,12 +1113,12 @@ namespace CppCLRWinFormsProject {
 			// DEX
 			// 
 			this->DEX->AutoSize = true;
-			this->DEX->Font = (gcnew System::Drawing::Font(L"Times New Roman", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->DEX->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->DEX->Location = System::Drawing::Point(133, 24);
+			this->DEX->Location = System::Drawing::Point(5, 60);
 			this->DEX->Margin = System::Windows::Forms::Padding(1, 0, 1, 0);
 			this->DEX->Name = L"DEX";
-			this->DEX->Size = System::Drawing::Size(31, 15);
+			this->DEX->Size = System::Drawing::Size(42, 19);
 			this->DEX->TabIndex = 6;
 			this->DEX->Text = L"DEX";
 			this->DEX->Visible = false;
@@ -1152,12 +1163,11 @@ namespace CppCLRWinFormsProject {
 			// player_power_text
 			// 
 			this->player_power_text->AutoSize = true;
-			this->player_power_text->Font = (gcnew System::Drawing::Font(L"標楷體", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(136)));
-			this->player_power_text->Location = System::Drawing::Point(4, 24);
+			this->player_power_text->Font = (gcnew System::Drawing::Font(L"標楷體", 12, System::Drawing::FontStyle::Bold));
+			this->player_power_text->Location = System::Drawing::Point(132, 4);
 			this->player_power_text->Margin = System::Windows::Forms::Padding(1, 0, 1, 0);
 			this->player_power_text->Name = L"player_power_text";
-			this->player_power_text->Size = System::Drawing::Size(77, 12);
+			this->player_power_text->Size = System::Drawing::Size(101, 16);
 			this->player_power_text->TabIndex = 2;
 			this->player_power_text->Text = L"角色能力值:";
 			this->player_power_text->Visible = false;
@@ -1165,12 +1175,12 @@ namespace CppCLRWinFormsProject {
 			// STR
 			// 
 			this->STR->AutoSize = true;
-			this->STR->Font = (gcnew System::Drawing::Font(L"Times New Roman", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->STR->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->STR->Location = System::Drawing::Point(84, 24);
+			this->STR->Location = System::Drawing::Point(5, 30);
 			this->STR->Margin = System::Windows::Forms::Padding(1, 0, 1, 0);
 			this->STR->Name = L"STR";
-			this->STR->Size = System::Drawing::Size(31, 15);
+			this->STR->Size = System::Drawing::Size(40, 19);
 			this->STR->TabIndex = 0;
 			this->STR->Text = L"STR";
 			this->STR->Visible = false;
@@ -1346,7 +1356,7 @@ namespace CppCLRWinFormsProject {
 			// 
 			this->Inn_To_Plazza->Font = (gcnew System::Drawing::Font(L"標楷體", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(136)));
-			this->Inn_To_Plazza->Location = System::Drawing::Point(496, 667);
+			this->Inn_To_Plazza->Location = System::Drawing::Point(480, 667);
 			this->Inn_To_Plazza->Margin = System::Windows::Forms::Padding(2);
 			this->Inn_To_Plazza->Name = L"Inn_To_Plazza";
 			this->Inn_To_Plazza->Size = System::Drawing::Size(80, 32);
@@ -1388,7 +1398,7 @@ namespace CppCLRWinFormsProject {
 			// 
 			this->Restaurant_To_Prison->Font = (gcnew System::Drawing::Font(L"標楷體", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(136)));
-			this->Restaurant_To_Prison->Location = System::Drawing::Point(496, 667);
+			this->Restaurant_To_Prison->Location = System::Drawing::Point(482, 667);
 			this->Restaurant_To_Prison->Margin = System::Windows::Forms::Padding(2);
 			this->Restaurant_To_Prison->Name = L"Restaurant_To_Prison";
 			this->Restaurant_To_Prison->Size = System::Drawing::Size(80, 32);
@@ -1414,7 +1424,7 @@ namespace CppCLRWinFormsProject {
 			// 
 			this->Prison_To_Plazza->Font = (gcnew System::Drawing::Font(L"標楷體", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(136)));
-			this->Prison_To_Plazza->Location = System::Drawing::Point(496, 667);
+			this->Prison_To_Plazza->Location = System::Drawing::Point(480, 667);
 			this->Prison_To_Plazza->Margin = System::Windows::Forms::Padding(2);
 			this->Prison_To_Plazza->Name = L"Prison_To_Plazza";
 			this->Prison_To_Plazza->Size = System::Drawing::Size(80, 32);
@@ -1456,7 +1466,7 @@ namespace CppCLRWinFormsProject {
 			// 
 			this->IntersectionRight_To_Inn->Font = (gcnew System::Drawing::Font(L"標楷體", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(136)));
-			this->IntersectionRight_To_Inn->Location = System::Drawing::Point(496, 667);
+			this->IntersectionRight_To_Inn->Location = System::Drawing::Point(480, 667);
 			this->IntersectionRight_To_Inn->Margin = System::Windows::Forms::Padding(2);
 			this->IntersectionRight_To_Inn->Name = L"IntersectionRight_To_Inn";
 			this->IntersectionRight_To_Inn->Size = System::Drawing::Size(80, 32);
@@ -1804,7 +1814,7 @@ namespace CppCLRWinFormsProject {
 			// 
 			// player_motion
 			// 
-			this->player_motion->Location = System::Drawing::Point(408, 307);
+			this->player_motion->Location = System::Drawing::Point(635, 456);
 			this->player_motion->Name = L"player_motion";
 			this->player_motion->Size = System::Drawing::Size(54, 50);
 			this->player_motion->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -2178,11 +2188,79 @@ namespace CppCLRWinFormsProject {
 			this->chat_stranger_plazza->Visible = false;
 			this->chat_stranger_plazza->Click += gcnew System::EventHandler(this, &Form1::chat_stranger_plazza_Click);
 			// 
+			// Spot_Prison_Out
+			// 
+			this->Spot_Prison_Out->Font = (gcnew System::Drawing::Font(L"標楷體", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(136)));
+			this->Spot_Prison_Out->Location = System::Drawing::Point(593, 651);
+			this->Spot_Prison_Out->Name = L"Spot_Prison_Out";
+			this->Spot_Prison_Out->Size = System::Drawing::Size(96, 64);
+			this->Spot_Prison_Out->TabIndex = 94;
+			this->Spot_Prison_Out->Text = L"觀察建築";
+			this->Spot_Prison_Out->UseVisualStyleBackColor = true;
+			this->Spot_Prison_Out->Visible = false;
+			this->Spot_Prison_Out->Click += gcnew System::EventHandler(this, &Form1::Spot_Prison_Out_Click);
+			// 
+			// counterattack_button
+			// 
+			this->counterattack_button->Font = (gcnew System::Drawing::Font(L"標楷體", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(136)));
+			this->counterattack_button->Location = System::Drawing::Point(869, 528);
+			this->counterattack_button->Name = L"counterattack_button";
+			this->counterattack_button->Size = System::Drawing::Size(96, 64);
+			this->counterattack_button->TabIndex = 96;
+			this->counterattack_button->Text = L"反擊";
+			this->counterattack_button->UseVisualStyleBackColor = true;
+			this->counterattack_button->Visible = false;
+			this->counterattack_button->Click += gcnew System::EventHandler(this, &Form1::counterattack_button_Click);
+			// 
+			// evade_button
+			// 
+			this->evade_button->Font = (gcnew System::Drawing::Font(L"標楷體", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(136)));
+			this->evade_button->Location = System::Drawing::Point(869, 378);
+			this->evade_button->Name = L"evade_button";
+			this->evade_button->Size = System::Drawing::Size(96, 64);
+			this->evade_button->TabIndex = 97;
+			this->evade_button->Text = L"閃避";
+			this->evade_button->UseVisualStyleBackColor = true;
+			this->evade_button->Visible = false;
+			this->evade_button->Click += gcnew System::EventHandler(this, &Form1::evade_button_Click);
+			// 
+			// attack_button
+			// 
+			this->attack_button->Font = (gcnew System::Drawing::Font(L"標楷體", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(136)));
+			this->attack_button->Location = System::Drawing::Point(869, 220);
+			this->attack_button->Name = L"attack_button";
+			this->attack_button->Size = System::Drawing::Size(96, 64);
+			this->attack_button->TabIndex = 98;
+			this->attack_button->Text = L"攻擊";
+			this->attack_button->UseVisualStyleBackColor = true;
+			this->attack_button->Visible = false;
+			this->attack_button->Click += gcnew System::EventHandler(this, &Form1::attack_button_Click);
+			// 
+			// monster_pic
+			// 
+			this->monster_pic->Location = System::Drawing::Point(356, 180);
+			this->monster_pic->Name = L"monster_pic";
+			this->monster_pic->Size = System::Drawing::Size(333, 540);
+			this->monster_pic->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->monster_pic->TabIndex = 99;
+			this->monster_pic->TabStop = false;
+			this->monster_pic->Visible = false;
+			// 
 			// Form1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 12);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1024, 960);
+			this->Controls->Add(this->monster_pic);
+			this->Controls->Add(this->attack_button);
+			this->Controls->Add(this->evade_button);
+			this->Controls->Add(this->counterattack_button);
+			this->Controls->Add(this->Spot_Prison_Out);
+			this->Controls->Add(this->player_motion);
 			this->Controls->Add(this->chat_stranger_plazza);
 			this->Controls->Add(this->Sewer_Lake_Intersection);
 			this->Controls->Add(this->Sewer_Intersection_Lake);
@@ -2216,12 +2294,7 @@ namespace CppCLRWinFormsProject {
 			this->Controls->Add(this->Market_To_Sewer);
 			this->Controls->Add(this->Inn_To_Sewer);
 			this->Controls->Add(this->Plazza_To_Sewer);
-			this->Controls->Add(this->player_motion);
-			this->Controls->Add(this->backpack_items_listView);
-			this->Controls->Add(this->item_pic);
 			this->Controls->Add(this->listen_stranger_plazza);
-			this->Controls->Add(this->Go_Out_Restaurant);
-			this->Controls->Add(this->Go_To_Restaurant);
 			this->Controls->Add(this->IntersectionRight_To_Palace);
 			this->Controls->Add(this->manual_text);
 			this->Controls->Add(this->Plazza_To_Inn);
@@ -2271,9 +2344,13 @@ namespace CppCLRWinFormsProject {
 			this->Controls->Add(this->start);
 			this->Controls->Add(this->backpack_panel);
 			this->Controls->Add(this->status_panel);
+			this->Controls->Add(this->backpack_items_listView);
+			this->Controls->Add(this->item_pic);
 			this->Controls->Add(this->introduction_textBox);
 			this->Controls->Add(this->background);
 			this->Controls->Add(this->menu);
+			this->Controls->Add(this->Go_To_Restaurant);
+			this->Controls->Add(this->Go_Out_Restaurant);
 			this->KeyPreview = true;
 			this->Margin = System::Windows::Forms::Padding(1, 2, 1, 2);
 			this->Name = L"Form1";
@@ -2292,6 +2369,7 @@ namespace CppCLRWinFormsProject {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->background))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->item_pic))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->player_motion))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->monster_pic))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -2304,6 +2382,7 @@ namespace CppCLRWinFormsProject {
 			initialize();
 		}
 		check_end_game();
+		progress_bar_display();
 		system_counter++;
 		//button_collsion();
 	}
@@ -2325,8 +2404,8 @@ namespace CppCLRWinFormsProject {
 			//player_motion->Location = System::Drawing::Point(player_motion->Location.X + 10, player_motion->Location.Y);
 			moveRight = true;
 			break;
+		}
 	}
-}
 	private: System::Void player_KeyUp(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 		switch (e->KeyCode) {
 		case Keys::Up:
@@ -2342,74 +2421,128 @@ namespace CppCLRWinFormsProject {
 			moveRight = false;
 			break;
 		}
-}
-	void initialize(void) {
-		//size initialize
-		AutoScaleDimensions = System::Drawing::SizeF(6, 12);
-		menu->Size = System::Drawing::Size(WIDTH, HEIGHT);
-		manual_text->Size = System::Drawing::Size(WIDTH, 540);
-		backpack_panel->Size = System::Drawing::Size(WIDTH, 240);
-		status_panel->Size = System::Drawing::Size(WIDTH, 180);
-		menu->Size = System::Drawing::Size(WIDTH, HEIGHT);
-		ClientSize = System::Drawing::Size(WIDTH, HEIGHT);
-		item_pic->Size = System::Drawing::Size(WIDTH, 540);
-		background->Size = System::Drawing::Size(WIDTH, 540);
-		introduction_textBox->Size = System::Drawing::Size(WIDTH, 540);
-
-		//picture initialize
-		menu->Image = gcnew Bitmap(gcnew System::String(back_ground.get_path()));
-		player_motion->Image = gcnew Bitmap(gcnew System::String("www//pic//char_pixel//Arthur.png"));
-
-		//transparent: 透明屬性
-		//this->TransparencyKey = System::Drawing::Color::SpringGreen;//透明屬性
-		player_motion->BackColor = System::Drawing::Color::SpringGreen;
-		//chose_character_text->BackColor = System::Drawing::Color::SpringGreen;
-		
-		//初始化背包的表格
-		ColumnHeader^ header1 = gcnew ColumnHeader();
-		header1->Text = "持有物品";
-		header1->TextAlign = HorizontalAlignment::Left;
-		header1->Width = 254;
-
-		ColumnHeader^ header2 = gcnew ColumnHeader();
-		header2->TextAlign = HorizontalAlignment::Left;
-		header2->Text = "物品數量或狀態";
-		header2->Width = 254;
-		backpack_items_listView->Columns->Add(header1);
-		backpack_items_listView->Columns->Add(header2);
-
-		//增加物品到背包
-		ListViewItem^ coin = gcnew ListViewItem(gcnew array<String^> { L"錢", L"2023" });
-		backpack_items_listView->Items->Add(coin);
 	}
-	void dirction_button_display(void) {
-		//display the button when the player get close enough
-		//黃品瑜補完: L"2023"改場景的名稱， switch case on 場景名稱，先用絕對位置偵測碰撞
-		
-	}
-	void check_end_game(void) {
-		
-		//bad End
-		if (sun_count==0) {
-			for each (Control ^ control in this->Controls)
-			{
-				String^ controlName = control->Name;
-				if (control->GetType() == PictureBox::typeid && controlName == L"menu")
-				{
-					control->Visible = true;
-				}
-				else {
-					control->Visible = false;
-				}
-			}
-			//待更改結束畫面
-			menu->Image = gcnew Bitmap(gcnew System::String(lead_in.get_path()));
-		}
-		//good End
-		else {
-			//menu->Image = gcnew Bitmap(gcnew System::String(back_ground.get_path()));
-		}
-	}
+		   void initialize(void) {
+			   //size initialize
+			   AutoScaleDimensions = System::Drawing::SizeF(6, 12);
+			   menu->Size = System::Drawing::Size(WIDTH, HEIGHT);
+			   manual_text->Size = System::Drawing::Size(WIDTH, 540);
+			   backpack_panel->Size = System::Drawing::Size(WIDTH, 240);
+			   status_panel->Size = System::Drawing::Size(WIDTH, 180);
+			   menu->Size = System::Drawing::Size(WIDTH, HEIGHT);
+			   ClientSize = System::Drawing::Size(WIDTH, HEIGHT);
+			   item_pic->Size = System::Drawing::Size(WIDTH, 540);
+			   background->Size = System::Drawing::Size(WIDTH, 540);
+			   introduction_textBox->Size = System::Drawing::Size(WIDTH, 540);
+
+			   //picture initialize
+			   menu->Image = gcnew Bitmap(gcnew System::String(back_ground.get_path()));
+			   player_motion->Image = gcnew Bitmap(gcnew System::String("www//pic//char_pixel//Arthur.png"));
+
+			   //transparent: 透明屬性
+			   //this->TransparencyKey = System::Drawing::Color::SpringGreen;//透明屬性
+			   player_motion->BackColor = System::Drawing::Color::SpringGreen;
+			   //chose_character_text->BackColor = System::Drawing::Color::SpringGreen;
+
+			   //初始化背包的表格
+			   ColumnHeader^ header1 = gcnew ColumnHeader();
+			   header1->Text = "持有物品";
+			   header1->TextAlign = HorizontalAlignment::Left;
+			   header1->Width = 254;
+
+			   ColumnHeader^ header2 = gcnew ColumnHeader();
+			   header2->TextAlign = HorizontalAlignment::Left;
+			   header2->Text = "物品數量或狀態";
+			   header2->Width = 254;
+			   backpack_items_listView->Columns->Add(header1);
+			   backpack_items_listView->Columns->Add(header2);
+
+			   //增加物品到背包
+			   ListViewItem^ coin = gcnew ListViewItem(gcnew array<String^> { L"錢", L"2023" });
+			   backpack_items_listView->Items->Add(coin);
+		   }
+		   void progress_bar_display(void) {
+			   //this->label4->Text = ("MP:" + Convert::ToString(tank_profile.point.MP) + "/100");
+			   if (player.get_ability().HP >= 0 && HP_value_progressBar != 0) {
+				   HP_progressBar->Maximum = HP_value_progressBar;
+				   HP_progressBar->Value = player.get_ability().HP;
+
+			   }
+			   if (player.get_ability().MP >= 0 && MP_value_progressBar != 0) {
+				   MP_progressBar->Maximum = MP_value_progressBar;
+				   MP_progressBar->Value = player.get_ability().MP;
+			   }
+			   if (player.get_ability().SAN >= 0 && SAN_value_progressBar != 0) {
+				   SAN_progressBar->Maximum = SAN_value_progressBar;
+				   SAN_progressBar->Value = player.get_ability().SAN;
+			   }
+		   }
+
+		   void dirction_button_display(void) {
+			   //display the button when the player get close enough
+			   //黃品瑜補完: L"2023"改場景的名稱， switch case on 場景名稱，先用絕對位置偵測碰撞
+			   /*void button_collsion(void) {
+				   if (strcmp(place, "plazza") == 0) {
+					   Plazza_To_Inn->Visible = player.collsion(Plazza_To_Inn->Location.X, Plazza_To_Inn->Location.Y);
+				   }
+				   else if (strcmp(place, "inn") == 0) {
+
+				   }
+				   else if (strcmp(place, "market") == 0) {
+
+				   }
+				   else if (strcmp(place, "restaurant") == 0) {
+
+				   }
+				   else if (strcmp(place, "prison") == 0) {
+
+				   }
+				   else if (strcmp(place, "palace") == 0) {
+
+				   }
+				   else if (strcmp(place, "library") == 0) {
+
+				   }
+				   else if (strcmp(place, "lake") == 0) {
+
+				   }
+		   }*/
+		   }
+		   void check_end_game(void) {
+
+			   //bad End
+			   if (sun_count == 0) {
+				   for each (Control ^ control in this->Controls)
+				   {
+					   String^ controlName = control->Name;
+					   if (control->GetType() == PictureBox::typeid && controlName == L"menu")
+					   {
+						   control->Visible = true;
+					   }
+					   else {
+						   control->Visible = false;
+					   }
+				   }
+				   //待更改結束畫面
+				   menu->Image = gcnew Bitmap(gcnew System::String(back_ground.get_path()));
+			   }
+			   //good End
+			   else if (strcmp(place, "palace_END") == 0) {
+				   //待新增不同結局
+				   for each (Control ^ control in this->Controls)
+				   {
+					   String^ controlName = control->Name;
+					   if (control->GetType() == PictureBox::typeid && controlName == L"menu")
+					   {
+						   control->Visible = true;
+					   }
+					   else {
+						   control->Visible = false;
+					   }
+				   }
+				   menu->Image = gcnew Bitmap(gcnew System::String(lead_in.get_path()));
+			   }
+		   }
 	private: System::Void backgroundWorker1_DoWork(System::Object^ sender, System::ComponentModel::DoWorkEventArgs^ e) {
 	}
 	private: System::Void Form1_Load(System::Object^ sender, System::EventArgs^ e) {
@@ -2474,8 +2607,7 @@ namespace CppCLRWinFormsProject {
 		BIOLOGY->Visible = true;
 		ARCHAEOLOGY->Visible = true;
 		MEDICINE->Visible = true;
-		//黃品瑜補完 數值標籤已經建立好
-		////backpack_panel->Visible = true;
+		backpack_panel->Visible = true;
 		backpack->Visible = true;
 		character_name->Visible = true;
 		character_name->Text = L"考古學家";
@@ -2488,8 +2620,17 @@ namespace CppCLRWinFormsProject {
 		background->Image = gcnew Bitmap(gcnew System::String(Plazza.get_path()));
 		Sun->Visible = true;
 		Sun->Value = sun_count % 6;
-		player = archaeologist;
+		HP_progressBar->Visible = true;
+		MP_progressBar->Visible = true;
+		SAN_progressBar->Visible = true;
+		//player = archaeologist;
+		player.assign_ability(archaeologist.get_ability());
+		player.assign_skill(archaeologist.get_skill());
+		HP_value_progressBar = player.get_ability().HP;
+		MP_value_progressBar = player.get_ability().MP;
+		SAN_value_progressBar = player.get_ability().SAN;
 		strcpy(place, "plazza");
+		strcpy(whatchat, "whathappen");
 	}
 	private: System::Void occultist_button_Click(System::Object^ sender, System::EventArgs^ e) {
 		archaeologist_button->Visible = false;
@@ -2529,15 +2670,24 @@ namespace CppCLRWinFormsProject {
 		character_name->Text = L"神祕學家";
 		dialog_text->Visible = true;
 		introduction_textBox->Visible = true;
-		dialog_text->Text = "經歷了這般的未知變化讓你的心中產生了些許恐懼，請做一個san check";
+		dialog_text->Text = "經歷了這般的未知變化讓你的心中產生了些許恐懼，請做一個成功-0失敗-1d2的san check";
 		introduction_textBox->Text = "你們乘上了前往威爾士的車。\r\n伴隨著風景閃過，你們經過連綿的山丘，最終車子停在了一處以被開挖的丘陵地。\r\n「到了。」司機說，「你們可以去遺跡探索了，那邊就是這次遺跡出土的地方了。」\r\n你們進入後看到了入口右側有著一具骷髏，你們隱隱看到骷髏空洞的眼眶閃出了一縷白光，你感到腦子一陣暈眩，頭愈發的沉重，閉上了眼睛。你感覺腦袋一片混沌，彷彿睡了太久大夢初醒一般，你再次睜開眼睛後，你發現與你一起來的團員們也躺在你身邊露出了迷茫的神情。\r\n你們身上穿的衣服不再是前來時的衣服，而是風格古老的粗布衣，你摸了摸兜，你發現你身上的物品都不見了，剩下的是一些你只在博物館見過的古董品。";
 		san_check_button->Visible = true;
 		background->Visible = true;
 		background->Image = gcnew Bitmap(gcnew System::String(Plazza.get_path()));
 		Sun->Visible = true;
 		Sun->Value = sun_count % 6;
-		player = occultist;
+		HP_progressBar->Visible = true;
+		MP_progressBar->Visible = true;
+		SAN_progressBar->Visible = true;
+		//player = occultist; DB = 0;
+		player.assign_ability(occultist.get_ability());
+		player.assign_skill(occultist.get_skill());
+		HP_value_progressBar = player.get_ability().HP;
+		MP_value_progressBar = player.get_ability().MP;
+		SAN_value_progressBar = player.get_ability().SAN;
 		strcpy(place, "plazza");
+		strcpy(whatchat, "whathappen");
 	}
 	private: System::Void reporter_button_Click(System::Object^ sender, System::EventArgs^ e) {
 		archaeologist_button->Visible = false;
@@ -2584,8 +2734,17 @@ namespace CppCLRWinFormsProject {
 		background->Image = gcnew Bitmap(gcnew System::String(Plazza.get_path()));
 		Sun->Visible = true;
 		Sun->Value = sun_count % 6;
-		player = reporter;
+		HP_progressBar->Visible = true;
+		MP_progressBar->Visible = true;
+		SAN_progressBar->Visible = true;
+		//player = reporter;
+		player.assign_ability(reporter.get_ability());
+		player.assign_skill(reporter.get_skill());
+		HP_value_progressBar = player.get_ability().HP;
+		MP_value_progressBar = player.get_ability().MP;
+		SAN_value_progressBar = player.get_ability().SAN;
 		strcpy(place, "plazza");
+		strcpy(whatchat, "whathappen");
 	}
 	private: System::Void backpack_Click(System::Object^ sender, System::EventArgs^ e) {
 		//backpack object display
@@ -2601,11 +2760,38 @@ namespace CppCLRWinFormsProject {
 	}
 	private: System::Void san_check_button_Click(System::Object^ sender, System::EventArgs^ e) {
 		//san check here
-		//move to scene one
-		introduction_textBox->Visible = false;
+		dice.check(player.get_ability().SAN);
 		san_check_button->Visible = false;
-		continue_button->Visible = true;
-		dialog_text->Text = "這個方型廣場散充斥著明亮的陽光，讓人感到溫暖舒適。\r\n在廣場的中央，矗立著一個高大的日晷和噴泉，他們周圍種植著各種花卉和綠植，為廣場增添了生氣和色彩。\r\n廣場上擺放著一排排長椅，可以讓人小息片刻。\r\n廣場的邊緣插著一根木製的路標，兩個箭頭分別指著廣場唯二的兩條通路。";
+		if (strcmp(whatchat, "whathappen") == 0) {
+			//move to scene one
+			introduction_textBox->Visible = false;
+			continue_button->Visible = true;
+			if (dice.success == 0) {
+				dialog_text->Text = "san check: 失敗\r\n你的腦子一片混亂，突如其來的巨大變故讓你十分焦慮，渾身不適。\r\n這個方型廣場散充斥著明亮的陽光，讓人感到溫暖舒適。\r\n在廣場的中央，矗立著一個高大的日晷和噴泉，他們周圍種植著各種花卉和綠植，為廣場增添了生氣和色彩。\r\n廣場上擺放著一排排長椅，可以讓人小息片刻。\r\n廣場的邊緣插著一根木製的路標，兩個箭頭分別指著廣場唯二的兩條通路。";
+				player.edit_ability({ "SAN" }, -(rand() % 2 + 1));
+				player.change_label_text({ "SAN" }, SAN);
+			}
+			else {
+				dialog_text->Text = "san check: 成功\r\n你的迅速地接受了這些變故，打不倒你的只會讓你更強大，劇烈的變故終將變成你的養分。\r\n這個方型廣場散充斥著明亮的陽光，讓人感到溫暖舒適。\r\n在廣場的中央，矗立著一個高大的日晷和噴泉，他們周圍種植著各種花卉和綠植，為廣場增添了生氣和色彩。\r\n廣場上擺放著一排排長椅，可以讓人小息片刻。\r\n廣場的邊緣插著一根木製的路標，兩個箭頭分別指著廣場唯二的兩條通路。";
+				player.change_label_text({ "SAN" }, SAN);
+			}
+		}
+		else if (strcmp(whatchat, "see_monster") == 0) {
+			chatbox_1->Visible = true;
+			chatbox_2->Visible = true;
+			chatbox_1->Text = "逃回地面";
+			chatbox_2->Text = "正面迎戰";
+			if (dice.success == 0) {
+				dialog_text->Text = "san check: 失敗\r\n你的腦子一片混亂，突如其來的巨大變故讓你十分焦慮，渾身不適。";
+				player.edit_ability({ "SAN" }, -(rand() % 6 + 1));
+				player.change_label_text({ "SAN" }, SAN);
+			}
+			else {
+				dialog_text->Text = "san check: 成功\r\n你的迅速地接受了這些變故，打不倒你的只會讓你更強大，劇烈的變故終將變成你的養分。";
+				player.edit_ability({ "SAN" }, -1);
+				player.change_label_text({ "SAN" }, SAN);
+			}
+		}
 		//adjust backpack size
 	}
 	private: System::Void continue_button_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -2623,8 +2809,11 @@ namespace CppCLRWinFormsProject {
 		else if (continue_button_count == 2 && lake_count == 0) {
 			dialog_text->Text = "瓦格恩:\r\n歡迎來到永晝城，我叫瓦格恩，是你們的導遊。\r\n這裡是白晝廣場，是城市中的休閒區域，中心的日晷是由城鎮的工匠們用最精妙的工藝花費數個月所完成的工藝品，也是城陣中唯一的日晷。\r\n如果覺得身心疲倦的話，我很推薦你來這裡坐在長椅上欣賞日出日落。";
 			continue_button_count = continue_button_count + 1;
+			player.change_label_text({ "HP" }, HP);
+			player.change_label_text({ "STR" }, STR);
+			player.skill_change_label_text({ "Spot" }, SPOT);
 		}
-		else if(continue_button_count == 3 && lake_count == 0) {
+		else if (continue_button_count == 3 && lake_count == 0) {
 			continue_button->Visible = false;
 			//display object in scene
 			signpost->Visible = true;
@@ -2674,7 +2863,6 @@ namespace CppCLRWinFormsProject {
 		Observe_Sundial->Visible = true;
 		listen_stranger_plazza->Visible = false;
 		chat_stranger_plazza->Visible = false;
-
 	}
 	private: System::Void Plazza_To_Inn_Click(System::Object^ sender, System::EventArgs^ e) {
 		dialog_text->Text = "這棟建築由木材建成，屋頂使用稻草編織而成。建築物的外牆粗糙的由木板和泥土夯實而成，看起來十分堅固，前方設有一個大門，用於進出旅店，大門的外觀簡單而樸實，完美的符合了實用主義的理念。";
@@ -2733,7 +2921,8 @@ namespace CppCLRWinFormsProject {
 		background->Image = gcnew Bitmap(gcnew System::String(Prison_Outside.get_path()));
 		sun_count -= 1;
 		Sun->Value = sun_count % 6;
-		
+		Spot_Prison_Out->Visible = true;
+
 	}
 	private: System::Void Go_In_Inn_Click(System::Object^ sender, System::EventArgs^ e) {
 		dialog_text->Text = "在你進入旅店後，他的內部就如同他的外部那般樸實無華，只有一個櫃台，和左右兩間大床房從前方傳來了有氣無力的聲音”住宿一天20銀幣，不提供食物，一天以宏光、烈光時區分，住七天優惠只要一金幣。”你往前看去，那是一個頭髮斑白的老頭，雙手撐著臉，一副要死不活的樣子。";
@@ -2803,6 +2992,7 @@ namespace CppCLRWinFormsProject {
 		background->Image = gcnew Bitmap(gcnew System::String(Plazza.get_path()));
 		sun_count -= 1;
 		Sun->Value = sun_count % 6;
+		Spot_Prison_Out->Visible = true;
 		if (sun_count % 6 != 0) {
 			listen_stranger_plazza->Visible = true;
 			chat_stranger_plazza->Visible = true;
@@ -2842,7 +3032,7 @@ namespace CppCLRWinFormsProject {
 		Market_To_Sewer->Visible = false;
 		//display object in scene
 		Restaurant_To_Market->Visible = true;
-		Restaurant_To_Prison->Visible = true; 
+		Restaurant_To_Prison->Visible = true;
 		Go_To_Restaurant->Visible = true;
 		Restaurant_To_Sewer->Visible = true;
 		background->Image = gcnew Bitmap(gcnew System::String(Restaurant_Outside.get_path()));
@@ -2912,6 +3102,7 @@ namespace CppCLRWinFormsProject {
 		Prison_To_Plazza->Visible = false;
 		Prison_To_IntersectionLeft->Visible = false;
 		Prison_To_Sewer->Visible = false;
+		Spot_Prison_Out->Visible = false;
 		// display object in scene
 		Restaurant_To_Market->Visible = true;
 		Restaurant_To_Prison->Visible = true;
@@ -2921,7 +3112,7 @@ namespace CppCLRWinFormsProject {
 		sun_count -= 1;
 		Sun->Value = sun_count % 6;
 	}
-	private: System::Void Prison_To_Plazza_Click(System::Object^ sender, System::EventArgs^ e) {	
+	private: System::Void Prison_To_Plazza_Click(System::Object^ sender, System::EventArgs^ e) {
 		dialog_text->Text = "廣場待補";
 		strcpy(place, "plazza");
 		// hide object in scene
@@ -2929,6 +3120,7 @@ namespace CppCLRWinFormsProject {
 		Prison_To_Plazza->Visible = false;
 		Prison_To_IntersectionLeft->Visible = false;
 		Prison_To_Sewer->Visible = false;
+		Spot_Prison_Out->Visible = false;
 		// diaplay object in scene
 		signpost->Visible = true;
 		sundial->Visible = true;
@@ -3041,6 +3233,7 @@ namespace CppCLRWinFormsProject {
 		Prison_To_Plazza->Visible = false;
 		Prison_To_IntersectionLeft->Visible = false;
 		Prison_To_Sewer->Visible = false;
+		Spot_Prison_Out->Visible = false;
 		// diaplay object in scene
 		IntersectionLeft_To_Prison->Visible = true;
 		IntersectionLeft_To_Library->Visible = true;
@@ -3062,6 +3255,7 @@ namespace CppCLRWinFormsProject {
 		Prison_To_IntersectionLeft->Visible = true;
 		Prison_To_Sewer->Visible = true;
 		background->Image = gcnew Bitmap(gcnew System::String(Prison_Outside.get_path()));
+		Spot_Prison_Out->Visible = true;
 	}
 	private: System::Void IntersectionLeft_To_Library_Click(System::Object^ sender, System::EventArgs^ e) {
 		dialog_text->Text = "這是一棟非常豪華和宏偉的建築，你被它那令人嘆為觀止的氣勢所震撼，以高大的石柱和華麗的拱門，來支撐整個建築，建築的主體由優雅的柱子和華麗的拱門支撐，高大的尖頂耸立著，猶如一個巨大的王冠，牆面上有著浮雕、雕塑和彩繪，繪製著神話、故事和歷史事件，讓建築更顯神聖和莊嚴。在陽光的照耀下，這些彩繪和浮雕散發出燦爛的光芒，讓整個建築閃耀著耀眼的光彩。";
@@ -3123,12 +3317,13 @@ namespace CppCLRWinFormsProject {
 		Sun->Value = sun_count % 6;
 	}
 	private: System::Void Go_In_Palace_Click(System::Object^ sender, System::EventArgs^ e) {
-		strcpy(place, "palace");
-		dialog_text->Text = "待補";
+		dialog_text->Text = "待補palace_END";
 		// hide object in scene
 		Palace_To_IntersectionRight->Visible = false;
 		Go_In_Palace->Visible = false;
 		background->Image = gcnew Bitmap(gcnew System::String(Palace_Inside.get_path()));
+		strcpy(place, "palace_END");
+
 	}
 	private: System::Void Go_In_Library_Click(System::Object^ sender, System::EventArgs^ e) {
 		dialog_text->Text = "你進到了圖書館內，這間屋子裏有著許多的架子，架子上擺滿了手寫的文獻和書籍，大多都是用羊皮紙和墨水寫成，這些文獻是按照主題整齊排列排列。";
@@ -3289,7 +3484,7 @@ namespace CppCLRWinFormsProject {
 	private: System::Void item_pic_Click(System::Object^ sender, System::EventArgs^ e) {
 		item_pic->Visible = false;
 		// in plazza
-		if (strcmp(place, "plazza") == 0) { 
+		if (strcmp(place, "plazza") == 0) {
 			signpost->Visible = true;
 			sundial->Visible = true;
 			Plazza_To_Inn->Visible = true;
@@ -3305,7 +3500,7 @@ namespace CppCLRWinFormsProject {
 			}
 		}
 	}
-	
+
 	private: System::Void Observe_Sundial_Click(System::Object^ sender, System::EventArgs^ e) {
 		dice.check(player.get_skill().Spot);
 		if (Observe_Sundial_Count == 9) {
@@ -3334,17 +3529,17 @@ namespace CppCLRWinFormsProject {
 		chatbox_3->Visible = false;
 		chatbox_4->Visible = false;
 		dice.check(player.get_skill().Listen);
-		if (Observe_Stranger_Plazza_Count == 9) {
+		if (Listen_Stranger_Plazza_Count == 9) {
 			if (dice.success == 0) {
 				dialog_text->Text = "聆聽判定:失敗\r\n你在一旁偷聽老人家的閒話家常，老人們說話帶著很重的口音，讓你難以理解。";
 			}
 			else {
 				dialog_text->Text = "聆聽判定:成功\r\n你在一旁偷聽老人家的閒話家常，你聽到一個老人在說，他家下方好像有老鼠之類的東西，最近他睡覺的時候，有時候會聽到一些嘈雜的聲音從地板下傳來，怕不是下水道裡養了隻大老鼠。";
 			}
-			Observe_Stranger_Plazza_Count = dice.success;
+			Listen_Stranger_Plazza_Count = dice.success;
 		}
 		else {
-			if (Observe_Stranger_Plazza_Count == 0) {
+			if (Listen_Stranger_Plazza_Count == 0) {
 				dialog_text->Text = "聆聽判定:失敗\r\n你在一旁偷聽老人家的閒話家常，老人們說話帶著很重的口音，讓你難以理解。";
 			}
 			else {
@@ -3370,11 +3565,24 @@ namespace CppCLRWinFormsProject {
 		chat_stranger_plazza->Visible = false;
 		Plazza_To_Sewer->Visible = false;
 		// display object in scene
-		Sewer_To_Plazza->Visible = true;
-		Sewer_Plazza_Inn->Visible = true;
-		Sewer_Plazza_Prison->Visible = true;
-
-		background->Image = gcnew Bitmap(gcnew System::String(Sewer.get_path()));
+		sun_count -= 1;
+		dice.check(player.get_ability().LUK);
+		if (dice.success == 0 && seem_monster){
+			dialog_text->Text = "你一爬下下水道，就看到一個人形生物朝著你衝來，你要逃跑還是迎戰?在看到他的瞬間，你感覺你的大腦在震動，不適感湧上心頭。\r\n請做一個成功-1失敗-1d6的san check。";
+			monster_pic->Image = gcnew Bitmap(gcnew System::String(Servent.get_path()));
+			monster_pic->Visible = true;
+			background->Image = gcnew Bitmap(gcnew System::String(Sewer.get_path()));
+			strcpy(whatchat, "see_monster");
+			
+			san_check_button->Visible = true;
+		}
+		else {
+			dialog_text->Text = "你一爬下下水道，這裡出乎意料的並沒有甚麼異味，僅僅是有些悶而已。";
+			Sewer_To_Plazza->Visible = true;
+			Sewer_Plazza_Inn->Visible = true;
+			Sewer_Plazza_Prison->Visible = true;
+			background->Image = gcnew Bitmap(gcnew System::String(Sewer.get_path()));
+		}
 	}
 	private: System::Void Inn_To_Sewer_Click(System::Object^ sender, System::EventArgs^ e) {
 		dialog_text->Text = "酒館";
@@ -3387,11 +3595,23 @@ namespace CppCLRWinFormsProject {
 		Observe_Inn->Visible = false;
 		Inn_To_Sewer->Visible = false;
 		// display object in scene
-		Sewer_To_Inn->Visible = true;
-		Sewer_Inn_Outlet->Visible = true;
-		Sewer_Inn_Plazza->Visible = true;
-		Sewer_Inn_Library->Visible = true;
-		background->Image = gcnew Bitmap(gcnew System::String(Sewer.get_path()));
+		if (dice.success == 0 && seem_monster) {
+			dialog_text->Text = "你一爬下下水道，就看到一個人形生物朝著你衝來，你要逃跑還是迎戰?在看到他的瞬間，你感覺你的大腦在震動，不適感湧上心頭。\r\n請做一個成功-1失敗-1d6的san check。";
+			monster_pic->Image = gcnew Bitmap(gcnew System::String(Servent.get_path()));
+			monster_pic->Visible = true;
+			background->Image = gcnew Bitmap(gcnew System::String(Sewer.get_path()));
+			strcpy(whatchat, "see_monster");
+			
+			san_check_button->Visible = true;
+		}
+		else {
+			dialog_text->Text = "你一爬下下水道，這裡出乎意料的並沒有甚麼異味，僅僅是有些悶而已。";
+			Sewer_To_Inn->Visible = true;
+			Sewer_Inn_Outlet->Visible = true;
+			Sewer_Inn_Plazza->Visible = true;
+			Sewer_Inn_Library->Visible = true;
+			background->Image = gcnew Bitmap(gcnew System::String(Sewer.get_path()));
+		}
 	}
 	private: System::Void Market_To_Sewer_Click(System::Object^ sender, System::EventArgs^ e) {
 		dialog_text->Text = "市場";
@@ -3403,10 +3623,21 @@ namespace CppCLRWinFormsProject {
 		studio->Visible = false;
 		Market_To_Sewer->Visible = false;
 		// display object in scene
-		Sewer_To_Market->Visible = true;
-		Sewer_Market_Restaurant->Visible = true;
-		Sewer_Market_Outlet->Visible = true;
-		background->Image = gcnew Bitmap(gcnew System::String(Sewer.get_path()));
+		if (dice.success == 0 && seem_monster) {
+			dialog_text->Text = "你一爬下下水道，就看到一個人形生物朝著你衝來，你要逃跑還是迎戰?在看到他的瞬間，你感覺你的大腦在震動，不適感湧上心頭。\r\n請做一個成功-1失敗-1d6的san check。";
+			monster_pic->Image = gcnew Bitmap(gcnew System::String(Servent.get_path()));
+			monster_pic->Visible = true;
+			background->Image = gcnew Bitmap(gcnew System::String(Sewer.get_path()));
+			strcpy(whatchat, "see_monster");
+			
+			san_check_button->Visible = true;
+		}
+		else {
+			Sewer_To_Market->Visible = true;
+			Sewer_Market_Restaurant->Visible = true;
+			Sewer_Market_Outlet->Visible = true;
+			background->Image = gcnew Bitmap(gcnew System::String(Sewer.get_path()));
+		}
 	}
 	private: System::Void Restaurant_To_Sewer_Click(System::Object^ sender, System::EventArgs^ e) {
 		dialog_text->Text = "餐廳";
@@ -3417,10 +3648,22 @@ namespace CppCLRWinFormsProject {
 		Go_To_Restaurant->Visible = false;
 		Restaurant_To_Sewer->Visible = false;
 		// display object in scene
-		Sewer_To_Restaurant->Visible = true;
-		Sewer_Restaurant_Prison->Visible = true;
-		Sewer_Restaurant_Market->Visible = true;
-		background->Image = gcnew Bitmap(gcnew System::String(Sewer.get_path()));
+		if (dice.success == 0 && seem_monster) {
+			dialog_text->Text = "你一爬下下水道，就看到一個人形生物朝著你衝來，你要逃跑還是迎戰?在看到他的瞬間，你感覺你的大腦在震動，不適感湧上心頭。\r\n請做一個成功-1失敗-1d6的san check。";
+			monster_pic->Image = gcnew Bitmap(gcnew System::String(Servent.get_path()));
+			monster_pic->Visible = true;
+			background->Image = gcnew Bitmap(gcnew System::String(Sewer.get_path()));
+			strcpy(whatchat, "see_monster");
+			
+			san_check_button->Visible = true;
+		}
+		else {
+			Sewer_To_Restaurant->Visible = true;
+			Sewer_Restaurant_Prison->Visible = true;
+			Sewer_Restaurant_Market->Visible = true;
+			background->Image = gcnew Bitmap(gcnew System::String(Sewer.get_path()));
+		}
+		
 	}
 	private: System::Void Library_To_Sewer_Click(System::Object^ sender, System::EventArgs^ e) {
 		dialog_text->Text = "圖書館";
@@ -3431,10 +3674,22 @@ namespace CppCLRWinFormsProject {
 		Go_In_Library->Visible = false;
 		Library_To_Sewer->Visible = false;
 		// display object in scene
-		Sewer_To_Library->Visible = true;
-		Sewer_Library_Intersection->Visible = true;
-		Sewer_Library_Inn->Visible = true;
-		background->Image = gcnew Bitmap(gcnew System::String(Sewer.get_path()));
+		if (dice.success == 0 && seem_monster) {
+			dialog_text->Text = "你一爬下下水道，就看到一個人形生物朝著你衝來，你要逃跑還是迎戰?在看到他的瞬間，你感覺你的大腦在震動，不適感湧上心頭。\r\n請做一個成功-1失敗-1d6的san check。";
+			monster_pic->Image = gcnew Bitmap(gcnew System::String(Servent.get_path()));
+			monster_pic->Visible = true;
+			background->Image = gcnew Bitmap(gcnew System::String(Sewer.get_path()));
+			strcpy(whatchat, "see_monster");
+			
+			san_check_button->Visible = true;
+		}
+		else {
+			Sewer_To_Library->Visible = true;
+			Sewer_Library_Intersection->Visible = true;
+			Sewer_Library_Inn->Visible = true;
+			background->Image = gcnew Bitmap(gcnew System::String(Sewer.get_path()));
+		}
+		
 	}
 	private: System::Void Prison_To_Sewer_Click(System::Object^ sender, System::EventArgs^ e) {
 		strcpy(place, "moon_state");
@@ -3443,11 +3698,23 @@ namespace CppCLRWinFormsProject {
 		Prison_To_Plazza->Visible = false;
 		Prison_To_IntersectionLeft->Visible = false;
 		Prison_To_Sewer->Visible = false;
+		Spot_Prison_Out->Visible = false;
 		// display object in scene
-		Sewer_Prison_Plazza->Visible = true;
-		Sewer_Prison_Restaurant->Visible = true;
-		Sewer_Prison_Intersection->Visible = true;
-		background->Image = gcnew Bitmap(gcnew System::String(Sewer_Moon_State.get_path()));
+		if (dice.success == 0 && seem_monster) {
+			dialog_text->Text = "你一爬下下水道，就看到一個人形生物朝著你衝來，你要逃跑還是迎戰?在看到他的瞬間，你感覺你的大腦在震動，不適感湧上心頭。\r\n請做一個成功-1失敗-1d6的san check。";
+			monster_pic->Image = gcnew Bitmap(gcnew System::String(Servent.get_path()));
+			monster_pic->Visible = true;
+			background->Image = gcnew Bitmap(gcnew System::String(Sewer.get_path()));
+			strcpy(whatchat, "see_monster");
+			
+			san_check_button->Visible = true;
+		}
+		else {
+			Sewer_Prison_Plazza->Visible = true;
+			Sewer_Prison_Restaurant->Visible = true;
+			Sewer_Prison_Intersection->Visible = true;
+			background->Image = gcnew Bitmap(gcnew System::String(Sewer_Moon_State.get_path()));
+		}
 	}
 	private: System::Void Lake_To_Sewer_Click(System::Object^ sender, System::EventArgs^ e) {
 		strcpy(place, "altar");
@@ -3667,7 +3934,7 @@ namespace CppCLRWinFormsProject {
 		// diaplay object in scene
 		Sewer_Outlet_Inn->Visible = true;
 		Sewer_Outlet_Market->Visible = true;
-		background->Image = gcnew Bitmap(gcnew System::String(Sewer_Outlet .get_path()));
+		background->Image = gcnew Bitmap(gcnew System::String(Sewer_Outlet.get_path()));
 	}
 	private: System::Void Sewer_Outlet_Inn_Click(System::Object^ sender, System::EventArgs^ e) {
 		strcpy(place, "sewer_inn");
@@ -3811,12 +4078,34 @@ namespace CppCLRWinFormsProject {
 	private: System::Void chatbox_1_Click(System::Object^ sender, System::EventArgs^ e) {
 		// in plazza
 		if (strcmp(whatchat, "wagain_plazza") == 0) {
-			   dialog_text->Text = "我們下一站要去的是傭有成鎮中最美麗自然風景的地方”德茲瑪麗湖”。";
+			dialog_text->Text = "我們下一站要去的是傭有成鎮中最美麗自然風景的地方”德茲瑪麗湖”。";
 		}
 		else if (strcmp(whatchat, "stranger_plazza") == 0) {
 			dialog_text->Text = "我從小就住在這座城鎮，這座城鎮的風景優美、鎮民和樂安康，能住在治理的這麼好的城鎮裡可真是我三輩子修來的福份啊!";
 		}
-    }
+		else if (strcmp(whatchat, "see_monster") == 0) {
+			dialog_text->Text = "你逃回了地面。";
+			chatbox_1->Visible = false;
+			chatbox_2->Visible = false;
+			monster_pic->Visible = false;
+			signpost->Visible = true;
+			sundial->Visible = true;
+			Plazza_To_Inn->Visible = true;
+			Plazza_To_Prison->Visible = true;
+			Plazza_To_Sewer->Visible = true;
+			background->Image = gcnew Bitmap(gcnew System::String(Plazza.get_path()));
+			sun_count -= 1;
+			Sun->Value = sun_count % 6;
+			Spot_Prison_Out->Visible = true;
+			if (sun_count % 6 != 0) {
+				listen_stranger_plazza->Visible = true;
+				chat_stranger_plazza->Visible = true;
+			}
+			if (sun_count % 6 == 5) {
+				Ask_Wagain->Visible = true;
+			}
+		}
+	}
 	private: System::Void chatbox_2_Click(System::Object^ sender, System::EventArgs^ e) {
 		// in plazza
 		if (strcmp(whatchat, "wagain_plazza") == 0) {
@@ -3845,6 +4134,13 @@ namespace CppCLRWinFormsProject {
 		else if (strcmp(whatchat, "stranger_plazza") == 0) {
 			dialog_text->Text = "你在說甚麼阿，黑夜是甚麼最近的流行語嗎。";
 		}
+		else if (strcmp(whatchat, "see_monster") == 0) {
+			dialog_text->Text = "你衝向了怪物，揮出了你的拳頭。";
+			attack_button->Visible = true;
+			chatbox_1->Visible = false;
+			chatbox_2->Visible = false;
+			seem_monster = false;
+		}
 	}
 	private: System::Void chatbox_3_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (strcmp(whatchat, "wagain_plazza") == 0) {
@@ -3857,9 +4153,99 @@ namespace CppCLRWinFormsProject {
 	private: System::Void chatbox_4_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (strcmp(whatchat, "wagain_plazza") == 0) {
 			dialog_text->Text = "你向他發出了攻擊，下一秒你感覺你的手腕被握住，你感到一震天旋地轉，背後火辣辣的疼痛與從高處俯瞰的那張充滿笑容的臉讓你意識到你失敗了，”禁止暴力喔”瓦格恩輕柔地說道，你受到了2點傷害。";
-			player.edit_HP(-2);
+			player.edit_ability({ "HP" }, -2);
+			player.change_label_text({ "HP" }, HP);
 			chatbox_4->Visible = false;
 		}
 	}
+
+	private: System::Void Spot_Prison_Out_Click(System::Object^ sender, System::EventArgs^ e) {
+		dice.check(player.get_skill().Spot);
+		if (Spot_Prison_Out_Count == 9) {
+			if (dice.success == 0) {
+				dialog_text->Text = "觀察判定:失敗\r\n你仔細地觀察了這棟建築，你只看得出這棟建築看起來相對其他建築高級了許多外。";
+			}
+			else if (dice.success == 1) {
+				dialog_text->Text = "觀察判定:失敗\r\n你仔細地觀察了這棟建築，除了這棟建築看起來相對其他建築高級了許多外，你還發現這座鐵藝門被清理得十分乾淨，但這扇門沒有門片，彷彿是鑲在牆壁上一般，根本無法開啟。";
+			}
+			else {
+				if (sun_count % 6 == 1 || sun_count % 6 == 2)
+				{
+					dialog_text->Text = "觀察判定:成功\r\n你仔細地觀察了這棟建築，你發現這棟房子坐西朝東，似乎正對著廣場，在二樓的位置應該能很好的欣賞廣場的景色，但這裡的採光似乎十分極端，太陽在東邊時採光極佳，而在溪邊時則相反。你看到二樓的窗戶有個人影，但由於窗戶的反光你並不能看清人影的樣子。";
+				}
+				else {
+					dialog_text->Text = "觀察判定:成功\r\n你仔細地觀察了這棟建築，你發現這棟房子坐西朝東，似乎正對著廣場，在二樓的位置應該能很好的欣賞廣場的景色，但這裡的採光似乎十分極端，太陽在東邊時採光極佳，而在溪邊時則相反。";
+				}
+			}
+			Spot_Prison_Out_Count = dice.success;
+		}
+		else {
+			if (Spot_Prison_Out_Count == 0) {
+				dialog_text->Text = "觀察判定:失敗\r\n你仔細地觀察了這棟建築，你只看得出這棟建築看起來相對其他建築高級了許多外。";
+			}
+			else if (Spot_Prison_Out_Count == 1) {
+				dialog_text->Text = "觀察判定:失敗\r\n你仔細地觀察了這棟建築，除了這棟建築看起來相對其他建築高級了許多外，你還發現這座鐵藝門被清理得十分乾淨，但這扇門沒有門片，彷彿是鑲在牆壁上一般，根本無法開啟。";
+			}
+			else {
+				if (sun_count % 6 == 3 || sun_count % 6 == 4)
+				{
+					dialog_text->Text = "觀察判定:困難成功\r\n你仔細地觀察了這棟建築，你發現這棟房子坐西朝東，似乎正對著廣場，在二樓的位置應該能很好的欣賞廣場的景色，但這裡的採光似乎十分極端，太陽在東邊時採光極佳，而在溪邊時則相反。你看到二樓的窗戶有個人影，但由於窗戶的反光你並不能看清人影的樣子。";
+				}
+				else {
+					dialog_text->Text = "觀察判定:困難成功\r\n你仔細地觀察了這棟建築，你發現這棟房子坐西朝東，似乎正對著廣場，在二樓的位置應該能很好的欣賞廣場的景色，但這裡的採光似乎十分極端，太陽在東邊時採光極佳，而在溪邊時則相反。";
+				}
+			}
+		}
+	}
+private: System::Void attack_button_Click(System::Object^ sender, System::EventArgs^ e) {
+	attack_button->Visible = false;
+	if (Battle.turn < 2) {
+		evade_button->Visible = true;
+		counterattack_button->Visible = true;
+		Battle.attack(player.get_ability().DB, player.get_ability().DMG, player.get_skill().Brawl, false, monster.get_skill().Brawl, monster.get_ability().DMG);
+		if (Battle.atk_success == false) {
+			dialog_text->Text = "攻擊對抗:失敗\r\n你不只沒打到他，還露出了嚴重的破綻被他一爪子抓傷了。";
+			player.edit_ability({ "HP" }, -Battle.dmg);
+			player.change_label_text({ "HP" }, HP);
+		}
+		else {
+			dialog_text->Text = "你的拳頭穿過了他的巴巴，將他打退了，他看起來受了點傷。";
+		}
+	}
+	else {
+		dialog_text->Text = "就在你正要揮出拳頭的那一剎那，你看到一把長劍從怪物的頭中插了出來，你們看到遠處走來一群全副武裝的騎士，這群騎士一劍就將你們面前的怪物給劈成了兩半，從陣中走出來一紫髮紅眼的帥哥，他開口說道”我知道你們有很多想問的，但這裡可不適合久留，先跟我來吧，我們去安全的地方說”";
+		monster_pic->Visible = false;
+	}
+}
+private: System::Void evade_button_Click(System::Object^ sender, System::EventArgs^ e) {
+	Battle.evade(player.get_skill().Evade, monster.get_skill().Brawl, monster.get_ability().DMG, monster.get_ability().DB);
+	evade_button->Visible = false;
+	counterattack_button->Visible = false;
+	attack_button->Visible = true;
+	if (Battle.atk_success == false) {
+		dialog_text->Text = "你一個華麗的後撤步，躲開了他的魔爪。";
+	}
+	else {
+		dialog_text->Text = "你踩著地上的水讓你踉蹌了一下，你成功的用你的臉對他的爪子造成了零點傷害。";
+		player.edit_ability({ "HP" }, -Battle.dmg);
+		player.change_label_text({ "HP" }, HP);
+	}
+	Battle.turn += 1;
+}
+private: System::Void counterattack_button_Click(System::Object^ sender, System::EventArgs^ e) {
+	Battle.counter_attack(player.get_skill().Brawl, player.get_ability().DMG, monster.get_skill().Brawl, monster.get_ability().DMG, monster.get_ability().DB);
+	evade_button->Visible = false;
+	counterattack_button->Visible = false;
+	attack_button->Visible = true;
+	if (Battle.atk_success == false) {
+		dialog_text->Text = "接、化、發，那個男人的聲音在你的腦海中突兀地想起，當你緩過神時你的拳頭就已經在怪物的臉上了。";
+	}
+	else {
+		dialog_text->Text = "你踩著地上的水讓你踉蹌了一下，你的拳頭與他擦肩而過，而他的拳頭與你不過是一面之交，你甚至差點沒站住腳。";
+		player.edit_ability({ "HP" }, -Battle.dmg);
+		player.change_label_text({ "HP" }, HP);
+	}
+	Battle.turn += 1;
+}
 };
 }
