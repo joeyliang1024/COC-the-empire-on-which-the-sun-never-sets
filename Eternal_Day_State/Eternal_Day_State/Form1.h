@@ -133,6 +133,11 @@ namespace CppCLRWinFormsProject {
 	private: System::Windows::Forms::Button^ Prison_To_Secret;
 	private: System::Windows::Forms::Button^ Prison1_To_Prison2;
 	private: System::Windows::Forms::Button^ Prison2_To_Prison1;
+	private: System::Windows::Forms::PictureBox^ NPCArthur;
+	private: System::Windows::Forms::PictureBox^ NPCBedivere;
+	private: System::Windows::Forms::PictureBox^ NPCGuinevere;
+	private: System::Windows::Forms::PictureBox^ NPCGawain;
+	private: System::Windows::Forms::PictureBox^ NPCJohann;
 
 	public:
 	private: System::Windows::Forms::Button^ Spot_Prison_Out;
@@ -462,6 +467,11 @@ namespace CppCLRWinFormsProject {
 			this->Prison_To_Secret = (gcnew System::Windows::Forms::Button());
 			this->Prison1_To_Prison2 = (gcnew System::Windows::Forms::Button());
 			this->Prison2_To_Prison1 = (gcnew System::Windows::Forms::Button());
+			this->NPCArthur = (gcnew System::Windows::Forms::PictureBox());
+			this->NPCBedivere = (gcnew System::Windows::Forms::PictureBox());
+			this->NPCGuinevere = (gcnew System::Windows::Forms::PictureBox());
+			this->NPCGawain = (gcnew System::Windows::Forms::PictureBox());
+			this->NPCJohann = (gcnew System::Windows::Forms::PictureBox());
 			this->backpack_panel->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->item_pic))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->player_motion))->BeginInit();
@@ -469,6 +479,11 @@ namespace CppCLRWinFormsProject {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->menu))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->monster_pic))->BeginInit();
 			this->status_panel->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->NPCArthur))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->NPCBedivere))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->NPCGuinevere))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->NPCGawain))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->NPCJohann))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// backpack_items_listView
@@ -2065,7 +2080,7 @@ namespace CppCLRWinFormsProject {
 			this->SPOT->Location = System::Drawing::Point(189, 30);
 			this->SPOT->Margin = System::Windows::Forms::Padding(1, 0, 1, 0);
 			this->SPOT->Name = L"SPOT";
-			this->SPOT->Size = System::Drawing::Size(49, 19);
+			this->SPOT->Size = System::Drawing::Size(39, 19);
 			this->SPOT->TabIndex = 17;
 			this->SPOT->Text = L"Spot";
 			this->SPOT->Visible = false;
@@ -2077,7 +2092,7 @@ namespace CppCLRWinFormsProject {
 			this->LISTEN->Location = System::Drawing::Point(189, 60);
 			this->LISTEN->Margin = System::Windows::Forms::Padding(1, 0, 1, 0);
 			this->LISTEN->Name = L"LISTEN";
-			this->LISTEN->Size = System::Drawing::Size(66, 19);
+			this->LISTEN->Size = System::Drawing::Size(51, 19);
 			this->LISTEN->TabIndex = 18;
 			this->LISTEN->Text = L"Listen";
 			this->LISTEN->Visible = false;
@@ -2089,7 +2104,7 @@ namespace CppCLRWinFormsProject {
 			this->LIBRARY->Location = System::Drawing::Point(189, 90);
 			this->LIBRARY->Margin = System::Windows::Forms::Padding(1, 0, 1, 0);
 			this->LIBRARY->Name = L"LIBRARY";
-			this->LIBRARY->Size = System::Drawing::Size(80, 19);
+			this->LIBRARY->Size = System::Drawing::Size(59, 19);
 			this->LIBRARY->TabIndex = 19;
 			this->LIBRARY->Text = L"Library";
 			this->LIBRARY->Visible = false;
@@ -2101,7 +2116,7 @@ namespace CppCLRWinFormsProject {
 			this->BRAWL->Location = System::Drawing::Point(189, 120);
 			this->BRAWL->Margin = System::Windows::Forms::Padding(1, 0, 1, 0);
 			this->BRAWL->Name = L"BRAWL";
-			this->BRAWL->Size = System::Drawing::Size(66, 19);
+			this->BRAWL->Size = System::Drawing::Size(48, 19);
 			this->BRAWL->TabIndex = 20;
 			this->BRAWL->Text = L"Brawl";
 			this->BRAWL->Visible = false;
@@ -2113,7 +2128,7 @@ namespace CppCLRWinFormsProject {
 			this->EVADE->Location = System::Drawing::Point(189, 150);
 			this->EVADE->Margin = System::Windows::Forms::Padding(1, 0, 1, 0);
 			this->EVADE->Name = L"EVADE";
-			this->EVADE->Size = System::Drawing::Size(61, 19);
+			this->EVADE->Size = System::Drawing::Size(51, 19);
 			this->EVADE->TabIndex = 21;
 			this->EVADE->Text = L"Evade";
 			this->EVADE->Visible = false;
@@ -2138,7 +2153,7 @@ namespace CppCLRWinFormsProject {
 			this->HISTORY->Location = System::Drawing::Point(313, 60);
 			this->HISTORY->Margin = System::Windows::Forms::Padding(1, 0, 1, 0);
 			this->HISTORY->Name = L"HISTORY";
-			this->HISTORY->Size = System::Drawing::Size(79, 19);
+			this->HISTORY->Size = System::Drawing::Size(59, 19);
 			this->HISTORY->TabIndex = 23;
 			this->HISTORY->Text = L"History";
 			this->HISTORY->Visible = false;
@@ -2150,7 +2165,7 @@ namespace CppCLRWinFormsProject {
 			this->OCCULT->Location = System::Drawing::Point(313, 150);
 			this->OCCULT->Margin = System::Windows::Forms::Padding(1, 0, 1, 0);
 			this->OCCULT->Name = L"OCCULT";
-			this->OCCULT->Size = System::Drawing::Size(73, 19);
+			this->OCCULT->Size = System::Drawing::Size(52, 19);
 			this->OCCULT->TabIndex = 24;
 			this->OCCULT->Text = L"Occult";
 			this->OCCULT->Visible = false;
@@ -2162,7 +2177,7 @@ namespace CppCLRWinFormsProject {
 			this->ARCHAEOLOGY->Location = System::Drawing::Point(313, 120);
 			this->ARCHAEOLOGY->Margin = System::Windows::Forms::Padding(1, 0, 1, 0);
 			this->ARCHAEOLOGY->Name = L"ARCHAEOLOGY";
-			this->ARCHAEOLOGY->Size = System::Drawing::Size(132, 19);
+			this->ARCHAEOLOGY->Size = System::Drawing::Size(93, 19);
 			this->ARCHAEOLOGY->TabIndex = 25;
 			this->ARCHAEOLOGY->Text = L"Archaeology";
 			this->ARCHAEOLOGY->Visible = false;
@@ -2174,7 +2189,7 @@ namespace CppCLRWinFormsProject {
 			this->PSYCOLOGY->Location = System::Drawing::Point(313, 30);
 			this->PSYCOLOGY->Margin = System::Windows::Forms::Padding(1, 0, 1, 0);
 			this->PSYCOLOGY->Name = L"PSYCOLOGY";
-			this->PSYCOLOGY->Size = System::Drawing::Size(104, 19);
+			this->PSYCOLOGY->Size = System::Drawing::Size(76, 19);
 			this->PSYCOLOGY->TabIndex = 26;
 			this->PSYCOLOGY->Text = L"Psycology";
 			this->PSYCOLOGY->Visible = false;
@@ -2186,7 +2201,7 @@ namespace CppCLRWinFormsProject {
 			this->BIOLOGY->Location = System::Drawing::Point(313, 90);
 			this->BIOLOGY->Margin = System::Windows::Forms::Padding(1, 0, 1, 0);
 			this->BIOLOGY->Name = L"BIOLOGY";
-			this->BIOLOGY->Size = System::Drawing::Size(82, 19);
+			this->BIOLOGY->Size = System::Drawing::Size(60, 19);
 			this->BIOLOGY->TabIndex = 27;
 			this->BIOLOGY->Text = L"Biology";
 			this->BIOLOGY->Visible = false;
@@ -2198,7 +2213,7 @@ namespace CppCLRWinFormsProject {
 			this->MEDICINE->Location = System::Drawing::Point(471, 30);
 			this->MEDICINE->Margin = System::Windows::Forms::Padding(1, 0, 1, 0);
 			this->MEDICINE->Name = L"MEDICINE";
-			this->MEDICINE->Size = System::Drawing::Size(92, 19);
+			this->MEDICINE->Size = System::Drawing::Size(72, 19);
 			this->MEDICINE->TabIndex = 28;
 			this->MEDICINE->Text = L"Medicine";
 			this->MEDICINE->Visible = false;
@@ -2279,7 +2294,7 @@ namespace CppCLRWinFormsProject {
 			this->status_panel->Controls->Add(this->player_power_text);
 			this->status_panel->Controls->Add(this->STR);
 			this->status_panel->Controls->Add(this->character_name);
-			this->status_panel->Location = System::Drawing::Point(1, 0);
+			this->status_panel->Location = System::Drawing::Point(0, 0);
 			this->status_panel->Margin = System::Windows::Forms::Padding(1, 2, 1, 2);
 			this->status_panel->Name = L"status_panel";
 			this->status_panel->Size = System::Drawing::Size(1027, 180);
@@ -2331,11 +2346,62 @@ namespace CppCLRWinFormsProject {
 			this->Prison2_To_Prison1->Visible = false;
 			this->Prison2_To_Prison1->Click += gcnew System::EventHandler(this, &Form1::Prison2_To_Prison1_Click);
 			// 
+			// NPCArthur
+			// 
+			this->NPCArthur->Location = System::Drawing::Point(745, 391);
+			this->NPCArthur->Name = L"NPCArthur";
+			this->NPCArthur->Size = System::Drawing::Size(54, 50);
+			this->NPCArthur->TabIndex = 108;
+			this->NPCArthur->TabStop = false;
+			this->NPCArthur->Visible = false;
+			// 
+			// NPCBedivere
+			// 
+			this->NPCBedivere->Location = System::Drawing::Point(723, 311);
+			this->NPCBedivere->Name = L"NPCBedivere";
+			this->NPCBedivere->Size = System::Drawing::Size(54, 50);
+			this->NPCBedivere->TabIndex = 109;
+			this->NPCBedivere->TabStop = false;
+			this->NPCBedivere->Visible = false;
+			// 
+			// NPCGuinevere
+			// 
+			this->NPCGuinevere->Location = System::Drawing::Point(704, 457);
+			this->NPCGuinevere->Name = L"NPCGuinevere";
+			this->NPCGuinevere->Size = System::Drawing::Size(54, 50);
+			this->NPCGuinevere->TabIndex = 110;
+			this->NPCGuinevere->TabStop = false;
+			this->NPCGuinevere->Visible = false;
+			// 
+			// NPCGawain
+			// 
+			this->NPCGawain->Location = System::Drawing::Point(720, 237);
+			this->NPCGawain->Name = L"NPCGawain";
+			this->NPCGawain->Size = System::Drawing::Size(54, 50);
+			this->NPCGawain->TabIndex = 111;
+			this->NPCGawain->TabStop = false;
+			this->NPCGawain->Visible = false;
+			// 
+			// NPCJohann
+			// 
+			this->NPCJohann->Location = System::Drawing::Point(719, 269);
+			this->NPCJohann->Name = L"NPCJohann";
+			this->NPCJohann->Size = System::Drawing::Size(54, 50);
+			this->NPCJohann->TabIndex = 112;
+			this->NPCJohann->TabStop = false;
+			this->NPCJohann->Visible = false;
+			// 
 			// Form1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 12);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1024, 960);
+			
+			this->Controls->Add(this->NPCJohann);
+			this->Controls->Add(this->NPCGawain);
+			this->Controls->Add(this->NPCGuinevere);
+			this->Controls->Add(this->NPCBedivere);
+			this->Controls->Add(this->NPCArthur);
 			this->Controls->Add(this->Prison2_To_Prison1);
 			this->Controls->Add(this->Prison1_To_Prison2);
 			this->Controls->Add(this->Prison_To_Secret);
@@ -2386,11 +2452,13 @@ namespace CppCLRWinFormsProject {
 			this->Controls->Add(this->listen_stranger_plazza);
 			this->Controls->Add(this->IntersectionRight_To_Palace);
 			this->Controls->Add(this->Plazza_To_Inn);
+			this->Controls->Add(this->Go_Out_Restaurant);
 			this->Controls->Add(this->IntersectionLeft_To_Library);
 			this->Controls->Add(this->Library_To_IntersectionRight);
 			this->Controls->Add(this->Inn_To_Market);
 			this->Controls->Add(this->Market_To_Restaurant);
 			this->Controls->Add(this->Prison_To_IntersectionLeft);
+			this->Controls->Add(this->Go_To_Restaurant);
 			this->Controls->Add(this->Psychology_Lake2);
 			this->Controls->Add(this->Observe_Inn);
 			this->Controls->Add(this->studio);
@@ -2434,8 +2502,7 @@ namespace CppCLRWinFormsProject {
 			this->Controls->Add(this->introduction_textBox);
 			this->Controls->Add(this->background);
 			this->Controls->Add(this->menu);
-			this->Controls->Add(this->Go_To_Restaurant);
-			this->Controls->Add(this->Go_Out_Restaurant);
+			
 			this->Controls->Add(this->Spot_Library_In);
 			this->KeyPreview = true;
 			this->Margin = System::Windows::Forms::Padding(1, 2, 1, 2);
@@ -2456,6 +2523,11 @@ namespace CppCLRWinFormsProject {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->monster_pic))->EndInit();
 			this->status_panel->ResumeLayout(false);
 			this->status_panel->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->NPCArthur))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->NPCBedivere))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->NPCGuinevere))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->NPCGawain))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->NPCJohann))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -2526,6 +2598,11 @@ namespace CppCLRWinFormsProject {
 			   //picture initialize
 			   menu->Image = gcnew Bitmap(gcnew System::String(back_ground.get_path()));
 			   player_motion->Image = gcnew Bitmap(gcnew System::String("www//pic//char_pixel//Arthur.png"));
+			   NPCArthur->Image = gcnew Bitmap(gcnew System::String("www//pic//char_pixel//Arthur.png"));
+			   NPCBedivere->Image = gcnew Bitmap(gcnew System::String("www//pic//char_pixel//Bedivere.png"));
+			   NPCGuinevere->Image = gcnew Bitmap(gcnew System::String("www//pic//char_pixel//Guinevere.png"));
+			   NPCGawain->Image = gcnew Bitmap(gcnew System::String("www//pic//char_pixel//Gawain.png"));
+			   NPCJohann->Image = gcnew Bitmap(gcnew System::String("www//pic//char_pixel//Lancelot.png"));
 
 			   //transparent: 透明屬性
 			   //this->TransparencyKey = System::Drawing::Color::SpringGreen;//透明屬性
@@ -2557,7 +2634,6 @@ namespace CppCLRWinFormsProject {
 			   if (player.get_ability().HP >= 0 && HP_value_progressBar != 0) {
 				   HP_progressBar->Maximum = HP_value_progressBar;
 				   HP_progressBar->Value = player.get_ability().HP;
-
 			   }
 			   if (player.get_ability().MP >= 0 && MP_value_progressBar != 0) {
 				   MP_progressBar->Maximum = MP_value_progressBar;
@@ -3085,6 +3161,9 @@ namespace CppCLRWinFormsProject {
 	private: System::Void Go_In_Room_Click(System::Object^ sender, System::EventArgs^ e) {
 		dialog_text->Text = "你進入了房間，房間內只有稻草鋪的床，和一些用布包住稻草稈做的枕頭";
 		strcpy(place, "room");
+		if (sun_count % 6 != 3) {
+			NPCGuinevere->Visible = true;
+		}
 		// hide object in scene
 		Go_Out_Inn->Visible = false;
 		Go_In_Room->Visible = false;
@@ -3097,6 +3176,7 @@ namespace CppCLRWinFormsProject {
 		strcpy(place, "inn_in");
 		// hide object in scene
 		Go_Out_Room->Visible = false;
+		NPCGuinevere->Visible = false;
 		// display object in scene
 		Go_Out_Inn->Visible = true;
 		Go_In_Room->Visible = true;
@@ -3448,6 +3528,7 @@ namespace CppCLRWinFormsProject {
 		// hide object in scene
 		Palace_To_IntersectionRight->Visible = false;
 		Go_In_Palace->Visible = false;
+		NPCArthur->Visible = true;
 		background->Image = gcnew Bitmap(gcnew System::String(Palace_Inside.get_path()));
 		strcpy(place, "palace_END");
 
@@ -3548,12 +3629,14 @@ namespace CppCLRWinFormsProject {
 		Restaurant_To_Sewer->Visible = false;
 		//display object in scene
 		Go_Out_Restaurant->Visible = true;
+		NPCBedivere->Visible = true;
 		background->Image = gcnew Bitmap(gcnew System::String(Restaurant_Inside.get_path()));
 	}
 	private: System::Void Go_Out_Restaurant_Click(System::Object^ sender, System::EventArgs^ e) {
 		strcpy(place, "restaurant");
 		// hide object in scene
 		Go_Out_Restaurant->Visible = false;
+		NPCBedivere->Visible = false;
 		//display object in scene
 		Restaurant_To_Market->Visible = true;
 		Restaurant_To_Prison->Visible = true;
