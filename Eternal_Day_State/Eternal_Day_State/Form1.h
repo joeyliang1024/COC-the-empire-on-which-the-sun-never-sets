@@ -16,7 +16,6 @@ int system_counter = 0;
 int continue_button_count = 0;
 char place[20]; //地點判定
 char whatchat[20];
-int lake_count = 0;
 int sun_count = 29;
 
 roll dice;
@@ -80,6 +79,9 @@ namespace CppCLRWinFormsProject {
 	private: System::Windows::Forms::Button^ evade_button;
 	private: System::Windows::Forms::Button^ attack_button;
 	private: System::Windows::Forms::PictureBox^ monster_pic;
+	private: System::Windows::Forms::Button^ Library_Library_In;
+
+	private: System::Windows::Forms::Button^ Spot_Library_In;
 	public:
 	private: System::Windows::Forms::Button^ Spot_Prison_Out;
 	public:
@@ -180,12 +182,10 @@ namespace CppCLRWinFormsProject {
 	private: System::Windows::Forms::PictureBox^ menu;
 	private: System::Windows::Forms::Timer^ timer1;
 	private: System::Windows::Forms::Button^ Ask_Wagain;
-	private: System::Windows::Forms::Button^ Observe_Library;
 	private: System::Windows::Forms::Button^ Order;
 	private: System::Windows::Forms::Button^ diner;
 	private: System::Windows::Forms::Button^ studio;
 	private: System::Windows::Forms::Button^ Observe_Inn;
-	private: System::Windows::Forms::Button^ search;
 	private: System::Windows::Forms::Button^ Psychology_Lake1;
 	private: System::Windows::Forms::Button^ Psychology_Lake2;
 	private: System::Windows::Forms::PictureBox^ background;
@@ -212,7 +212,7 @@ namespace CppCLRWinFormsProject {
 	private: System::Windows::Forms::Label^ chose_character_text;
 	private: System::Windows::Forms::Button^ backpack;
 	private: System::Windows::Forms::Panel^ backpack_panel;
-private: System::Windows::Forms::Panel^ status_panel;
+	private: System::Windows::Forms::Panel^ status_panel;
 
 	private: System::Windows::Forms::Label^ STR;
 	private: System::Windows::Forms::Label^ character_name;
@@ -257,7 +257,6 @@ private: System::Windows::Forms::Panel^ status_panel;
 	private: System::Windows::Forms::Button^ Market_To_Sewer;
 	private: System::Windows::Forms::Button^ Restaurant_To_Sewer;
 	private: System::Windows::Forms::Button^ Library_To_Sewer;
-	private: System::Windows::Forms::Button^ Prison_To_Sewer;
 	private: System::Windows::Forms::Button^ Lake_To_Sewer;
 	private: System::Windows::Forms::Button^ Sewer_To_Plazza;
 	private: System::Windows::Forms::Button^ Sewer_To_Inn;
@@ -385,12 +384,10 @@ private: System::Windows::Forms::Panel^ status_panel;
 			this->menu = (gcnew System::Windows::Forms::PictureBox());
 			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
 			this->Ask_Wagain = (gcnew System::Windows::Forms::Button());
-			this->Observe_Library = (gcnew System::Windows::Forms::Button());
 			this->Order = (gcnew System::Windows::Forms::Button());
 			this->diner = (gcnew System::Windows::Forms::Button());
 			this->studio = (gcnew System::Windows::Forms::Button());
 			this->Observe_Inn = (gcnew System::Windows::Forms::Button());
-			this->search = (gcnew System::Windows::Forms::Button());
 			this->Psychology_Lake2 = (gcnew System::Windows::Forms::Button());
 			this->background = (gcnew System::Windows::Forms::PictureBox());
 			this->Go_To_Restaurant = (gcnew System::Windows::Forms::Button());
@@ -403,7 +400,6 @@ private: System::Windows::Forms::Panel^ status_panel;
 			this->Market_To_Sewer = (gcnew System::Windows::Forms::Button());
 			this->Restaurant_To_Sewer = (gcnew System::Windows::Forms::Button());
 			this->Library_To_Sewer = (gcnew System::Windows::Forms::Button());
-			this->Prison_To_Sewer = (gcnew System::Windows::Forms::Button());
 			this->Lake_To_Sewer = (gcnew System::Windows::Forms::Button());
 			this->Sewer_To_Plazza = (gcnew System::Windows::Forms::Button());
 			this->Sewer_To_Inn = (gcnew System::Windows::Forms::Button());
@@ -436,6 +432,8 @@ private: System::Windows::Forms::Panel^ status_panel;
 			this->evade_button = (gcnew System::Windows::Forms::Button());
 			this->attack_button = (gcnew System::Windows::Forms::Button());
 			this->monster_pic = (gcnew System::Windows::Forms::PictureBox());
+			this->Library_Library_In = (gcnew System::Windows::Forms::Button());
+			this->Spot_Library_In = (gcnew System::Windows::Forms::Button());
 			this->backpack_panel->SuspendLayout();
 			this->status_panel->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->menu))->BeginInit();
@@ -1659,19 +1657,6 @@ private: System::Windows::Forms::Panel^ status_panel;
 			this->Ask_Wagain->Visible = false;
 			this->Ask_Wagain->Click += gcnew System::EventHandler(this, &Form1::Ask_Wagain_Click);
 			// 
-			// Observe_Library
-			// 
-			this->Observe_Library->Font = (gcnew System::Drawing::Font(L"標楷體", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(136)));
-			this->Observe_Library->Location = System::Drawing::Point(396, 404);
-			this->Observe_Library->Name = L"Observe_Library";
-			this->Observe_Library->Size = System::Drawing::Size(96, 64);
-			this->Observe_Library->TabIndex = 47;
-			this->Observe_Library->Text = L"觀察藏書閣";
-			this->Observe_Library->UseVisualStyleBackColor = true;
-			this->Observe_Library->Visible = false;
-			this->Observe_Library->Click += gcnew System::EventHandler(this, &Form1::Observe_Library_Click);
-			// 
 			// Order
 			// 
 			this->Order->Font = (gcnew System::Drawing::Font(L"標楷體", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
@@ -1723,19 +1708,6 @@ private: System::Windows::Forms::Panel^ status_panel;
 			this->Observe_Inn->UseVisualStyleBackColor = true;
 			this->Observe_Inn->Visible = false;
 			this->Observe_Inn->Click += gcnew System::EventHandler(this, &Form1::Observe_Inn_Click);
-			// 
-			// search
-			// 
-			this->search->Font = (gcnew System::Drawing::Font(L"標楷體", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(136)));
-			this->search->Location = System::Drawing::Point(396, 443);
-			this->search->Name = L"search";
-			this->search->Size = System::Drawing::Size(96, 64);
-			this->search->TabIndex = 53;
-			this->search->Text = L"尋找資料";
-			this->search->UseVisualStyleBackColor = true;
-			this->search->Visible = false;
-			this->search->Click += gcnew System::EventHandler(this, &Form1::search_Click);
 			// 
 			// Psychology_Lake2
 			// 
@@ -1876,17 +1848,6 @@ private: System::Windows::Forms::Panel^ status_panel;
 			this->Library_To_Sewer->UseVisualStyleBackColor = true;
 			this->Library_To_Sewer->Visible = false;
 			this->Library_To_Sewer->Click += gcnew System::EventHandler(this, &Form1::Library_To_Sewer_Click);
-			// 
-			// Prison_To_Sewer
-			// 
-			this->Prison_To_Sewer->Location = System::Drawing::Point(34, 206);
-			this->Prison_To_Sewer->Name = L"Prison_To_Sewer";
-			this->Prison_To_Sewer->Size = System::Drawing::Size(96, 64);
-			this->Prison_To_Sewer->TabIndex = 66;
-			this->Prison_To_Sewer->Text = L"進下水道";
-			this->Prison_To_Sewer->UseVisualStyleBackColor = true;
-			this->Prison_To_Sewer->Visible = false;
-			this->Prison_To_Sewer->Click += gcnew System::EventHandler(this, &Form1::Prison_To_Sewer_Click);
 			// 
 			// Lake_To_Sewer
 			// 
@@ -2250,11 +2211,38 @@ private: System::Windows::Forms::Panel^ status_panel;
 			this->monster_pic->TabStop = false;
 			this->monster_pic->Visible = false;
 			// 
+			// Library_Library_In
+			// 
+			this->Library_Library_In->Font = (gcnew System::Drawing::Font(L"標楷體", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(136)));
+			this->Library_Library_In->Location = System::Drawing::Point(695, 651);
+			this->Library_Library_In->Name = L"Library_Library_In";
+			this->Library_Library_In->Size = System::Drawing::Size(96, 64);
+			this->Library_Library_In->TabIndex = 100;
+			this->Library_Library_In->Text = L"尋找書籍";
+			this->Library_Library_In->UseVisualStyleBackColor = true;
+			this->Library_Library_In->Visible = false;
+			this->Library_Library_In->Click += gcnew System::EventHandler(this, &Form1::Library_Library_In_Click);
+			// 
+			// Spot_Library_In
+			// 
+			this->Spot_Library_In->Font = (gcnew System::Drawing::Font(L"標楷體", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(136)));
+			this->Spot_Library_In->Location = System::Drawing::Point(593, 650);
+			this->Spot_Library_In->Name = L"Spot_Library_In";
+			this->Spot_Library_In->Size = System::Drawing::Size(96, 64);
+			this->Spot_Library_In->TabIndex = 101;
+			this->Spot_Library_In->Text = L"觀察圖書館";
+			this->Spot_Library_In->UseVisualStyleBackColor = true;
+			this->Spot_Library_In->Visible = false;
+			this->Spot_Library_In->Click += gcnew System::EventHandler(this, &Form1::Spot_Library_In_Click);
+			// 
 			// Form1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 12);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1024, 960);
+			this->Controls->Add(this->Library_Library_In);
 			this->Controls->Add(this->monster_pic);
 			this->Controls->Add(this->attack_button);
 			this->Controls->Add(this->evade_button);
@@ -2288,7 +2276,6 @@ private: System::Windows::Forms::Panel^ status_panel;
 			this->Controls->Add(this->Sewer_To_Inn);
 			this->Controls->Add(this->Sewer_To_Plazza);
 			this->Controls->Add(this->Lake_To_Sewer);
-			this->Controls->Add(this->Prison_To_Sewer);
 			this->Controls->Add(this->Library_To_Sewer);
 			this->Controls->Add(this->Restaurant_To_Sewer);
 			this->Controls->Add(this->Market_To_Sewer);
@@ -2304,12 +2291,10 @@ private: System::Windows::Forms::Panel^ status_panel;
 			this->Controls->Add(this->Market_To_Restaurant);
 			this->Controls->Add(this->Prison_To_IntersectionLeft);
 			this->Controls->Add(this->Psychology_Lake2);
-			this->Controls->Add(this->search);
 			this->Controls->Add(this->Observe_Inn);
 			this->Controls->Add(this->studio);
 			this->Controls->Add(this->diner);
 			this->Controls->Add(this->Order);
-			this->Controls->Add(this->Observe_Library);
 			this->Controls->Add(this->Ask_Wagain);
 			this->Controls->Add(this->Go_Out_Library);
 			this->Controls->Add(this->Go_In_Library);
@@ -2351,6 +2336,7 @@ private: System::Windows::Forms::Panel^ status_panel;
 			this->Controls->Add(this->menu);
 			this->Controls->Add(this->Go_To_Restaurant);
 			this->Controls->Add(this->Go_Out_Restaurant);
+			this->Controls->Add(this->Spot_Library_In);
 			this->KeyPreview = true;
 			this->Margin = System::Windows::Forms::Padding(1, 2, 1, 2);
 			this->Name = L"Form1";
@@ -2766,6 +2752,7 @@ private: System::Windows::Forms::Panel^ status_panel;
 			//move to scene one
 			introduction_textBox->Visible = false;
 			continue_button->Visible = true;
+			strcpy(whatchat, "start");
 			if (dice.success == 0) {
 				dialog_text->Text = "san check: 失敗\r\n你的腦子一片混亂，突如其來的巨大變故讓你十分焦慮，渾身不適。\r\n這個方型廣場散充斥著明亮的陽光，讓人感到溫暖舒適。\r\n在廣場的中央，矗立著一個高大的日晷和噴泉，他們周圍種植著各種花卉和綠植，為廣場增添了生氣和色彩。\r\n廣場上擺放著一排排長椅，可以讓人小息片刻。\r\n廣場的邊緣插著一根木製的路標，兩個箭頭分別指著廣場唯二的兩條通路。";
 				player.edit_ability({ "SAN" }, -(rand() % 2 + 1));
@@ -2796,42 +2783,43 @@ private: System::Windows::Forms::Panel^ status_panel;
 	}
 	private: System::Void continue_button_Click(System::Object^ sender, System::EventArgs^ e) {
 		//continue button 
-		if (continue_button_count == 0 && lake_count == 0) {
-			dialog_text->Text = "就在你還在疑惑時，突然間聽到了一聲「你們就是這次的旅客吧，跟我來」。\r\n你聽出這似乎是古英語，但你卻能夠完全理解他的意思，你感到十分驚訝，連續不斷的奇異發生反而讓你有種見怪不怪的感覺。\r\n你仔細的觀察四周建築和環境(被動歷史學判定)";
-			//被動歷史學判定(聯合)
-			continue_button_count = continue_button_count + 1;
-		}
-		else if (continue_button_count == 1 && lake_count == 0) {
-			//目前只有成功
-			dialog_text->Text = "你發現這些建築是英國五世紀，也就是亞瑟王時期的建築風格。";
-			continue_button_count = continue_button_count + 1;
-		}
-		else if (continue_button_count == 2 && lake_count == 0) {
-			dialog_text->Text = "瓦格恩:\r\n歡迎來到永晝城，我叫瓦格恩，是你們的導遊。\r\n這裡是白晝廣場，是城市中的休閒區域，中心的日晷是由城鎮的工匠們用最精妙的工藝花費數個月所完成的工藝品，也是城陣中唯一的日晷。\r\n如果覺得身心疲倦的話，我很推薦你來這裡坐在長椅上欣賞日出日落。";
-			continue_button_count = continue_button_count + 1;
-			player.change_label_text({ "HP" }, HP);
-			player.change_label_text({ "STR" }, STR);
-			player.skill_change_label_text({ "Spot" }, SPOT);
-		}
-		else if (continue_button_count == 3 && lake_count == 0) {
-			continue_button->Visible = false;
-			//display object in scene
-			signpost->Visible = true;
-			sundial->Visible = true;
-			Plazza_To_Inn->Visible = true;
-			Plazza_To_Prison->Visible = true;
-			player_motion->Visible = true;
-			Plazza_To_Sewer->Visible = true;
-			if (sun_count % 6 != 0) {
-				listen_stranger_plazza->Visible = true;
-				chat_stranger_plazza->Visible = true;
+		if (strcmp(whatchat, "start") == 0) {
+			if (continue_button_count == 0) {
+				dialog_text->Text = "就在你還在疑惑時，突然間聽到了一聲「你們就是這次的旅客吧，跟我來」。\r\n你聽出這似乎是古英語，但你卻能夠完全理解他的意思，你感到十分驚訝，連續不斷的奇異發生反而讓你有種見怪不怪的感覺。\r\n你仔細的觀察四周建築和環境(被動歷史學判定)";
+				//被動歷史學判定(聯合)
+				continue_button_count = continue_button_count + 1;
 			}
-			if (sun_count % 6 == 5) {
-				Ask_Wagain->Visible = true;
+			else if (continue_button_count == 1 && strcmp(whatchat, "start") == 0) {
+				//目前只有成功
+				dialog_text->Text = "你發現這些建築是英國五世紀，也就是亞瑟王時期的建築風格。";
+				continue_button_count = continue_button_count + 1;
+			}
+			else if (continue_button_count == 2 && strcmp(whatchat, "start") == 0) {
+				dialog_text->Text = "瓦格恩:\r\n歡迎來到永晝城，我叫瓦格恩，是你們的導遊。\r\n這裡是白晝廣場，是城市中的休閒區域，中心的日晷是由城鎮的工匠們用最精妙的工藝花費數個月所完成的工藝品，也是城陣中唯一的日晷。\r\n如果覺得身心疲倦的話，我很推薦你來這裡坐在長椅上欣賞日出日落。";
+				continue_button_count = continue_button_count + 1;
+				player.change_label_text({ "HP" }, HP);
+				player.change_label_text({ "STR" }, STR);
+				player.skill_change_label_text({ "Spot" }, SPOT);
+			}
+			else if (continue_button_count == 3 && strcmp(whatchat, "start") == 0) {
+				continue_button->Visible = false;
+				//display object in scene
+				signpost->Visible = true;
+				sundial->Visible = true;
+				Plazza_To_Inn->Visible = true;
+				Plazza_To_Prison->Visible = true;
+				player_motion->Visible = true;
+				Plazza_To_Sewer->Visible = true;
+				if (sun_count % 6 != 0) {
+					listen_stranger_plazza->Visible = true;
+					chat_stranger_plazza->Visible = true;
+				}
+				if (sun_count % 6 == 5) {
+					Ask_Wagain->Visible = true;
+				}
 			}
 		}
-
-		if (lake_count == 1) {
+		else if (strcmp(whatchat, "to_lake") == 0) {
 			dialog_text->Text = "瓦格恩:這裡是德茲瑪麗湖，擁有城鎮最漂亮的自然風景，如果心情鬱悶的話可以來這裡散散心，但這裡的水況不太穩定，所以請不要下水嬉戲喔。";
 			continue_button->Visible = false;
 			continue_button_count = continue_button_count + 1;
@@ -2839,6 +2827,14 @@ private: System::Windows::Forms::Panel^ status_panel;
 			Lake_To_IntersectionLeft->Visible = true;
 			Lake_To_Sewer->Visible = true;
 			background->Image = gcnew Bitmap(gcnew System::String(Lake_Mary.get_path()));
+		}
+		else if (strcmp(whatchat, "to_moon_state") == 0) {
+			dialog_text->Text = "你跟著他們，一路上你們見到不少之前襲擊你們的怪物，但都被他們輕鬆解決，看起來已經熟門熟路了，你們在經過了十多分鐘的行走後，來到了一個略高於水面的平台型房間，周圍還有一些門，看起來能通向其他房間，平台上放著一些帳篷和照明設備，而之前與你們說話的那位男性走了過來與你們說到”歡迎來到月城，清醒者們的居住地，認識一下，我是這裡的領導人藍斯洛特，你們有甚麼要問的嗎 ? ”";
+			Sewer_Prison_Plazza->Visible = true;
+			Sewer_Prison_Restaurant->Visible = true;
+			Sewer_Prison_Intersection->Visible = true;
+			background->Image = gcnew Bitmap(gcnew System::String(Sewer_Moon_State.get_path()));
+			continue_button->Visible = false; 
 		}
 	}
 	private: System::Void signpost_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -2917,7 +2913,6 @@ private: System::Windows::Forms::Panel^ status_panel;
 		Prison_To_Restaurant->Visible = true;
 		Prison_To_Plazza->Visible = true;
 		Prison_To_IntersectionLeft->Visible = true;
-		Prison_To_Sewer->Visible = true;
 		background->Image = gcnew Bitmap(gcnew System::String(Prison_Outside.get_path()));
 		sun_count -= 1;
 		Sun->Value = sun_count % 6;
@@ -3089,7 +3084,6 @@ private: System::Windows::Forms::Panel^ status_panel;
 		Prison_To_Restaurant->Visible = true;
 		Prison_To_Plazza->Visible = true;
 		Prison_To_IntersectionLeft->Visible = true;
-		Prison_To_Sewer->Visible = true;
 		background->Image = gcnew Bitmap(gcnew System::String(Prison_Outside.get_path()));
 		sun_count -= 1;
 		Sun->Value = sun_count % 6;
@@ -3101,7 +3095,6 @@ private: System::Windows::Forms::Panel^ status_panel;
 		Prison_To_Restaurant->Visible = false;
 		Prison_To_Plazza->Visible = false;
 		Prison_To_IntersectionLeft->Visible = false;
-		Prison_To_Sewer->Visible = false;
 		Spot_Prison_Out->Visible = false;
 		// display object in scene
 		Restaurant_To_Market->Visible = true;
@@ -3119,7 +3112,6 @@ private: System::Windows::Forms::Panel^ status_panel;
 		Prison_To_Restaurant->Visible = false;
 		Prison_To_Plazza->Visible = false;
 		Prison_To_IntersectionLeft->Visible = false;
-		Prison_To_Sewer->Visible = false;
 		Spot_Prison_Out->Visible = false;
 		// diaplay object in scene
 		signpost->Visible = true;
@@ -3232,7 +3224,6 @@ private: System::Windows::Forms::Panel^ status_panel;
 		Prison_To_Restaurant->Visible = false;
 		Prison_To_Plazza->Visible = false;
 		Prison_To_IntersectionLeft->Visible = false;
-		Prison_To_Sewer->Visible = false;
 		Spot_Prison_Out->Visible = false;
 		// diaplay object in scene
 		IntersectionLeft_To_Prison->Visible = true;
@@ -3253,7 +3244,6 @@ private: System::Windows::Forms::Panel^ status_panel;
 		Prison_To_Restaurant->Visible = true;
 		Prison_To_Plazza->Visible = true;
 		Prison_To_IntersectionLeft->Visible = true;
-		Prison_To_Sewer->Visible = true;
 		background->Image = gcnew Bitmap(gcnew System::String(Prison_Outside.get_path()));
 		Spot_Prison_Out->Visible = true;
 	}
@@ -3290,7 +3280,7 @@ private: System::Windows::Forms::Panel^ status_panel;
 	private: System::Void IntersectionLeft_To_Lake_Click(System::Object^ sender, System::EventArgs^ e) {
 		dialog_text->Text = "你們來到了德茲瑪麗湖，那湖水猶如碧玉般清澈，波光粼粼，倒映著湖畔旁的青山綠樹，天空的美景也在湖水中倒影出來。湖畔旁的花草樹木繁茂，漫步其間，仿若置身於一個美麗的童話世界，讓人感受到大自然的生命力。";
 		strcpy(place, "lake");
-		lake_count = 1;
+		strcpy(whatchat, "to_lake");
 		// hide object in scene
 		IntersectionLeft_To_Library->Visible = false;
 		IntersectionLeft_To_Prison->Visible = false;
@@ -3301,7 +3291,6 @@ private: System::Windows::Forms::Panel^ status_panel;
 	}
 	private: System::Void Lake_To_IntersectionLeft_Click(System::Object^ sender, System::EventArgs^ e) {
 		dialog_text->Text = "路口左待補";
-		lake_count = 0;
 		// hide object in scene
 		Lake_To_IntersectionLeft->Visible = false;
 		continue_button->Visible = false;
@@ -3335,8 +3324,7 @@ private: System::Windows::Forms::Panel^ status_panel;
 		Library_To_Sewer->Visible = false;
 		// diaplay object in scene
 		Go_Out_Library->Visible = true;
-		Observe_Library->Visible = true;
-		search->Visible = true;
+		Library_Library_In->Visible = true;
 		background->Image = gcnew Bitmap(gcnew System::String(Library_Inside.get_path()));
 	}
 	private: System::Void Go_Out_Library_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -3344,8 +3332,9 @@ private: System::Windows::Forms::Panel^ status_panel;
 		strcpy(place, "library");
 		// hide object in scene
 		Go_Out_Library->Visible = false;
-		Observe_Library->Visible = false;
-		search->Visible = false;
+		Library_Library_In->Visible = false;
+		chatbox_1->Visible = false;
+		chatbox_2->Visible = false;
 		// diaplay object in scene
 		Library_To_IntersectionRight->Visible = true;
 		Library_To_IntersectionLeft->Visible = true;
@@ -3697,7 +3686,6 @@ private: System::Windows::Forms::Panel^ status_panel;
 		Prison_To_Restaurant->Visible = false;
 		Prison_To_Plazza->Visible = false;
 		Prison_To_IntersectionLeft->Visible = false;
-		Prison_To_Sewer->Visible = false;
 		Spot_Prison_Out->Visible = false;
 		// display object in scene
 		if (dice.success == 0 && seem_monster) {
@@ -3718,7 +3706,6 @@ private: System::Windows::Forms::Panel^ status_panel;
 	}
 	private: System::Void Lake_To_Sewer_Click(System::Object^ sender, System::EventArgs^ e) {
 		strcpy(place, "altar");
-		lake_count = 0;
 		// hide object in scene
 		Lake_To_IntersectionLeft->Visible = false;
 		continue_button->Visible = false;
@@ -4105,6 +4092,10 @@ private: System::Windows::Forms::Panel^ status_panel;
 				Ask_Wagain->Visible = true;
 			}
 		}
+		else if (strcmp(whatchat, "book") == 0) {
+			dialog_text->Text = "這本書記載著一個勇者的故事，從前從前有一位勇者肩負者討伐巨龍的職責，他一路上遇見了許多知心的夥伴，但在討伐巨龍時，無法抵擋巨龍的強大，最終只有勇者一人逃了回來，他回來後沉淪在絕望的世界中，直到一位自稱賢者的人來到他的身前對他說”我能夠讓你回到一個一切都還沒發生的世界，在那裏你會擁有無窮的力量，巨龍對你來說也不足為懼”，勇者像是抓住最後一根稻草般迅速的同意了這個提議”，在那個世界哩，勇者一瞬間輾死了巨龍，而後和夥伴們度過快樂平凡的日子，在童話書的最後一頁，帶著一抹微笑的賢者化身巨龍朝著遠方飛去。 ";
+			chatbox_1->Visible = false;
+		}
 	}
 	private: System::Void chatbox_2_Click(System::Object^ sender, System::EventArgs^ e) {
 		// in plazza
@@ -4129,7 +4120,7 @@ private: System::Windows::Forms::Panel^ status_panel;
 			chat_stranger_plazza->Visible = false;
 			// show object in scene
 			continue_button->Visible = true;
-			lake_count = 1;
+			strcpy(whatchat, "to_lake");
 		}
 		else if (strcmp(whatchat, "stranger_plazza") == 0) {
 			dialog_text->Text = "你在說甚麼阿，黑夜是甚麼最近的流行語嗎。";
@@ -4140,6 +4131,10 @@ private: System::Windows::Forms::Panel^ status_panel;
 			chatbox_1->Visible = false;
 			chatbox_2->Visible = false;
 			seem_monster = false;
+		}
+		else if (strcmp(whatchat, "book") == 0) {
+			dialog_text->Text = "羊皮紙上面畫著一些鬼畫符般的圖示，寫著”以強大的軀殼化為基底，強力的渴望為養料，即可構…基…國…能量…”後方的部分由於老化和破損只能勉強看清幾個字。 ";
+			chatbox_1->Visible = true;
 		}
 	}
 	private: System::Void chatbox_3_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -4166,15 +4161,15 @@ private: System::Windows::Forms::Panel^ status_panel;
 				dialog_text->Text = "觀察判定:失敗\r\n你仔細地觀察了這棟建築，你只看得出這棟建築看起來相對其他建築高級了許多外。";
 			}
 			else if (dice.success == 1) {
-				dialog_text->Text = "觀察判定:失敗\r\n你仔細地觀察了這棟建築，除了這棟建築看起來相對其他建築高級了許多外，你還發現這座鐵藝門被清理得十分乾淨，但這扇門沒有門片，彷彿是鑲在牆壁上一般，根本無法開啟。";
+				dialog_text->Text = "觀察判定:成功\r\n你仔細地觀察了這棟建築，除了這棟建築看起來相對其他建築高級了許多外，你還發現這座鐵藝門被清理得十分乾淨，但這扇門沒有門片，彷彿是鑲在牆壁上一般，根本無法開啟。";
 			}
 			else {
 				if (sun_count % 6 == 1 || sun_count % 6 == 2)
 				{
-					dialog_text->Text = "觀察判定:成功\r\n你仔細地觀察了這棟建築，你發現這棟房子坐西朝東，似乎正對著廣場，在二樓的位置應該能很好的欣賞廣場的景色，但這裡的採光似乎十分極端，太陽在東邊時採光極佳，而在溪邊時則相反。你看到二樓的窗戶有個人影，但由於窗戶的反光你並不能看清人影的樣子。";
+					dialog_text->Text = "觀察判定:困難成功\r\n你仔細地觀察了這棟建築，你發現這棟房子坐西朝東，似乎正對著廣場，在二樓的位置應該能很好的欣賞廣場的景色，但這裡的採光似乎十分極端，太陽在東邊時採光極佳，而在溪邊時則相反。你看到二樓的窗戶有個人影，但由於窗戶的反光你並不能看清人影的樣子。";
 				}
 				else {
-					dialog_text->Text = "觀察判定:成功\r\n你仔細地觀察了這棟建築，你發現這棟房子坐西朝東，似乎正對著廣場，在二樓的位置應該能很好的欣賞廣場的景色，但這裡的採光似乎十分極端，太陽在東邊時採光極佳，而在溪邊時則相反。";
+					dialog_text->Text = "觀察判定:困難成功\r\n你仔細地觀察了這棟建築，你發現這棟房子坐西朝東，似乎正對著廣場，在二樓的位置應該能很好的欣賞廣場的景色，但這裡的採光似乎十分極端，太陽在東邊時採光極佳，而在溪邊時則相反。";
 				}
 			}
 			Spot_Prison_Out_Count = dice.success;
@@ -4184,7 +4179,7 @@ private: System::Windows::Forms::Panel^ status_panel;
 				dialog_text->Text = "觀察判定:失敗\r\n你仔細地觀察了這棟建築，你只看得出這棟建築看起來相對其他建築高級了許多外。";
 			}
 			else if (Spot_Prison_Out_Count == 1) {
-				dialog_text->Text = "觀察判定:失敗\r\n你仔細地觀察了這棟建築，除了這棟建築看起來相對其他建築高級了許多外，你還發現這座鐵藝門被清理得十分乾淨，但這扇門沒有門片，彷彿是鑲在牆壁上一般，根本無法開啟。";
+				dialog_text->Text = "觀察判定:成功\r\n你仔細地觀察了這棟建築，除了這棟建築看起來相對其他建築高級了許多外，你還發現這座鐵藝門被清理得十分乾淨，但這扇門沒有門片，彷彿是鑲在牆壁上一般，根本無法開啟。";
 			}
 			else {
 				if (sun_count % 6 == 3 || sun_count % 6 == 4)
@@ -4215,6 +4210,8 @@ private: System::Void attack_button_Click(System::Object^ sender, System::EventA
 	else {
 		dialog_text->Text = "就在你正要揮出拳頭的那一剎那，你看到一把長劍從怪物的頭中插了出來，你們看到遠處走來一群全副武裝的騎士，這群騎士一劍就將你們面前的怪物給劈成了兩半，從陣中走出來一紫髮紅眼的帥哥，他開口說道”我知道你們有很多想問的，但這裡可不適合久留，先跟我來吧，我們去安全的地方說”";
 		monster_pic->Visible = false;
+		continue_button->Visible = true;
+		strcpy(whatchat, "to_moon_state");
 	}
 }
 private: System::Void evade_button_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -4246,6 +4243,51 @@ private: System::Void counterattack_button_Click(System::Object^ sender, System:
 		player.change_label_text({ "HP" }, HP);
 	}
 	Battle.turn += 1;
+}
+private: System::Void Spot_Library_In_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void Library_Library_In_Click(System::Object^ sender, System::EventArgs^ e) {
+	Library_Library_In->Visible = false;
+	dice.check(player.get_skill().Library);
+	if (Library_Library_In_Count == 9) {
+		if (dice.success == 0) {
+			dialog_text->Text = "圖書館使用判定:失敗\r\n你仔細你嘗試在書架上尋找一些可能對你有幫助的書籍，但你只找到了一些無關緊要的閒人軼事。";
+		}
+		else if (dice.success == 1) {
+			dialog_text->Text = "圖書館使用判定:成功\r\n你仔細你嘗試在書架上尋找一些可能對你有幫助的書籍，你在書架上發現了一本名為夢境英雄的童話書。";
+			chatbox_1->Visible = true;
+			chatbox_1->Text = "夢境英雄";
+			strcpy(whatchat, "book");
+		}
+		else {
+			dialog_text->Text = "圖書館使用判定:成功\r\n你仔細你嘗試在書架上尋找一些可能對你有幫助的書籍，你在書架上發現了一本名為夢境英雄的童話書和一張殘破的羊皮紙。";
+			chatbox_1->Visible = true;
+			chatbox_1->Text = "夢境英雄";
+			chatbox_2->Visible = true;
+			chatbox_2->Text = "殘破的羊皮紙";
+			strcpy(whatchat, "book");
+		}
+		Library_Library_In_Count = dice.success;
+	}
+	else {
+		if (Library_Library_In_Count == 0) {
+			dialog_text->Text = "圖書館使用判定:失敗\r\n你仔細你嘗試在書架上尋找一些可能對你有幫助的書籍，但你只找到了一些無關緊要的閒人軼事。";
+		}
+		else if (Library_Library_In_Count == 1) {
+			dialog_text->Text = "圖書館使用判定:成功\r\n你仔細你嘗試在書架上尋找一些可能對你有幫助的書籍，你在書架上發現了一本名為夢境英雄的童話書。";
+			chatbox_1->Visible = true;
+			chatbox_1->Text = "夢境英雄";
+			strcpy(whatchat, "book");
+		}
+		else {
+			dialog_text->Text = "圖書館使用判定:成功\r\n你仔細你嘗試在書架上尋找一些可能對你有幫助的書籍，你在書架上發現了一本名為夢境英雄的童話書和一張殘破的羊皮紙。";
+			chatbox_1->Visible = true;
+			chatbox_1->Text = "夢境英雄";
+			chatbox_2->Visible = true;
+			chatbox_2->Text = "殘破的羊皮紙";
+			strcpy(whatchat, "book");
+		}
+	}
 }
 };
 }

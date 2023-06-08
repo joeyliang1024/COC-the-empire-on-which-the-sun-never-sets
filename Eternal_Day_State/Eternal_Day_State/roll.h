@@ -9,6 +9,7 @@ int Observe_Signpost_Count = 9;
 int Observe_Sundial_Count = 9;
 int Listen_Stranger_Plazza_Count = 9;
 int Spot_Prison_Out_Count = 9;
+int Library_Library_In_Count = 9;
 bool seem_monster = true;
 class roll {
 public:
