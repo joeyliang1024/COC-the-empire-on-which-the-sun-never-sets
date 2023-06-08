@@ -211,8 +211,8 @@ void Player::skill_change_label_text(char* para_to_edit, System::Windows::Forms:
 };
 bool Player::collsion(int ButtonX, int ButtonY) {
 	float dis = (pos.x - ButtonX) * (pos.x - ButtonX) + (pos.y - ButtonY) * (pos.y - ButtonY);
-	if (dis < 100) {
-		//collosion
+	if (dis < 22500.0) {
+		//collision
 		return true;
 	}
 	else {
