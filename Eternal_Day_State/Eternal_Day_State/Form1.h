@@ -1015,7 +1015,7 @@ namespace CppCLRWinFormsProject {
 			// 
 			this->Restaurant_To_Prison->Font = (gcnew System::Drawing::Font(L"標楷體", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(136)));
-			this->Restaurant_To_Prison->Location = System::Drawing::Point(482, 667);
+			this->Restaurant_To_Prison->Location = System::Drawing::Point(480, 667);
 			this->Restaurant_To_Prison->Margin = System::Windows::Forms::Padding(2);
 			this->Restaurant_To_Prison->Name = L"Restaurant_To_Prison";
 			this->Restaurant_To_Prison->Size = System::Drawing::Size(80, 32);
@@ -1069,7 +1069,7 @@ namespace CppCLRWinFormsProject {
 			// 
 			this->IntersectionRight_To_Library->Font = (gcnew System::Drawing::Font(L"標楷體", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(136)));
-			this->IntersectionRight_To_Library->Location = System::Drawing::Point(496, 200);
+			this->IntersectionRight_To_Library->Location = System::Drawing::Point(480, 200);
 			this->IntersectionRight_To_Library->Margin = System::Windows::Forms::Padding(2);
 			this->IntersectionRight_To_Library->Name = L"IntersectionRight_To_Library";
 			this->IntersectionRight_To_Library->Size = System::Drawing::Size(64, 32);
@@ -1153,7 +1153,7 @@ namespace CppCLRWinFormsProject {
 			// 
 			this->IntersectionLeft_To_Prison->Font = (gcnew System::Drawing::Font(L"標楷體", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(136)));
-			this->IntersectionLeft_To_Prison->Location = System::Drawing::Point(496, 667);
+			this->IntersectionLeft_To_Prison->Location = System::Drawing::Point(480, 667);
 			this->IntersectionLeft_To_Prison->Margin = System::Windows::Forms::Padding(2);
 			this->IntersectionLeft_To_Prison->Name = L"IntersectionLeft_To_Prison";
 			this->IntersectionLeft_To_Prison->Size = System::Drawing::Size(64, 32);
@@ -1556,7 +1556,7 @@ namespace CppCLRWinFormsProject {
 			// 
 			// Sewer_Prison_Plazza
 			// 
-			this->Sewer_Prison_Plazza->Location = System::Drawing::Point(496, 667);
+			this->Sewer_Prison_Plazza->Location = System::Drawing::Point(480, 667);
 			this->Sewer_Prison_Plazza->Name = L"Sewer_Prison_Plazza";
 			this->Sewer_Prison_Plazza->Size = System::Drawing::Size(64, 32);
 			this->Sewer_Prison_Plazza->TabIndex = 78;
@@ -1611,7 +1611,7 @@ namespace CppCLRWinFormsProject {
 			// 
 			// Sewer_Outlet_Inn
 			// 
-			this->Sewer_Outlet_Inn->Location = System::Drawing::Point(496, 200);
+			this->Sewer_Outlet_Inn->Location = System::Drawing::Point(480, 200);
 			this->Sewer_Outlet_Inn->Name = L"Sewer_Outlet_Inn";
 			this->Sewer_Outlet_Inn->Size = System::Drawing::Size(64, 32);
 			this->Sewer_Outlet_Inn->TabIndex = 83;
@@ -1666,7 +1666,7 @@ namespace CppCLRWinFormsProject {
 			// 
 			// Sewer_Inn_Library
 			// 
-			this->Sewer_Inn_Library->Location = System::Drawing::Point(496, 200);
+			this->Sewer_Inn_Library->Location = System::Drawing::Point(480, 200);
 			this->Sewer_Inn_Library->Name = L"Sewer_Inn_Library";
 			this->Sewer_Inn_Library->Size = System::Drawing::Size(64, 32);
 			this->Sewer_Inn_Library->TabIndex = 88;
@@ -1688,7 +1688,7 @@ namespace CppCLRWinFormsProject {
 			// 
 			// Sewer_Intersection_Prison
 			// 
-			this->Sewer_Intersection_Prison->Location = System::Drawing::Point(496, 667);
+			this->Sewer_Intersection_Prison->Location = System::Drawing::Point(480, 667);
 			this->Sewer_Intersection_Prison->Name = L"Sewer_Intersection_Prison";
 			this->Sewer_Intersection_Prison->Size = System::Drawing::Size(64, 32);
 			this->Sewer_Intersection_Prison->TabIndex = 90;
@@ -1710,7 +1710,7 @@ namespace CppCLRWinFormsProject {
 			// 
 			// Sewer_Lake_Intersection
 			// 
-			this->Sewer_Lake_Intersection->Location = System::Drawing::Point(496, 667);
+			this->Sewer_Lake_Intersection->Location = System::Drawing::Point(480, 667);
 			this->Sewer_Lake_Intersection->Name = L"Sewer_Lake_Intersection";
 			this->Sewer_Lake_Intersection->Size = System::Drawing::Size(64, 32);
 			this->Sewer_Lake_Intersection->TabIndex = 92;
@@ -1813,7 +1813,7 @@ namespace CppCLRWinFormsProject {
 			// 
 			// Secret_To_Sewer
 			// 
-			this->Secret_To_Sewer->Location = System::Drawing::Point(496, 667);
+			this->Secret_To_Sewer->Location = System::Drawing::Point(480, 667);
 			this->Secret_To_Sewer->Name = L"Secret_To_Sewer";
 			this->Secret_To_Sewer->Size = System::Drawing::Size(64, 32);
 			this->Secret_To_Sewer->TabIndex = 103;
@@ -2304,7 +2304,7 @@ namespace CppCLRWinFormsProject {
 			// 
 			// Sewer_To_Secret
 			// 
-			this->Sewer_To_Secret->Location = System::Drawing::Point(496, 200);
+			this->Sewer_To_Secret->Location = System::Drawing::Point(480, 200);
 			this->Sewer_To_Secret->Name = L"Sewer_To_Secret";
 			this->Sewer_To_Secret->Size = System::Drawing::Size(64, 32);
 			this->Sewer_To_Secret->TabIndex = 104;
@@ -2315,7 +2315,7 @@ namespace CppCLRWinFormsProject {
 			// 
 			// Prison_To_Secret
 			// 
-			this->Prison_To_Secret->Location = System::Drawing::Point(496, 667);
+			this->Prison_To_Secret->Location = System::Drawing::Point(480, 667);
 			this->Prison_To_Secret->Name = L"Prison_To_Secret";
 			this->Prison_To_Secret->Size = System::Drawing::Size(64, 32);
 			this->Prison_To_Secret->TabIndex = 105;
@@ -2326,7 +2326,7 @@ namespace CppCLRWinFormsProject {
 			// 
 			// Prison1_To_Prison2
 			// 
-			this->Prison1_To_Prison2->Location = System::Drawing::Point(496, 200);
+			this->Prison1_To_Prison2->Location = System::Drawing::Point(480, 200);
 			this->Prison1_To_Prison2->Name = L"Prison1_To_Prison2";
 			this->Prison1_To_Prison2->Size = System::Drawing::Size(64, 32);
 			this->Prison1_To_Prison2->TabIndex = 106;
@@ -2649,7 +2649,7 @@ namespace CppCLRWinFormsProject {
 			   //display the button when the player get close enough
 			   //黃品瑜補完: L"2023"改場景的名稱， switch case on 場景名稱，先用絕對位置偵測碰撞
 			   player.edit_position(player_motion->Location.X, player_motion->Location.Y);
-			   if (player.collsion(16,512)) {
+			   if (player.collsion(16,512)) { //往右
 				   if (strcmp(place, "plazza") == 0) {
 					   Plazza_To_Prison->Visible = true;
 				   }
@@ -2680,6 +2680,24 @@ namespace CppCLRWinFormsProject {
 				   Prison_To_Restaurant->Visible = false;
 				   Library_To_IntersectionLeft->Visible = false;
 				   IntersectionLeft_To_Lake->Visible = false;
+			   }
+			   if (player.collsion(938, 512)) { //往左
+
+			   }
+			   else {
+
+			   }
+			   if (player.collsion(200, 480)) {
+
+			   }
+			   else {
+
+			   }
+			   if (player.collsion(667, 480)) {
+
+			   }
+			   else {
+
 			   }
 		   }
 		   void check_end_game(void) {
@@ -3019,12 +3037,14 @@ namespace CppCLRWinFormsProject {
 				//Plazza_To_Prison->Visible = true;
 				player_motion->Visible = true;
 				Plazza_To_Sewer->Visible = true;
+				
 				if (sun_count % 6 != 0) {
 					listen_stranger_plazza->Visible = true;
 					chat_stranger_plazza->Visible = true;
 				}
 				if (sun_count % 6 == 5) {
 					Ask_Wagain->Visible = true;
+					NPCGawain->Visible = true;
 				}
 			}
 		}
@@ -3036,6 +3056,9 @@ namespace CppCLRWinFormsProject {
 			Lake_To_IntersectionLeft->Visible = true;
 			Lake_To_Sewer->Visible = true;
 			background->Image = gcnew Bitmap(gcnew System::String(Lake_Mary.get_path()));
+			if (sun_count % 6 == 4) {
+				NPCGawain->Visible = true;
+			}
 		}
 		else if (strcmp(whatchat, "to_moon_state") == 0) {
 			dialog_text->Text = "你跟著他們，一路上你們見到不少之前襲擊你們的怪物，但都被他們輕鬆解決，看起來已經熟門熟路了，你們在經過了十多分鐘的行走後，來到了一個略高於水面的平台型房間，周圍還有一些門，看起來能通向其他房間，平台上放著一些帳篷和照明設備，而之前與你們說話的那位男性走了過來與你們說到”歡迎來到月城，清醒者們的居住地，認識一下，我是這裡的領導人藍斯洛特，你們有甚麼要問的嗎 ? ”";
@@ -3088,6 +3111,7 @@ namespace CppCLRWinFormsProject {
 		listen_stranger_plazza->Visible = false;
 		chat_stranger_plazza->Visible = false;
 		Plazza_To_Sewer->Visible = false;
+		NPCGawain->Visible = false;
 		// display object in scene
 		Inn_To_Plazza->Visible = true;
 		Go_In_Inn->Visible = true;
@@ -3118,6 +3142,7 @@ namespace CppCLRWinFormsProject {
 		listen_stranger_plazza->Visible = false;
 		chat_stranger_plazza->Visible = false;
 		Plazza_To_Sewer->Visible = false;
+		NPCGawain->Visible = false;
 		// display object in scene
 		Prison_To_Restaurant->Visible = true;
 		Prison_To_Plazza->Visible = true;
@@ -3131,6 +3156,9 @@ namespace CppCLRWinFormsProject {
 	private: System::Void Go_In_Inn_Click(System::Object^ sender, System::EventArgs^ e) {
 		dialog_text->Text = "在你進入旅店後，他的內部就如同他的外部那般樸實無華，只有一個櫃台，和左右兩間大床房從前方傳來了有氣無力的聲音”住宿一天20銀幣，不提供食物，一天以宏光、烈光時區分，住七天優惠只要一金幣。”你往前看去，那是一個頭髮斑白的老頭，雙手撐著臉，一副要死不活的樣子。";
 		strcpy(place, "inn_in");
+		if (sun_count % 6 == 1) {
+			NPCGawain->Visible = true;
+		}
 		// hide object in scene
 		Go_In_Inn->Visible = false;
 		Inn_To_Plazza->Visible = false;
@@ -3149,6 +3177,7 @@ namespace CppCLRWinFormsProject {
 		// hide object in scene
 		Go_Out_Inn->Visible = false;
 		Go_In_Room->Visible = false;
+		NPCGawain->Visible = false;
 		// display object in scene
 		Go_In_Inn->Visible = true;
 		Inn_To_Plazza->Visible = true;
@@ -3175,6 +3204,7 @@ namespace CppCLRWinFormsProject {
 		dialog_text->Text = "在你進入旅店後，他的內部就如同他的外部那般樸實無華，只有一個櫃台，和左右兩間大床房從前方傳來了有氣無力的聲音”住宿一天20銀幣，不提供食物，一天以宏光、烈光時區分，住七天優惠只要一金幣。”你往前看去，那是一個頭髮斑白的老頭，雙手撐著臉，一副要死不活的樣子。";
 		strcpy(place, "inn_in");
 		// hide object in scene
+		NPCGuinevere->Visible = false;
 		Go_Out_Room->Visible = false;
 		NPCGuinevere->Visible = false;
 		// display object in scene
@@ -3184,6 +3214,9 @@ namespace CppCLRWinFormsProject {
 	}
 	private: System::Void Inn_To_Plazza_Click(System::Object^ sender, System::EventArgs^ e) {
 		strcpy(place, "plazza");
+		if (sun_count % 6 == 5) {
+			NPCGawain->Visible = true;
+		}
 		// hide object in scene
 		Go_In_Inn->Visible = false;
 		Inn_To_Plazza->Visible = false;
@@ -3212,6 +3245,9 @@ namespace CppCLRWinFormsProject {
 	private: System::Void Inn_To_Market_Click(System::Object^ sender, System::EventArgs^ e) {
 		dialog_text->Text = "市場的街道狹窄而擁擠，滿是雜物，很容易讓人摔倒。市場里擠滿了商販和攤販，他們用各種聲音、手勢和展示方式向你推銷自己的產品。你可以聽到他們高聲地叫賣，介紹自己的貨品，有些商販用樂器演奏著悠揚的音樂，吸引著顧客。";
 		strcpy(place, "market");
+		if (sun_count % 6 == 2) {
+			NPCGawain->Visible = true;
+		}
 		// hide object in scene
 		Go_In_Inn->Visible = false;
 		Inn_To_Plazza->Visible = false;
@@ -3219,6 +3255,7 @@ namespace CppCLRWinFormsProject {
 		Inn_To_IntersectionRight->Visible = false;
 		Observe_Inn->Visible = false;
 		Inn_To_Sewer->Visible = false;
+		NPCGawain->Visible = false;
 		//display object in scene
 		Market_To_Restaurant->Visible = true;
 		Market_To_Inn->Visible = true;
@@ -3238,6 +3275,7 @@ namespace CppCLRWinFormsProject {
 		diner->Visible = false;
 		studio->Visible = false;
 		Market_To_Sewer->Visible = false;
+		NPCGawain->Visible = false;
 		//display object in scene
 		Restaurant_To_Market->Visible = true;
 		Restaurant_To_Prison->Visible = true;
@@ -3270,6 +3308,9 @@ namespace CppCLRWinFormsProject {
 	private: System::Void Restaurant_To_Market_Click(System::Object^ sender, System::EventArgs^ e) {
 		dialog_text->Text = "市場的街道狹窄而擁擠，滿是雜物，很容易讓人摔倒。市場里擠滿了商販和攤販，他們用各種聲音、手勢和展示方式向你推銷自己的產品。你可以聽到他們高聲地叫賣，介紹自己的貨品，有些商販用樂器演奏著悠揚的音樂，吸引著顧客。";
 		strcpy(place, "market");
+		if (sun_count % 6 == 2) {
+			NPCGawain->Visible = true;
+		}
 		// hide object in scene
 		Restaurant_To_Market->Visible = false;
 		Restaurant_To_Prison->Visible = false;
@@ -3321,6 +3362,9 @@ namespace CppCLRWinFormsProject {
 	private: System::Void Prison_To_Plazza_Click(System::Object^ sender, System::EventArgs^ e) {
 		dialog_text->Text = "廣場待補";
 		strcpy(place, "plazza");
+		if (sun_count % 6 == 5) {
+			NPCGawain->Visible = true;
+		}
 		// hide object in scene
 		Prison_To_Restaurant->Visible = false;
 		Prison_To_Plazza->Visible = false;
@@ -3362,7 +3406,7 @@ namespace CppCLRWinFormsProject {
 		Sun->Value = sun_count % 6;
 	}
 	private: System::Void IntersectionRight_To_Library_Click(System::Object^ sender, System::EventArgs^ e) {
-		dialog_text->Text = "這是一棟非常豪華和宏偉的建築，你被它那令人嘆為觀止的氣勢所震撼，以高大的石柱和華麗的拱門，來支撐整個建築，建築的主體由優雅的柱子和華麗的拱門支撐，高大的尖頂耸立著，猶如一個巨大的王冠，牆面上有著浮雕、雕塑和彩繪，繪製著神話、故事和歷史事件，讓建築更顯神聖和莊嚴。在陽光的照耀下，這些彩繪和浮雕散發出燦爛的光芒，讓整個建築閃耀著耀眼的光彩。";
+		dialog_text->Text = "這是一棟非常豪華和宏偉的建築，你被它那令人嘆為觀止的氣勢所震撼，以高大的石柱和華麗的拱門，來支撐整個建築，建築的主體由lake的柱子和華麗的拱門支撐，高大的尖頂耸立著，猶如一個巨大的王冠，牆面上有著浮雕、雕塑和彩繪，繪製著神話、故事和歷史事件，讓建築更顯神聖和莊嚴。在陽光的照耀下，這些彩繪和浮雕散發出燦爛的光芒，讓整個建築閃耀著耀眼的光彩。";
 		strcpy(place, "library");
 		// hide object in scene
 		IntersectionRight_To_Library->Visible = false;
@@ -3515,6 +3559,7 @@ namespace CppCLRWinFormsProject {
 		Psychology_Lake2->Visible = false;
 		Psychology_Lake1->Visible = false;
 		Lake_To_Sewer->Visible = false;
+		NPCGawain->Visible = false;
 		// diaplay object in scene
 		IntersectionLeft_To_Library->Visible = true;
 		IntersectionLeft_To_Prison->Visible = true;
@@ -3525,6 +3570,9 @@ namespace CppCLRWinFormsProject {
 	}
 	private: System::Void Go_In_Palace_Click(System::Object^ sender, System::EventArgs^ e) {
 		dialog_text->Text = "待補palace_END";
+		if (sun_count % 6 == 0) {
+			NPCGawain->Visible = true;
+		}
 		// hide object in scene
 		Palace_To_IntersectionRight->Visible = false;
 		Go_In_Palace->Visible = false;
@@ -3622,6 +3670,9 @@ namespace CppCLRWinFormsProject {
 	}
 	private: System::Void Go_To_Restaurant_Click(System::Object^ sender, System::EventArgs^ e) {
 		strcpy(place, "restaurant_in");
+		if (sun_count % 6 == 3) {
+			NPCGawain->Visible = true;
+		}
 		// hide object in scene
 		Restaurant_To_Market->Visible = false;
 		Restaurant_To_Prison->Visible = false;
@@ -3637,6 +3688,7 @@ namespace CppCLRWinFormsProject {
 		// hide object in scene
 		Go_Out_Restaurant->Visible = false;
 		NPCBedivere->Visible = false;
+		NPCGawain->Visible = false;
 		//display object in scene
 		Restaurant_To_Market->Visible = true;
 		Restaurant_To_Prison->Visible = true;
@@ -3774,6 +3826,7 @@ namespace CppCLRWinFormsProject {
 		listen_stranger_plazza->Visible = false;
 		chat_stranger_plazza->Visible = false;
 		Plazza_To_Sewer->Visible = false;
+		NPCGawain->Visible = false;
 		// display object in scene
 		sun_count -= 1;
 		dice.check(player.get_ability().LUK);
@@ -3832,6 +3885,7 @@ namespace CppCLRWinFormsProject {
 		diner->Visible = false;
 		studio->Visible = false;
 		Market_To_Sewer->Visible = false;
+		NPCGawain->Visible = false;
 		// display object in scene
 		if (dice.success == 0 && seem_monster) {
 			dialog_text->Text = "你一爬下下水道，就看到一個人形生物朝著你衝來，你要逃跑還是迎戰?在看到他的瞬間，你感覺你的大腦在震動，不適感湧上心頭。\r\n請做一個成功-1失敗-1d6的san check。";
@@ -3933,6 +3987,7 @@ namespace CppCLRWinFormsProject {
 		Psychology_Lake2->Visible = false;
 		Psychology_Lake1->Visible = false;
 		Lake_To_Sewer->Visible = false;
+		NPCJohann->Visible = false;
 		// display object in scene
 		Sewer_Lake_Intersection->Visible = true;
 
@@ -3940,6 +3995,9 @@ namespace CppCLRWinFormsProject {
 	}
 	private: System::Void Sewer_To_Plazza_Click(System::Object^ sender, System::EventArgs^ e) {
 		strcpy(place, "plazza");
+		if (sun_count % 6 == 5) {
+			NPCGawain->Visible = true;
+		}
 		// hide object in scene
 		Sewer_To_Plazza->Visible = false;
 		Sewer_Plazza_Inn->Visible = false;
@@ -3977,6 +4035,9 @@ namespace CppCLRWinFormsProject {
 	}
 	private: System::Void Sewer_To_Market_Click(System::Object^ sender, System::EventArgs^ e) {
 		strcpy(place, "market");
+		if (sun_count % 6 == 2) {
+			NPCGawain->Visible = true;
+		}
 		// hide object in scene
 		Sewer_To_Market->Visible = false;
 		Sewer_Market_Restaurant->Visible = false;
@@ -3987,8 +4048,6 @@ namespace CppCLRWinFormsProject {
 		diner->Visible = true;
 		studio->Visible = true;
 		Market_To_Sewer->Visible = true;
-
-
 		background->Image = gcnew Bitmap(gcnew System::String(Market.get_path()));
 	}
 	private: System::Void Sewer_To_Restaurant_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -4541,21 +4600,23 @@ private: System::Void Library_Library_In_Click(System::Object^ sender, System::E
 		background->Image = gcnew Bitmap(gcnew System::String(Sewer_Moon_State.get_path()));
 	}
 	private: System::Void Secret_To_Prison_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (sun_count % 6 == 3) {
+			NPCGuinevere->Visible = true;
+		}
 		// hide object in scene
 		Secret_To_Sewer->Visible = false;
 		Secret_To_Prison->Visible = false;
-		
+
 		//display object in scene
 		Prison_To_Secret->Visible = true;
 		Prison1_To_Prison2->Visible = true;
 		background->Image = gcnew Bitmap(gcnew System::String(Prison_1F.get_path()));
 	}
-
-
 	private: System::Void Prison1_To_Prison2_Click(System::Object^ sender, System::EventArgs^ e) {
 		// hide object in scene
 		Prison1_To_Prison2->Visible = false;
 		Prison_To_Secret->Visible = false;
+		NPCGuinevere->Visible = false;
 		//display object in scene
 		Prison2_To_Prison1->Visible = true;
 		background->Image = gcnew Bitmap(gcnew System::String(Prison_2F.get_path()));
@@ -4564,12 +4625,16 @@ private: System::Void Library_Library_In_Click(System::Object^ sender, System::E
 		// hide object in scene
 		Prison_To_Secret->Visible = false;
 		Prison1_To_Prison2->Visible = false;
+		NPCGuinevere->Visible = false;
 		//display object in scene
 		Secret_To_Sewer->Visible = true;
 		Secret_To_Prison->Visible = true;
 		background->Image = gcnew Bitmap(gcnew System::String(Sewer_Secret_Door.get_path()));
 	}
 	private: System::Void Prison2_To_Prison1_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (sun_count % 6 == 3) {
+			NPCGuinevere->Visible = true;
+		}
 		// hide object in scene
 		Prison1_To_Prison2->Visible = true;
 		Prison_To_Secret->Visible = true;
