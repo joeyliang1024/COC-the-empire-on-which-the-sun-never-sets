@@ -27,3 +27,14 @@ Class CppCLRWinFormsProject.Form1: AutoLayout, AnsiClass, Class, Public, BeforeF
     Int32 HP_value_progressBar : Public
     Int32 MP_value_progressBar : Public
     Int32 SAN_value_progressBar : Public
+    Boolean rolling_pin_bought : Public
+    Boolean knife_bought : Public
+    Boolean rope_bought : Public
+    Boolean hammer_bought : Public
+    Boolean meat_bought : Public
+    Boolean sandwitch_bought : Public
+    Boolean potato_bought : Public
+    Boolean heart_count : Public
+    Int32 meat_count : Public
+    Int32 potato_count : Public
+    Int32 sandwitch_count : Public

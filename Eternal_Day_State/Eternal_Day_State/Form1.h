@@ -74,6 +74,17 @@ namespace CppCLRWinFormsProject {
 		bool backpack_open_or_close = 0;
 		bool moveLeft, moveRight, moveUp, moveDown;
 		int HP_value_progressBar, MP_value_progressBar, SAN_value_progressBar;
+		bool rolling_pin_bought = 0;
+		bool knife_bought = 0;
+		bool rope_bought = 0;
+		bool hammer_bought = 0;
+		bool meat_bought = 0;
+		bool sandwitch_bought = 0;
+		bool potato_bought = 0;
+		bool heart_count = 0;
+		int meat_count = 0;
+		int potato_count = 0;
+		int sandwitch_count = 0;
 
 	private: System::Windows::Forms::Button^ counterattack_button;
 	private: System::Windows::Forms::Button^ evade_button;
@@ -138,6 +149,28 @@ namespace CppCLRWinFormsProject {
 	private: System::Windows::Forms::PictureBox^ NPCGuinevere;
 	private: System::Windows::Forms::PictureBox^ NPCGawain;
 	private: System::Windows::Forms::PictureBox^ NPCJohann;
+	private: System::Windows::Forms::Button^ workshop_buy_knife;
+
+
+
+	private: System::Windows::Forms::Button^ workshop_buy_rolling_pin;
+	private: System::Windows::Forms::Button^ workshop_buy_rope;
+
+	private: System::Windows::Forms::Button^ workshop_buy_hammer;
+	private: System::Windows::Forms::Button^ snackbar_buy_potato;
+
+	private: System::Windows::Forms::Button^ snackbar_buy_sandwitch;
+	private: System::Windows::Forms::Button^ snackbar_buy_meat;
+	private: System::Windows::Forms::Button^ leave_workshop;
+	private: System::Windows::Forms::Button^ leave_snackbar;
+	private: System::Windows::Forms::Button^ take_heart;
+
+
+
+
+
+
+
 
 	public:
 	private: System::Windows::Forms::Button^ Spot_Prison_Out;
@@ -331,6 +364,15 @@ namespace CppCLRWinFormsProject {
 			this->chose_character_text = (gcnew System::Windows::Forms::Label());
 			this->backpack = (gcnew System::Windows::Forms::Button());
 			this->backpack_panel = (gcnew System::Windows::Forms::Panel());
+			this->leave_workshop = (gcnew System::Windows::Forms::Button());
+			this->leave_snackbar = (gcnew System::Windows::Forms::Button());
+			this->snackbar_buy_sandwitch = (gcnew System::Windows::Forms::Button());
+			this->snackbar_buy_meat = (gcnew System::Windows::Forms::Button());
+			this->snackbar_buy_potato = (gcnew System::Windows::Forms::Button());
+			this->workshop_buy_knife = (gcnew System::Windows::Forms::Button());
+			this->workshop_buy_rolling_pin = (gcnew System::Windows::Forms::Button());
+			this->workshop_buy_rope = (gcnew System::Windows::Forms::Button());
+			this->workshop_buy_hammer = (gcnew System::Windows::Forms::Button());
 			this->chatbox_4 = (gcnew System::Windows::Forms::Button());
 			this->chatbox_3 = (gcnew System::Windows::Forms::Button());
 			this->chatbox_2 = (gcnew System::Windows::Forms::Button());
@@ -472,6 +514,7 @@ namespace CppCLRWinFormsProject {
 			this->NPCGuinevere = (gcnew System::Windows::Forms::PictureBox());
 			this->NPCGawain = (gcnew System::Windows::Forms::PictureBox());
 			this->NPCJohann = (gcnew System::Windows::Forms::PictureBox());
+			this->take_heart = (gcnew System::Windows::Forms::Button());
 			this->backpack_panel->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->item_pic))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->player_motion))->BeginInit();
@@ -491,7 +534,7 @@ namespace CppCLRWinFormsProject {
 			this->backpack_items_listView->GridLines = true;
 			this->backpack_items_listView->HeaderStyle = System::Windows::Forms::ColumnHeaderStyle::Nonclickable;
 			this->backpack_items_listView->HideSelection = false;
-			this->backpack_items_listView->Location = System::Drawing::Point(512, 600);
+			this->backpack_items_listView->Location = System::Drawing::Point(511, 600);
 			this->backpack_items_listView->Margin = System::Windows::Forms::Padding(1, 2, 1, 2);
 			this->backpack_items_listView->Name = L"backpack_items_listView";
 			this->backpack_items_listView->Size = System::Drawing::Size(512, 120);
@@ -613,6 +656,15 @@ namespace CppCLRWinFormsProject {
 			// 
 			// backpack_panel
 			// 
+			this->backpack_panel->Controls->Add(this->leave_workshop);
+			this->backpack_panel->Controls->Add(this->leave_snackbar);
+			this->backpack_panel->Controls->Add(this->snackbar_buy_sandwitch);
+			this->backpack_panel->Controls->Add(this->snackbar_buy_meat);
+			this->backpack_panel->Controls->Add(this->snackbar_buy_potato);
+			this->backpack_panel->Controls->Add(this->workshop_buy_knife);
+			this->backpack_panel->Controls->Add(this->workshop_buy_rolling_pin);
+			this->backpack_panel->Controls->Add(this->workshop_buy_rope);
+			this->backpack_panel->Controls->Add(this->workshop_buy_hammer);
 			this->backpack_panel->Controls->Add(this->chatbox_4);
 			this->backpack_panel->Controls->Add(this->chatbox_3);
 			this->backpack_panel->Controls->Add(this->chatbox_2);
@@ -631,6 +683,105 @@ namespace CppCLRWinFormsProject {
 			this->backpack_panel->Size = System::Drawing::Size(1024, 240);
 			this->backpack_panel->TabIndex = 10;
 			this->backpack_panel->Visible = false;
+			// 
+			// leave_workshop
+			// 
+			this->leave_workshop->Location = System::Drawing::Point(650, 162);
+			this->leave_workshop->Name = L"leave_workshop";
+			this->leave_workshop->Size = System::Drawing::Size(150, 66);
+			this->leave_workshop->TabIndex = 71;
+			this->leave_workshop->Text = L"離開工具店";
+			this->leave_workshop->UseVisualStyleBackColor = true;
+			this->leave_workshop->Visible = false;
+			this->leave_workshop->Click += gcnew System::EventHandler(this, &Form1::leave_workshop_Click);
+			// 
+			// leave_snackbar
+			// 
+			this->leave_snackbar->Location = System::Drawing::Point(649, 162);
+			this->leave_snackbar->Name = L"leave_snackbar";
+			this->leave_snackbar->Size = System::Drawing::Size(150, 66);
+			this->leave_snackbar->TabIndex = 70;
+			this->leave_snackbar->Text = L"離開小吃店";
+			this->leave_snackbar->UseVisualStyleBackColor = true;
+			this->leave_snackbar->Visible = false;
+			this->leave_snackbar->Click += gcnew System::EventHandler(this, &Form1::leave_snackbar_Click);
+			// 
+			// snackbar_buy_sandwitch
+			// 
+			this->snackbar_buy_sandwitch->Location = System::Drawing::Point(20, 162);
+			this->snackbar_buy_sandwitch->Name = L"snackbar_buy_sandwitch";
+			this->snackbar_buy_sandwitch->Size = System::Drawing::Size(300, 30);
+			this->snackbar_buy_sandwitch->TabIndex = 69;
+			this->snackbar_buy_sandwitch->Text = L"購買三明治";
+			this->snackbar_buy_sandwitch->UseVisualStyleBackColor = true;
+			this->snackbar_buy_sandwitch->Visible = false;
+			this->snackbar_buy_sandwitch->Click += gcnew System::EventHandler(this, &Form1::snackbar_buy_sandwitch_Click);
+			// 
+			// snackbar_buy_meat
+			// 
+			this->snackbar_buy_meat->Location = System::Drawing::Point(335, 162);
+			this->snackbar_buy_meat->Name = L"snackbar_buy_meat";
+			this->snackbar_buy_meat->Size = System::Drawing::Size(300, 30);
+			this->snackbar_buy_meat->TabIndex = 68;
+			this->snackbar_buy_meat->Text = L"購買肉串";
+			this->snackbar_buy_meat->UseVisualStyleBackColor = true;
+			this->snackbar_buy_meat->Visible = false;
+			this->snackbar_buy_meat->Click += gcnew System::EventHandler(this, &Form1::snackbar_buy_meat_Click);
+			// 
+			// snackbar_buy_potato
+			// 
+			this->snackbar_buy_potato->Location = System::Drawing::Point(20, 198);
+			this->snackbar_buy_potato->Name = L"snackbar_buy_potato";
+			this->snackbar_buy_potato->Size = System::Drawing::Size(300, 30);
+			this->snackbar_buy_potato->TabIndex = 63;
+			this->snackbar_buy_potato->Text = L"購買ㄇㄌㄐ";
+			this->snackbar_buy_potato->UseVisualStyleBackColor = true;
+			this->snackbar_buy_potato->Visible = false;
+			this->snackbar_buy_potato->Click += gcnew System::EventHandler(this, &Form1::snackbar_buy_potato_Click);
+			// 
+			// workshop_buy_knife
+			// 
+			this->workshop_buy_knife->Location = System::Drawing::Point(335, 162);
+			this->workshop_buy_knife->Name = L"workshop_buy_knife";
+			this->workshop_buy_knife->Size = System::Drawing::Size(300, 30);
+			this->workshop_buy_knife->TabIndex = 67;
+			this->workshop_buy_knife->Text = L"購買水果刀";
+			this->workshop_buy_knife->UseVisualStyleBackColor = true;
+			this->workshop_buy_knife->Visible = false;
+			this->workshop_buy_knife->Click += gcnew System::EventHandler(this, &Form1::workshop_buy_knife_Click);
+			// 
+			// workshop_buy_rolling_pin
+			// 
+			this->workshop_buy_rolling_pin->Location = System::Drawing::Point(20, 162);
+			this->workshop_buy_rolling_pin->Name = L"workshop_buy_rolling_pin";
+			this->workshop_buy_rolling_pin->Size = System::Drawing::Size(300, 30);
+			this->workshop_buy_rolling_pin->TabIndex = 66;
+			this->workshop_buy_rolling_pin->Text = L"購買稈麵棍";
+			this->workshop_buy_rolling_pin->UseVisualStyleBackColor = true;
+			this->workshop_buy_rolling_pin->Visible = false;
+			this->workshop_buy_rolling_pin->Click += gcnew System::EventHandler(this, &Form1::workshop_buy_rolling_pin_Click);
+			// 
+			// workshop_buy_rope
+			// 
+			this->workshop_buy_rope->Location = System::Drawing::Point(335, 198);
+			this->workshop_buy_rope->Name = L"workshop_buy_rope";
+			this->workshop_buy_rope->Size = System::Drawing::Size(300, 30);
+			this->workshop_buy_rope->TabIndex = 65;
+			this->workshop_buy_rope->Text = L"購買麻繩";
+			this->workshop_buy_rope->UseVisualStyleBackColor = true;
+			this->workshop_buy_rope->Visible = false;
+			this->workshop_buy_rope->Click += gcnew System::EventHandler(this, &Form1::workshop_buy_rope_Click);
+			// 
+			// workshop_buy_hammer
+			// 
+			this->workshop_buy_hammer->Location = System::Drawing::Point(20, 198);
+			this->workshop_buy_hammer->Name = L"workshop_buy_hammer";
+			this->workshop_buy_hammer->Size = System::Drawing::Size(300, 30);
+			this->workshop_buy_hammer->TabIndex = 64;
+			this->workshop_buy_hammer->Text = L"購買槌子";
+			this->workshop_buy_hammer->UseVisualStyleBackColor = true;
+			this->workshop_buy_hammer->Visible = false;
+			this->workshop_buy_hammer->Click += gcnew System::EventHandler(this, &Form1::workshop_buy_hammer_Click);
 			// 
 			// chatbox_4
 			// 
@@ -784,7 +935,7 @@ namespace CppCLRWinFormsProject {
 			// 
 			// item_pic
 			// 
-			this->item_pic->Location = System::Drawing::Point(0, 179);
+			this->item_pic->Location = System::Drawing::Point(-1, 180);
 			this->item_pic->Name = L"item_pic";
 			this->item_pic->Size = System::Drawing::Size(1024, 540);
 			this->item_pic->SizeMode = System::Windows::Forms::PictureBoxSizeMode::CenterImage;
@@ -1900,6 +2051,7 @@ namespace CppCLRWinFormsProject {
 			// 
 			// Sun
 			// 
+			this->Sun->ForeColor = System::Drawing::Color::OrangeRed;
 			this->Sun->Location = System::Drawing::Point(815, 10);
 			this->Sun->Maximum = 5;
 			this->Sun->Name = L"Sun";
@@ -2391,12 +2543,26 @@ namespace CppCLRWinFormsProject {
 			this->NPCJohann->TabStop = false;
 			this->NPCJohann->Visible = false;
 			// 
+			// take_heart
+			// 
+			this->take_heart->Font = (gcnew System::Drawing::Font(L"標楷體", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(136)));
+			this->take_heart->Location = System::Drawing::Point(593, 650);
+			this->take_heart->Name = L"take_heart";
+			this->take_heart->Size = System::Drawing::Size(96, 64);
+			this->take_heart->TabIndex = 113;
+			this->take_heart->Text = L"拿走心臟";
+			this->take_heart->UseVisualStyleBackColor = true;
+			this->take_heart->Visible = false;
+			this->take_heart->Click += gcnew System::EventHandler(this, &Form1::take_heart_Click);
+			// 
 			// Form1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 12);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1024, 960);
-			
+			this->Controls->Add(this->take_heart);
+			this->Controls->Add(this->backpack_items_listView);
 			this->Controls->Add(this->NPCJohann);
 			this->Controls->Add(this->NPCGawain);
 			this->Controls->Add(this->NPCGuinevere);
@@ -2498,11 +2664,9 @@ namespace CppCLRWinFormsProject {
 			this->Controls->Add(this->start);
 			this->Controls->Add(this->backpack_panel);
 			this->Controls->Add(this->status_panel);
-			this->Controls->Add(this->backpack_items_listView);
 			this->Controls->Add(this->introduction_textBox);
 			this->Controls->Add(this->background);
 			this->Controls->Add(this->menu);
-			
 			this->Controls->Add(this->Spot_Library_In);
 			this->KeyPreview = true;
 			this->Margin = System::Windows::Forms::Padding(1, 2, 1, 2);
@@ -2642,6 +2806,22 @@ namespace CppCLRWinFormsProject {
 			   if (player.get_ability().SAN >= 0 && SAN_value_progressBar != 0) {
 				   SAN_progressBar->Maximum = SAN_value_progressBar;
 				   SAN_progressBar->Value = player.get_ability().SAN;
+			   }
+			   //sun
+			   if (sun_count / 6 == 4) {
+				   Sun->ForeColor = System::Drawing::Color::Orange;
+			   }
+			   if (sun_count / 6 == 3) {
+				   Sun->ForeColor = System::Drawing::Color::DarkOrange;
+			   }
+			   if (sun_count / 6 == 2) {
+				   Sun->ForeColor = System::Drawing::Color::OrangeRed;
+			   }
+			   if (sun_count / 6 == 1) {
+				   Sun->ForeColor = System::Drawing::Color::Red;
+			   }
+			   if (sun_count / 6 == 0) {
+				   Sun->ForeColor = System::Drawing::Color::DarkRed;
 			   }
 		   }
 
@@ -3642,10 +3822,21 @@ namespace CppCLRWinFormsProject {
 		dialog_text->Text = "你仔細地觀察了藏書庫的內部";
 	}
 	private: System::Void diner_Click(System::Object^ sender, System::EventArgs^ e) {
-		dialog_text->Text = "三明治  ———————————— 1金幣\r\n肉串 —————————————— 60銀幣\r\n烤ㄇㄌㄐ———————————— 15 銀幣";
+		dialog_text->Text = "三明治  ———————————— 1  金幣\r\n肉串 ————————————— 60銀幣\r\n烤ㄇㄌㄐ  ——————————— 15銀幣";
+		//顯示購買的按鈕
+		snackbar_buy_sandwitch->Visible = true;
+		snackbar_buy_meat->Visible = true;
+		snackbar_buy_potato->Visible = true;
+		leave_snackbar->Visible = true;
 	}
 	private: System::Void studio_Click(System::Object^ sender, System::EventArgs^ e) {
-		dialog_text->Text = "擀麵棍(1d4 + db) ———————— 2金幣\r\n水果刀(1d4 + db) ———————— 3金幣\r\n槌子(1d6 + db) ————————— 6金幣\r\n麻繩(2m)  ——————————— 1金幣";
+		dialog_text->Text = "桿麵棍(1d4 + db) ———————— 2金幣\r\n水果刀(1d4 + db) ———————— 3金幣\r\n槌子    (1d6 + db) ———————— 6金幣\r\n麻繩    ( 2 M ) —————————— 1金幣";
+		//顯示購買的按鈕
+		workshop_buy_hammer->Visible = true;
+		workshop_buy_rope->Visible = true;
+		workshop_buy_rolling_pin->Visible = true;
+		workshop_buy_knife->Visible = true;
+		leave_workshop->Visible = true;
 	}
 	private: System::Void Observe_Wagain_Click(System::Object^ sender, System::EventArgs^ e) {
 		dialog_text->Text = "你認真觀察他說這些話時的表情";
@@ -3990,7 +4181,7 @@ namespace CppCLRWinFormsProject {
 		NPCJohann->Visible = false;
 		// display object in scene
 		Sewer_Lake_Intersection->Visible = true;
-
+		take_heart->Visible = true;
 		background->Image = gcnew Bitmap(gcnew System::String(Sewer_Altar.get_path()));
 	}
 	private: System::Void Sewer_To_Plazza_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -4321,6 +4512,7 @@ namespace CppCLRWinFormsProject {
 		Sewer_Intersection_Prison->Visible = false;
 		Sewer_Intersection_Lake->Visible = false;
 		// diaplay object in scene
+		take_heart->Visible = true;
 		Sewer_Lake_Intersection->Visible = true;
 		background->Image = gcnew Bitmap(gcnew System::String(Sewer_Altar.get_path()));
 	}
@@ -4328,6 +4520,7 @@ namespace CppCLRWinFormsProject {
 		strcpy(place, "sewer_intersection");
 		dialog_text->Text = "路口";
 		// hide object in scene
+		take_heart->Visible = false;
 		Sewer_Lake_Intersection->Visible = false;
 		// diaplay object in scene
 		Sewer_Intersection_Library->Visible = true;
@@ -4642,5 +4835,127 @@ private: System::Void Library_Library_In_Click(System::Object^ sender, System::E
 		Prison2_To_Prison1->Visible = false;
 		background->Image = gcnew Bitmap(gcnew System::String(Prison_1F.get_path()));
 	}
+private: System::Void workshop_buy_rolling_pin_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (rolling_pin_bought == 0) {
+		workshop_buy_rolling_pin->Text = L"購買成功";
+		ListViewItem^ rolling_pin = gcnew ListViewItem(gcnew array<String^> { L"桿麵棍", L"1" });
+		backpack_items_listView->Items->Add(rolling_pin);
+		rolling_pin_bought = 1;
+	}
+}
+private: System::Void workshop_buy_hammer_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (hammer_bought == 0) {
+		workshop_buy_hammer->Text = L"購買成功";
+		ListViewItem^ hammer = gcnew ListViewItem(gcnew array<String^> { L"槌子", L"1" });
+		backpack_items_listView->Items->Add(hammer);
+		hammer_bought = 1;
+	}
+}
+private: System::Void workshop_buy_knife_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (knife_bought == 0) {
+		workshop_buy_knife->Text = L"購買成功";
+		ListViewItem^ knife = gcnew ListViewItem(gcnew array<String^> { L"水果刀", L"1" });
+		backpack_items_listView->Items->Add(knife);
+		knife_bought = 1;
+	}
+}
+private: System::Void workshop_buy_rope_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (rope_bought == 0) {
+		workshop_buy_rope->Text = L"購買成功";
+		ListViewItem^ rope = gcnew ListViewItem(gcnew array<String^> { L"麻繩", L"2M x 1" });
+		backpack_items_listView->Items->Add(rope);
+		rope_bought = 1;
+	}
+}
+private: System::Void snackbar_buy_sandwitch_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (sandwitch_bought == 0) {
+		ListViewItem^ sandwitch = gcnew ListViewItem(gcnew array<String^> { L"三明治", L"1" });
+		backpack_items_listView->Items->Add(sandwitch);
+		sandwitch_bought = 1;
+		sandwitch_count = sandwitch_count + 1;
+	}
+	else if (sandwitch_bought == 1) {
+		sandwitch_count = sandwitch_count + 1;
+		for (int i = 0; i < backpack_items_listView->Items->Count; i++)
+		{
+			//delete the old item
+			ListViewItem^ currentItem = backpack_items_listView->Items[i];
+			String^ subItemText = currentItem->SubItems[0]->Text;
+			if (subItemText == "三明治") {
+				backpack_items_listView->Items->RemoveAt(i);
+			}
+		}
+		ListViewItem^ sandwitch = gcnew ListViewItem(gcnew array<String^> { L"三明治", Convert::ToString(sandwitch_count) });
+		backpack_items_listView->Items->Add(sandwitch);
+	}
+}
+private: System::Void snackbar_buy_potato_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (potato_bought == 0) {
+		ListViewItem^ potato = gcnew ListViewItem(gcnew array<String^> { L"烤ㄇㄌㄐ", L"1" });
+		backpack_items_listView->Items->Add(potato);
+		potato_bought = 1;
+		potato_count = potato_count + 1;
+	}
+	else if (potato_bought == 1) {
+		potato_count = potato_count + 1;
+		for (int i = 0; i < backpack_items_listView->Items->Count; i++)
+		{
+			//delete the old item
+			ListViewItem^ currentItem = backpack_items_listView->Items[i];
+			String^ subItemText = currentItem->SubItems[0]->Text;
+			if (subItemText == "烤ㄇㄌㄐ") {
+				backpack_items_listView->Items->RemoveAt(i);
+			}
+		}
+		ListViewItem^ potato = gcnew ListViewItem(gcnew array<String^> { L"烤ㄇㄌㄐ", Convert::ToString(potato_count) });
+		backpack_items_listView->Items->Add(potato);
+	}
+}
+private: System::Void snackbar_buy_meat_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (meat_bought == 0) {
+		ListViewItem^ meat = gcnew ListViewItem(gcnew array<String^> { L"肉串", L"1" });
+		backpack_items_listView->Items->Add(meat);
+		meat_bought = 1;
+		meat_count = meat_count + 1;
+	}
+	else if (meat_bought == 1) {
+		meat_count = meat_count + 1;
+		for (int i = 0; i < backpack_items_listView->Items->Count; i++)
+		{
+			//delete the old item
+			ListViewItem^ currentItem = backpack_items_listView->Items[i];
+			String^ subItemText = currentItem->SubItems[0]->Text;
+			if (subItemText == "肉串") {
+				backpack_items_listView->Items->RemoveAt(i);
+			}
+		}
+		ListViewItem^ meat = gcnew ListViewItem(gcnew array<String^> { L"肉串", Convert::ToString(meat_count) });
+		backpack_items_listView->Items->Add(meat);
+	}
+}
+private: System::Void leave_workshop_Click(System::Object^ sender, System::EventArgs^ e) {
+	workshop_buy_rolling_pin->Visible = false;
+	workshop_buy_rope->Visible = false;
+	workshop_buy_knife->Visible = false;
+	workshop_buy_hammer->Visible = false;
+	leave_workshop->Visible = false;
+	dialog_text->Text = "";
+}
+private: System::Void leave_snackbar_Click(System::Object^ sender, System::EventArgs^ e) {
+	snackbar_buy_meat->Visible = false;
+	snackbar_buy_potato->Visible = false;
+	snackbar_buy_sandwitch->Visible = false;
+	leave_snackbar->Visible = false;
+	dialog_text->Text = "";
+}
+private: System::Void take_heart_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (heart_count == 0) {
+		ListViewItem^ heart = gcnew ListViewItem(gcnew array<String^> { L"心臟", L"1" });
+		backpack_items_listView->Items->Add(heart);
+		heart_count = 1;
+		heart_count = heart_count + 1;
+		take_heart->Visible = false;
+	}
+}
 };
 }
