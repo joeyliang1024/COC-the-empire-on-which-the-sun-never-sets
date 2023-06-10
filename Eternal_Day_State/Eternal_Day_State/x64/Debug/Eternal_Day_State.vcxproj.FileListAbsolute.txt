@@ -26,3 +26,15 @@ C:\Users\梁致銓\Desktop\C++ file\COC-the-empire-on-which-the-sun-never-sets-m
 C:\Users\梁致銓\Desktop\C++ file\COC-the-empire-on-which-the-sun-never-sets-main\Eternal_Day_State\Eternal_Day_State\x64\Debug\Eternal_Day_State.vcxproj.SuggestedBindingRedirects.cache
 C:\Users\梁致銓\Desktop\C++ file\COC-the-empire-on-which-the-sun-never-sets-main\Eternal_Day_State\Eternal_Day_State\x64\Debug\Eternal_Day_State.Form1.resources
 C:\Users\梁致銓\Desktop\C++ file\COC-the-empire-on-which-the-sun-never-sets-main\Eternal_Day_State\Eternal_Day_State\x64\Debug\Eternal_Day_State.vcxproj.GenerateResource.cache
+C:\Users\梁致銓\Desktop\新增資料夾\COC-the-empire-on-which-the-sun-never-sets-main\Eternal_Day_State\Eternal_Day_State\x64\Debug\Eternal_Day_State.vcxproj.AssemblyReference.cache
+C:\Users\梁致銓\Desktop\新增資料夾\COC-the-empire-on-which-the-sun-never-sets-main\Eternal_Day_State\Eternal_Day_State\x64\Debug\Eternal_Day_State.vcxproj.SuggestedBindingRedirects.cache
+C:\Users\梁致銓\Desktop\新增資料夾\COC-the-empire-on-which-the-sun-never-sets-main\Eternal_Day_State\Eternal_Day_State\x64\Debug\Eternal_Day_State.Form1.resources
+C:\Users\梁致銓\Desktop\新增資料夾\COC-the-empire-on-which-the-sun-never-sets-main\Eternal_Day_State\Eternal_Day_State\x64\Debug\Eternal_Day_State.vcxproj.GenerateResource.cache
+C:\Users\user\Downloads\COC-the-empire-on-which-the-sun-never-sets-main\COC-the-empire-on-which-the-sun-never-sets-main\Eternal_Day_State\Eternal_Day_State\x64\Debug\Eternal_Day_State.vcxproj.AssemblyReference.cache
+C:\Users\user\Downloads\COC-the-empire-on-which-the-sun-never-sets-main\COC-the-empire-on-which-the-sun-never-sets-main\Eternal_Day_State\Eternal_Day_State\x64\Debug\Eternal_Day_State.vcxproj.SuggestedBindingRedirects.cache
+C:\Users\user\Downloads\COC-the-empire-on-which-the-sun-never-sets-main\COC-the-empire-on-which-the-sun-never-sets-main\Eternal_Day_State\Eternal_Day_State\x64\Debug\Eternal_Day_State.Form1.resources
+C:\Users\user\Downloads\COC-the-empire-on-which-the-sun-never-sets-main\COC-the-empire-on-which-the-sun-never-sets-main\Eternal_Day_State\Eternal_Day_State\x64\Debug\Eternal_Day_State.vcxproj.GenerateResource.cache
+C:\Users\user\Desktop\COC-the-empire-on-which-the-sun-never-sets-main\COC-the-empire-on-which-the-sun-never-sets-main\Eternal_Day_State\Eternal_Day_State\x64\Debug\Eternal_Day_State.vcxproj.AssemblyReference.cache
+C:\Users\user\Desktop\COC-the-empire-on-which-the-sun-never-sets-main\COC-the-empire-on-which-the-sun-never-sets-main\Eternal_Day_State\Eternal_Day_State\x64\Debug\Eternal_Day_State.vcxproj.SuggestedBindingRedirects.cache
+C:\Users\user\Desktop\COC-the-empire-on-which-the-sun-never-sets-main\COC-the-empire-on-which-the-sun-never-sets-main\Eternal_Day_State\Eternal_Day_State\x64\Debug\Eternal_Day_State.Form1.resources
+C:\Users\user\Desktop\COC-the-empire-on-which-the-sun-never-sets-main\COC-the-empire-on-which-the-sun-never-sets-main\Eternal_Day_State\Eternal_Day_State\x64\Debug\Eternal_Day_State.vcxproj.GenerateResource.cache
