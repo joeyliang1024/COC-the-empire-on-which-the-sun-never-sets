@@ -87,6 +87,7 @@ namespace CppCLRWinFormsProject {
 		int meat_count = 0;
 		int potato_count = 0;
 		int sandwitch_count = 0;
+		bool ash_count = 0;
 		//泡水: 新增以下參數 結束遊戲用
 		bool dragon_heart_hold, dragon_blood_hold;
 		bool carry_Guinevere, carry_Bedivere, carry_Lancelot;
@@ -183,6 +184,7 @@ private: System::Windows::Forms::Button^ end_game_continue;
 private: System::Windows::Forms::Button^ swallow_heart;
 private: System::Windows::Forms::Button^ observe_swirl;
 private: System::Windows::Forms::Button^ go_into_swirl;
+private: System::Windows::Forms::Button^ spot_altar;
 
 
 
@@ -545,6 +547,7 @@ private: System::Windows::Forms::Button^ go_into_swirl;
 			this->swallow_heart = (gcnew System::Windows::Forms::Button());
 			this->observe_swirl = (gcnew System::Windows::Forms::Button());
 			this->go_into_swirl = (gcnew System::Windows::Forms::Button());
+			this->spot_altar = (gcnew System::Windows::Forms::Button());
 			this->backpack_panel->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->item_pic))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->player_motion))->BeginInit();
@@ -2697,7 +2700,7 @@ private: System::Windows::Forms::Button^ go_into_swirl;
 			// 
 			// NPCArthur
 			// 
-			this->NPCArthur->Location = System::Drawing::Point(745, 391);
+			this->NPCArthur->Location = System::Drawing::Point(266, 442);
 			this->NPCArthur->Name = L"NPCArthur";
 			this->NPCArthur->Size = System::Drawing::Size(54, 50);
 			this->NPCArthur->TabIndex = 108;
@@ -2706,7 +2709,7 @@ private: System::Windows::Forms::Button^ go_into_swirl;
 			// 
 			// NPCBedivere
 			// 
-			this->NPCBedivere->Location = System::Drawing::Point(723, 311);
+			this->NPCBedivere->Location = System::Drawing::Point(266, 386);
 			this->NPCBedivere->Name = L"NPCBedivere";
 			this->NPCBedivere->Size = System::Drawing::Size(54, 50);
 			this->NPCBedivere->TabIndex = 109;
@@ -2715,7 +2718,7 @@ private: System::Windows::Forms::Button^ go_into_swirl;
 			// 
 			// NPCGuinevere
 			// 
-			this->NPCGuinevere->Location = System::Drawing::Point(704, 457);
+			this->NPCGuinevere->Location = System::Drawing::Point(266, 498);
 			this->NPCGuinevere->Name = L"NPCGuinevere";
 			this->NPCGuinevere->Size = System::Drawing::Size(54, 50);
 			this->NPCGuinevere->TabIndex = 110;
@@ -2724,7 +2727,7 @@ private: System::Windows::Forms::Button^ go_into_swirl;
 			// 
 			// NPCGawain
 			// 
-			this->NPCGawain->Location = System::Drawing::Point(720, 237);
+			this->NPCGawain->Location = System::Drawing::Point(266, 274);
 			this->NPCGawain->Name = L"NPCGawain";
 			this->NPCGawain->Size = System::Drawing::Size(54, 50);
 			this->NPCGawain->TabIndex = 111;
@@ -2733,7 +2736,7 @@ private: System::Windows::Forms::Button^ go_into_swirl;
 			// 
 			// NPCLancelot
 			// 
-			this->NPCLancelot->Location = System::Drawing::Point(719, 269);
+			this->NPCLancelot->Location = System::Drawing::Point(266, 330);
 			this->NPCLancelot->Name = L"NPCLancelot";
 			this->NPCLancelot->Size = System::Drawing::Size(54, 50);
 			this->NPCLancelot->TabIndex = 112;
@@ -2792,11 +2795,25 @@ private: System::Windows::Forms::Button^ go_into_swirl;
 			this->go_into_swirl->Visible = false;
 			this->go_into_swirl->Click += gcnew System::EventHandler(this, &Form1::go_into_swirl_Click);
 			// 
+			// spot_altar
+			// 
+			this->spot_altar->Font = (gcnew System::Drawing::Font(L"標楷體", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(136)));
+			this->spot_altar->Location = System::Drawing::Point(593, 581);
+			this->spot_altar->Name = L"spot_altar";
+			this->spot_altar->Size = System::Drawing::Size(96, 64);
+			this->spot_altar->TabIndex = 117;
+			this->spot_altar->Text = L"觀察祭壇";
+			this->spot_altar->UseVisualStyleBackColor = true;
+			this->spot_altar->Visible = false;
+			this->spot_altar->Click += gcnew System::EventHandler(this, &Form1::spot_altar_Click);
+			// 
 			// Form1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 12);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1024, 960);
+			this->Controls->Add(this->spot_altar);
 			this->Controls->Add(this->go_into_swirl);
 			this->Controls->Add(this->observe_swirl);
 			this->Controls->Add(this->swallow_heart);
@@ -4622,6 +4639,7 @@ private: System::Windows::Forms::Button^ go_into_swirl;
 		// display object in scene
 		Sewer_Lake_Intersection->Visible = true;
 		take_heart->Visible = true;
+		spot_altar->Visible = true;
 		if (player.get_ability().SAN) {
 			swallow_heart->Visible = true;
 		}
@@ -4967,6 +4985,7 @@ private: System::Windows::Forms::Button^ go_into_swirl;
 		Sewer_Intersection_Lake->Visible = false;
 		// diaplay object in scene
 		take_heart->Visible = true;
+		spot_altar->Visible = true;
 		if (player.get_ability().SAN) {
 			swallow_heart->Visible = true;
 		}
@@ -4978,6 +4997,7 @@ private: System::Windows::Forms::Button^ go_into_swirl;
 		dialog_text->Text = "路口";
 		// hide object in scene
 		take_heart->Visible = false;
+		spot_altar->Visible = false;
 		swallow_heart->Visible = false;
 		Sewer_Lake_Intersection->Visible = false;
 		// diaplay object in scene
@@ -5419,12 +5439,13 @@ private: System::Void take_heart_Click(System::Object^ sender, System::EventArgs
 		backpack_items_listView->Items->Add(heart);
 		heart_count = 1;
 		dragon_heart_hold = true;
-		take_heart->Visible = false;
+		spot_altar->Visible = false;
 		swallow_heart->Visible = false;
 	}
 }
 private: System::Void fight_with_aurther_Click(System::Object^ sender, System::EventArgs^ e) {
 	//補玩戰鬥細節
+	
 	//泡水: 這裡要補
 	last_fight_win = 1;
 	fight_with_aurther->Visible = false;
@@ -5542,6 +5563,29 @@ private: System::Void go_into_swirl_Click(System::Object^ sender, System::EventA
 	ListViewItem^ sword = gcnew ListViewItem(gcnew array<String^> { L"華麗的長劍", L"1" });
 	backpack_items_listView->Items->Add(sword);
 	sword_count = 1;
+}
+private: System::Void spot_altar_Click(System::Object^ sender, System::EventArgs^ e) {
+	dice.check(player.get_skill().Spot);
+	if (Spot_Altar_Count == 9) {
+		if (dice.success == 0) {
+			dialog_text->Text = "觀察判定:失敗\r\n你仔細的觀察這個房間，你很欣賞這樣的房間風格，甚至想跟房間主人蕉流蕉流。";
+		}
+		else {
+			dialog_text->Text = "觀察判定:成功\r\n你仔細的觀察這個房間，你發現儀式桌的下面有著一個小小的壺，裡面裝著一些白灰色的粉末，罐子上刻著”解夢灰”。";
+			ListViewItem^ ash = gcnew ListViewItem(gcnew array<String^> { L"解夢灰", L"1" });
+			backpack_items_listView->Items->Add(ash);
+			ash_count = 1;
+		}
+		Spot_Altar_Count = dice.success;
+	}
+	else {
+		if (Spot_Altar_Count == 0) {
+			dialog_text->Text = "觀察判定:失敗\r\n你仔細的觀察這個房間，你很欣賞這樣的房間風格，甚至想跟房間主人蕉流蕉流。";
+		}
+		else {
+			dialog_text->Text = "觀察判定:成功\r\n你仔細的觀察這個房間，除了已經被你拿起的解夢灰沒有甚麼特別的。";
+		}
+	}
 }
 };
 }
