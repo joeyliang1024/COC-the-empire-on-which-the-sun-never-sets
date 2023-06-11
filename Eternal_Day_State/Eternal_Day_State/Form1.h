@@ -21,16 +21,16 @@ int sun_count = 29;
 roll dice;
 battle Battle;
 //character object
-NPC Johann({ "www//pic//Johann.png" }, 65, 70, 50, 50, 40, 40, 40, 40, 40, 50, 9, 8, 4, 3);
-NPC Gawain({ "www//pic//char_pixel//Gawain.png" }, 80, 70, 85, 80, 85, 65, 75, 65, 50, 80, 15, 13, 6, 3);
-NPC Guinevere({ "www//pic//Guinevere.png" }, 25, 55, 60, 35, 90, 45, 45, 45, 80, 80, 6, 9, -1, 3);
-NPC Bedivere({ "www//pic//Bedivere.png" }, 95, 95, 60, 95, 95, 40, 80, 40, 50, 50, 17, 8, 6, 3);
-NPC Arthur({ "www//pic//Arthur.png" }, 75, 85, 55, 60, 75, 55, 75, 40, 40, 50, 13, 11, 4, 8);
-Player player({ "www//pic//Arthur.png" }, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-Player occultist({ "www//pic//Arthur.png" }, 65, 80, 60, 55, 45, 45, 50, 45, 60, 40, 10, 9, 0, 60, 60, 60, 60, 50, 50, 80, 40, 30, 40, 40, 3);
-Player archaeologist({ "www//pic//Arthur.png" }, 60, 55, 82, 45, 45, 65, 65, 65, 80, 60, 11, 13, 4, 60, 30, 80, 30, 30, 80, 50, 20, 60, 80, 20, 3);
-Player reporter({ "www//pic//Arthur.png" }, 55, 80, 45, 65, 60, 45, 70, 45, 40, 80, 12, 9, 4, 70, 70, 50, 70, 70, 50, 40, 70, 20, 20, 50, 3);
-Player monster({ "www//pic//picture//servent.png" }, 200, 200, 245, 265, 260, 245, 270, 245, 240, 280, 20, 29, 4, 40, 10, 50, 70, 70, 50, 40, 70, 20, 20, 50, 3);
+NPC Johann({ "www//pic//picture//Johann.png" }, 65, 70, 50, 50, 40, 40, 40, 40, 40, 50, 9, 8, 4, 3);
+NPC Gawain({ "www//pic//picture//Gawain.png" }, 80, 70, 85, 80, 85, 65, 75, 65, 50, 80, 15, 13, 6, 3);
+NPC Guinevere({ "www//pic//picture//Guinevere.png" }, 25, 55, 60, 35, 90, 45, 45, 45, 80, 80, 6, 9, -1, 3);
+NPC Bedivere({ "www//pic//picture//Bedivere.png" }, 95, 95, 60, 95, 95, 40, 80, 40, 50, 50, 17, 8, 6, 3);
+Player Arthur({ "www//pic//picture//Arthur.png" }, 75, 85, 55, 60, 75, 55, 75, 40, 40, 50, 13, 11, 4, 90, 50, 50, 90, 50, 50, 40, 70, 20, 20, 50, 3);
+Player player({ "www//pic//picture//Arthur.png" }, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+Player occultist({ "www//pic//picture//Arthur.png" }, 65, 80, 60, 55, 45, 45, 50, 45, 60, 40, 10, 9, 0, 60, 60, 60, 60, 50, 50, 80, 40, 30, 40, 40, 3);
+Player archaeologist({ "www//pic//picture//Arthur.png" }, 60, 55, 82, 45, 45, 65, 65, 65, 80, 60, 11, 13, 4, 60, 30, 80, 30, 30, 80, 50, 20, 60, 80, 20, 3);
+Player reporter({ "www//pic//picture//Arthur.png" }, 55, 80, 45, 65, 60, 45, 70, 45, 40, 80, 12, 9, 4, 70, 70, 50, 70, 70, 50, 40, 70, 20, 20, 50, 3);
+Player monster({ "www//pic//picture//servent.png" }, 200, 200, 245, 265, 260, 245, 270, 245, 240, 280, 20, 29, 4, 40, 10, 50, 40, 10, 50, 40, 70, 20, 20, 50, 3);
 
 
 //background object
@@ -58,6 +58,7 @@ scene Sewer_Outlet({ "www//pic//background//Sewer_Outlet.png" });
 scene Sewer_Secret_Door({ "www//pic//background//Sewer_Secret_Door.png" });
 scene Map({ "www//pic//picture//Map.png" });
 scene Servent({ "www//pic//picture//servent.png" });
+scene dead({ "www//pic//background//dead.png" });
 
 namespace CppCLRWinFormsProject {
 
@@ -70,6 +71,7 @@ namespace CppCLRWinFormsProject {
 	public ref class Form1 : public System::Windows::Forms::Form
 	{
 	public:
+		int init_san;
 		int speed = 5;
 		bool START_GAME = 0;
 		bool backpack_open_or_close = 0;
@@ -88,7 +90,6 @@ namespace CppCLRWinFormsProject {
 		int potato_count = 0;
 		int sandwitch_count = 0;
 		bool ash_count = 0;
-		//泡水: 新增以下參數 結束遊戲用
 		bool dragon_heart_hold, dragon_blood_hold;
 		bool carry_Guinevere, carry_Bedivere, carry_Lancelot;
 		bool last_fight_win = 0;
@@ -185,6 +186,9 @@ private: System::Windows::Forms::Button^ swallow_heart;
 private: System::Windows::Forms::Button^ observe_swirl;
 private: System::Windows::Forms::Button^ go_into_swirl;
 private: System::Windows::Forms::Button^ spot_altar;
+private: System::Windows::Forms::Button^ show_sword;
+private: System::Windows::Forms::Button^ use_ash;
+
 
 
 
@@ -548,6 +552,8 @@ private: System::Windows::Forms::Button^ spot_altar;
 			this->observe_swirl = (gcnew System::Windows::Forms::Button());
 			this->go_into_swirl = (gcnew System::Windows::Forms::Button());
 			this->spot_altar = (gcnew System::Windows::Forms::Button());
+			this->show_sword = (gcnew System::Windows::Forms::Button());
+			this->use_ash = (gcnew System::Windows::Forms::Button());
 			this->backpack_panel->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->item_pic))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->player_motion))->BeginInit();
@@ -2810,11 +2816,39 @@ private: System::Windows::Forms::Button^ spot_altar;
 			this->spot_altar->Visible = false;
 			this->spot_altar->Click += gcnew System::EventHandler(this, &Form1::spot_altar_Click);
 			// 
+			// show_sword
+			// 
+			this->show_sword->Font = (gcnew System::Drawing::Font(L"標楷體", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(136)));
+			this->show_sword->Location = System::Drawing::Point(593, 650);
+			this->show_sword->Name = L"show_sword";
+			this->show_sword->Size = System::Drawing::Size(96, 64);
+			this->show_sword->TabIndex = 118;
+			this->show_sword->Text = L"展示寶劍";
+			this->show_sword->UseVisualStyleBackColor = true;
+			this->show_sword->Visible = false;
+			this->show_sword->Click += gcnew System::EventHandler(this, &Form1::show_sword_Click);
+			// 
+			// use_ash
+			// 
+			this->use_ash->Font = (gcnew System::Drawing::Font(L"標楷體", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(136)));
+			this->use_ash->Location = System::Drawing::Point(593, 651);
+			this->use_ash->Name = L"use_ash";
+			this->use_ash->Size = System::Drawing::Size(96, 64);
+			this->use_ash->TabIndex = 119;
+			this->use_ash->Text = L"使用解夢灰";
+			this->use_ash->UseVisualStyleBackColor = true;
+			this->use_ash->Visible = false;
+			this->use_ash->Click += gcnew System::EventHandler(this, &Form1::use_ash_Click);
+			// 
 			// Form1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 12);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1024, 960);
+			this->Controls->Add(this->use_ash);
+			this->Controls->Add(this->show_sword);
 			this->Controls->Add(this->spot_altar);
 			this->Controls->Add(this->go_into_swirl);
 			this->Controls->Add(this->observe_swirl);
@@ -3061,6 +3095,7 @@ private: System::Windows::Forms::Button^ spot_altar;
 				   HP_progressBar->Maximum = HP_value_progressBar;
 				   HP_progressBar->Value = player.get_ability().HP;
 			   }
+
 			   if (player.get_ability().MP >= 0 && MP_value_progressBar != 0) {
 				   MP_progressBar->Maximum = MP_value_progressBar;
 				   MP_progressBar->Value = player.get_ability().MP;
@@ -3289,10 +3324,10 @@ private: System::Windows::Forms::Button^ spot_altar;
 					   }
 				   }
 				   //待更改結束畫面
-				   menu->Image = gcnew Bitmap(gcnew System::String(back_ground.get_path()));
+				   menu->Image = gcnew Bitmap(gcnew System::String(dead.get_path()));
 			   }
 			   //2. 生命歸零
-			   else if (player.get_ability().HP == 0 && START_GAME == 1) {
+			   else if (player.get_ability().HP <= 0 && START_GAME == 1) {
 				   for each (Control ^ control in this->Controls)
 				   {
 					   String^ controlName = control->Name;
@@ -3305,10 +3340,10 @@ private: System::Windows::Forms::Button^ spot_altar;
 					   }
 				   }
 				   //待更改結束畫面
-				   menu->Image = gcnew Bitmap(gcnew System::String(back_ground.get_path()));
+				   menu->Image = gcnew Bitmap(gcnew System::String(dead.get_path()));
 			   }
 			   //3. san值歸零
-			   else if (player.get_ability().SAN == 0 && START_GAME == 1) {
+			   else if (player.get_ability().SAN <= 0 && START_GAME == 1) {
 				   for each (Control ^ control in this->Controls)
 				   {
 					   String^ controlName = control->Name;
@@ -3321,7 +3356,7 @@ private: System::Windows::Forms::Button^ spot_altar;
 					   }
 				   }
 				   //待更改結束畫面
-				   menu->Image = gcnew Bitmap(gcnew System::String(back_ground.get_path()));
+				   menu->Image = gcnew Bitmap(gcnew System::String(dead.get_path()));
 			   }
 			   //good End (進入宮殿)
 			   //進入宮殿
@@ -3334,7 +3369,7 @@ private: System::Windows::Forms::Button^ spot_altar;
 					   if (subItemText == "龍血") {
 						  dragon_blood_hold = 1;
 					   }
-					   if (subItemText == "紅龍的心臟") {
+					   if (subItemText == "古怪的心臟") {
 						   dragon_heart_hold = 1;
 					   }
 				   }
@@ -3598,6 +3633,7 @@ private: System::Windows::Forms::Button^ spot_altar;
 			//move to scene one
 			introduction_textBox->Visible = false;
 			continue_button->Visible = true;
+			init_san = player.get_ability().SAN;
 			strcpy(whatchat, "start");
 			if (dice.success == 0) {
 				dialog_text->Text = "san check: 失敗\r\n你的腦子一片混亂，突如其來的巨大變故讓你十分焦慮，渾身不適。\r\n這個方型廣場散充斥著明亮的陽光，讓人感到溫暖舒適。\r\n在廣場的中央，矗立著一個高大的日晷和噴泉，他們周圍種植著各種花卉和綠植，為廣場增添了生氣和色彩。\r\n廣場上擺放著一排排長椅，可以讓人小息片刻。\r\n廣場的邊緣插著一根木製的路標，兩個箭頭分別指著廣場唯二的兩條通路。";
@@ -3706,6 +3742,7 @@ private: System::Windows::Forms::Button^ spot_altar;
 			Sewer_Prison_Restaurant->Visible = true;
 			Sewer_Prison_Intersection->Visible = true;
 			background->Image = gcnew Bitmap(gcnew System::String(Sewer_Moon_State.get_path()));
+			strcpy(place, "moon_state");
 			continue_button->Visible = false; 
 		}
 	}
@@ -4084,7 +4121,9 @@ private: System::Windows::Forms::Button^ spot_altar;
 		IntersectionRight_To_Palace->Visible = false;
 		// diaplay object in scene
 		Palace_To_IntersectionRight->Visible = true;
-		Go_In_Palace->Visible = true;
+		if (sun_count <= 5) {
+			Go_In_Palace->Visible = true;
+		}
 		background->Image = gcnew Bitmap(gcnew System::String(Palace_Outside.get_path()));
 	}
 	private: System::Void Palace_To_IntersectionRight_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -4330,6 +4369,9 @@ private: System::Windows::Forms::Button^ spot_altar;
 		Go_To_Restaurant->Visible = false;
 		Restaurant_To_Sewer->Visible = false;
 		//display object in scene
+		if (sword_count) {
+			show_sword->Visible = true;
+		}
 		Go_Out_Restaurant->Visible = true;
 		NPCBedivere->Visible = true;
 		background->Image = gcnew Bitmap(gcnew System::String(Restaurant_Inside.get_path()));
@@ -4596,7 +4638,6 @@ private: System::Windows::Forms::Button^ spot_altar;
 			monster_pic->Visible = true;
 			background->Image = gcnew Bitmap(gcnew System::String(Sewer.get_path()));
 			strcpy(whatchat, "see_monster");
-			
 			san_check_button->Visible = true;
 		}
 		else {
@@ -4643,7 +4684,7 @@ private: System::Windows::Forms::Button^ spot_altar;
 		Sewer_Lake_Intersection->Visible = true;
 		take_heart->Visible = true;
 		spot_altar->Visible = true;
-		if (player.get_ability().SAN) {
+		if (player.get_ability().SAN <= init_san) {
 			swallow_heart->Visible = true;
 		}
 		background->Image = gcnew Bitmap(gcnew System::String(Sewer_Altar.get_path()));
@@ -4989,7 +5030,7 @@ private: System::Windows::Forms::Button^ spot_altar;
 		// diaplay object in scene
 		take_heart->Visible = true;
 		spot_altar->Visible = true;
-		if (player.get_ability().SAN) {
+		if (player.get_ability().SAN <= init_san-5) {
 			swallow_heart->Visible = true;
 		}
 		Sewer_Lake_Intersection->Visible = true;
@@ -5039,6 +5080,7 @@ private: System::Windows::Forms::Button^ spot_altar;
 			signpost->Visible = true;
 			sundial->Visible = true;
 			Plazza_To_Inn->Visible = true;
+			strcpy(place, "plazza");
 			//Plazza_To_Prison->Visible = true;
 			Plazza_To_Sewer->Visible = true;
 			background->Image = gcnew Bitmap(gcnew System::String(Plazza.get_path()));
@@ -5155,55 +5197,117 @@ private: System::Windows::Forms::Button^ spot_altar;
 	}
 private: System::Void attack_button_Click(System::Object^ sender, System::EventArgs^ e) {
 	attack_button->Visible = false;
-	if (Battle.turn < 2) {
-		evade_button->Visible = true;
-		counterattack_button->Visible = true;
-		Battle.attack(player.get_ability().DB, player.get_ability().DMG, player.get_skill().Brawl, false, monster.get_skill().Brawl, monster.get_ability().DMG);
+	if (strcmp(whatchat, "see_monster") == 0) {
+		if (Battle.turn < 2) {
+			evade_button->Visible = true;
+			counterattack_button->Visible = true;
+			Battle.attack(player.get_ability().DB, player.get_ability().DMG, player.get_skill().Brawl, false, monster.get_skill().Brawl, monster.get_ability().DMG);
+			if (Battle.atk_success == false) {
+				dialog_text->Text = "攻擊對抗:失敗\r\n你不只沒打到他，還露出了嚴重的破綻被他一爪子抓傷了。";
+				player.edit_ability({ "HP" }, -Battle.dmg);
+				player.change_label_text({ "HP" }, HP);
+			}
+			else {
+				dialog_text->Text = "你的拳頭穿過了他的巴巴，將他打退了，他看起來受了點傷。";
+			}
+		}
+		else {
+			dialog_text->Text = "就在你正要揮出拳頭的那一剎那，你看到一把長劍從怪物的頭中插了出來，你們看到遠處走來一群全副武裝的騎士，這群騎士一劍就將你們面前的怪物給劈成了兩半，從陣中走出來一紫髮紅眼的帥哥，他開口說道”我知道你們有很多想問的，但這裡可不適合久留，先跟我來吧，我們去安全的地方說”";
+			monster_pic->Visible = false;
+			continue_button->Visible = true;
+			strcpy(whatchat, "to_moon_state");
+		}
+	}
+	else {
+		Battle.attack(player.get_ability().DB, player.get_ability().DMG, player.get_skill().Brawl, false, Arthur.get_skill().Brawl, Arthur.get_ability().DMG);
 		if (Battle.atk_success == false) {
-			dialog_text->Text = "攻擊對抗:失敗\r\n你不只沒打到他，還露出了嚴重的破綻被他一爪子抓傷了。";
+			dialog_text->Text = "攻擊對抗:失敗\r\n你不只沒打到他，還露出了嚴重的破綻被他一拳打傷了。";
 			player.edit_ability({ "HP" }, -Battle.dmg);
 			player.change_label_text({ "HP" }, HP);
 		}
 		else {
 			dialog_text->Text = "你的拳頭穿過了他的巴巴，將他打退了，他看起來受了點傷。";
+			Arthur.edit_ability({ "HP" }, -Battle.dmg);
 		}
-	}
-	else {
-		dialog_text->Text = "就在你正要揮出拳頭的那一剎那，你看到一把長劍從怪物的頭中插了出來，你們看到遠處走來一群全副武裝的騎士，這群騎士一劍就將你們面前的怪物給劈成了兩半，從陣中走出來一紫髮紅眼的帥哥，他開口說道”我知道你們有很多想問的，但這裡可不適合久留，先跟我來吧，我們去安全的地方說”";
-		monster_pic->Visible = false;
-		continue_button->Visible = true;
-		strcpy(whatchat, "to_moon_state");
+		if (Arthur.get_ability().HP <= 0) {
+			last_fight_win = 1;
+		}
+		else {
+			evade_button->Visible = true;
+			counterattack_button->Visible = true;
+		}
 	}
 }
 private: System::Void evade_button_Click(System::Object^ sender, System::EventArgs^ e) {
-	Battle.evade(player.get_skill().Evade, monster.get_skill().Brawl, monster.get_ability().DMG, monster.get_ability().DB);
-	evade_button->Visible = false;
-	counterattack_button->Visible = false;
-	attack_button->Visible = true;
-	if (Battle.atk_success == false) {
-		dialog_text->Text = "你一個華麗的後撤步，躲開了他的魔爪。";
+	if (strcmp(whatchat, "see_monster") == 0) {
+		Battle.evade(player.get_skill().Evade, monster.get_skill().Brawl, monster.get_ability().DMG, monster.get_ability().DB);
+		evade_button->Visible = false;
+		counterattack_button->Visible = false;
+		attack_button->Visible = true;
+		if (Battle.atk_success == false) {
+			dialog_text->Text = "你一個華麗的後撤步，躲開了他的魔爪。";
+		}
+		else {
+			dialog_text->Text = "你踩著地上的水讓你踉蹌了一下，你成功的用你的臉對他的爪子造成了零點傷害。";
+			player.edit_ability({ "HP" }, -Battle.dmg);
+			player.change_label_text({ "HP" }, HP);
+		}
+		Battle.turn += 1;
 	}
 	else {
-		dialog_text->Text = "你踩著地上的水讓你踉蹌了一下，你成功的用你的臉對他的爪子造成了零點傷害。";
-		player.edit_ability({ "HP" }, -Battle.dmg);
-		player.change_label_text({ "HP" }, HP);
+		Battle.evade(player.get_skill().Evade, Arthur.get_skill().Brawl, Arthur.get_ability().DMG, Arthur.get_ability().DB);
+		evade_button->Visible = false;
+		counterattack_button->Visible = false;
+		attack_button->Visible = true;
+		if (Battle.atk_success == false) {
+			dialog_text->Text = "你一個華麗的後撤步，躲開了他的直拳。";
+		}
+		else {
+			dialog_text->Text = "他的拳頭朝著你的肚子飛過來，比你閃避的速度還快，你被打得腦子差點斷了電。";
+			player.edit_ability({ "HP" }, -Battle.dmg);
+			player.change_label_text({ "HP" }, HP);
+		}
+		Battle.turn += 1;
 	}
-	Battle.turn += 1;
 }
 private: System::Void counterattack_button_Click(System::Object^ sender, System::EventArgs^ e) {
-	Battle.counter_attack(player.get_skill().Brawl, player.get_ability().DMG, monster.get_skill().Brawl, monster.get_ability().DMG, monster.get_ability().DB);
-	evade_button->Visible = false;
-	counterattack_button->Visible = false;
-	attack_button->Visible = true;
-	if (Battle.atk_success == false) {
-		dialog_text->Text = "接、化、發，那個男人的聲音在你的腦海中突兀地想起，當你緩過神時你的拳頭就已經在怪物的臉上了。";
+	if (strcmp(whatchat, "see_monster") == 0) {
+		Battle.counter_attack(player.get_skill().Brawl, player.get_ability().DMG, monster.get_skill().Brawl, monster.get_ability().DMG, monster.get_ability().DB);
+		evade_button->Visible = false;
+		counterattack_button->Visible = false;
+		attack_button->Visible = true;
+		if (Battle.atk_success == false) {
+			dialog_text->Text = "接、化、發，那個男人的聲音在你的腦海中突兀地想起，當你緩過神時你的拳頭就已經在怪物的臉上了。";
+		}
+		else {
+			dialog_text->Text = "你踩著地上的水讓你踉蹌了一下，你的拳頭與他擦肩而過，而他的拳頭與你不過是一面之交，你甚至差點沒站住腳。";
+			player.edit_ability({ "HP" }, -Battle.dmg);
+			player.change_label_text({ "HP" }, HP);
+		}
+		Battle.turn += 1;
 	}
 	else {
-		dialog_text->Text = "你踩著地上的水讓你踉蹌了一下，你的拳頭與他擦肩而過，而他的拳頭與你不過是一面之交，你甚至差點沒站住腳。";
-		player.edit_ability({ "HP" }, -Battle.dmg);
-		player.change_label_text({ "HP" }, HP);
+		Battle.counter_attack(player.get_skill().Brawl, player.get_ability().DMG, Arthur.get_skill().Brawl, Arthur.get_ability().DMG, Arthur.get_ability().DB);
+		evade_button->Visible = false;
+		counterattack_button->Visible = false;
+		attack_button->Visible = true;
+		if (Battle.atk_success == false) {
+			dialog_text->Text = "接、化、發，那個男人的聲音在你的腦海中突兀地想起，當你緩過神時你的拳頭就已經在他的臉上了。";
+			Arthur.edit_ability({ "HP" }, -Battle.dmg);
+		}
+		else {
+			dialog_text->Text = "你的拳頭與他擦肩而過，而他的一拳打飛了你。";
+			player.edit_ability({ "HP" }, -Battle.dmg);
+			player.change_label_text({ "HP" }, HP);
+		}
+		Battle.turn += 1;
+		if (Arthur.get_ability().HP <= 0) {
+			last_fight_win = 1;
+		}
+		else {
+			attack_button->Visible = true;
+		}
 	}
-	Battle.turn += 1;
 }
 private: System::Void Spot_Library_In_Click(System::Object^ sender, System::EventArgs^ e) {
 }
@@ -5437,6 +5541,7 @@ private: System::Void Library_Library_In_Click(System::Object^ sender, System::E
 		dialog_text->Text = "";
 	}
 	private: System::Void take_heart_Click(System::Object^ sender, System::EventArgs^ e) {
+		take_heart->Visible = false;
 		if (heart_count == 0) {
 			ListViewItem^ heart = gcnew ListViewItem(gcnew array<String^> { L"古怪的心臟", L"1" });
 			backpack_items_listView->Items->Add(heart);
@@ -5448,9 +5553,11 @@ private: System::Void Library_Library_In_Click(System::Object^ sender, System::E
 	}
 	private: System::Void fight_with_aurther_Click(System::Object^ sender, System::EventArgs^ e) {
 		//補玩戰鬥細節
-	
+		attack_button->Visible = true;
+		monster_pic->Image = gcnew Bitmap(gcnew System::String(player.get_path()));
+		monster_pic->Visible = true;
+		strcpy(whatchat, "fight_arthur");
 		//泡水: 這裡要補
-		last_fight_win = 1;
 		fight_with_aurther->Visible = false;
 	}
 	private: System::Void choice_leave_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -5530,6 +5637,7 @@ private: System::Void Library_Library_In_Click(System::Object^ sender, System::E
 	private: System::Void swallow_heart_Click(System::Object^ sender, System::EventArgs^ e) {
 		dragon_blood_hold = true;
 		swallow_heart->Visible = false;
+		take_heart->Visible = false;
 	}
 	private: System::Void observe_swirl_Click(System::Object^ sender, System::EventArgs^ e) {
 		dice.check(player.get_skill().Spot);
@@ -5590,5 +5698,16 @@ private: System::Void Library_Library_In_Click(System::Object^ sender, System::E
 			}
 		}
 	}
+private: System::Void show_sword_Click(System::Object^ sender, System::EventArgs^ e) {
+	show_sword->Visible = false;
+	dialog_text->Text = "你看到酒店老闆，倉皇的跑了過來，他說:你在哪裡找到的，他深呼了一口氣說到:重新認識一下，我叫做貝狄維爾，閣下之命，在下必當誓死跟隨。";
+	carry_Bedivere = true;
+}
+private: System::Void use_ash_Click(System::Object^ sender, System::EventArgs^ e) {
+	use_ash->Visible = false;
+	dialog_text->Text = "謝謝你的幫助，我叫桂妮薇兒，有甚麼我能幫你的嗎，我也可以請藍斯洛特一起幫忙。";
+	carry_Guinevere = true;
+	carry_Lancelot = true;
+}
 };
 }
