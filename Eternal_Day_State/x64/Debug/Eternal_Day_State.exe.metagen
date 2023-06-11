@@ -40,6 +40,7 @@ Class CppCLRWinFormsProject.Form1: AutoLayout, AnsiClass, Class, Public, BeforeF
     Int32 meat_count : Public
     Int32 potato_count : Public
     Int32 sandwitch_count : Public
+    Boolean ash_count : Public
     Boolean dragon_heart_hold : Public
     Boolean dragon_blood_hold : Public
     Boolean carry_Guinevere : Public

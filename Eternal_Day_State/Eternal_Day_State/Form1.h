@@ -1392,7 +1392,7 @@ private: System::Windows::Forms::Button^ spot_altar;
 			// 
 			this->Palace_To_IntersectionRight->Font = (gcnew System::Drawing::Font(L"標楷體", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(136)));
-			this->Palace_To_IntersectionRight->Location = System::Drawing::Point(562, 220);
+			this->Palace_To_IntersectionRight->Location = System::Drawing::Point(600, 220);
 			this->Palace_To_IntersectionRight->Margin = System::Windows::Forms::Padding(2);
 			this->Palace_To_IntersectionRight->Name = L"Palace_To_IntersectionRight";
 			this->Palace_To_IntersectionRight->Size = System::Drawing::Size(96, 64);
@@ -1687,7 +1687,9 @@ private: System::Windows::Forms::Button^ spot_altar;
 			// 
 			// Market_To_Sewer
 			// 
-			this->Market_To_Sewer->Location = System::Drawing::Point(0, 0);
+			this->Market_To_Sewer->Font = (gcnew System::Drawing::Font(L"標楷體", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(136)));
+			this->Market_To_Sewer->Location = System::Drawing::Point(34, 206);
 			this->Market_To_Sewer->Name = L"Market_To_Sewer";
 			this->Market_To_Sewer->Size = System::Drawing::Size(96, 64);
 			this->Market_To_Sewer->TabIndex = 63;
@@ -3233,7 +3235,7 @@ private: System::Windows::Forms::Button^ spot_altar;
 				   Sewer_Inn_Library->Visible = false;
 				   Sewer_To_Secret->Visible = false;
 			   }
-			   if (player.collsion(480, 667)== 0) { //往下
+			   if (player.collsion(480, 667)) { //往下
 				   if (strcmp(place, "right") == 0) {
 					   IntersectionRight_To_Inn->Visible = true;
 				   }
@@ -4472,6 +4474,7 @@ private: System::Windows::Forms::Button^ spot_altar;
 		chatbox_2->Visible = false;
 		item_button->Visible = false;
 		Observe_Sundial->Visible = false;
+		Spot_Prison_Out->Visible = false;
 		listen_stranger_plazza->Visible = false;
 		chat_stranger_plazza->Visible = false;
 		Plazza_To_Sewer->Visible = false;
@@ -5320,272 +5323,272 @@ private: System::Void Library_Library_In_Click(System::Object^ sender, System::E
 		Prison2_To_Prison1->Visible = false;
 		background->Image = gcnew Bitmap(gcnew System::String(Prison_1F.get_path()));
 	}
-private: System::Void workshop_buy_rolling_pin_Click(System::Object^ sender, System::EventArgs^ e) {
-	if (rolling_pin_bought == 0) {
-		workshop_buy_rolling_pin->Text = L"購買成功";
-		ListViewItem^ rolling_pin = gcnew ListViewItem(gcnew array<String^> { L"桿麵棍", L"1" });
-		backpack_items_listView->Items->Add(rolling_pin);
-		rolling_pin_bought = 1;
+	private: System::Void workshop_buy_rolling_pin_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (rolling_pin_bought == 0) {
+			workshop_buy_rolling_pin->Text = L"購買成功";
+			ListViewItem^ rolling_pin = gcnew ListViewItem(gcnew array<String^> { L"桿麵棍", L"1" });
+			backpack_items_listView->Items->Add(rolling_pin);
+			rolling_pin_bought = 1;
+		}
 	}
-}
-private: System::Void workshop_buy_hammer_Click(System::Object^ sender, System::EventArgs^ e) {
-	if (hammer_bought == 0) {
-		workshop_buy_hammer->Text = L"購買成功";
-		ListViewItem^ hammer = gcnew ListViewItem(gcnew array<String^> { L"槌子", L"1" });
-		backpack_items_listView->Items->Add(hammer);
-		hammer_bought = 1;
+	private: System::Void workshop_buy_hammer_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (hammer_bought == 0) {
+			workshop_buy_hammer->Text = L"購買成功";
+			ListViewItem^ hammer = gcnew ListViewItem(gcnew array<String^> { L"槌子", L"1" });
+			backpack_items_listView->Items->Add(hammer);
+			hammer_bought = 1;
+		}
 	}
-}
-private: System::Void workshop_buy_knife_Click(System::Object^ sender, System::EventArgs^ e) {
-	if (knife_bought == 0) {
-		workshop_buy_knife->Text = L"購買成功";
-		ListViewItem^ knife = gcnew ListViewItem(gcnew array<String^> { L"水果刀", L"1" });
-		backpack_items_listView->Items->Add(knife);
-		knife_bought = 1;
+	private: System::Void workshop_buy_knife_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (knife_bought == 0) {
+			workshop_buy_knife->Text = L"購買成功";
+			ListViewItem^ knife = gcnew ListViewItem(gcnew array<String^> { L"水果刀", L"1" });
+			backpack_items_listView->Items->Add(knife);
+			knife_bought = 1;
+		}
 	}
-}
-private: System::Void workshop_buy_rope_Click(System::Object^ sender, System::EventArgs^ e) {
-	if (rope_bought == 0) {
-		workshop_buy_rope->Text = L"購買成功";
-		ListViewItem^ rope = gcnew ListViewItem(gcnew array<String^> { L"麻繩", L"2M x 1" });
-		backpack_items_listView->Items->Add(rope);
-		rope_bought = 1;
+	private: System::Void workshop_buy_rope_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (rope_bought == 0) {
+			workshop_buy_rope->Text = L"購買成功";
+			ListViewItem^ rope = gcnew ListViewItem(gcnew array<String^> { L"麻繩", L"2M x 1" });
+			backpack_items_listView->Items->Add(rope);
+			rope_bought = 1;
+		}
 	}
-}
-private: System::Void snackbar_buy_sandwitch_Click(System::Object^ sender, System::EventArgs^ e) {
-	if (sandwitch_bought == 0) {
-		ListViewItem^ sandwitch = gcnew ListViewItem(gcnew array<String^> { L"三明治", L"1" });
-		backpack_items_listView->Items->Add(sandwitch);
-		sandwitch_bought = 1;
-		sandwitch_count = sandwitch_count + 1;
+	private: System::Void snackbar_buy_sandwitch_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (sandwitch_bought == 0) {
+			ListViewItem^ sandwitch = gcnew ListViewItem(gcnew array<String^> { L"三明治", L"1" });
+			backpack_items_listView->Items->Add(sandwitch);
+			sandwitch_bought = 1;
+			sandwitch_count = sandwitch_count + 1;
+		}
+		else if (sandwitch_bought == 1) {
+			sandwitch_count = sandwitch_count + 1;
+			for (int i = 0; i < backpack_items_listView->Items->Count; i++)
+			{
+				//delete the old item
+				ListViewItem^ currentItem = backpack_items_listView->Items[i];
+				String^ subItemText = currentItem->SubItems[0]->Text;
+				if (subItemText == "三明治") {
+					backpack_items_listView->Items->RemoveAt(i);
+				}
+			}
+			ListViewItem^ sandwitch = gcnew ListViewItem(gcnew array<String^> { L"三明治", Convert::ToString(sandwitch_count) });
+			backpack_items_listView->Items->Add(sandwitch);
+		}
 	}
-	else if (sandwitch_bought == 1) {
-		sandwitch_count = sandwitch_count + 1;
-		for (int i = 0; i < backpack_items_listView->Items->Count; i++)
+	private: System::Void snackbar_buy_potato_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (potato_bought == 0) {
+			ListViewItem^ potato = gcnew ListViewItem(gcnew array<String^> { L"烤ㄇㄌㄐ", L"1" });
+			backpack_items_listView->Items->Add(potato);
+			potato_bought = 1;
+			potato_count = potato_count + 1;
+		}
+		else if (potato_bought == 1) {
+			potato_count = potato_count + 1;
+			for (int i = 0; i < backpack_items_listView->Items->Count; i++)
+			{
+				//delete the old item
+				ListViewItem^ currentItem = backpack_items_listView->Items[i];
+				String^ subItemText = currentItem->SubItems[0]->Text;
+				if (subItemText == "烤ㄇㄌㄐ") {
+					backpack_items_listView->Items->RemoveAt(i);
+				}
+			}
+			ListViewItem^ potato = gcnew ListViewItem(gcnew array<String^> { L"烤ㄇㄌㄐ", Convert::ToString(potato_count) });
+			backpack_items_listView->Items->Add(potato);
+		}
+	}
+	private: System::Void snackbar_buy_meat_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (meat_bought == 0) {
+			ListViewItem^ meat = gcnew ListViewItem(gcnew array<String^> { L"肉串", L"1" });
+			backpack_items_listView->Items->Add(meat);
+			meat_bought = 1;
+			meat_count = meat_count + 1;
+		}
+		else if (meat_bought == 1) {
+			meat_count = meat_count + 1;
+			for (int i = 0; i < backpack_items_listView->Items->Count; i++)
+			{
+				//delete the old item
+				ListViewItem^ currentItem = backpack_items_listView->Items[i];
+				String^ subItemText = currentItem->SubItems[0]->Text;
+				if (subItemText == "肉串") {
+					backpack_items_listView->Items->RemoveAt(i);
+				}
+			}
+			ListViewItem^ meat = gcnew ListViewItem(gcnew array<String^> { L"肉串", Convert::ToString(meat_count) });
+			backpack_items_listView->Items->Add(meat);
+		}
+	}
+	private: System::Void leave_workshop_Click(System::Object^ sender, System::EventArgs^ e) {
+		workshop_buy_rolling_pin->Visible = false;
+		workshop_buy_rope->Visible = false;
+		workshop_buy_knife->Visible = false;
+		workshop_buy_hammer->Visible = false;
+		leave_workshop->Visible = false;
+		dialog_text->Text = "";
+	}
+	private: System::Void leave_snackbar_Click(System::Object^ sender, System::EventArgs^ e) {
+		snackbar_buy_meat->Visible = false;
+		snackbar_buy_potato->Visible = false;
+		snackbar_buy_sandwitch->Visible = false;
+		leave_snackbar->Visible = false;
+		dialog_text->Text = "";
+	}
+	private: System::Void take_heart_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (heart_count == 0) {
+			ListViewItem^ heart = gcnew ListViewItem(gcnew array<String^> { L"古怪的心臟", L"1" });
+			backpack_items_listView->Items->Add(heart);
+			heart_count = 1;
+			dragon_heart_hold = true;
+			spot_altar->Visible = false;
+			swallow_heart->Visible = false;
+		}
+	}
+	private: System::Void fight_with_aurther_Click(System::Object^ sender, System::EventArgs^ e) {
+		//補玩戰鬥細節
+	
+		//泡水: 這裡要補
+		last_fight_win = 1;
+		fight_with_aurther->Visible = false;
+	}
+	private: System::Void choice_leave_Click(System::Object^ sender, System::EventArgs^ e) {
+		choice_leave->Visible = false;
+		choice_archeology->Visible = false;
+		hit_aurther_again->Visible = false;
+		dialog_text->Text = "什麼…”，他陷入了沉默了一陣，”我送妳出去迷途者，不要再回來了”，你眼前一黑，再次睜開時，已經回到你昏過去時的遺跡中，你探索了這個遺跡，回去付了命，拿到了你的薪水，但這個遺址中的痕跡只能證明是五、六世紀時遺留下的，你對此受到了極大的打擊，當時的情景不斷的出現在腦內，讓你睡不好覺，你被大家認為是個只會幻想的落壑人士。";
+	}
+	private: System::Void choice_archeology_Click(System::Object^ sender, System::EventArgs^ e) {
+		choice_leave->Visible = false;
+		choice_archeology->Visible = false;
+		hit_aurther_again->Visible = false;
+		dialog_text->Text = "什麼…”，他陷入了沉默地盯著你看了一段時間，”我送妳出去追夢者，這個給你，不要再回來了”他甩了一個東西到你手上，你眼前一黑，再次睜開時，已經回到你昏過去時的遺跡中，你手中抓著一個圓桌騎士團的徽章，看起來有些老舊甚至有著一些劃痕，你探索了這個遺跡，回去付了命，拿到了你的薪水，你手上抓著的徽章成為了亞瑟王傳奇的有力證明，雖然仍有許多人懷疑你是個騙子，但你已然成為世界上的亞瑟王傳奇的傳奇學者。";
+	}
+	private: System::Void hit_aurther_again_Click(System::Object^ sender, System::EventArgs^ e) {
+		choice_leave->Visible = false;
+		choice_archeology->Visible = false;
+		hit_aurther_again->Visible = false;
+		hard_check->Visible = true;
+		dialog_text->Text = "在亞瑟嚥下最後一口氣的瞬間，你感覺到頭暈目眩，周圍的畫面在你眼前扭曲，你眼前一黑，再次睜開時，已經回到你昏過去時的遺跡中，你感受到了劇烈的晃動，你明白這個洞窟已經開始坍塌了，你狼狽地向外逃去，困難敏捷判定";
+	}
+	private: System::Void hard_check_Click(System::Object^ sender, System::EventArgs^ e) {
+		//困難敏捷判定
+		dice.check(player.get_ability().DEX);
+		//失敗
+		if (dice.success <= 1) {
+			dialog_text->Text = "你和遺跡一起被永遠的塵封在了地下。";
+			final_end_game_button->Visible = true;
+		}
+		//成功	
+		else {
+			dialog_text->Text = "你逃離了洞穴的坍塌，但是由於你導致了考古學希望的消逝，你的後半生被萬人唾棄，窮困潦倒。";
+			final_end_game_button->Visible = true;
+		}
+	}
+	private: System::Void end_game_continue_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (end_game_continue_count == 0) {
+			dialog_text->Text = "貝狄威爾”不是的王，你被梅林蒙騙了，這裡不是你夢想中的理想鄉，只是梅林獻給邪神的飼養箱阿”";
+			end_game_continue_count = end_game_continue_count + 1;
+		}
+		else if (end_game_continue_count == 1) {
+			dialog_text->Text = "亞瑟”我又怎麼會不知道呢，我都知道的阿，但在莫德雷德起一的那一刻亞瑟王就已經死了，現在的我只是…現在的我…只是一個想要完成夢想，和曾經最好的同志、朋友們達到夢想中那遠離塵世的幻想箱的…被時代拋棄的可憐蟲而已啊!”";
+			end_game_continue_count = end_game_continue_count + 1;
+		}
+		else if (end_game_continue_count == 2) {
+			dialog_text->Text = "藍斯洛特”別自我貶低了亞瑟，雖然我沒有資格說這種話，甚至沒有資格出現在你面前，但我還是要說，你永遠都是我們的王，引領著我們的前路，或許你現在落壑了，但你仍是大不列顛那偉大的亞瑟王的未來，曾經的我們或許達不到完美的結局，但現在的我們仍然有機會為自己劃下理想的句點，不要在讓梅林利用你心中的軟弱了，我們著些早該死去的人就該乖乖地進入歷史的垃圾堆裡、繼續掙扎只不過是延續著我們曾經的醜惡而已。”";
+			end_game_continue_count = end_game_continue_count + 1;
+		}
+		else if (end_game_continue_count == 3) {
+			dialog_text->Text = "亞瑟”…”";
+			end_game_continue_count = end_game_continue_count + 1;
+		}
+		else if (end_game_continue_count == 4) {
+			dialog_text->Text = "桂妮薇兒”這次我會陪著你的，直到最後”";
+			end_game_continue_count = end_game_continue_count + 1;
+		}
+		else if (end_game_continue_count == 5) {
+			end_game_continue->Visible = true;
+			final_end_game_button->Visible = true;
+		}
+	}
+	private: System::Void final_end_game_button_Click(System::Object^ sender, System::EventArgs^ e) {
+		for each (Control ^ control in this->Controls)
 		{
-			//delete the old item
-			ListViewItem^ currentItem = backpack_items_listView->Items[i];
-			String^ subItemText = currentItem->SubItems[0]->Text;
-			if (subItemText == "三明治") {
-				backpack_items_listView->Items->RemoveAt(i);
+			String^ controlName = control->Name;
+			if (control->GetType() == PictureBox::typeid && controlName == L"menu")
+			{
+				control->Visible = true;
+			}
+			else {
+				control->Visible = false;
 			}
 		}
-		ListViewItem^ sandwitch = gcnew ListViewItem(gcnew array<String^> { L"三明治", Convert::ToString(sandwitch_count) });
-		backpack_items_listView->Items->Add(sandwitch);
+		//泡水: 這裡也要改
+		menu->Image = gcnew Bitmap(gcnew System::String(lead_in.get_path()));
 	}
-}
-private: System::Void snackbar_buy_potato_Click(System::Object^ sender, System::EventArgs^ e) {
-	if (potato_bought == 0) {
-		ListViewItem^ potato = gcnew ListViewItem(gcnew array<String^> { L"烤ㄇㄌㄐ", L"1" });
-		backpack_items_listView->Items->Add(potato);
-		potato_bought = 1;
-		potato_count = potato_count + 1;
-	}
-	else if (potato_bought == 1) {
-		potato_count = potato_count + 1;
-		for (int i = 0; i < backpack_items_listView->Items->Count; i++)
-		{
-			//delete the old item
-			ListViewItem^ currentItem = backpack_items_listView->Items[i];
-			String^ subItemText = currentItem->SubItems[0]->Text;
-			if (subItemText == "烤ㄇㄌㄐ") {
-				backpack_items_listView->Items->RemoveAt(i);
-			}
-		}
-		ListViewItem^ potato = gcnew ListViewItem(gcnew array<String^> { L"烤ㄇㄌㄐ", Convert::ToString(potato_count) });
-		backpack_items_listView->Items->Add(potato);
-	}
-}
-private: System::Void snackbar_buy_meat_Click(System::Object^ sender, System::EventArgs^ e) {
-	if (meat_bought == 0) {
-		ListViewItem^ meat = gcnew ListViewItem(gcnew array<String^> { L"肉串", L"1" });
-		backpack_items_listView->Items->Add(meat);
-		meat_bought = 1;
-		meat_count = meat_count + 1;
-	}
-	else if (meat_bought == 1) {
-		meat_count = meat_count + 1;
-		for (int i = 0; i < backpack_items_listView->Items->Count; i++)
-		{
-			//delete the old item
-			ListViewItem^ currentItem = backpack_items_listView->Items[i];
-			String^ subItemText = currentItem->SubItems[0]->Text;
-			if (subItemText == "肉串") {
-				backpack_items_listView->Items->RemoveAt(i);
-			}
-		}
-		ListViewItem^ meat = gcnew ListViewItem(gcnew array<String^> { L"肉串", Convert::ToString(meat_count) });
-		backpack_items_listView->Items->Add(meat);
-	}
-}
-private: System::Void leave_workshop_Click(System::Object^ sender, System::EventArgs^ e) {
-	workshop_buy_rolling_pin->Visible = false;
-	workshop_buy_rope->Visible = false;
-	workshop_buy_knife->Visible = false;
-	workshop_buy_hammer->Visible = false;
-	leave_workshop->Visible = false;
-	dialog_text->Text = "";
-}
-private: System::Void leave_snackbar_Click(System::Object^ sender, System::EventArgs^ e) {
-	snackbar_buy_meat->Visible = false;
-	snackbar_buy_potato->Visible = false;
-	snackbar_buy_sandwitch->Visible = false;
-	leave_snackbar->Visible = false;
-	dialog_text->Text = "";
-}
-private: System::Void take_heart_Click(System::Object^ sender, System::EventArgs^ e) {
-	if (heart_count == 0) {
-		ListViewItem^ heart = gcnew ListViewItem(gcnew array<String^> { L"古怪的心臟", L"1" });
-		backpack_items_listView->Items->Add(heart);
-		heart_count = 1;
-		dragon_heart_hold = true;
-		spot_altar->Visible = false;
+	private: System::Void swallow_heart_Click(System::Object^ sender, System::EventArgs^ e) {
+		dragon_blood_hold = true;
 		swallow_heart->Visible = false;
 	}
-}
-private: System::Void fight_with_aurther_Click(System::Object^ sender, System::EventArgs^ e) {
-	//補玩戰鬥細節
-	
-	//泡水: 這裡要補
-	last_fight_win = 1;
-	fight_with_aurther->Visible = false;
-}
-private: System::Void choice_leave_Click(System::Object^ sender, System::EventArgs^ e) {
-	choice_leave->Visible = false;
-	choice_archeology->Visible = false;
-	hit_aurther_again->Visible = false;
-	dialog_text->Text = "什麼…”，他陷入了沉默了一陣，”我送妳出去迷途者，不要再回來了”，你眼前一黑，再次睜開時，已經回到你昏過去時的遺跡中，你探索了這個遺跡，回去付了命，拿到了你的薪水，但這個遺址中的痕跡只能證明是五、六世紀時遺留下的，你對此受到了極大的打擊，當時的情景不斷的出現在腦內，讓你睡不好覺，你被大家認為是個只會幻想的落壑人士。";
-}
-private: System::Void choice_archeology_Click(System::Object^ sender, System::EventArgs^ e) {
-	choice_leave->Visible = false;
-	choice_archeology->Visible = false;
-	hit_aurther_again->Visible = false;
-	dialog_text->Text = "什麼…”，他陷入了沉默地盯著你看了一段時間，”我送妳出去追夢者，這個給你，不要再回來了”他甩了一個東西到你手上，你眼前一黑，再次睜開時，已經回到你昏過去時的遺跡中，你手中抓著一個圓桌騎士團的徽章，看起來有些老舊甚至有著一些劃痕，你探索了這個遺跡，回去付了命，拿到了你的薪水，你手上抓著的徽章成為了亞瑟王傳奇的有力證明，雖然仍有許多人懷疑你是個騙子，但你已然成為世界上的亞瑟王傳奇的傳奇學者。";
-}
-private: System::Void hit_aurther_again_Click(System::Object^ sender, System::EventArgs^ e) {
-	choice_leave->Visible = false;
-	choice_archeology->Visible = false;
-	hit_aurther_again->Visible = false;
-	hard_check->Visible = true;
-	dialog_text->Text = "在亞瑟嚥下最後一口氣的瞬間，你感覺到頭暈目眩，周圍的畫面在你眼前扭曲，你眼前一黑，再次睜開時，已經回到你昏過去時的遺跡中，你感受到了劇烈的晃動，你明白這個洞窟已經開始坍塌了，你狼狽地向外逃去，困難敏捷判定";
-}
-private: System::Void hard_check_Click(System::Object^ sender, System::EventArgs^ e) {
-	//困難敏捷判定
-	dice.check(player.get_ability().DEX);
-	//失敗
-	if (dice.success <= 1) {
-		dialog_text->Text = "你和遺跡一起被永遠的塵封在了地下。";
-		final_end_game_button->Visible = true;
-	}
-	//成功	
-	else {
-		dialog_text->Text = "你逃離了洞穴的坍塌，但是由於你導致了考古學希望的消逝，你的後半生被萬人唾棄，窮困潦倒。";
-		final_end_game_button->Visible = true;
-	}
-}
-private: System::Void end_game_continue_Click(System::Object^ sender, System::EventArgs^ e) {
-	if (end_game_continue_count == 0) {
-		dialog_text->Text = "貝狄威爾”不是的王，你被梅林蒙騙了，這裡不是你夢想中的理想鄉，只是梅林獻給邪神的飼養箱阿”";
-		end_game_continue_count = end_game_continue_count + 1;
-	}
-	else if (end_game_continue_count == 1) {
-		dialog_text->Text = "亞瑟”我又怎麼會不知道呢，我都知道的阿，但在莫德雷德起一的那一刻亞瑟王就已經死了，現在的我只是…現在的我…只是一個想要完成夢想，和曾經最好的同志、朋友們達到夢想中那遠離塵世的幻想箱的…被時代拋棄的可憐蟲而已啊!”";
-		end_game_continue_count = end_game_continue_count + 1;
-	}
-	else if (end_game_continue_count == 2) {
-		dialog_text->Text = "藍斯洛特”別自我貶低了亞瑟，雖然我沒有資格說這種話，甚至沒有資格出現在你面前，但我還是要說，你永遠都是我們的王，引領著我們的前路，或許你現在落壑了，但你仍是大不列顛那偉大的亞瑟王的未來，曾經的我們或許達不到完美的結局，但現在的我們仍然有機會為自己劃下理想的句點，不要在讓梅林利用你心中的軟弱了，我們著些早該死去的人就該乖乖地進入歷史的垃圾堆裡、繼續掙扎只不過是延續著我們曾經的醜惡而已。”";
-		end_game_continue_count = end_game_continue_count + 1;
-	}
-	else if (end_game_continue_count == 3) {
-		dialog_text->Text = "亞瑟”…”";
-		end_game_continue_count = end_game_continue_count + 1;
-	}
-	else if (end_game_continue_count == 4) {
-		dialog_text->Text = "桂妮薇兒”這次我會陪著你的，直到最後”";
-		end_game_continue_count = end_game_continue_count + 1;
-	}
-	else if (end_game_continue_count == 5) {
-		end_game_continue->Visible = true;
-		final_end_game_button->Visible = true;
-	}
-}
-private: System::Void final_end_game_button_Click(System::Object^ sender, System::EventArgs^ e) {
-	for each (Control ^ control in this->Controls)
-	{
-		String^ controlName = control->Name;
-		if (control->GetType() == PictureBox::typeid && controlName == L"menu")
-		{
-			control->Visible = true;
+	private: System::Void observe_swirl_Click(System::Object^ sender, System::EventArgs^ e) {
+		dice.check(player.get_skill().Spot);
+		if (Observe_Swirl_Count == 9) {
+			if (dice.success == 0) {
+				dialog_text->Text = "觀察判定:失敗\r\n你朝著漩渦看去，被不斷旋轉的漩渦繞得頭昏。";
+			}
+			else if (dice.success <= 2) {
+				dialog_text->Text = "觀察判定:成功\r\n你朝著漩渦看去，你發現漩渦的中心傳來一點閃光，似乎是有甚麼反光物在那裏。";
+				go_into_swirl->Visible = true;
+			}
+			else{
+				dialog_text->Text = "觀察判定:極難成功\r\n你朝著漩渦看去，你發現漩渦的中心傳來一點閃光，似乎是有甚麼反光物在裏邊，那是一把騎士大劍插在了地板裡。";
+				go_into_swirl->Visible = true;
+			}
+			Observe_Swirl_Count = dice.success;
 		}
 		else {
-			control->Visible = false;
+			if (Observe_Swirl_Count == 0) {
+				dialog_text->Text = "觀察判定:失敗\r\n你朝著漩渦看去，被不斷旋轉的漩渦繞得頭昏。";
+			}
+			else if (Observe_Swirl_Count <= 2) {
+				dialog_text->Text = "觀察判定:成功\r\n你朝著漩渦看去，你發現漩渦的中心傳來一點閃光，似乎是有甚麼反光物在那裏。";
+				go_into_swirl->Visible = true;
+			}
+			else {
+				dialog_text->Text = "觀察判定:極難成功\r\n你朝著漩渦看去，你發現漩渦的中心傳來一點閃光，似乎是有甚麼反光物在裏邊，那是一把騎士大劍插在了地板裡。";
+				go_into_swirl->Visible = true;
+			}
 		}
 	}
-	//泡水: 這裡也要改
-	menu->Image = gcnew Bitmap(gcnew System::String(lead_in.get_path()));
-}
-private: System::Void swallow_heart_Click(System::Object^ sender, System::EventArgs^ e) {
-	dragon_blood_hold = true;
-	swallow_heart->Visible = false;
-}
-private: System::Void observe_swirl_Click(System::Object^ sender, System::EventArgs^ e) {
-	dice.check(player.get_skill().Spot);
-	if (Observe_Swirl_Count == 9) {
-		if (dice.success == 0) {
-			dialog_text->Text = "觀察判定:失敗\r\n你朝著漩渦看去，被不斷旋轉的漩渦繞得頭昏。";
-		}
-		else if (dice.success <= 2) {
-			dialog_text->Text = "觀察判定:成功\r\n你朝著漩渦看去，你發現漩渦的中心傳來一點閃光，似乎是有甚麼反光物在那裏。";
-			go_into_swirl->Visible = true;
-		}
-		else{
-			dialog_text->Text = "觀察判定:極難成功\r\n你朝著漩渦看去，你發現漩渦的中心傳來一點閃光，似乎是有甚麼反光物在裏邊，那是一把騎士大劍插在了地板裡。";
-			go_into_swirl->Visible = true;
-		}
-		Observe_Swirl_Count = dice.success;
+	private: System::Void go_into_swirl_Click(System::Object^ sender, System::EventArgs^ e) {
+		dialog_text->Text = "你感到有輕微的吸力從漩渦中心傳來，但完全不影響你行動，你在漩渦中摸索，從中舉起了一把寶劍，但這把劍彷彿是假的一般毫無重量，你的腦中不知道為何意識到你並不被認可";
+		ListViewItem^ sword = gcnew ListViewItem(gcnew array<String^> { L"華麗的長劍", L"1" });
+		backpack_items_listView->Items->Add(sword);
+		sword_count = 1;
 	}
-	else {
-		if (Observe_Swirl_Count == 0) {
-			dialog_text->Text = "觀察判定:失敗\r\n你朝著漩渦看去，被不斷旋轉的漩渦繞得頭昏。";
-		}
-		else if (Observe_Swirl_Count <= 2) {
-			dialog_text->Text = "觀察判定:成功\r\n你朝著漩渦看去，你發現漩渦的中心傳來一點閃光，似乎是有甚麼反光物在那裏。";
-			go_into_swirl->Visible = true;
+	private: System::Void spot_altar_Click(System::Object^ sender, System::EventArgs^ e) {
+		dice.check(player.get_skill().Spot);
+		if (Spot_Altar_Count == 9) {
+			if (dice.success == 0) {
+				dialog_text->Text = "觀察判定:失敗\r\n你仔細的觀察這個房間，你很欣賞這樣的房間風格，甚至想跟房間主人蕉流蕉流。";
+			}
+			else {
+				dialog_text->Text = "觀察判定:成功\r\n你仔細的觀察這個房間，你發現儀式桌的下面有著一個小小的壺，裡面裝著一些白灰色的粉末，罐子上刻著”解夢灰”。";
+				ListViewItem^ ash = gcnew ListViewItem(gcnew array<String^> { L"解夢灰", L"1" });
+				backpack_items_listView->Items->Add(ash);
+				ash_count = 1;
+			}
+			Spot_Altar_Count = dice.success;
 		}
 		else {
-			dialog_text->Text = "觀察判定:極難成功\r\n你朝著漩渦看去，你發現漩渦的中心傳來一點閃光，似乎是有甚麼反光物在裏邊，那是一把騎士大劍插在了地板裡。";
-			go_into_swirl->Visible = true;
+			if (Spot_Altar_Count == 0) {
+				dialog_text->Text = "觀察判定:失敗\r\n你仔細的觀察這個房間，你很欣賞這樣的房間風格，甚至想跟房間主人蕉流蕉流。";
+			}
+			else {
+				dialog_text->Text = "觀察判定:成功\r\n你仔細的觀察這個房間，除了已經被你拿起的解夢灰沒有甚麼特別的。";
+			}
 		}
 	}
-}
-private: System::Void go_into_swirl_Click(System::Object^ sender, System::EventArgs^ e) {
-	dialog_text->Text = "你感到有輕微的吸力從漩渦中心傳來，但完全不影響你行動，你在漩渦中摸索，從中舉起了一把寶劍，但這把劍彷彿是假的一般毫無重量，你的腦中不知道為何意識到你並不被認可";
-	ListViewItem^ sword = gcnew ListViewItem(gcnew array<String^> { L"華麗的長劍", L"1" });
-	backpack_items_listView->Items->Add(sword);
-	sword_count = 1;
-}
-private: System::Void spot_altar_Click(System::Object^ sender, System::EventArgs^ e) {
-	dice.check(player.get_skill().Spot);
-	if (Spot_Altar_Count == 9) {
-		if (dice.success == 0) {
-			dialog_text->Text = "觀察判定:失敗\r\n你仔細的觀察這個房間，你很欣賞這樣的房間風格，甚至想跟房間主人蕉流蕉流。";
-		}
-		else {
-			dialog_text->Text = "觀察判定:成功\r\n你仔細的觀察這個房間，你發現儀式桌的下面有著一個小小的壺，裡面裝著一些白灰色的粉末，罐子上刻著”解夢灰”。";
-			ListViewItem^ ash = gcnew ListViewItem(gcnew array<String^> { L"解夢灰", L"1" });
-			backpack_items_listView->Items->Add(ash);
-			ash_count = 1;
-		}
-		Spot_Altar_Count = dice.success;
-	}
-	else {
-		if (Spot_Altar_Count == 0) {
-			dialog_text->Text = "觀察判定:失敗\r\n你仔細的觀察這個房間，你很欣賞這樣的房間風格，甚至想跟房間主人蕉流蕉流。";
-		}
-		else {
-			dialog_text->Text = "觀察判定:成功\r\n你仔細的觀察這個房間，除了已經被你拿起的解夢灰沒有甚麼特別的。";
-		}
-	}
-}
 };
 }
