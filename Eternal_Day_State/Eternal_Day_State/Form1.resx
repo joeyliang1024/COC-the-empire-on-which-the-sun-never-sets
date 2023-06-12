@@ -117,6 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="manual_text.Text" xml:space="preserve">
+    <value>此遊戲規則為COC第七版規則簡化後的結果，若對完整COC第七版規則感興趣可在Google上搜尋悠子大大寫的CoC 7e規則筆記。此遊戲建立在玩家的選擇和骰子點數上，每個場景內會出現多個選項可以選擇角色現在要做的事。此遊戲建立在玩家的選擇和骰子點數上，每個場景內會出現多個選項可以選擇角色現在要做的事。
+判定規則:若要進行有一定困難度的行動則要進行技能判定，假設角色技能為60，技能判定為骰一個百面骰而結果小於60時行動成功，反之則失敗，若是做此事有劣勢則有減易，反之有增易，一個判定一場遊戲只能進行一次。
+瘋狂規則:若san值(理智值):降低5會陷入瘋狂狀態，瘋狂狀態將會對角色的某些行動造成影響。戰鬥規則:此劇本存在戰鬥可能，戰鬥規則為回合制戰鬥一般攻擊傷害為1-3+DB，DB為身體素質造成的傷害加成。
+1.攻擊方宣告攻擊，而防守方宣告閃避或反擊。
+2.攻擊行動:骰一個骰子，若&lt;=12極限成功、&lt;=30困難成功、&lt;=60成功，else失敗
+3.閃避或反擊行動: 骰一個骰子，若&lt;=12極限成功、&lt;=30困難成功、&lt;=60成功，else失敗
+4.若宣告閃避，且閃避成功等級與攻擊成功等級相同:成功閃避了攻擊若宣告反擊，且反擊成功等級比攻擊成功等級高一級:成功反擊若攻擊大失敗: 造成未知不良後果若失敗:攻擊失敗若成功、困難成功:造成傷害若極限成功、大成功:造成最大攻擊力傷害若閃避、反擊大失敗: 造成未知不良後果
+5.其中一方生命值歸零時戰鬥結束</value>
+  </data>
   <metadata name="timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>

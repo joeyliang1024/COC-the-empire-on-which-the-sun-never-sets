@@ -59,6 +59,7 @@ scene Sewer_Secret_Door({ "www//pic//background//Sewer_Secret_Door.png" });
 scene Map({ "www//pic//picture//Map.png" });
 scene Servent({ "www//pic//picture//servent.png" });
 scene dead({ "www//pic//background//dead.png" });
+scene ending({ "www//pic//background//ending.png" });
 
 namespace CppCLRWinFormsProject {
 
@@ -72,7 +73,7 @@ namespace CppCLRWinFormsProject {
 	{
 	public:
 		int init_san;
-		int speed = 5;
+		int speed = 20;
 		bool START_GAME = 0;
 		bool backpack_open_or_close = 0;
 		bool moveLeft, moveRight, moveUp, moveDown;
@@ -93,7 +94,9 @@ namespace CppCLRWinFormsProject {
 		bool dragon_heart_hold, dragon_blood_hold;
 		bool carry_Guinevere, carry_Bedivere, carry_Lancelot;
 		bool last_fight_win = 0;
+		bool last_fight_start = 0;
 		int end_game_continue_count = 0;
+		bool talk_to_Lancelot_click = 0;
 
 	private: System::Windows::Forms::Button^ counterattack_button;
 	private: System::Windows::Forms::Button^ evade_button;
@@ -188,6 +191,15 @@ private: System::Windows::Forms::Button^ go_into_swirl;
 private: System::Windows::Forms::Button^ spot_altar;
 private: System::Windows::Forms::Button^ show_sword;
 private: System::Windows::Forms::Button^ use_ash;
+private: System::Windows::Forms::Button^ talk_to_Guinevere;
+private: System::Windows::Forms::Button^ Guinevere_dialog_1;
+private: System::Windows::Forms::Button^ Guinevere_dialog_2;
+private: System::Windows::Forms::Button^ talk_to_Lancelot;
+private: System::Windows::Forms::Button^ Lancelot_dialog_4;
+private: System::Windows::Forms::Button^ Lancelot_dialog_3;
+private: System::Windows::Forms::Button^ Lancelot_dialog_2;
+private: System::Windows::Forms::Button^ Lancelot_dialog_1;
+
 
 
 
@@ -232,25 +244,25 @@ private: System::Windows::Forms::Button^ use_ash;
 			if (keyData == Keys::Up && player_motion->Location.Y > 180)
 			{
 				// Move the picture box up
-				player_motion->Location = System::Drawing::Point(player_motion->Location.X, player_motion->Location.Y - 10);
+				player_motion->Location = System::Drawing::Point(player_motion->Location.X, player_motion->Location.Y - speed);
 				return true;
 			}
 			else if (keyData == Keys::Down && player_motion->Location.Y < 670)
 			{
 				// Move the picture box down
-				player_motion->Location = System::Drawing::Point(player_motion->Location.X, player_motion->Location.Y + 10);
+				player_motion->Location = System::Drawing::Point(player_motion->Location.X, player_motion->Location.Y + speed);
 				return true;
 			}
 			else if (keyData == Keys::Left && player_motion->Location.X > 0)
 			{
 				// Move the picture box left
-				player_motion->Location = System::Drawing::Point(player_motion->Location.X - 10, player_motion->Location.Y);
+				player_motion->Location = System::Drawing::Point(player_motion->Location.X - speed, player_motion->Location.Y);
 				return true;
 			}
 			else if (keyData == Keys::Right && player_motion->Location.X < 970)
 			{
 				// Move the picture box right
-				player_motion->Location = System::Drawing::Point(player_motion->Location.X + 10, player_motion->Location.Y);
+				player_motion->Location = System::Drawing::Point(player_motion->Location.X + speed, player_motion->Location.Y);
 				return true;
 			}
 
@@ -390,6 +402,12 @@ private: System::Windows::Forms::Button^ use_ash;
 			this->chose_character_text = (gcnew System::Windows::Forms::Label());
 			this->backpack = (gcnew System::Windows::Forms::Button());
 			this->backpack_panel = (gcnew System::Windows::Forms::Panel());
+			this->Lancelot_dialog_4 = (gcnew System::Windows::Forms::Button());
+			this->Lancelot_dialog_3 = (gcnew System::Windows::Forms::Button());
+			this->Lancelot_dialog_2 = (gcnew System::Windows::Forms::Button());
+			this->Lancelot_dialog_1 = (gcnew System::Windows::Forms::Button());
+			this->Guinevere_dialog_2 = (gcnew System::Windows::Forms::Button());
+			this->Guinevere_dialog_1 = (gcnew System::Windows::Forms::Button());
 			this->final_end_game_button = (gcnew System::Windows::Forms::Button());
 			this->end_game_continue = (gcnew System::Windows::Forms::Button());
 			this->hard_check = (gcnew System::Windows::Forms::Button());
@@ -554,6 +572,8 @@ private: System::Windows::Forms::Button^ use_ash;
 			this->spot_altar = (gcnew System::Windows::Forms::Button());
 			this->show_sword = (gcnew System::Windows::Forms::Button());
 			this->use_ash = (gcnew System::Windows::Forms::Button());
+			this->talk_to_Guinevere = (gcnew System::Windows::Forms::Button());
+			this->talk_to_Lancelot = (gcnew System::Windows::Forms::Button());
 			this->backpack_panel->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->item_pic))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->player_motion))->BeginInit();
@@ -620,6 +640,7 @@ private: System::Windows::Forms::Button^ use_ash;
 			this->back_to_home->TabIndex = 3;
 			this->back_to_home->Text = L"Back to Home";
 			this->back_to_home->UseVisualStyleBackColor = true;
+			this->back_to_home->Visible = false;
 			this->back_to_home->Click += gcnew System::EventHandler(this, &Form1::back_to_home_Click);
 			// 
 			// archaeologist_button
@@ -694,6 +715,12 @@ private: System::Windows::Forms::Button^ use_ash;
 			// 
 			// backpack_panel
 			// 
+			this->backpack_panel->Controls->Add(this->Lancelot_dialog_4);
+			this->backpack_panel->Controls->Add(this->Lancelot_dialog_3);
+			this->backpack_panel->Controls->Add(this->Lancelot_dialog_2);
+			this->backpack_panel->Controls->Add(this->Lancelot_dialog_1);
+			this->backpack_panel->Controls->Add(this->Guinevere_dialog_2);
+			this->backpack_panel->Controls->Add(this->Guinevere_dialog_1);
 			this->backpack_panel->Controls->Add(this->final_end_game_button);
 			this->backpack_panel->Controls->Add(this->end_game_continue);
 			this->backpack_panel->Controls->Add(this->hard_check);
@@ -728,6 +755,72 @@ private: System::Windows::Forms::Button^ use_ash;
 			this->backpack_panel->Size = System::Drawing::Size(1024, 240);
 			this->backpack_panel->TabIndex = 10;
 			this->backpack_panel->Visible = false;
+			// 
+			// Lancelot_dialog_4
+			// 
+			this->Lancelot_dialog_4->Location = System::Drawing::Point(335, 198);
+			this->Lancelot_dialog_4->Name = L"Lancelot_dialog_4";
+			this->Lancelot_dialog_4->Size = System::Drawing::Size(300, 30);
+			this->Lancelot_dialog_4->TabIndex = 84;
+			this->Lancelot_dialog_4->Text = L"下水道的水是從哪裡排出的:";
+			this->Lancelot_dialog_4->UseVisualStyleBackColor = true;
+			this->Lancelot_dialog_4->Visible = false;
+			this->Lancelot_dialog_4->Click += gcnew System::EventHandler(this, &Form1::Lancelot_dialog_4_Click);
+			// 
+			// Lancelot_dialog_3
+			// 
+			this->Lancelot_dialog_3->Location = System::Drawing::Point(20, 198);
+			this->Lancelot_dialog_3->Name = L"Lancelot_dialog_3";
+			this->Lancelot_dialog_3->Size = System::Drawing::Size(300, 30);
+			this->Lancelot_dialog_3->TabIndex = 83;
+			this->Lancelot_dialog_3->Text = L"剛剛遇見的怪物是甚麼";
+			this->Lancelot_dialog_3->UseVisualStyleBackColor = true;
+			this->Lancelot_dialog_3->Visible = false;
+			this->Lancelot_dialog_3->Click += gcnew System::EventHandler(this, &Form1::Lancelot_dialog_3_Click);
+			// 
+			// Lancelot_dialog_2
+			// 
+			this->Lancelot_dialog_2->Location = System::Drawing::Point(335, 162);
+			this->Lancelot_dialog_2->Name = L"Lancelot_dialog_2";
+			this->Lancelot_dialog_2->Size = System::Drawing::Size(300, 30);
+			this->Lancelot_dialog_2->TabIndex = 82;
+			this->Lancelot_dialog_2->Text = L"月城是甚麼";
+			this->Lancelot_dialog_2->UseVisualStyleBackColor = true;
+			this->Lancelot_dialog_2->Visible = false;
+			this->Lancelot_dialog_2->Click += gcnew System::EventHandler(this, &Form1::Lancelot_dialog_2_Click);
+			// 
+			// Lancelot_dialog_1
+			// 
+			this->Lancelot_dialog_1->Location = System::Drawing::Point(20, 162);
+			this->Lancelot_dialog_1->Name = L"Lancelot_dialog_1";
+			this->Lancelot_dialog_1->Size = System::Drawing::Size(300, 30);
+			this->Lancelot_dialog_1->TabIndex = 81;
+			this->Lancelot_dialog_1->Text = L"清醒者是甚麼";
+			this->Lancelot_dialog_1->UseVisualStyleBackColor = true;
+			this->Lancelot_dialog_1->Visible = false;
+			this->Lancelot_dialog_1->Click += gcnew System::EventHandler(this, &Form1::Lancelot_dialog_1_Click);
+			// 
+			// Guinevere_dialog_2
+			// 
+			this->Guinevere_dialog_2->Location = System::Drawing::Point(335, 198);
+			this->Guinevere_dialog_2->Name = L"Guinevere_dialog_2";
+			this->Guinevere_dialog_2->Size = System::Drawing::Size(300, 30);
+			this->Guinevere_dialog_2->TabIndex = 80;
+			this->Guinevere_dialog_2->Text = L"選項二";
+			this->Guinevere_dialog_2->UseVisualStyleBackColor = true;
+			this->Guinevere_dialog_2->Visible = false;
+			this->Guinevere_dialog_2->Click += gcnew System::EventHandler(this, &Form1::Guinevere_dialog_2_Click);
+			// 
+			// Guinevere_dialog_1
+			// 
+			this->Guinevere_dialog_1->Location = System::Drawing::Point(20, 198);
+			this->Guinevere_dialog_1->Name = L"Guinevere_dialog_1";
+			this->Guinevere_dialog_1->Size = System::Drawing::Size(300, 30);
+			this->Guinevere_dialog_1->TabIndex = 79;
+			this->Guinevere_dialog_1->Text = L"選項一";
+			this->Guinevere_dialog_1->UseVisualStyleBackColor = true;
+			this->Guinevere_dialog_1->Visible = false;
+			this->Guinevere_dialog_1->Click += gcnew System::EventHandler(this, &Form1::Guinevere_dialog_1_Click);
 			// 
 			// final_end_game_button
 			// 
@@ -1076,6 +1169,8 @@ private: System::Windows::Forms::Button^ use_ash;
 			// 
 			// manual_text
 			// 
+			this->manual_text->Font = (gcnew System::Drawing::Font(L"微軟正黑體", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(136)));
 			this->manual_text->Location = System::Drawing::Point(0, 184);
 			this->manual_text->Margin = System::Windows::Forms::Padding(1, 2, 1, 2);
 			this->manual_text->Multiline = true;
@@ -1083,7 +1178,7 @@ private: System::Windows::Forms::Button^ use_ash;
 			this->manual_text->ReadOnly = true;
 			this->manual_text->Size = System::Drawing::Size(1024, 537);
 			this->manual_text->TabIndex = 2;
-			this->manual_text->Text = L"我是說明書的文字。換行請打\\r\\n";
+			this->manual_text->Text = L"此遊戲規則為COC第七版規則簡化後的結果，若對完整COC第七版規則感興趣可在Google上搜尋悠子大大寫的CoC 7e規則筆記。此遊戲建立在玩家的選擇和骰子點數上，每個場景內會出現多個選項可以選擇角色現在要做的事。此遊戲建立在玩家的選擇和骰子點數上，每個場景內會出現多個選項可以選擇角色現在要做的事。\r\n判定規則:若要進行有一定困難度的行動則要進行技能判定，假設角色技能為60，技能判定為骰一個百面骰而結果小於60時行動成功，反之則失敗，若是做此事有劣勢則有減易，反之有增易，一個判定一場遊戲只能進行一次。\r\n瘋狂規則:若san值(理智值):降低5會陷入瘋狂狀態，瘋狂狀態將會對角色的某些行動造成影響。戰鬥規則:此劇本存在戰鬥可能，戰鬥規則為回合制戰鬥一般攻擊傷害為1-3+DB，DB為身體素質造成的傷害加成。\r\n1.攻擊方宣告攻擊，而防守方宣告閃避或反擊。\r\n2.攻擊行動:骰一個骰子，若<=12極限成功、<=30困難成功、<=60成功，else失敗\r\n3.閃避或反擊行動: 骰一個骰子，若<=12極限成功、<=30困難成功、<=60成功，else失敗\r\n4.若宣告閃避，且閃避成功等級與攻擊成功等級相同:成功閃避了攻擊若宣告反擊，且反擊成功等級比攻擊成功等級高一級:成功反擊若攻擊大失敗: 造成未知不良後果若失敗:攻擊失敗若成功、困難成功:造成傷害若極限成功、大成功:造成最大攻擊力傷害若閃避、反擊大失敗: 造成未知不良後果\r\n5.其中一方生命值歸零時戰鬥結束";
 			this->manual_text->Visible = false;
 			this->manual_text->Click += gcnew System::EventHandler(this, &Form1::manual_text_Click);
 			// 
@@ -2842,11 +2937,39 @@ private: System::Windows::Forms::Button^ use_ash;
 			this->use_ash->Visible = false;
 			this->use_ash->Click += gcnew System::EventHandler(this, &Form1::use_ash_Click);
 			// 
+			// talk_to_Guinevere
+			// 
+			this->talk_to_Guinevere->Font = (gcnew System::Drawing::Font(L"標楷體", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(136)));
+			this->talk_to_Guinevere->Location = System::Drawing::Point(695, 650);
+			this->talk_to_Guinevere->Name = L"talk_to_Guinevere";
+			this->talk_to_Guinevere->Size = System::Drawing::Size(137, 64);
+			this->talk_to_Guinevere->TabIndex = 120;
+			this->talk_to_Guinevere->Text = L"與桂妮薇兒對話";
+			this->talk_to_Guinevere->UseVisualStyleBackColor = true;
+			this->talk_to_Guinevere->Visible = false;
+			this->talk_to_Guinevere->Click += gcnew System::EventHandler(this, &Form1::talk_to_Guinevere_Click);
+			// 
+			// talk_to_Lancelot
+			// 
+			this->talk_to_Lancelot->Font = (gcnew System::Drawing::Font(L"標楷體", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(136)));
+			this->talk_to_Lancelot->Location = System::Drawing::Point(695, 650);
+			this->talk_to_Lancelot->Name = L"talk_to_Lancelot";
+			this->talk_to_Lancelot->Size = System::Drawing::Size(137, 64);
+			this->talk_to_Lancelot->TabIndex = 121;
+			this->talk_to_Lancelot->Text = L"與藍斯洛特對話";
+			this->talk_to_Lancelot->UseVisualStyleBackColor = true;
+			this->talk_to_Lancelot->Visible = false;
+			this->talk_to_Lancelot->Click += gcnew System::EventHandler(this, &Form1::talk_to_Lancelot_Click);
+			// 
 			// Form1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 12);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1024, 960);
+			this->Controls->Add(this->talk_to_Lancelot);
+			this->Controls->Add(this->talk_to_Guinevere);
 			this->Controls->Add(this->use_ash);
 			this->Controls->Add(this->show_sword);
 			this->Controls->Add(this->spot_altar);
@@ -2998,6 +3121,8 @@ private: System::Windows::Forms::Button^ use_ash;
 		check_end_game();
 		progress_bar_display();
 		dirction_button_display();
+		display_Guinevere();
+		display_Lancelot();
 		system_counter++;
 		//button_collsion();
 	}
@@ -3038,6 +3163,8 @@ private: System::Windows::Forms::Button^ use_ash;
 		}
 	}
 		   void initialize(void) {
+			   //initialize parameters
+			   
 			   //size initialize
 			   AutoScaleDimensions = System::Drawing::SizeF(6, 12);
 			   menu->Size = System::Drawing::Size(WIDTH, HEIGHT);
@@ -3121,7 +3248,53 @@ private: System::Windows::Forms::Button^ use_ash;
 				   Sun->ForeColor = System::Drawing::Color::DarkRed;
 			   }
 		   }
-
+		   void display_Guinevere(void) {
+			   if (sun_count % 6 == 3 && strcmp(place, "1F") == 0) {
+				   NPCGuinevere->Visible = true;
+				   //Guinevere 對話按鈕
+				   for (int i = 0; i < backpack_items_listView->Items->Count; i++)
+				   {
+					   ListViewItem^ currentItem = backpack_items_listView->Items[i];
+					   String^ subItemText = currentItem->SubItems[0]->Text;
+					   if (subItemText == "解夢灰") {
+						   use_ash->Visible = true;
+					   }
+				   }
+			   }
+			   else if (sun_count % 6 != 3 && strcmp(place, "2F") == 0) {
+				   NPCGuinevere->Visible = true;
+				   //Guinevere 對話按鈕
+				   for (int i = 0; i < backpack_items_listView->Items->Count; i++)
+				   {
+					   ListViewItem^ currentItem = backpack_items_listView->Items[i];
+					   String^ subItemText = currentItem->SubItems[0]->Text;
+					   if (subItemText == "解夢灰") {
+						   use_ash->Visible = true;
+					   }
+				   }
+			   }
+			   else {
+				   NPCGuinevere->Visible = false;
+				   use_ash->Visible = false;
+			   }
+		   }
+		   void display_Lancelot(void) {
+			   if (strcmp(place, "moon_state") == 0) {
+				   NPCLancelot->Visible = true;
+				   if (talk_to_Lancelot_click == 0) {
+					   //display talk button
+					   talk_to_Lancelot->Visible = true;
+				   }
+				   else if(talk_to_Lancelot_click == 1) {
+					   //hide the button
+					   talk_to_Lancelot->Visible = false;
+				   }
+			   }
+			   else {
+				   NPCLancelot->Visible = false;
+				   talk_to_Lancelot->Visible = false;
+			   }
+		   }
 		   void dirction_button_display(void) {
 			   //display the button when the player get close enough
 			   //黃品瑜補完: L"2023"改場景的名稱， switch case on 場景名稱，先用絕對位置偵測碰撞
@@ -3367,7 +3540,7 @@ private: System::Windows::Forms::Button^ use_ash;
 					   ListViewItem^ currentItem = backpack_items_listView->Items[i];
 					   String^ subItemText = currentItem->SubItems[0]->Text;
 					   if (subItemText == "龍血") {
-						  dragon_blood_hold = 1;
+						   dragon_blood_hold = 1;
 					   }
 					   if (subItemText == "古怪的心臟") {
 						   dragon_heart_hold = 1;
@@ -3383,28 +3556,27 @@ private: System::Windows::Forms::Button^ use_ash;
 					   dialog_text->Text = "亞瑟:”我明白了，但是我也沒有辦法，現在的我已經沒有能力解決這個日漸膨脹的世界的...”";
 					   final_end_game_button->Visible = true;
 				   }
-			       //If獨自進入且有龍血
-				   else if (dragon_blood_hold == 1) {
+				   //If獨自進入且有龍血
+				   else if (dragon_blood_hold == 1 && last_fight_start == 0) {
 					   dialog_text->Text = "映入你眼簾的是一個30歲左右，金髮碧眼的帥哥的，和一個留著山羊鬍的老者，老者說”你打擾了我們的夢想，所以請你沉淪吧。”你感覺到你的腦子有些許混亂，但一陣熱流從你的心臟處湧現，你瞬間清醒了過來，老者說”亞瑟，他身上有你的血脈，就交給你處理了”，說完後身體就慢慢的變淡直到消失在你眼中，亞瑟猙獰地說”為甚麼你要摧毀屬於我的理想鄉”他拔出劍朝你砍來，進戰鬥輪";
-				       //battle
+					   //battle
 					   fight_with_aurther->Visible = true;
-					   //戰鬥細節補完
-					   //若戰鬥勝利
-					   if (last_fight_win == 1) {
-						   //我只是想離開這個世界
-						   choice_leave->Visible = true;
-						   //為了考古學!!!
-						   choice_archeology->Visible = true;
-						   // (為亞瑟補上最後一擊) 困難敏捷判定:
-						   hit_aurther_again->Visible = true; 
-					   }
-						//若戰鬥失敗 (HP == 0, 不用做)
 				   }
 				   //If獨自進入且沒有龍血 最糟
-				   else {
+				   else if (dragon_blood_hold == 0) {
 					   dialog_text->Text = "映入你眼簾的是一個30歲左右，金髮碧眼的帥哥的，和一個留著山羊鬍的老者，老者說”你打擾了我們的夢想，所以請你沉淪吧。”你感覺你的視線離你的身體越來越遠，無法操縱自己的身體，意識逐漸模糊，你只模糊的看到自己朝著兩人跪下行禮。";
 					   final_end_game_button->Visible = true;
 				   }
+				   //若戰鬥勝利 (If獨自進入且有龍血才有)
+				   if (last_fight_win == 1) {
+					   //我只是想離開這個世界
+					   choice_leave->Visible = true;
+					   //為了考古學!!!
+					   choice_archeology->Visible = true;
+					   // (為亞瑟補上最後一擊) 困難敏捷判定:
+					   hit_aurther_again->Visible = true;
+				   }
+				   //若戰鬥失敗 (HP == 0, 不用做)
 			   }
 		   }
 	private: System::Void backgroundWorker1_DoWork(System::Object^ sender, System::ComponentModel::DoWorkEventArgs^ e) {
@@ -3493,9 +3665,34 @@ private: System::Windows::Forms::Button^ use_ash;
 		HP_value_progressBar = player.get_ability().HP;
 		MP_value_progressBar = player.get_ability().MP;
 		SAN_value_progressBar = player.get_ability().SAN;
+		init_san = player.get_ability().SAN;
 		strcpy(place, "plazza");
 		strcpy(whatchat, "whathappen");
 		START_GAME = 1;
+		player.change_label_text({ "HP" }, HP);
+		player.change_label_text({ "MP" }, MP);
+		player.change_label_text({ "STR" }, STR);
+		player.change_label_text({ "DEX" }, DEX);
+		player.change_label_text({ "INT" }, INT);
+		player.change_label_text({ "CON" }, CON);
+		player.change_label_text({ "APP" }, APP);
+		player.change_label_text({ "POW" }, POW);
+		player.change_label_text({ "SIZ" }, SIZ);
+		player.change_label_text({ "SAN" }, SAN);
+		player.change_label_text({ "EDU" }, EDU);
+		player.change_label_text({ "LUK" }, LUK);
+		player.change_label_text({ "DB" }, DB);
+		player.skill_change_label_text({ "Spot" }, SPOT);
+		player.skill_change_label_text({ "Listen" }, LISTEN);
+		player.skill_change_label_text({ "Library" }, LIBRARY);
+		player.skill_change_label_text({ "Brawl" }, BRAWL);
+		player.skill_change_label_text({ "Evade" }, EVADE);
+		player.skill_change_label_text({ "History" }, HISTORY);
+		player.skill_change_label_text({ "Occult" }, OCCULT);
+		player.skill_change_label_text({ "Psycology" }, PSYCOLOGY);
+		player.skill_change_label_text({ "Biology" }, BIOLOGY);
+		player.skill_change_label_text({ "Archaeology" }, ARCHAEOLOGY);
+		player.skill_change_label_text({ "Medicine" }, MEDICINE);
 	}
 	private: System::Void occultist_button_Click(System::Object^ sender, System::EventArgs^ e) {
 		archaeologist_button->Visible = false;
@@ -3551,9 +3748,34 @@ private: System::Windows::Forms::Button^ use_ash;
 		HP_value_progressBar = player.get_ability().HP;
 		MP_value_progressBar = player.get_ability().MP;
 		SAN_value_progressBar = player.get_ability().SAN;
+		init_san = player.get_ability().SAN;
 		strcpy(place, "plazza");
 		strcpy(whatchat, "whathappen");
 		START_GAME = 1;
+		player.change_label_text({ "HP" }, HP);
+		player.change_label_text({ "MP" }, MP);
+		player.change_label_text({ "STR" }, STR);
+		player.change_label_text({ "DEX" }, DEX);
+		player.change_label_text({ "INT" }, INT);
+		player.change_label_text({ "CON" }, CON);
+		player.change_label_text({ "APP" }, APP);
+		player.change_label_text({ "POW" }, POW);
+		player.change_label_text({ "SIZ" }, SIZ);
+		player.change_label_text({ "SAN" }, SAN);
+		player.change_label_text({ "EDU" }, EDU);
+		player.change_label_text({ "LUK" }, LUK);
+		player.change_label_text({ "DB" }, DB);
+		player.skill_change_label_text({ "Spot" }, SPOT);
+		player.skill_change_label_text({ "Listen" }, LISTEN);
+		player.skill_change_label_text({ "Library" }, LIBRARY);
+		player.skill_change_label_text({ "Brawl" }, BRAWL);
+		player.skill_change_label_text({ "Evade" }, EVADE);
+		player.skill_change_label_text({ "History" }, HISTORY);
+		player.skill_change_label_text({ "Occult" }, OCCULT);
+		player.skill_change_label_text({ "Psycology" }, PSYCOLOGY);
+		player.skill_change_label_text({ "Biology" }, BIOLOGY);
+		player.skill_change_label_text({ "Archaeology" }, ARCHAEOLOGY);
+		player.skill_change_label_text({ "Medicine" }, MEDICINE);
 	}
 	private: System::Void reporter_button_Click(System::Object^ sender, System::EventArgs^ e) {
 		archaeologist_button->Visible = false;
@@ -3609,9 +3831,34 @@ private: System::Windows::Forms::Button^ use_ash;
 		HP_value_progressBar = player.get_ability().HP;
 		MP_value_progressBar = player.get_ability().MP;
 		SAN_value_progressBar = player.get_ability().SAN;
+		init_san = player.get_ability().SAN;
 		strcpy(place, "plazza");
 		strcpy(whatchat, "whathappen");
 		START_GAME = 1;
+		player.change_label_text({ "HP" }, HP);
+		player.change_label_text({ "MP" }, MP);
+		player.change_label_text({ "STR" }, STR);
+		player.change_label_text({ "DEX" }, DEX);
+		player.change_label_text({ "INT" }, INT);
+		player.change_label_text({ "CON" }, CON);
+		player.change_label_text({ "APP" }, APP);
+		player.change_label_text({ "POW" }, POW);
+		player.change_label_text({ "SIZ" }, SIZ);
+		player.change_label_text({ "SAN" }, SAN);
+		player.change_label_text({ "EDU" }, EDU);
+		player.change_label_text({ "LUK" }, LUK);
+		player.change_label_text({ "DB" }, DB);
+		player.skill_change_label_text({ "Spot" }, SPOT);
+		player.skill_change_label_text({ "Listen" }, LISTEN);
+		player.skill_change_label_text({ "Library" }, LIBRARY);
+		player.skill_change_label_text({ "Brawl" }, BRAWL);
+		player.skill_change_label_text({ "Evade" }, EVADE);
+		player.skill_change_label_text({ "History" }, HISTORY);
+		player.skill_change_label_text({ "Occult" }, OCCULT);
+		player.skill_change_label_text({ "Psycology" }, PSYCOLOGY);
+		player.skill_change_label_text({ "Biology" }, BIOLOGY);
+		player.skill_change_label_text({ "Archaeology" }, ARCHAEOLOGY);
+		player.skill_change_label_text({ "Medicine" }, MEDICINE);
 	}
 	private: System::Void backpack_Click(System::Object^ sender, System::EventArgs^ e) {
 		//backpack object display
@@ -3633,7 +3880,6 @@ private: System::Windows::Forms::Button^ use_ash;
 			//move to scene one
 			introduction_textBox->Visible = false;
 			continue_button->Visible = true;
-			init_san = player.get_ability().SAN;
 			strcpy(whatchat, "start");
 			if (dice.success == 0) {
 				dialog_text->Text = "san check: 失敗\r\n你的腦子一片混亂，突如其來的巨大變故讓你十分焦慮，渾身不適。\r\n這個方型廣場散充斥著明亮的陽光，讓人感到溫暖舒適。\r\n在廣場的中央，矗立著一個高大的日晷和噴泉，他們周圍種植著各種花卉和綠植，為廣場增添了生氣和色彩。\r\n廣場上擺放著一排排長椅，可以讓人小息片刻。\r\n廣場的邊緣插著一根木製的路標，兩個箭頭分別指著廣場唯二的兩條通路。";
@@ -3679,30 +3925,6 @@ private: System::Windows::Forms::Button^ use_ash;
 			else if (continue_button_count == 2 && strcmp(whatchat, "start") == 0) {
 				dialog_text->Text = "瓦格恩:\r\n歡迎來到永晝城，我叫瓦格恩，是你們的導遊。\r\n這裡是白晝廣場，是城市中的休閒區域，中心的日晷是由城鎮的工匠們用最精妙的工藝花費數個月所完成的工藝品，也是城陣中唯一的日晷。\r\n如果覺得身心疲倦的話，我很推薦你來這裡坐在長椅上欣賞日出日落。";
 				continue_button_count = continue_button_count + 1;
-				player.change_label_text({ "HP" }, HP);
-				player.change_label_text({ "MP" }, MP);
-				player.change_label_text({ "STR" }, STR);
-				player.change_label_text({ "DEX" }, DEX);
-				player.change_label_text({ "INT" }, INT);
-				player.change_label_text({ "CON" }, CON);
-				player.change_label_text({ "APP" }, APP);
-				player.change_label_text({ "POW" }, POW);
-				player.change_label_text({ "SIZ" }, SIZ);
-				player.change_label_text({ "SAN" }, SAN);
-				player.change_label_text({ "EDU" }, EDU);
-				player.change_label_text({ "LUK" }, LUK);
-				player.change_label_text({ "DB" }, DB);
-				player.skill_change_label_text({ "Spot" }, SPOT);
-				player.skill_change_label_text({ "Listen" }, LISTEN);
-				player.skill_change_label_text({ "Library" }, LIBRARY);
-				player.skill_change_label_text({ "Brawl" }, BRAWL);
-				player.skill_change_label_text({ "Evade" }, EVADE);
-				player.skill_change_label_text({ "History" }, HISTORY);
-				player.skill_change_label_text({ "Occult" }, OCCULT);
-				player.skill_change_label_text({ "Psycology" }, PSYCOLOGY);
-				player.skill_change_label_text({ "Biology" }, BIOLOGY);
-				player.skill_change_label_text({ "Archaeology" }, ARCHAEOLOGY);
-				player.skill_change_label_text({ "Medicine" }, MEDICINE);
 			}
 			else if (continue_button_count == 3 && strcmp(whatchat, "start") == 0) {
 				continue_button->Visible = false;
@@ -3744,6 +3966,11 @@ private: System::Windows::Forms::Button^ use_ash;
 			background->Image = gcnew Bitmap(gcnew System::String(Sewer_Moon_State.get_path()));
 			strcpy(place, "moon_state");
 			continue_button->Visible = false; 
+			talk_to_Lancelot_click = 1;
+			Lancelot_dialog_1->Visible = true;
+			Lancelot_dialog_2->Visible = true;
+			Lancelot_dialog_3->Visible = true;
+			Lancelot_dialog_4->Visible = true;
 		}
 	}
 	private: System::Void signpost_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -3867,9 +4094,6 @@ private: System::Windows::Forms::Button^ use_ash;
 	private: System::Void Go_In_Room_Click(System::Object^ sender, System::EventArgs^ e) {
 		dialog_text->Text = "你進入了房間，房間內只有稻草鋪的床，和一些用布包住稻草稈做的枕頭";
 		strcpy(place, "room");
-		if (sun_count % 6 != 3) {
-			NPCGuinevere->Visible = true;
-		}
 		// hide object in scene
 		Go_Out_Inn->Visible = false;
 		Go_In_Room->Visible = false;
@@ -4432,12 +4656,14 @@ private: System::Windows::Forms::Button^ use_ash;
 			chatbox_2->Visible = false;
 			chatbox_3->Visible = false;
 			chatbox_4->Visible = false;
+			player_motion->Visible = false;
 		}
 		dialog_text->Text = "點擊圖片以關閉圖片";
 
 	}
 	private: System::Void item_pic_Click(System::Object^ sender, System::EventArgs^ e) {
 		item_pic->Visible = false;
+		player_motion->Visible = true;
 		// in plazza
 		if (strcmp(place, "plazza") == 0) {
 			signpost->Visible = true;
@@ -4651,12 +4877,14 @@ private: System::Windows::Forms::Button^ use_ash;
 	private: System::Void Prison_To_Sewer_Click(System::Object^ sender, System::EventArgs^ e) {
 		strcpy(place, "moon_state");
 		// hide object in scene
+		talk_to_Lancelot_click = 0;
 		Prison_To_Restaurant->Visible = false;
 		Prison_To_Plazza->Visible = false;
 		Prison_To_IntersectionLeft->Visible = false;
 		Spot_Prison_Out->Visible = false;
 		// display object in scene
 		if (dice.success == 0 && seem_monster) {
+			talk_to_Lancelot_click = 1;
 			dialog_text->Text = "你一爬下下水道，就看到一個人形生物朝著你衝來，你要逃跑還是迎戰?在看到他的瞬間，你感覺你的大腦在震動，不適感湧上心頭。\r\n請做一個成功-1失敗-1d6的san check。";
 			monster_pic->Image = gcnew Bitmap(gcnew System::String(Servent.get_path()));
 			monster_pic->Visible = true;
@@ -4829,13 +5057,13 @@ private: System::Windows::Forms::Button^ use_ash;
 	}
 	private: System::Void Sewer_Restaurant_Prison_Click(System::Object^ sender, System::EventArgs^ e) {
 		strcpy(place, "moon_state");
+		talk_to_Lancelot_click = 0;
 		dialog_text->Text = "監獄";
 		// hide object in scene
 		Sewer_Restaurant_Prison->Visible = false;
 		Sewer_To_Restaurant->Visible = false;
 		Sewer_Restaurant_Market->Visible = false;
 		// diaplay object in scene1
-		NPCLancelot->Visible = true;
 		Sewer_Prison_Plazza->Visible = true;
 		Sewer_Prison_Restaurant->Visible = true;
 		Sewer_Prison_Intersection->Visible = true;
@@ -4850,15 +5078,20 @@ private: System::Windows::Forms::Button^ use_ash;
 		Sewer_Prison_Restaurant->Visible = false;
 		Sewer_Prison_Intersection->Visible = false;
 		Sewer_To_Secret->Visible = false;
-		NPCLancelot->Visible = false;
+		Lancelot_dialog_1->Visible = false;
+		Lancelot_dialog_2->Visible = false;
+		Lancelot_dialog_3->Visible = false;
+		Lancelot_dialog_4->Visible = false;
 		// diaplay object in scene
 		Sewer_To_Plazza->Visible = true;
 		Sewer_Plazza_Inn->Visible = true;
 		Sewer_Plazza_Prison->Visible = true;
 		background->Image = gcnew Bitmap(gcnew System::String(Sewer.get_path()));
+		//@@@@@
 	}
 	private: System::Void Sewer_Plazza_Prison_Click(System::Object^ sender, System::EventArgs^ e) {
 		strcpy(place, "moon_state");
+		talk_to_Lancelot_click = 0;
 		// hide object in scene
 		Sewer_Plazza_Inn->Visible = false;
 		Sewer_To_Plazza->Visible = false;
@@ -4868,7 +5101,6 @@ private: System::Windows::Forms::Button^ use_ash;
 		Sewer_Prison_Restaurant->Visible = true;
 		Sewer_Prison_Intersection->Visible = true;
 		Sewer_To_Secret->Visible = true;
-		NPCLancelot->Visible = true;
 		background->Image = gcnew Bitmap(gcnew System::String(Sewer_Moon_State.get_path()));
 	}
 	private: System::Void Sewer_Prison_Restaurant_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -4879,7 +5111,10 @@ private: System::Windows::Forms::Button^ use_ash;
 		Sewer_Prison_Plazza->Visible = false;
 		Sewer_Prison_Intersection->Visible = false;
 		Sewer_To_Secret->Visible = false;
-		NPCLancelot->Visible = false;
+		Lancelot_dialog_1->Visible = false;
+		Lancelot_dialog_2->Visible = false;
+		Lancelot_dialog_3->Visible = false;
+		Lancelot_dialog_4->Visible = false;
 		// diaplay object in scene
 		Sewer_Restaurant_Prison->Visible = true;
 		Sewer_To_Restaurant->Visible = true;
@@ -4947,7 +5182,10 @@ private: System::Windows::Forms::Button^ use_ash;
 		Sewer_Prison_Restaurant->Visible = false;
 		Sewer_Prison_Intersection->Visible = false;
 		Sewer_To_Secret->Visible = false;
-		NPCLancelot->Visible = false;
+		Lancelot_dialog_1->Visible = false;
+		Lancelot_dialog_2->Visible = false;
+		Lancelot_dialog_3->Visible = false;
+		Lancelot_dialog_4->Visible = false;
 		// diaplay object in scene
 		Sewer_Intersection_Library->Visible = true;
 		Sewer_Intersection_Prison->Visible = true;
@@ -5006,6 +5244,7 @@ private: System::Windows::Forms::Button^ use_ash;
 	}
 	private: System::Void Sewer_Intersection_Prison_Click(System::Object^ sender, System::EventArgs^ e) {
 		strcpy(place, "moon_state");
+		talk_to_Lancelot_click = 0;
 		dialog_text->Text = "監獄";
 		// hide object in scene
 		Sewer_Intersection_Library->Visible = false;
@@ -5016,7 +5255,6 @@ private: System::Windows::Forms::Button^ use_ash;
 		Sewer_Prison_Restaurant->Visible = true;
 		Sewer_Prison_Intersection->Visible = true;
 		Sewer_To_Secret->Visible = true;
-		NPCLancelot->Visible = true;
 		background->Image = gcnew Bitmap(gcnew System::String(Sewer_Moon_State.get_path()));
 	}
 
@@ -5030,7 +5268,7 @@ private: System::Windows::Forms::Button^ use_ash;
 		// diaplay object in scene
 		take_heart->Visible = true;
 		spot_altar->Visible = true;
-		if (player.get_ability().SAN <= init_san-5) {
+		if (player.get_ability().SAN <= init_san) {
 			swallow_heart->Visible = true;
 		}
 		Sewer_Lake_Intersection->Visible = true;
@@ -5303,6 +5541,7 @@ private: System::Void counterattack_button_Click(System::Object^ sender, System:
 		Battle.turn += 1;
 		if (Arthur.get_ability().HP <= 0) {
 			last_fight_win = 1;
+			attack_button->Visible = false;
 		}
 		else {
 			attack_button->Visible = true;
@@ -5361,7 +5600,10 @@ private: System::Void Library_Library_In_Click(System::Object^ sender, System::E
 		Sewer_Prison_Restaurant->Visible = false;
 		Sewer_Prison_Intersection->Visible = false;
 		Sewer_To_Secret->Visible = false;
-		NPCLancelot->Visible = false;
+		Lancelot_dialog_1->Visible = false;
+		Lancelot_dialog_2->Visible = false;
+		Lancelot_dialog_3->Visible = false;
+		Lancelot_dialog_4->Visible = false;
 		//display object in scene
 		Secret_To_Sewer->Visible = true;
 		Secret_To_Prison->Visible = true;
@@ -5369,15 +5611,16 @@ private: System::Void Library_Library_In_Click(System::Object^ sender, System::E
 	}
 	private: System::Void Secret_To_Sewer_Click(System::Object^ sender, System::EventArgs^ e) {
 		strcpy(place, "moon_state");
+		talk_to_Lancelot_click = 0;
 		// hide object in scene
 		Secret_To_Sewer->Visible = false;
 		Secret_To_Prison->Visible = false;
 		//display object in scene
-		Sewer_Prison_Plazza->Visible = true;
-		Sewer_Prison_Restaurant->Visible = true;
-		Sewer_Prison_Intersection->Visible = true;
-		Sewer_To_Secret->Visible = true;
-		NPCLancelot->Visible = true;
+		//地下城
+		Sewer_Prison_Plazza->Visible = true;//下
+		Sewer_Prison_Restaurant->Visible = true;//左
+		Sewer_Prison_Intersection->Visible = true;//右
+		Sewer_To_Secret->Visible = true;//上
 		background->Image = gcnew Bitmap(gcnew System::String(Sewer_Moon_State.get_path()));
 	}
 	private: System::Void Secret_To_Prison_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -5403,6 +5646,9 @@ private: System::Void Library_Library_In_Click(System::Object^ sender, System::E
 		//display object in scene
 		Prison2_To_Prison1->Visible = true;
 		background->Image = gcnew Bitmap(gcnew System::String(Prison_2F.get_path()));
+		if (talk_to_Guinevere->Visible == true) {
+			talk_to_Guinevere->Visible = false;
+		}
 	}
 	private: System::Void Prison_To_Secret_Click(System::Object^ sender, System::EventArgs^ e) {
 		strcpy(place, "secret");
@@ -5414,6 +5660,9 @@ private: System::Void Library_Library_In_Click(System::Object^ sender, System::E
 		Secret_To_Sewer->Visible = true;
 		Secret_To_Prison->Visible = true;
 		background->Image = gcnew Bitmap(gcnew System::String(Sewer_Secret_Door.get_path()));
+		if (talk_to_Guinevere->Visible == true) {
+			talk_to_Guinevere->Visible = false;
+		}
 	}
 	private: System::Void Prison2_To_Prison1_Click(System::Object^ sender, System::EventArgs^ e) {
 		strcpy(place, "1F");
@@ -5426,6 +5675,9 @@ private: System::Void Library_Library_In_Click(System::Object^ sender, System::E
 		//display object in scene
 		Prison2_To_Prison1->Visible = false;
 		background->Image = gcnew Bitmap(gcnew System::String(Prison_1F.get_path()));
+		if (talk_to_Guinevere->Visible == true) {
+			talk_to_Guinevere->Visible = false;
+		}
 	}
 	private: System::Void workshop_buy_rolling_pin_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (rolling_pin_bought == 0) {
@@ -5553,26 +5805,31 @@ private: System::Void Library_Library_In_Click(System::Object^ sender, System::E
 	}
 	private: System::Void fight_with_aurther_Click(System::Object^ sender, System::EventArgs^ e) {
 		//補玩戰鬥細節
+		last_fight_start = 1;
 		attack_button->Visible = true;
 		monster_pic->Image = gcnew Bitmap(gcnew System::String(player.get_path()));
 		monster_pic->Visible = true;
-		strcpy(whatchat, "fight_arthur");
-		//泡水: 這裡要補
 		fight_with_aurther->Visible = false;
+		strcpy(whatchat, "fight_arthur");
 	}
 	private: System::Void choice_leave_Click(System::Object^ sender, System::EventArgs^ e) {
+		last_fight_win = 0;
 		choice_leave->Visible = false;
 		choice_archeology->Visible = false;
 		hit_aurther_again->Visible = false;
 		dialog_text->Text = "什麼…”，他陷入了沉默了一陣，”我送妳出去迷途者，不要再回來了”，你眼前一黑，再次睜開時，已經回到你昏過去時的遺跡中，你探索了這個遺跡，回去付了命，拿到了你的薪水，但這個遺址中的痕跡只能證明是五、六世紀時遺留下的，你對此受到了極大的打擊，當時的情景不斷的出現在腦內，讓你睡不好覺，你被大家認為是個只會幻想的落壑人士。";
+		final_end_game_button->Visible = true;
 	}
 	private: System::Void choice_archeology_Click(System::Object^ sender, System::EventArgs^ e) {
+		last_fight_win = 0;
 		choice_leave->Visible = false;
 		choice_archeology->Visible = false;
 		hit_aurther_again->Visible = false;
 		dialog_text->Text = "什麼…”，他陷入了沉默地盯著你看了一段時間，”我送妳出去追夢者，這個給你，不要再回來了”他甩了一個東西到你手上，你眼前一黑，再次睜開時，已經回到你昏過去時的遺跡中，你手中抓著一個圓桌騎士團的徽章，看起來有些老舊甚至有著一些劃痕，你探索了這個遺跡，回去付了命，拿到了你的薪水，你手上抓著的徽章成為了亞瑟王傳奇的有力證明，雖然仍有許多人懷疑你是個騙子，但你已然成為世界上的亞瑟王傳奇的傳奇學者。";
+		final_end_game_button->Visible = true;
 	}
 	private: System::Void hit_aurther_again_Click(System::Object^ sender, System::EventArgs^ e) {
+		last_fight_win = 0;
 		choice_leave->Visible = false;
 		choice_archeology->Visible = false;
 		hit_aurther_again->Visible = false;
@@ -5581,6 +5838,7 @@ private: System::Void Library_Library_In_Click(System::Object^ sender, System::E
 	}
 	private: System::Void hard_check_Click(System::Object^ sender, System::EventArgs^ e) {
 		//困難敏捷判定
+		hard_check->Visible = false;
 		dice.check(player.get_ability().DEX);
 		//失敗
 		if (dice.success <= 1) {
@@ -5631,8 +5889,7 @@ private: System::Void Library_Library_In_Click(System::Object^ sender, System::E
 				control->Visible = false;
 			}
 		}
-		//泡水: 這裡也要改
-		menu->Image = gcnew Bitmap(gcnew System::String(lead_in.get_path()));
+		menu->Image = gcnew Bitmap(gcnew System::String(ending.get_path()));
 	}
 	private: System::Void swallow_heart_Click(System::Object^ sender, System::EventArgs^ e) {
 		dragon_blood_hold = true;
@@ -5708,6 +5965,62 @@ private: System::Void use_ash_Click(System::Object^ sender, System::EventArgs^ e
 	dialog_text->Text = "謝謝你的幫助，我叫桂妮薇兒，有甚麼我能幫你的嗎，我也可以請藍斯洛特一起幫忙。";
 	carry_Guinevere = true;
 	carry_Lancelot = true;
+	//display Guinevere talk
+	talk_to_Guinevere->Visible = true;
+	use_ash->Visible = false;
+}
+private: System::Void talk_to_Guinevere_Click(System::Object^ sender, System::EventArgs^ e) {
+	dialog_text->Text = "";
+	Guinevere_dialog_1->Visible = true;
+	Guinevere_dialog_2->Visible = true;
+	talk_to_Guinevere->Visible = false;
+}
+private: System::Void Guinevere_dialog_1_Click(System::Object^ sender, System::EventArgs^ e) {
+	dialog_text->Text = "";
+	Guinevere_dialog_1->Visible = false;
+}
+private: System::Void Guinevere_dialog_2_Click(System::Object^ sender, System::EventArgs^ e) {
+	dialog_text->Text = "";
+	Guinevere_dialog_2->Visible = false;
+}
+private: System::Void talk_to_Lancelot_Click(System::Object^ sender, System::EventArgs^ e) {
+	Lancelot_dialog_1->Visible = true;
+	Lancelot_dialog_2->Visible = true;
+	Lancelot_dialog_3->Visible = true;
+	Lancelot_dialog_4->Visible = true;
+	talk_to_Lancelot_click = 1;
+}
+private: System::Void Lancelot_dialog_1_Click(System::Object^ sender, System::EventArgs^ e) {
+	Lancelot_dialog_1->Visible = false;
+	Lancelot_dialog_2->Visible = false;
+	Lancelot_dialog_3->Visible = false;
+	Lancelot_dialog_4->Visible = false;
+	dialog_text->Text = "清醒者指的就是我們這些從控制中甦醒的人，或著說，不再按照被規定好的行為”運行”的人。";
+	talk_to_Lancelot_click = 0;
+}
+private: System::Void Lancelot_dialog_2_Click(System::Object^ sender, System::EventArgs^ e) {
+	Lancelot_dialog_1->Visible = false;
+	Lancelot_dialog_2->Visible = false;
+	Lancelot_dialog_3->Visible = false;
+	Lancelot_dialog_4->Visible = false;
+	dialog_text->Text = "月城是清醒者們的聚居地，因為我們不想再一次傷害王，所以我們在清醒之後，選擇來到這裡生活，順道清理下水道裡的”汙穢”";
+	talk_to_Lancelot_click = 0;
+}
+private: System::Void Lancelot_dialog_3_Click(System::Object^ sender, System::EventArgs^ e) {
+	Lancelot_dialog_1->Visible = false;
+	Lancelot_dialog_2->Visible = false;
+	Lancelot_dialog_3->Visible = false;
+	Lancelot_dialog_4->Visible = false;
+	dialog_text->Text = "我也不清楚那是甚麼，我們知道的只有這種生物跟人類毫無關聯，並且是從某個類似月城的平台跑出來的，但是那裏有著大量的怪物，也有一些從那裏出來的怪物會再下水道裡遊蕩，由於我們不想造成人員傷亡，怪物的存在看起來也並不會破壞這個世界，因此我們只是定期的清掃下水道中的怪物。";
+	talk_to_Lancelot_click = 0;
+}
+private: System::Void Lancelot_dialog_4_Click(System::Object^ sender, System::EventArgs^ e) {
+	Lancelot_dialog_1->Visible = false;
+	Lancelot_dialog_2->Visible = false;
+	Lancelot_dialog_3->Visible = false;
+	Lancelot_dialog_4->Visible = false;
+	dialog_text->Text = "下水道的水會流到一個固定的地方，那裏有一個漩渦，流進那裏的水會詭異的消失，但我們測試過了，那個漩渦僅僅只會吸收水，其他的東西丟進去並不會不見，我們猜測應該會沉澱到漩渦之下，我們並不是很清楚，畢竟我們可不想順便測試下漩渦會不會讓人類消失。";
+	talk_to_Lancelot_click = 0;
 }
 };
 }

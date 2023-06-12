@@ -48,4 +48,6 @@ Class CppCLRWinFormsProject.Form1: AutoLayout, AnsiClass, Class, Public, BeforeF
     Boolean carry_Bedivere : Public
     Boolean carry_Lancelot : Public
     Boolean last_fight_win : Public
+    Boolean last_fight_start : Public
     Int32 end_game_continue_count : Public
+    Boolean talk_to_Lancelot_click : Public
