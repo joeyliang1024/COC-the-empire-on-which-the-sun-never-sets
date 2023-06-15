@@ -75,6 +75,7 @@ namespace CppCLRWinFormsProject {
 		int init_san;
 		int speed = 20;
 		bool START_GAME = 0;
+		bool END_GAME = 0;
 		bool backpack_open_or_close = 0;
 		bool moveLeft, moveRight, moveUp, moveDown;
 		int HP_value_progressBar, MP_value_progressBar, SAN_value_progressBar;
@@ -3216,6 +3217,566 @@ private: System::Windows::Forms::Button^ Lancelot_dialog_1;
 			   //初始化主角位置
 			   player_motion->Location = System::Drawing::Point(480, 480);
 		   }
+		   void display_Scene_items(void) {
+			   player.edit_position(player_motion->Location.X, player_motion->Location.Y);
+			   if (END_GAME == 0 && START_GAME == 1) { //during the Game
+				   for each (Control ^ control in this->Controls)
+				   {
+					   // basic objects, not in the scene
+					   if (control->Name == L"status_panel" ||      //pannel
+						   control->Name == L"backpack_panel" ||
+						   control->Name == L"character_name" ||    //labels
+						   control->Name == L"player_power_text" ||
+						   control->Name == L"STR" ||               //labels: player's abilities
+						   control->Name == L"CON" ||
+						   control->Name == L"DEX" ||
+						   control->Name == L"POW" ||
+						   control->Name == L"APP" ||
+						   control->Name == L"INT" ||
+						   control->Name == L"SIZ" ||
+						   control->Name == L"EDU" ||
+						   control->Name == L"LUK" ||
+						   control->Name == L"SAN" ||
+						   control->Name == L"HP" ||
+						   control->Name == L"MP" ||
+						   control->Name == L"DB" ||
+						   control->Name == L"SPOT" ||              //labels: player's skills
+						   control->Name == L"LISTEN" ||
+						   control->Name == L"LIBRARY" ||
+						   control->Name == L"BRAWL" ||
+						   control->Name == L"EVADE" ||
+						   control->Name == L"HISTORY" ||
+						   control->Name == L"OCCULT" ||
+						   control->Name == L"PSYCOLOGY" ||
+						   control->Name == L"BIOLOGY" ||
+						   control->Name == L"ARCHAEOLOGY" ||
+						   control->Name == L"MEDICINE" ||
+						   control->Name == L"backpack" ||          //backpack
+						   control->Name == L"background" ||        //background
+						   control->Name == "player_motion" ||      //player
+						   control->Name == L"Sun" ||               //bars
+						   control->Name == L"HP_progressBar" ||
+						   control->Name == L"MP_progressBar" ||
+						   control->Name == L"SAN_progressBar")
+					   {
+						   //display
+						   control->Visible = true;
+					   }
+					   //backpack object display
+					   if (control->Name == L"backpack_items_listView" && backpack_open_or_close == 0) {
+						   control->Visible = true;
+					   }
+					   //objects in plazza
+					   else if (strcmp(place, "plazza") == 0) {
+						   //objects: you must set variable to check when the button is clicked otherwise it will not be invisible
+						   if (control->Name == "signpost" ||
+							   control->Name == "Observe_Signpost" ||
+							   control->Name == "sundial" ||
+							   control->Name == "chatbox_1" ||
+							   control->Name == "chatbox_2" ||
+							   control->Name == "item_button" ||
+							   control->Name == "Plazza_To_Sewer");
+						   {
+							   control->Visible = true;
+						   }
+						   //directions
+						   if (control->Name == "Plazza_To_Prison" && player.collsion(16, 512)) {    //left 
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "Plazza_To_Inn" && player.collsion(938, 512)) { //right
+							   control->Visible = true;
+						   }
+						   // other condictions
+						   else if (sun_count % 6 != 0 && (control->Name == "listen_stranger_plazza" || control->Name == "chat_stranger_plazza")) {
+							   control->Visible = true;
+						   }
+						   else if (sun_count % 6 == 5 && (control->Name == "Ask_Wagain" || control->Name == "NPCGawain")) {
+							   control->Visible = true;
+						   }
+					   }
+					   //objects in inn
+					   else if (strcmp(place, "inn") == 0) {
+						   //objects: you must set variable to check when the button is clicked otherwise it will not be invisible
+						   if (control->Name == "Go_In_Inn" ||
+							   control->Name == "Observe_Inn" ||
+							   control->Name == "Inn_To_Sewer") {
+							   control->Visible = true;
+						   }
+						   //directions
+						   if (control->Name == "Inn_To_IntersectionRight" && player.collsion(16, 512)) {    //left 
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "Inn_To_Market" && player.collsion(938, 512)) { //right
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "Inn_To_Plazza" && player.collsion(480, 677)) { //down
+							   control->Visible = true;
+						   }
+					   }
+					   //objects inside inn
+					   else if (strcmp(place, "inn_in") == 0) {
+						   //objects: you must set variable to check when the button is clicked otherwise it will not be invisible
+						   if (control->Name == "") {
+
+						   }
+						   // other condictions
+
+					   }
+					   //objects in inn's room
+					   else if (strcmp(place, "room") == 0) {
+						   //objects: you must set variable to check when the button is clicked otherwise it will not be invisible
+						   if (control->Name == "") {
+
+						   }
+						   // other condictions
+
+					   }
+					   //objects in market
+					   else if (strcmp(place, "market") == 0) {
+						   //objects: you must set variable to check when the button is clicked otherwise it will not be invisible
+						   if (control->Name == "diner" ||
+							   control->Name == "studio" ||
+							   control->Name == "Market_To_Sewer") {
+							   control->Visible = true;
+						   }
+						   //directions
+						   if (control->Name == "Market_To_Inn" && player.collsion(16, 512)) {    //left 
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "Market_To_Restaurant" && player.collsion(938, 512)) { //right
+							   control->Visible = true;
+						   }
+					   }
+					   //objects in restaurant
+					   else if (strcmp(place, "restaurant") == 0) {
+						   //objects: you must set variable to check when the button is clicked otherwise it will not be invisible
+						   if (control->Name == "") {
+
+						   }
+						   //directions
+						   if (control->Name == "" && player.collsion(16, 512)) {       //left 
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "" && player.collsion(938, 512)) { //right
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "" && player.collsion(480, 200)) { //up
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "" && player.collsion(480, 677)) { //down
+							   control->Visible = true;
+						   }
+						   // other condictions
+
+					   }
+					   //objects inside restaurant
+					   else if (strcmp(place, "restaurant_in") == 0) {
+						   //objects: you must set variable to check when the button is clicked otherwise it will not be invisible
+						   if (control->Name == "") {
+
+						   }
+						   //directions
+						   if (control->Name == "" && player.collsion(16, 512)) {       //left 
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "" && player.collsion(938, 512)) { //right
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "" && player.collsion(480, 200)) { //up
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "" && player.collsion(480, 677)) { //down
+							   control->Visible = true;
+						   }
+						   // other condictions
+
+					   }
+					   //objects in prison
+					   else if (strcmp(place, "prison") == 0) {
+						   //objects: you must set variable to check when the button is clicked otherwise it will not be invisible
+						   if (control->Name == "") {
+
+						   }
+						   //directions
+						   if (control->Name == "" && player.collsion(16, 512)) {       //left 
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "" && player.collsion(938, 512)) { //right
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "" && player.collsion(480, 200)) { //up
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "" && player.collsion(480, 677)) { //down
+							   control->Visible = true;
+						   }
+						   // other condictions
+					   }
+					   //objects in prison's 1F
+					   else if (strcmp(place, "1F") == 0) {
+						   //objects: you must set variable to check when the button is clicked otherwise it will not be invisible
+						   if (control->Name == "") {
+
+						   }
+						   //directions
+						   if (control->Name == "" && player.collsion(16, 512)) {       //left 
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "" && player.collsion(938, 512)) { //right
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "" && player.collsion(480, 200)) { //up
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "" && player.collsion(480, 677)) { //down
+							   control->Visible = true;
+						   }
+						   // other condictions
+					   }
+					   //objects in prison's 2F
+					   else if (strcmp(place, "2F") == 0) {
+						   //objects: you must set variable to check when the button is clicked otherwise it will not be invisible
+						   if (control->Name == "") {
+
+						   }
+						   //directions
+						   if (control->Name == "" && player.collsion(16, 512)) {       //left 
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "" && player.collsion(938, 512)) { //right
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "" && player.collsion(480, 200)) { //up
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "" && player.collsion(480, 677)) { //down
+							   control->Visible = true;
+						   }
+						   // other condictions
+					   }
+					   //objects in library
+					   else if (strcmp(place, "library") == 0) {
+						   //objects: you must set variable to check when the button is clicked otherwise it will not be invisible
+						   if (control->Name == "") {
+
+						   }
+						   //directions
+						   if (control->Name == "" && player.collsion(16, 512)) {       //left 
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "" && player.collsion(938, 512)) { //right
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "" && player.collsion(480, 200)) { //up
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "" && player.collsion(480, 677)) { //down
+							   control->Visible = true;
+						   }
+						   // other condictions
+					   }
+					   //objects in left
+					   else if (strcmp(place, "left") == 0) {
+						   //objects: you must set variable to check when the button is clicked otherwise it will not be invisible
+						   if (control->Name == "") {
+
+						   }
+						   //directions
+						   if (control->Name == "" && player.collsion(16, 512)) {       //left 
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "" && player.collsion(938, 512)) { //right
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "" && player.collsion(480, 200)) { //up
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "" && player.collsion(480, 677)) { //down
+							   control->Visible = true;
+						   }
+						   // other condictions
+					   }
+					   //objects in right
+					   else if (strcmp(place, "right") == 0) {
+						   //objects: you must set variable to check when the button is clicked otherwise it will not be invisible
+						   if (control->Name == "") {
+
+						   }
+						   //directions
+						   if (control->Name == "" && player.collsion(16, 512)) {       //left 
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "" && player.collsion(938, 512)) { //right
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "" && player.collsion(480, 200)) { //up
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "" && player.collsion(480, 677)) { //down
+							   control->Visible = true;
+						   }
+						   // other condictions
+					   }
+					   //objects in outlet
+					   else if (strcmp(place, "outlet") == 0) {
+						   //objects: you must set variable to check when the button is clicked otherwise it will not be invisible
+						   if (control->Name == "") {
+
+						   }
+						   //directions
+						   if (control->Name == "" && player.collsion(16, 512)) {       //left 
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "" && player.collsion(938, 512)) { //right
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "" && player.collsion(480, 200)) { //up
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "" && player.collsion(480, 677)) { //down
+							   control->Visible = true;
+						   }
+						   // other condictions
+					   }
+					   //objects in secret
+					   else if (strcmp(place, "secret") == 0) {
+						   //objects: you must set variable to check when the button is clicked otherwise it will not be invisible
+						   if (control->Name == "") {
+
+						   }
+						   //directions
+						   if (control->Name == "" && player.collsion(16, 512)) {       //left 
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "" && player.collsion(938, 512)) { //right
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "" && player.collsion(480, 200)) { //up
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "" && player.collsion(480, 677)) { //down
+							   control->Visible = true;
+						   }
+						   // other condictions
+					   }
+					   //objects in moon state
+					   else if (strcmp(place, "moon_state") == 0) {
+						   //objects: you must set variable to check when the button is clicked otherwise it will not be invisible
+						   if (control->Name == "") {
+
+						   }
+						   //directions
+						   if (control->Name == "" && player.collsion(16, 512)) {       //left 
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "" && player.collsion(938, 512)) { //right
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "" && player.collsion(480, 200)) { //up
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "" && player.collsion(480, 677)) { //down
+							   control->Visible = true;
+						   }
+						   // other condictions
+					   }
+					   //objects in altar
+					   else if (strcmp(place, "altar") == 0) {
+						   //objects: you must set variable to check when the button is clicked otherwise it will not be invisible
+						   if (control->Name == "") {
+
+						   }
+						   //directions
+						   if (control->Name == "" && player.collsion(16, 512)) {       //left 
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "" && player.collsion(938, 512)) { //right
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "" && player.collsion(480, 200)) { //up
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "" && player.collsion(480, 677)) { //down
+							   control->Visible = true;
+						   }
+						   // other condictions
+					   }
+					   //objects in palace
+					   else if (strcmp(place, "palace") == 0) {
+						   //objects: you must set variable to check when the button is clicked otherwise it will not be invisible
+						   if (control->Name == "") {
+
+						   }
+						   //directions
+						   if (control->Name == "" && player.collsion(16, 512)) {       //left 
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "" && player.collsion(938, 512)) { //right
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "" && player.collsion(480, 200)) { //up
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "" && player.collsion(480, 677)) { //down
+							   control->Visible = true;
+						   }
+						   // other condictions
+					   }
+					   //objects inside palace
+					   else if (strcmp(place, "palace_END") == 0) {
+						   //objects: you must set variable to check when the button is clicked otherwise it will not be invisible
+						   if (control->Name == "") {
+
+						   }
+						   //directions
+						   if (control->Name == "" && player.collsion(16, 512)) {       //left 
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "" && player.collsion(938, 512)) { //right
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "" && player.collsion(480, 200)) { //up
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "" && player.collsion(480, 677)) { //down
+							   control->Visible = true;
+						   }
+						   // other condictions
+					   }
+					   //objects in sewer below library
+					   else if (strcmp(place, "sewer_library") == 0) {
+						   //objects: you must set variable to check when the button is clicked otherwise it will not be invisible
+						   if (control->Name == "") {
+
+						   }
+						   //directions
+						   if (control->Name == "" && player.collsion(16, 512)) {       //left 
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "" && player.collsion(938, 512)) { //right
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "" && player.collsion(480, 200)) { //up
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "" && player.collsion(480, 677)) { //down
+							   control->Visible = true;
+						   }
+						   // other condictions
+					   }
+					   //objects in sewer below intersection
+					   else if (strcmp(place, "sewer_intersection") == 0) {
+						   //objects: you must set variable to check when the button is clicked otherwise it will not be invisible
+						   if (control->Name == "") {
+
+						   }
+						   //directions
+						   if (control->Name == "" && player.collsion(16, 512)) {       //left 
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "" && player.collsion(938, 512)) { //right
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "" && player.collsion(480, 200)) { //up
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "" && player.collsion(480, 677)) { //down
+							   control->Visible = true;
+						   }
+						   // other condictions
+					   }
+					   //objects in sewer below inn
+					   else if (strcmp(place, "sewer_inn") == 0) {
+						   //objects: you must set variable to check when the button is clicked otherwise it will not be invisible
+						   if (control->Name == "") {
+
+						   }
+						   //directions
+						   if (control->Name == "" && player.collsion(16, 512)) {       //left 
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "" && player.collsion(938, 512)) { //right
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "" && player.collsion(480, 200)) { //up
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "" && player.collsion(480, 677)) { //down
+							   control->Visible = true;
+						   }
+						   // other condictions
+					   }
+					   //objects in sewer below market
+					   else if (strcmp(place, "sewer_market") == 0) {
+						   //objects: you must set variable to check when the button is clicked otherwise it will not be invisible
+						   if (control->Name == "") {
+
+						   }
+						   //directions
+						   if (control->Name == "" && player.collsion(16, 512)) {       //left 
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "" && player.collsion(938, 512)) { //right
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "" && player.collsion(480, 200)) { //up
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "" && player.collsion(480, 677)) { //down
+							   control->Visible = true;
+						   }
+						   // other condictions
+					   }
+					   //objects in sewer below restaurant
+					   else if (strcmp(place, "sewer_restaurant") == 0) {
+						   //objects: you must set variable to check when the button is clicked otherwise it will not be invisible
+						   if (control->Name == "") {
+
+						   }
+						   //directions
+						   if (control->Name == "" && player.collsion(16, 512)) {       //left 
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "" && player.collsion(938, 512)) { //right
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "" && player.collsion(480, 200)) { //up
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "" && player.collsion(480, 677)) { //down
+							   control->Visible = true;
+						   }
+						   // other condictions
+					   }
+					   //objects in sewer below plazza
+					   else if (strcmp(place, "sewer_plazza") == 0) {
+						   //objects: you must set variable to check when the button is clicked otherwise it will not be invisible
+						   if (control->Name == "") {
+
+						   }
+						   //directions
+						   if (control->Name == "" && player.collsion(16, 512)) {       //left 
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "" && player.collsion(938, 512)) { //right
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "" && player.collsion(480, 200)) { //up
+							   control->Visible = true;
+						   }
+						   else if (control->Name == "" && player.collsion(480, 677)) { //down
+							   control->Visible = true;
+						   }
+						   // other condictions
+					   }
+					   else {
+						   //not to display
+						   control->Visible = false;
+					   }
+				   }
+			   }
+		   }
+
 		   void progress_bar_display(void) {
 			   //this->label4->Text = ("MP:" + Convert::ToString(tank_profile.point.MP) + "/100");
 			   if (player.get_ability().HP >= 0 && HP_value_progressBar != 0) {
