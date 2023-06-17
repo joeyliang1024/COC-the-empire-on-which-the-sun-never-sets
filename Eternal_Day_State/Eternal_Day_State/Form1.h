@@ -3316,20 +3316,22 @@ private: System::Windows::Forms::Button^ Lancelot_dialog_1;
 					   //objects inside inn
 					   else if (strcmp(place, "inn_in") == 0) {
 						   //objects: you must set variable to check when the button is clicked otherwise it will not be invisible
-						   if (control->Name == "") {
-
+						   if (control->Name == "Go_Out_Inn" ||
+							   control->Name == "Go_In_Room") {
+							   control->Visible = true;
 						   }
 						   // other condictions
-
+						   if (sun_count % 6 == 1 && control->Name == "NPCGawain") {
+							   control->Visible = true;
+						   }
 					   }
 					   //objects in inn's room
 					   else if (strcmp(place, "room") == 0) {
 						   //objects: you must set variable to check when the button is clicked otherwise it will not be invisible
-						   if (control->Name == "") {
-
+						   if (control->Name == "Go_Out_Room") {
+							   control->Visible = true;
 						   }
 						   // other condictions
-
 					   }
 					   //objects in market
 					   else if (strcmp(place, "market") == 0) {
@@ -3350,64 +3352,48 @@ private: System::Windows::Forms::Button^ Lancelot_dialog_1;
 					   //objects in restaurant
 					   else if (strcmp(place, "restaurant") == 0) {
 						   //objects: you must set variable to check when the button is clicked otherwise it will not be invisible
-						   if (control->Name == "") {
-
+						   if (control->Name == "Go_To_Restaurant" ||
+							   control->Name == "Restaurant_To_Sewer") {
+							   control->Visible = true;
 						   }
 						   //directions
-						   if (control->Name == "" && player.collsion(16, 512)) {       //left 
+						   if (control->Name == "Restaurant_To_Market" && player.collsion(16, 512)) {       //left 
 							   control->Visible = true;
 						   }
-						   else if (control->Name == "" && player.collsion(938, 512)) { //right
-							   control->Visible = true;
-						   }
-						   else if (control->Name == "" && player.collsion(480, 200)) { //up
-							   control->Visible = true;
-						   }
-						   else if (control->Name == "" && player.collsion(480, 677)) { //down
+						   else if (control->Name == "Restaurant_To_Prison" && player.collsion(480, 677)) { //down
 							   control->Visible = true;
 						   }
 						   // other condictions
-
 					   }
 					   //objects inside restaurant
 					   else if (strcmp(place, "restaurant_in") == 0) {
 						   //objects: you must set variable to check when the button is clicked otherwise it will not be invisible
-						   if (control->Name == "") {
+						   if (control->Name == "Go_Out_Restaurant" ||
+							   control->Name == "NPCBedivere") {
 
-						   }
-						   //directions
-						   if (control->Name == "" && player.collsion(16, 512)) {       //left 
-							   control->Visible = true;
-						   }
-						   else if (control->Name == "" && player.collsion(938, 512)) { //right
-							   control->Visible = true;
-						   }
-						   else if (control->Name == "" && player.collsion(480, 200)) { //up
-							   control->Visible = true;
-						   }
-						   else if (control->Name == "" && player.collsion(480, 677)) { //down
-							   control->Visible = true;
 						   }
 						   // other condictions
-
+						   if (sun_count % 6 == 3 && control->Name == "NPCGawain") {
+							   control->Visible = true;
+						   }
+						   if (sword_count && control->Name == "show_sword") {
+							   control->Visible = true;
+						   }
 					   }
 					   //objects in prison
 					   else if (strcmp(place, "prison") == 0) {
 						   //objects: you must set variable to check when the button is clicked otherwise it will not be invisible
-						   if (control->Name == "") {
-
+						   if (control->Name == "Spot_Prison_Out") {
+							   control->Visible = true;
 						   }
 						   //directions
-						   if (control->Name == "" && player.collsion(16, 512)) {       //left 
+						   if (control->Name == "Prison_To_Restaurant" && player.collsion(16, 512)) {       //left 
 							   control->Visible = true;
 						   }
-						   else if (control->Name == "" && player.collsion(938, 512)) { //right
+						   else if (control->Name == "Prison_To_IntersectionLeft" && player.collsion(938, 512)) { //right
 							   control->Visible = true;
 						   }
-						   else if (control->Name == "" && player.collsion(480, 200)) { //up
-							   control->Visible = true;
-						   }
-						   else if (control->Name == "" && player.collsion(480, 677)) { //down
+						   else if (control->Name == "Prison_To_Plazza" && player.collsion(480, 677)) { //down
 							   control->Visible = true;
 						   }
 						   // other condictions
@@ -3415,62 +3401,64 @@ private: System::Windows::Forms::Button^ Lancelot_dialog_1;
 					   //objects in prison's 1F
 					   else if (strcmp(place, "1F") == 0) {
 						   //objects: you must set variable to check when the button is clicked otherwise it will not be invisible
-						   if (control->Name == "") {
-
-						   }
-						   //directions
-						   if (control->Name == "" && player.collsion(16, 512)) {       //left 
+						   if (control->Name == "Prison_To_Secret" ||
+							   control->Name == "Prison1_To_Prison2") {
 							   control->Visible = true;
 						   }
-						   else if (control->Name == "" && player.collsion(938, 512)) { //right
-							   control->Visible = true;
-						   }
-						   else if (control->Name == "" && player.collsion(480, 200)) { //up
-							   control->Visible = true;
-						   }
-						   else if (control->Name == "" && player.collsion(480, 677)) { //down
+						   if (control->Name == "talk_to_Guinevere") { //visible by bool variable
 							   control->Visible = true;
 						   }
 						   // other condictions
+						   if (sun_count % 6 == 3 && control->Name == "NPCGuinevere") {
+							   control->Visible = true; 
+						   }
+						   if (control->Name == "use_ash") {    //可能要設變數?
+							   //在背包才能用
+							   for (int i = 0; i < backpack_items_listView->Items->Count; i++)
+							   {
+								   String^ objectText = backpack_items_listView->Items[i]->SubItems[0]->Text;
+								   if (objectText == "解夢灰") {
+									   control->Visible = true; //變數位置
+								   }
+							   }
+						   } 
 					   }
 					   //objects in prison's 2F
 					   else if (strcmp(place, "2F") == 0) {
 						   //objects: you must set variable to check when the button is clicked otherwise it will not be invisible
-						   if (control->Name == "") {
-
-						   }
-						   //directions
-						   if (control->Name == "" && player.collsion(16, 512)) {       //left 
+						   if (control->Name == "Prison2_To_Prison1") {
 							   control->Visible = true;
 						   }
-						   else if (control->Name == "" && player.collsion(938, 512)) { //right
-							   control->Visible = true;
-						   }
-						   else if (control->Name == "" && player.collsion(480, 200)) { //up
-							   control->Visible = true;
-						   }
-						   else if (control->Name == "" && player.collsion(480, 677)) { //down
+						   if (control->Name == "talk_to_Guinevere") { //visible by bool variable
 							   control->Visible = true;
 						   }
 						   // other condictions
+						   else if (sun_count % 6 != 3 && control->Name == "NPCGuinevere") {
+							   control->Visible = true;
+						   }
+						   if (control->Name == "use_ash") {    //可能要設變數?
+							   //在背包才能用
+							   for (int i = 0; i < backpack_items_listView->Items->Count; i++)
+							   {
+								   String^ objectText = backpack_items_listView->Items[i]->SubItems[0]->Text;
+								   if (objectText == "解夢灰") {
+									   control->Visible = true; //變數位置
+								   }
+							   }
+						   }
 					   }
 					   //objects in library
 					   else if (strcmp(place, "library") == 0) {
 						   //objects: you must set variable to check when the button is clicked otherwise it will not be invisible
-						   if (control->Name == "") {
-
+						   if (control->Name == "Go_In_Library" ||
+							   control->Name == "Library_To_Sewer") {
+							   control->Visible = true;
 						   }
 						   //directions
-						   if (control->Name == "" && player.collsion(16, 512)) {       //left 
+						   if (control->Name == "Library_To_IntersectionLeft" && player.collsion(16, 512)) {       //left 
 							   control->Visible = true;
 						   }
-						   else if (control->Name == "" && player.collsion(938, 512)) { //right
-							   control->Visible = true;
-						   }
-						   else if (control->Name == "" && player.collsion(480, 200)) { //up
-							   control->Visible = true;
-						   }
-						   else if (control->Name == "" && player.collsion(480, 677)) { //down
+						   else if (control->Name == "Library_To_IntersectionRight" && player.collsion(938, 512)) { //right
 							   control->Visible = true;
 						   }
 						   // other condictions
@@ -3478,20 +3466,14 @@ private: System::Windows::Forms::Button^ Lancelot_dialog_1;
 					   //objects in left
 					   else if (strcmp(place, "left") == 0) {
 						   //objects: you must set variable to check when the button is clicked otherwise it will not be invisible
-						   if (control->Name == "") {
-
-						   }
 						   //directions
-						   if (control->Name == "" && player.collsion(16, 512)) {       //left 
+						   if (control->Name == "IntersectionLeft_To_Lake" && player.collsion(16, 512)) {          //left 
 							   control->Visible = true;
 						   }
-						   else if (control->Name == "" && player.collsion(938, 512)) { //right
+						   else if (control->Name == "IntersectionLeft_To_Library" && player.collsion(938, 512)) { //right
 							   control->Visible = true;
 						   }
-						   else if (control->Name == "" && player.collsion(480, 200)) { //up
-							   control->Visible = true;
-						   }
-						   else if (control->Name == "" && player.collsion(480, 677)) { //down
+						   else if (control->Name == "IntersectionLeft_To_Prison" && player.collsion(480, 677)) {  //down
 							   control->Visible = true;
 						   }
 						   // other condictions
@@ -3499,20 +3481,14 @@ private: System::Windows::Forms::Button^ Lancelot_dialog_1;
 					   //objects in right
 					   else if (strcmp(place, "right") == 0) {
 						   //objects: you must set variable to check when the button is clicked otherwise it will not be invisible
-						   if (control->Name == "") {
-
-						   }
 						   //directions
-						   if (control->Name == "" && player.collsion(16, 512)) {       //left 
+						   if (control->Name == "IntersectionRight_To_Palace" && player.collsion(938, 512)) { //right
 							   control->Visible = true;
 						   }
-						   else if (control->Name == "" && player.collsion(938, 512)) { //right
+						   else if (control->Name == "IntersectionRight_To_Library" && player.collsion(480, 200)) { //up
 							   control->Visible = true;
 						   }
-						   else if (control->Name == "" && player.collsion(480, 200)) { //up
-							   control->Visible = true;
-						   }
-						   else if (control->Name == "" && player.collsion(480, 677)) { //down
+						   else if (control->Name == "IntersectionRight_To_Inn" && player.collsion(480, 677)) { //down
 							   control->Visible = true;
 						   }
 						   // other condictions
@@ -5015,7 +4991,7 @@ private: System::Windows::Forms::Button^ Lancelot_dialog_1;
 		background->Image = gcnew Bitmap(gcnew System::String(Lake_Mary.get_path()));
 	}
 	private: System::Void Lake_To_IntersectionLeft_Click(System::Object^ sender, System::EventArgs^ e) {
-		dialog_text->Text = "路口左待補";
+		dialog_text->Text = "路口";
 		strcpy(place, "left");
 		// hide object in scene
 		Lake_To_IntersectionLeft->Visible = false;
