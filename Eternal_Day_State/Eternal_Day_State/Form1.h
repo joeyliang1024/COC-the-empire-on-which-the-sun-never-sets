@@ -4533,10 +4533,8 @@ private: System::Windows::Forms::Button^ Lancelot_dialog_1;
 		listen_stranger_plazza->Visible = false;
 		chat_stranger_plazza->Visible = false;
 	}
-	private: System::Void Plazza_To_Inn_Click(System::Object^ sender, System::EventArgs^ e) {
-		dialog_text->Text = "這棟建築由木材建成，屋頂使用稻草編織而成。建築物的外牆粗糙的由木板和泥土夯實而成，看起來十分堅固，前方設有一個大門，用於進出旅店，大門的外觀簡單而樸實，完美的符合了實用主義的理念。";
-		strcpy(place, "inn");
-		// hide object in scene
+	//離開廣場function
+	void Exit_Plazza() {
 		signpost->Visible = false;
 		sundial->Visible = false;
 		Plazza_To_Inn->Visible = false;
@@ -4553,6 +4551,12 @@ private: System::Windows::Forms::Button^ Lancelot_dialog_1;
 		chat_stranger_plazza->Visible = false;
 		Plazza_To_Sewer->Visible = false;
 		NPCGawain->Visible = false;
+	}
+	private: System::Void Plazza_To_Inn_Click(System::Object^ sender, System::EventArgs^ e) {
+		dialog_text->Text = "這棟建築由木材建成，屋頂使用稻草編織而成。建築物的外牆粗糙的由木板和泥土夯實而成，看起來十分堅固，前方設有一個大門，用於進出旅店，大門的外觀簡單而樸實，完美的符合了實用主義的理念。";
+		strcpy(place, "inn");
+		// hide object in scene
+		Exit_Plazza();
 		// display object in scene
 		Inn_To_Plazza->Visible = true;
 		Go_In_Inn->Visible = true;
@@ -4568,22 +4572,7 @@ private: System::Windows::Forms::Button^ Lancelot_dialog_1;
 		dialog_text->Text = "在你面前的是一個由石頭砌成的建築，建築有著一扇鐵藝門，看起來十分堅固，在離地約4公尺處有著兩扇玻璃窗戶正對著廣場，門口站著兩位全副武裝的侍衛，在門上方還掛著一塊禁止進入的牌匾。";
 		strcpy(place, "prison");
 		// hide object in scene
-		signpost->Visible = false;
-		sundial->Visible = false;
-		Plazza_To_Prison->Visible = false;
-		Plazza_To_Inn->Visible = false;
-		Ask_Wagain->Visible = false;
-		Observe_Signpost->Visible = false;
-		chatbox_1->Visible = false;
-		chatbox_2->Visible = false;
-		chatbox_3->Visible = false;
-		chatbox_4->Visible = false;
-		item_button->Visible = false;
-		Observe_Sundial->Visible = false;
-		listen_stranger_plazza->Visible = false;
-		chat_stranger_plazza->Visible = false;
-		Plazza_To_Sewer->Visible = false;
-		NPCGawain->Visible = false;
+		Exit_Plazza();
 		// display object in scene
 		Prison_To_Restaurant->Visible = true;
 		Prison_To_Plazza->Visible = true;

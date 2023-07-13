@@ -21,6 +21,7 @@ Class CppCLRWinFormsProject.Form1: AutoLayout, AnsiClass, Class, Public, BeforeF
     Int32 init_san : Public
     Int32 speed : Public
     Boolean START_GAME : Public
+    Boolean END_GAME : Public
     Boolean backpack_open_or_close : Public
     Boolean moveLeft : Public
     Boolean moveRight : Public
