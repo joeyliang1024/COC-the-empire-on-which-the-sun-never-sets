@@ -1,4 +1,5 @@
-﻿#pragma once
+﻿//宣告變數
+#pragma once
 #include <stdio.h>
 #include <stdlib.h>
 #include <string>
@@ -4533,7 +4534,11 @@ private: System::Windows::Forms::Button^ Lancelot_dialog_1;
 		listen_stranger_plazza->Visible = false;
 		chat_stranger_plazza->Visible = false;
 	}
-	//離開廣場function
+	//位移function
+	void Common() {
+		sun_count -= 1;
+		Sun->Value = sun_count % 6;
+	}
 	void Exit_Plazza() {
 		signpost->Visible = false;
 		sundial->Visible = false;
@@ -4552,12 +4557,38 @@ private: System::Windows::Forms::Button^ Lancelot_dialog_1;
 		Plazza_To_Sewer->Visible = false;
 		NPCGawain->Visible = false;
 	}
-	private: System::Void Plazza_To_Inn_Click(System::Object^ sender, System::EventArgs^ e) {
+	void To_Plazza() {
+		strcpy(place, "plazza");
+		if (sun_count % 6 == 5) {
+			NPCGawain->Visible = true;
+		}
+		Go_In_Inn->Visible = false;
+		Inn_To_Plazza->Visible = false;
+		Inn_To_Market->Visible = false;
+		Inn_To_IntersectionRight->Visible = false;
+		Observe_Inn->Visible = false;
+		Inn_To_Sewer->Visible = false;
+		background->Image = gcnew Bitmap(gcnew System::String(Plazza.get_path()));
+		Spot_Prison_Out->Visible = true;
+		if (sun_count % 6 != 0) {
+			listen_stranger_plazza->Visible = true;
+			chat_stranger_plazza->Visible = true;
+		}
+		if (sun_count % 6 == 5) {
+			Ask_Wagain->Visible = true;
+		}
+	}
+	void Exit_Inn() {
+		Go_In_Inn->Visible = false;
+		Inn_To_Plazza->Visible = false;
+		Inn_To_Market->Visible = false;
+		Inn_To_IntersectionRight->Visible = false;
+		Observe_Inn->Visible = false;
+		Inn_To_Sewer->Visible = false;
+	}
+	void To_Inn() {
 		dialog_text->Text = "這棟建築由木材建成，屋頂使用稻草編織而成。建築物的外牆粗糙的由木板和泥土夯實而成，看起來十分堅固，前方設有一個大門，用於進出旅店，大門的外觀簡單而樸實，完美的符合了實用主義的理念。";
 		strcpy(place, "inn");
-		// hide object in scene
-		Exit_Plazza();
-		// display object in scene
 		Inn_To_Plazza->Visible = true;
 		Go_In_Inn->Visible = true;
 		Inn_To_Market->Visible = true;
@@ -4565,437 +4596,340 @@ private: System::Windows::Forms::Button^ Lancelot_dialog_1;
 		Observe_Inn->Visible = true;
 		Inn_To_Sewer->Visible = true;
 		background->Image = gcnew Bitmap(gcnew System::String(Inn_Outside.get_path()));
-		sun_count -= 1;
-		Sun->Value = sun_count % 6;
 	}
-	private: System::Void Plazza_To_Prison_Click(System::Object^ sender, System::EventArgs^ e) {
-		dialog_text->Text = "在你面前的是一個由石頭砌成的建築，建築有著一扇鐵藝門，看起來十分堅固，在離地約4公尺處有著兩扇玻璃窗戶正對著廣場，門口站著兩位全副武裝的侍衛，在門上方還掛著一塊禁止進入的牌匾。";
-		strcpy(place, "prison");
-		// hide object in scene
-		Exit_Plazza();
-		// display object in scene
-		Prison_To_Restaurant->Visible = true;
-		Prison_To_Plazza->Visible = true;
-		Prison_To_IntersectionLeft->Visible = true;
-		background->Image = gcnew Bitmap(gcnew System::String(Prison_Outside.get_path()));
-		sun_count -= 1;
-		Sun->Value = sun_count % 6;
-		Spot_Prison_Out->Visible = true;
-
-	}
-	private: System::Void Go_In_Inn_Click(System::Object^ sender, System::EventArgs^ e) {
+	void In_Inn() {
 		dialog_text->Text = "在你進入旅店後，他的內部就如同他的外部那般樸實無華，只有一個櫃台，和左右兩間大床房從前方傳來了有氣無力的聲音”住宿一天20銀幣，不提供食物，一天以宏光、烈光時區分，住七天優惠只要一金幣。”你往前看去，那是一個頭髮斑白的老頭，雙手撐著臉，一副要死不活的樣子。";
 		strcpy(place, "inn_in");
 		if (sun_count % 6 == 1) {
 			NPCGawain->Visible = true;
 		}
-		// hide object in scene
-		Go_In_Inn->Visible = false;
-		Inn_To_Plazza->Visible = false;
-		Inn_To_Market->Visible = false;
-		Inn_To_IntersectionRight->Visible = false;
-		Observe_Inn->Visible = false;
-		Inn_To_Sewer->Visible = false;
-		// display object in scene
 		Go_Out_Inn->Visible = true;
 		Go_In_Room->Visible = true;
 		background->Image = gcnew Bitmap(gcnew System::String(Inn_Lobby.get_path()));
 	}
-	private: System::Void Go_Out_Inn_Click(System::Object^ sender, System::EventArgs^ e) {
-		dialog_text->Text = "這棟建築由木材建成，屋頂使用稻草編織而成。建築物的外牆粗糙的由木板和泥土夯實而成，看起來十分堅固，前方設有一個大門，用於進出旅店，大門的外觀簡單而樸實，完美的符合了實用主義的理念。";
-		strcpy(place, "inn");
-		// hide object in scene
+	void Out_Inn() {
 		Go_Out_Inn->Visible = false;
 		Go_In_Room->Visible = false;
 		NPCGawain->Visible = false;
-		// display object in scene
-		Go_In_Inn->Visible = true;
-		Inn_To_Plazza->Visible = true;
-		Inn_To_Market->Visible = true;
-		Inn_To_IntersectionRight->Visible = true;
-		Observe_Inn->Visible = true;
-		Inn_To_Sewer->Visible = true;
-		background->Image = gcnew Bitmap(gcnew System::String(Inn_Outside.get_path()));
 	}
-	private: System::Void Go_In_Room_Click(System::Object^ sender, System::EventArgs^ e) {
+	void To_Room() {
 		dialog_text->Text = "你進入了房間，房間內只有稻草鋪的床，和一些用布包住稻草稈做的枕頭";
 		strcpy(place, "room");
-		// hide object in scene
-		Go_Out_Inn->Visible = false;
-		Go_In_Room->Visible = false;
-		// display object in scene
 		Go_Out_Room->Visible = true;
 		background->Image = gcnew Bitmap(gcnew System::String(Inn_Room.get_path()));
 	}
-	private: System::Void Go_Out_Room_Click(System::Object^ sender, System::EventArgs^ e) {
-		dialog_text->Text = "在你進入旅店後，他的內部就如同他的外部那般樸實無華，只有一個櫃台，和左右兩間大床房從前方傳來了有氣無力的聲音”住宿一天20銀幣，不提供食物，一天以宏光、烈光時區分，住七天優惠只要一金幣。”你往前看去，那是一個頭髮斑白的老頭，雙手撐著臉，一副要死不活的樣子。";
-		strcpy(place, "inn_in");
-		// hide object in scene
+	void Exit_Room() {
 		NPCGuinevere->Visible = false;
 		Go_Out_Room->Visible = false;
 		NPCGuinevere->Visible = false;
-		// display object in scene
-		Go_Out_Inn->Visible = true;
-		Go_In_Room->Visible = true;
-		background->Image = gcnew Bitmap(gcnew System::String(Inn_Lobby.get_path()));
 	}
-	private: System::Void Inn_To_Plazza_Click(System::Object^ sender, System::EventArgs^ e) {
-		strcpy(place, "plazza");
-		if (sun_count % 6 == 5) {
-			NPCGawain->Visible = true;
-		}
-		// hide object in scene
-		Go_In_Inn->Visible = false;
-		Inn_To_Plazza->Visible = false;
-		Inn_To_Market->Visible = false;
-		Inn_To_IntersectionRight->Visible = false;
-		Observe_Inn->Visible = false;
-		Inn_To_Sewer->Visible = false;
-		// display object in scene
-		signpost->Visible = true;
-		sundial->Visible = true;
-		Plazza_To_Inn->Visible = true;
-		//Plazza_To_Prison->Visible = true;
-		Plazza_To_Sewer->Visible = true;
-		background->Image = gcnew Bitmap(gcnew System::String(Plazza.get_path()));
-		sun_count -= 1;
-		Sun->Value = sun_count % 6;
-		Spot_Prison_Out->Visible = true;
-		if (sun_count % 6 != 0) {
-			listen_stranger_plazza->Visible = true;
-			chat_stranger_plazza->Visible = true;
-		}
-		if (sun_count % 6 == 5) {
-			Ask_Wagain->Visible = true;
-		}
-	}
-	private: System::Void Inn_To_Market_Click(System::Object^ sender, System::EventArgs^ e) {
+	void To_Market() {
 		dialog_text->Text = "市場的街道狹窄而擁擠，滿是雜物，很容易讓人摔倒。市場里擠滿了商販和攤販，他們用各種聲音、手勢和展示方式向你推銷自己的產品。你可以聽到他們高聲地叫賣，介紹自己的貨品，有些商販用樂器演奏著悠揚的音樂，吸引著顧客。";
 		strcpy(place, "market");
 		if (sun_count % 6 == 2) {
 			NPCGawain->Visible = true;
 		}
-		// hide object in scene
-		Go_In_Inn->Visible = false;
-		Inn_To_Plazza->Visible = false;
-		Inn_To_Market->Visible = false;
-		Inn_To_IntersectionRight->Visible = false;
-		Observe_Inn->Visible = false;
-		Inn_To_Sewer->Visible = false;
-		NPCGawain->Visible = false;
-		//display object in scene
 		Market_To_Restaurant->Visible = true;
 		Market_To_Inn->Visible = true;
 		diner->Visible = true;
 		studio->Visible = true;
 		Market_To_Sewer->Visible = true;
 		background->Image = gcnew Bitmap(gcnew System::String(Market.get_path()));
-		sun_count -= 1;
-		Sun->Value = sun_count % 6;
 	}
-	private: System::Void Market_To_Restaurant_Click(System::Object^ sender, System::EventArgs^ e) {
-		dialog_text->Text = "你來到了餐館，餐館外觀看起來是個還算整潔的木製建築，進入餐廳，你發現這裡非常明亮、寬敞。整個空間採用簡約的風格，淺色木質牆壁搭配深色木質地板，一排排的餐桌擺放整齊，讓人感到舒適和放鬆，此時餐廳內(人數)(狀態)，此時你們聽到一個溫和的聲音問到”客官們請問你們想來點甚麼”， 你看向了出聲的人，那是一位長相清秀的獨臂青年，他有著金色的中長髮和祖母綠色的眼眸，他背後的牆壁上掛著菜單。";
-		strcpy(place, "restaurant");
-		// hide object in scene
+	void Exit_Market() {
 		Market_To_Restaurant->Visible = false;
 		Market_To_Inn->Visible = false;
 		diner->Visible = false;
 		studio->Visible = false;
 		Market_To_Sewer->Visible = false;
 		NPCGawain->Visible = false;
-		//display object in scene
+	}
+	void To_Restaurant() {
+		dialog_text->Text = "你來到了餐館，餐館外觀看起來是個還算整潔的木製建築，進入餐廳，你發現這裡非常明亮、寬敞。整個空間採用簡約的風格，淺色木質牆壁搭配深色木質地板，一排排的餐桌擺放整齊，讓人感到舒適和放鬆，此時餐廳內(人數)(狀態)，此時你們聽到一個溫和的聲音問到”客官們請問你們想來點甚麼”， 你看向了出聲的人，那是一位長相清秀的獨臂青年，他有著金色的中長髮和祖母綠色的眼眸，他背後的牆壁上掛著菜單。";
+		strcpy(place, "restaurant");
 		Restaurant_To_Market->Visible = true;
 		Restaurant_To_Prison->Visible = true;
 		Go_To_Restaurant->Visible = true;
 		Restaurant_To_Sewer->Visible = true;
 		background->Image = gcnew Bitmap(gcnew System::String(Restaurant_Outside.get_path()));
-		sun_count -= 1;
-		Sun->Value = sun_count % 6;
 	}
-	private: System::Void Market_To_Inn_Click(System::Object^ sender, System::EventArgs^ e) {
-		dialog_text->Text = "這棟建築由木材建成，屋頂使用稻草編織而成。建築物的外牆粗糙的由木板和泥土夯實而成，看起來十分堅固，前方設有一個大門，用於進出旅店，大門的外觀簡單而樸實，完美的符合了實用主義的理念。";
-		strcpy(place, "inn");
-		// hide object in scene
-		Market_To_Restaurant->Visible = false;
-		Market_To_Inn->Visible = false;
-		diner->Visible = false;
-		studio->Visible = false;
-		Market_To_Sewer->Visible = false;
-		//display object in scene
-		Go_In_Inn->Visible = true;
-		Inn_To_Plazza->Visible = true;
-		Inn_To_Market->Visible = true;
-		Inn_To_IntersectionRight->Visible = true;
-		Observe_Inn->Visible = true;
-		Inn_To_Sewer->Visible = true;
-		background->Image = gcnew Bitmap(gcnew System::String(Inn_Outside.get_path()));
-		sun_count -= 1;
-		Sun->Value = sun_count % 6;
-	}
-	private: System::Void Restaurant_To_Market_Click(System::Object^ sender, System::EventArgs^ e) {
-		dialog_text->Text = "市場的街道狹窄而擁擠，滿是雜物，很容易讓人摔倒。市場里擠滿了商販和攤販，他們用各種聲音、手勢和展示方式向你推銷自己的產品。你可以聽到他們高聲地叫賣，介紹自己的貨品，有些商販用樂器演奏著悠揚的音樂，吸引著顧客。";
-		strcpy(place, "market");
-		if (sun_count % 6 == 2) {
-			NPCGawain->Visible = true;
-		}
-		// hide object in scene
+	void Exit_Restaurant() {
 		Restaurant_To_Market->Visible = false;
 		Restaurant_To_Prison->Visible = false;
 		Go_To_Restaurant->Visible = false;
 		Restaurant_To_Sewer->Visible = false;
-		// display object in scene
-		Market_To_Restaurant->Visible = true;
-		Market_To_Inn->Visible = true;
-		diner->Visible = true;
-		studio->Visible = true;
-		Market_To_Sewer->Visible = true;
-		background->Image = gcnew Bitmap(gcnew System::String(Market.get_path()));
-		sun_count -= 1;
-		Sun->Value = sun_count % 6;
 	}
-	private: System::Void Restaurant_To_Prison_Click(System::Object^ sender, System::EventArgs^ e) {
+	void To_Prison() {
 		dialog_text->Text = "在你面前的是一個由石頭砌成的建築，建築有著一扇鐵藝門，看起來十分堅固，在離地約4公尺處有著兩扇玻璃窗戶正對著廣場，門口站著兩位全副武裝的侍衛，在門上方還掛著一塊禁止進入的牌匾。";
 		strcpy(place, "prison");
-		// hide object in scene
-		Restaurant_To_Market->Visible = false;
-		Restaurant_To_Prison->Visible = false;
-		Go_To_Restaurant->Visible = false;
-		Restaurant_To_Sewer->Visible = false;
-		// display object in scene
 		Prison_To_Restaurant->Visible = true;
 		Prison_To_Plazza->Visible = true;
 		Prison_To_IntersectionLeft->Visible = true;
 		background->Image = gcnew Bitmap(gcnew System::String(Prison_Outside.get_path()));
-		sun_count -= 1;
-		Sun->Value = sun_count % 6;
 	}
-	private: System::Void Prison_To_Restaurant_Click(System::Object^ sender, System::EventArgs^ e) {
-		dialog_text->Text = "你來到了餐館，餐館外觀看起來是個還算整潔的木製建築，進入餐廳，你發現這裡非常明亮、寬敞。整個空間採用簡約的風格，淺色木質牆壁搭配深色木質地板，一排排的餐桌擺放整齊，讓人感到舒適和放鬆，此時餐廳內(人數)(狀態)，此時你們聽到一個溫和的聲音問到”客官們請問你們想來點甚麼”， 你看向了出聲的人，那是一位長相清秀的獨臂青年，他有著金色的中長髮和祖母綠色的眼眸，他背後的牆壁上掛著菜單。";
-		strcpy(place, "restaurant");
-		// hide object in scene
+	void Exit_Prison() {
 		Prison_To_Restaurant->Visible = false;
 		Prison_To_Plazza->Visible = false;
 		Prison_To_IntersectionLeft->Visible = false;
 		Spot_Prison_Out->Visible = false;
-		// display object in scene
-		Restaurant_To_Market->Visible = true;
-		Restaurant_To_Prison->Visible = true;
-		Go_To_Restaurant->Visible = true;
-		Restaurant_To_Sewer->Visible = true;
-		background->Image = gcnew Bitmap(gcnew System::String(Restaurant_Outside.get_path()));
-		sun_count -= 1;
-		Sun->Value = sun_count % 6;
 	}
-	private: System::Void Prison_To_Plazza_Click(System::Object^ sender, System::EventArgs^ e) {
-		dialog_text->Text = "廣場待補";
-		strcpy(place, "plazza");
-		if (sun_count % 6 == 5) {
-			NPCGawain->Visible = true;
-		}
-		// hide object in scene
-		Prison_To_Restaurant->Visible = false;
-		Prison_To_Plazza->Visible = false;
-		Prison_To_IntersectionLeft->Visible = false;
-		Spot_Prison_Out->Visible = false;
-		// diaplay object in scene
-		signpost->Visible = true;
-		sundial->Visible = true;
-		Plazza_To_Inn->Visible = true;
-		//Plazza_To_Prison->Visible = true;
-		Plazza_To_Sewer->Visible = true;
-		background->Image = gcnew Bitmap(gcnew System::String(Plazza.get_path()));
-		sun_count -= 1;
-		Sun->Value = sun_count % 6;
-		if (sun_count % 6 != 0) {
-			listen_stranger_plazza->Visible = true;
-			chat_stranger_plazza->Visible = true;
-		}
-		if (sun_count % 6 == 5) {
-			Ask_Wagain->Visible = true;
-		}
-	}
-	private: System::Void Inn_To_IntersectionRight_Click(System::Object^ sender, System::EventArgs^ e) {
+	void To_IntersectionRight() {
 		strcpy(place, "right");
 		dialog_text->Text = "路口右待補";
-		// hide object in scene
-		Go_In_Inn->Visible = false;
-		Inn_To_Plazza->Visible = false;
-		Inn_To_Market->Visible = false;
-		Inn_To_IntersectionRight->Visible = false;
-		Observe_Inn->Visible = false;
-		Inn_To_Sewer->Visible = false;
-		// diaplay object in scene
 		IntersectionRight_To_Library->Visible = true;
 		IntersectionRight_To_Inn->Visible = true;
 		IntersectionRight_To_Palace->Visible = true;
 		background->Image = gcnew Bitmap(gcnew System::String(Inn_Outside.get_path()));
-		sun_count -= 1;
-		Sun->Value = sun_count % 6;
 	}
-	private: System::Void IntersectionRight_To_Library_Click(System::Object^ sender, System::EventArgs^ e) {
-		dialog_text->Text = "這是一棟非常豪華和宏偉的建築，你被它那令人嘆為觀止的氣勢所震撼，以高大的石柱和華麗的拱門，來支撐整個建築，建築的主體由lake的柱子和華麗的拱門支撐，高大的尖頂耸立著，猶如一個巨大的王冠，牆面上有著浮雕、雕塑和彩繪，繪製著神話、故事和歷史事件，讓建築更顯神聖和莊嚴。在陽光的照耀下，這些彩繪和浮雕散發出燦爛的光芒，讓整個建築閃耀著耀眼的光彩。";
-		strcpy(place, "library");
-		// hide object in scene
+	void Exit_IntersectionRight() {
 		IntersectionRight_To_Library->Visible = false;
 		IntersectionRight_To_Inn->Visible = false;
 		IntersectionRight_To_Palace->Visible = false;
-		// diaplay object in scene
+	}
+	void To_IntersectionLeft() {
+		strcpy(place, "left");
+		dialog_text->Text = "路口左待補";
+		IntersectionLeft_To_Prison->Visible = true;
+		IntersectionLeft_To_Library->Visible = true;
+		IntersectionLeft_To_Lake->Visible = true;
+		background->Image = gcnew Bitmap(gcnew System::String(Prison_Outside.get_path()));
+	}
+	void Exit_IntersectionLeft() {
+		IntersectionLeft_To_Prison->Visible = false;
+		IntersectionLeft_To_Library->Visible = false;
+		IntersectionLeft_To_Lake->Visible = false;
+	}
+	void To_Library() {
+		dialog_text->Text = "這是一棟非常豪華和宏偉的建築，你被它那令人嘆為觀止的氣勢所震撼，以高大的石柱和華麗的拱門，來支撐整個建築，建築的主體由lake的柱子和華麗的拱門支撐，高大的尖頂耸立著，猶如一個巨大的王冠，牆面上有著浮雕、雕塑和彩繪，繪製著神話、故事和歷史事件，讓建築更顯神聖和莊嚴。在陽光的照耀下，這些彩繪和浮雕散發出燦爛的光芒，讓整個建築閃耀著耀眼的光彩。";
+		strcpy(place, "library");
 		Library_To_IntersectionRight->Visible = true;
 		Library_To_IntersectionLeft->Visible = true;
 		Go_In_Library->Visible = true;
 		Library_To_Sewer->Visible = true;
 		background->Image = gcnew Bitmap(gcnew System::String(Library_Outside.get_path()));
 	}
-	private: System::Void IntersectionRight_To_Inn_Click(System::Object^ sender, System::EventArgs^ e) {
-		dialog_text->Text = "這棟建築由木材建成，屋頂使用稻草編織而成。建築物的外牆粗糙的由木板和泥土夯實而成，看起來十分堅固，前方設有一個大門，用於進出旅店，大門的外觀簡單而樸實，完美的符合了實用主義的理念。";
-		strcpy(place, "inn");
-		// hide object in scene
-		IntersectionRight_To_Library->Visible = false;
-		IntersectionRight_To_Inn->Visible = false;
-		IntersectionRight_To_Palace->Visible = false;
-		// diaplay object in scene
-		Go_In_Inn->Visible = true;
-		Inn_To_Plazza->Visible = true;
-		Inn_To_Market->Visible = true;
-		Inn_To_IntersectionRight->Visible = true;
-		Observe_Inn->Visible = true;
-		Inn_To_Sewer->Visible = true;
-		background->Image = gcnew Bitmap(gcnew System::String(Inn_Outside.get_path()));
+	void Exit_Library() {
+		Library_To_IntersectionRight->Visible = false;
+		Library_To_IntersectionLeft->Visible = false;
+		Go_In_Library->Visible = false;
+		Library_To_Sewer->Visible = false;
 	}
-	private: System::Void IntersectionRight_To_Palace_Click(System::Object^ sender, System::EventArgs^ e) {
+	void In_Library() {
+		dialog_text->Text = "你進到了圖書館內，這間屋子裏有著許多的架子，架子上擺滿了手寫的文獻和書籍，大多都是用羊皮紙和墨水寫成，這些文獻是按照主題整齊排列排列。";
+		strcpy(place, "library_in");
+		Go_Out_Library->Visible = true;
+		Library_Library_In->Visible = true;
+		background->Image = gcnew Bitmap(gcnew System::String(Library_Inside.get_path()));
+	}
+	void Out_Library() {
+		Go_Out_Library->Visible = false;
+		Library_Library_In->Visible = false;
+		chatbox_1->Visible = false;
+		chatbox_2->Visible = false;
+	}
+	void To_Palace() {
 		dialog_text->Text = "在你面前的是一個巨大、華麗、寬敞的建築，這棟建築的體量看起來完全不是城鎮中的其他建築可比擬，建築的屋頂上還有著一座巨大的黃金鐘，看起來唯一的入口是一扇巨大的木門。";
 		strcpy(place, "palace");
-		// hide object in scene
-		IntersectionRight_To_Library->Visible = false;
-		IntersectionRight_To_Inn->Visible = false;
-		IntersectionRight_To_Palace->Visible = false;
-		// diaplay object in scene
 		Palace_To_IntersectionRight->Visible = true;
 		if (sun_count <= 5) {
 			Go_In_Palace->Visible = true;
 		}
 		background->Image = gcnew Bitmap(gcnew System::String(Palace_Outside.get_path()));
 	}
-	private: System::Void Palace_To_IntersectionRight_Click(System::Object^ sender, System::EventArgs^ e) {
-		strcpy(place, "right");
-		dialog_text->Text = "路口右待補";
-		// hide object in scene
+	void Exit_Palace() {
 		Palace_To_IntersectionRight->Visible = false;
 		Go_In_Palace->Visible = false;
-		// diaplay object in scene
-		IntersectionRight_To_Library->Visible = true;
-		IntersectionRight_To_Inn->Visible = true;
-		IntersectionRight_To_Palace->Visible = true;
-		background->Image = gcnew Bitmap(gcnew System::String(Palace_Outside.get_path()));
-		sun_count -= 1;
-		Sun->Value = sun_count % 6;
 	}
-	private: System::Void Library_To_IntersectionRight_Click(System::Object^ sender, System::EventArgs^ e) {
-		strcpy(place, "right");
-		dialog_text->Text = "路口右待補";
-		// hide object in scene
-		Library_To_IntersectionRight->Visible = false;
-		Library_To_IntersectionLeft->Visible = false;
-		Go_In_Library->Visible = false;
-		Library_To_Sewer->Visible = false;
-		// diaplay object in scene
-		IntersectionRight_To_Library->Visible = true;
-		IntersectionRight_To_Inn->Visible = true;
-		IntersectionRight_To_Palace->Visible = true;
-		background->Image = gcnew Bitmap(gcnew System::String(Library_Outside.get_path()));
-		sun_count -= 1;
-		Sun->Value = sun_count % 6;
-	}
-	private: System::Void Prison_To_IntersectionLeft_Click(System::Object^ sender, System::EventArgs^ e) {
-		strcpy(place, "left");
-		dialog_text->Text = "路口左待補";
-		// hide object in scene
-		Prison_To_Restaurant->Visible = false;
-		Prison_To_Plazza->Visible = false;
-		Prison_To_IntersectionLeft->Visible = false;
-		Spot_Prison_Out->Visible = false;
-		// diaplay object in scene
-		IntersectionLeft_To_Prison->Visible = true;
-		IntersectionLeft_To_Library->Visible = true;
-		IntersectionLeft_To_Lake->Visible = true;
-		background->Image = gcnew Bitmap(gcnew System::String(Prison_Outside.get_path()));
-		sun_count -= 1;
-		Sun->Value = sun_count % 6;
-	}
-	private: System::Void IntersectionLeft_To_Prison_Click(System::Object^ sender, System::EventArgs^ e) {
-		dialog_text->Text = "在你面前的是一個由石頭砌成的建築，建築有著一扇鐵藝門，看起來十分堅固，在離地約4公尺處有著兩扇玻璃窗戶正對著廣場，門口站著兩位全副武裝的侍衛，在門上方還掛著一塊禁止進入的牌匾。";
-		strcpy(place, "prison");
-		// hide object in scene
-		IntersectionLeft_To_Prison->Visible = false;
-		IntersectionLeft_To_Library->Visible = false;
-		IntersectionLeft_To_Lake->Visible = false;
-		// display object in scene
-		Prison_To_Restaurant->Visible = true;
-		Prison_To_Plazza->Visible = true;
-		Prison_To_IntersectionLeft->Visible = true;
-		background->Image = gcnew Bitmap(gcnew System::String(Prison_Outside.get_path()));
-		Spot_Prison_Out->Visible = true;
-	}
-	private: System::Void IntersectionLeft_To_Library_Click(System::Object^ sender, System::EventArgs^ e) {
-		dialog_text->Text = "這是一棟非常豪華和宏偉的建築，你被它那令人嘆為觀止的氣勢所震撼，以高大的石柱和華麗的拱門，來支撐整個建築，建築的主體由優雅的柱子和華麗的拱門支撐，高大的尖頂耸立著，猶如一個巨大的王冠，牆面上有著浮雕、雕塑和彩繪，繪製著神話、故事和歷史事件，讓建築更顯神聖和莊嚴。在陽光的照耀下，這些彩繪和浮雕散發出燦爛的光芒，讓整個建築閃耀著耀眼的光彩。";
-		strcpy(place, "library");
-		// hide object in scene
-		IntersectionLeft_To_Library->Visible = false;
-		IntersectionLeft_To_Prison->Visible = false;
-		IntersectionLeft_To_Lake->Visible = false;
-		Library_To_Sewer->Visible = false;
-		// diaplay object in scene
-		Library_To_IntersectionRight->Visible = true;
-		Library_To_IntersectionLeft->Visible = true;
-		Go_In_Library->Visible = true;
-		Library_To_Sewer->Visible = true;
-		background->Image = gcnew Bitmap(gcnew System::String(Library_Outside.get_path()));
-	}
-	private: System::Void Library_To_IntersectionLeft_Click(System::Object^ sender, System::EventArgs^ e) {
-		dialog_text->Text = "路口左待補";
-		strcpy(place, "left");
-		// hide object in scene
-		Library_To_IntersectionRight->Visible = false;
-		Library_To_IntersectionLeft->Visible = false;
-		Go_In_Library->Visible = false;
-		Library_To_Sewer->Visible = false;
-		// diaplay object in scene
-		IntersectionLeft_To_Prison->Visible = true;
-		IntersectionLeft_To_Library->Visible = true;
-		IntersectionLeft_To_Lake->Visible = true;
-		background->Image = gcnew Bitmap(gcnew System::String(Library_Outside.get_path()));
-		sun_count -= 1;
-		Sun->Value = sun_count % 6;
-	}
-	private: System::Void IntersectionLeft_To_Lake_Click(System::Object^ sender, System::EventArgs^ e) {
+	void To_Lake() {
 		dialog_text->Text = "你們來到了德茲瑪麗湖，那湖水猶如碧玉般清澈，波光粼粼，倒映著湖畔旁的青山綠樹，天空的美景也在湖水中倒影出來。湖畔旁的花草樹木繁茂，漫步其間，仿若置身於一個美麗的童話世界，讓人感受到大自然的生命力。";
 		strcpy(place, "lake");
 		strcpy(whatchat, "to_lake");
-		// hide object in scene
-		IntersectionLeft_To_Library->Visible = false;
-		IntersectionLeft_To_Prison->Visible = false;
-		IntersectionLeft_To_Lake->Visible = false;
-		// diaplay object in scene
 		continue_button->Visible = true;
 		background->Image = gcnew Bitmap(gcnew System::String(Lake_Mary.get_path()));
 	}
-	private: System::Void Lake_To_IntersectionLeft_Click(System::Object^ sender, System::EventArgs^ e) {
-		dialog_text->Text = "路口";
-		strcpy(place, "left");
-		// hide object in scene
+	void Exit_Lake() {
 		Lake_To_IntersectionLeft->Visible = false;
 		continue_button->Visible = false;
 		Psychology_Lake2->Visible = false;
 		Psychology_Lake1->Visible = false;
 		Lake_To_Sewer->Visible = false;
 		NPCGawain->Visible = false;
+	}
+	private: System::Void Plazza_To_Inn_Click(System::Object^ sender, System::EventArgs^ e) {
+		Common();
+		// hide object in scene
+		Exit_Plazza();
+		// display object in scene
+		To_Inn();
+	}
+	private: System::Void Plazza_To_Prison_Click(System::Object^ sender, System::EventArgs^ e) {
+		Common();
+		// hide object in scene
+		Exit_Plazza();
+		// display object in scene
+		To_Prison();
+	}
+	private: System::Void Go_In_Inn_Click(System::Object^ sender, System::EventArgs^ e) {
+		Common();
+		// hide object in scene
+		Exit_Inn();
+		// display object in scene
+		In_Inn();
+	}
+	private: System::Void Go_Out_Inn_Click(System::Object^ sender, System::EventArgs^ e) {
+		Common();
+		// hide object in scene
+		Out_Inn();
+		// display object in scene
+		To_Inn();
+	}
+	private: System::Void Go_In_Room_Click(System::Object^ sender, System::EventArgs^ e) {
+		Common();
+		// hide object in scene
+		Out_Inn();
+		// display object in scene
+		To_Room();
+	}
+	private: System::Void Go_Out_Room_Click(System::Object^ sender, System::EventArgs^ e) {
+		Common();
+		// hide object in scene
+		Exit_Room();
+		// display object in scene
+		In_Inn();
+	}
+	private: System::Void Inn_To_Plazza_Click(System::Object^ sender, System::EventArgs^ e) {
+		Common();
+		// hide object in scene
+		To_Plazza();
+		// display object in scene
+		Exit_Inn();
+	}
+	private: System::Void Inn_To_Market_Click(System::Object^ sender, System::EventArgs^ e) {
+		Common();
+		// hide object in scene
+		Exit_Inn();
+		//display object in scene
+		To_Market();
+	}
+	private: System::Void Market_To_Restaurant_Click(System::Object^ sender, System::EventArgs^ e) {
+		Common();
+		// hide object in scene
+		Exit_Market();
+		//display object in scene
+		To_Restaurant();
+	}
+	private: System::Void Market_To_Inn_Click(System::Object^ sender, System::EventArgs^ e) {
+		Common();
+		// hide object in scene
+		Exit_Market();
+		//display object in scene
+		To_Inn();
+	}
+	private: System::Void Restaurant_To_Market_Click(System::Object^ sender, System::EventArgs^ e) {
+		Common();
+		// hide object in scene
+		Exit_Restaurant();
+		// display object in scene
+		To_Market();
+	}
+	private: System::Void Restaurant_To_Prison_Click(System::Object^ sender, System::EventArgs^ e) {
+		Common();
+		// hide object in scene
+		Exit_Restaurant();
+		// display object in scene
+		To_Prison();
+	}
+	private: System::Void Prison_To_Restaurant_Click(System::Object^ sender, System::EventArgs^ e) {
+		Common();
+		// hide object in scene
+		Exit_Prison();
+		// display object in scene
+		To_Restaurant();
+	}
+	private: System::Void Prison_To_Plazza_Click(System::Object^ sender, System::EventArgs^ e) {
+		Common();
+		// hide object in scene
+		Exit_Prison();
 		// diaplay object in scene
-		IntersectionLeft_To_Library->Visible = true;
-		IntersectionLeft_To_Prison->Visible = true;
-		IntersectionLeft_To_Lake->Visible = true;
-		background->Image = gcnew Bitmap(gcnew System::String(Lake_Mary.get_path()));
-		sun_count -= 1;
-		Sun->Value = sun_count % 6;
+		To_Plazza();
+	}
+	private: System::Void Inn_To_IntersectionRight_Click(System::Object^ sender, System::EventArgs^ e) {
+		// hide object in scene
+		Exit_Inn();
+		// diaplay object in scene
+		To_IntersectionRight();
+	}
+	private: System::Void IntersectionRight_To_Library_Click(System::Object^ sender, System::EventArgs^ e) {
+		Common();
+		// hide object in scene
+		Exit_IntersectionRight();
+		// diaplay object in scene
+		To_Library();
+	}
+	private: System::Void IntersectionRight_To_Inn_Click(System::Object^ sender, System::EventArgs^ e) {
+		Common();
+		// hide object in scene
+		Exit_IntersectionRight();
+		// diaplay object in scene
+		To_Inn();
+	}
+	private: System::Void IntersectionRight_To_Palace_Click(System::Object^ sender, System::EventArgs^ e) {
+		Common();
+		// hide object in scene
+		Exit_IntersectionRight();
+		// diaplay object in scene
+		To_Palace();
+	}
+	private: System::Void Palace_To_IntersectionRight_Click(System::Object^ sender, System::EventArgs^ e) {
+		// hide object in scene
+		Exit_Palace();
+		// diaplay object in scene
+		To_IntersectionRight();
+	}
+	private: System::Void Library_To_IntersectionRight_Click(System::Object^ sender, System::EventArgs^ e) {
+		// hide object in scene
+		Exit_Library();
+		// diaplay object in scene
+		To_IntersectionRight();
+	}
+	private: System::Void Prison_To_IntersectionLeft_Click(System::Object^ sender, System::EventArgs^ e) {
+		// hide object in scene
+		Exit_Prison();
+		// diaplay object in scene
+		To_IntersectionLeft();
+	}
+	private: System::Void IntersectionLeft_To_Prison_Click(System::Object^ sender, System::EventArgs^ e) {
+		Common();
+		// hide object in scene
+		Exit_IntersectionLeft();
+		// display object in scene
+		To_Prison();
+	}
+	private: System::Void IntersectionLeft_To_Library_Click(System::Object^ sender, System::EventArgs^ e) {
+		Common();
+		// hide object in scene
+		Exit_IntersectionLeft();
+		// diaplay object in scene
+		To_Library();
+	}
+	private: System::Void Library_To_IntersectionLeft_Click(System::Object^ sender, System::EventArgs^ e) {
+		// hide object in scene
+		Exit_Library();
+		// diaplay object in scene
+		To_IntersectionLeft();
+	}
+	private: System::Void IntersectionLeft_To_Lake_Click(System::Object^ sender, System::EventArgs^ e) {
+		Common();
+		// hide object in scene
+		Exit_IntersectionLeft();
+		// diaplay object in scene
+		To_Lake();
+	}
+	private: System::Void Lake_To_IntersectionLeft_Click(System::Object^ sender, System::EventArgs^ e) {
+		// hide object in scene
+		Exit_Lake();
+		// diaplay object in scene
+		To_IntersectionLeft();
 	}
 	private: System::Void Go_In_Palace_Click(System::Object^ sender, System::EventArgs^ e) {
 		dialog_text->Text = "待補palace_END";
@@ -5008,35 +4942,18 @@ private: System::Windows::Forms::Button^ Lancelot_dialog_1;
 		NPCArthur->Visible = true;
 		background->Image = gcnew Bitmap(gcnew System::String(Palace_Inside.get_path()));
 		strcpy(place, "palace_END");
-
 	}
 	private: System::Void Go_In_Library_Click(System::Object^ sender, System::EventArgs^ e) {
-		dialog_text->Text = "你進到了圖書館內，這間屋子裏有著許多的架子，架子上擺滿了手寫的文獻和書籍，大多都是用羊皮紙和墨水寫成，這些文獻是按照主題整齊排列排列。";
-		strcpy(place, "library_in");
 		// hide object in scene
-		Library_To_IntersectionRight->Visible = false;
-		Library_To_IntersectionLeft->Visible = false;
-		Go_In_Library->Visible = false;
-		Library_To_Sewer->Visible = false;
+		Exit_Library();
 		// diaplay object in scene
-		Go_Out_Library->Visible = true;
-		Library_Library_In->Visible = true;
-		background->Image = gcnew Bitmap(gcnew System::String(Library_Inside.get_path()));
+		In_Library();
 	}
 	private: System::Void Go_Out_Library_Click(System::Object^ sender, System::EventArgs^ e) {
-		dialog_text->Text = "這是一棟非常豪華和宏偉的建築，你被它那令人嘆為觀止的氣勢所震撼，以高大的石柱和華麗的拱門，來支撐整個建築，建築的主體由優雅的柱子和華麗的拱門支撐，高大的尖頂耸立著，猶如一個巨大的王冠，牆面上有著浮雕、雕塑和彩繪，繪製著神話、故事和歷史事件，讓建築更顯神聖和莊嚴。在陽光的照耀下，這些彩繪和浮雕散發出燦爛的光芒，讓整個建築閃耀著耀眼的光彩。";
-		strcpy(place, "library");
 		// hide object in scene
-		Go_Out_Library->Visible = false;
-		Library_Library_In->Visible = false;
-		chatbox_1->Visible = false;
-		chatbox_2->Visible = false;
+		Out_Library();
 		// diaplay object in scene
-		Library_To_IntersectionRight->Visible = true;
-		Library_To_IntersectionLeft->Visible = true;
-		Go_In_Library->Visible = true;
-		Library_To_Sewer->Visible = true;
-		background->Image = gcnew Bitmap(gcnew System::String(Library_Outside.get_path()));
+		To_Library();
 	}
 	private: System::Void backpack_item_listView_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 	}
